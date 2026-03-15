@@ -89,25 +89,18 @@ async function scrapeLever(exchange) {
 }
 
 async function scrapeAshby(exchange) {
-  const url = 'https://jobs.ashbyhq.com/api/non-user-graphql?op=ApiJobBoardWithTeams';
+  const url = `https://api.ashbyhq.com/posting-api/job-board/${exchange.board}`;
   const res = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'User-Agent': 'SignalmapBot/1.0' },
-    body: JSON.stringify({
-      operationName: 'ApiJobBoardWithTeams',
-      variables: { organizationHostedJobsPageName: exchange.board },
-      query: 'query ApiJobBoardWithTeams($organizationHostedJobsPageName: String!) { jobBoard: publishedJobBoard(organizationHostedJobsPageName: $organizationHostedJobsPageName) { jobPostings { id title locationName teamName jobPostingState externalLink } } }'
-    }),
+    headers: { 'User-Agent': 'SignalmapBot/1.0', 'Accept': 'application/json' },
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
-  const postings = data?.data?.jobBoard?.jobPostings || [];
-  return postings.filter(j => j.jobPostingState === 'Published').map(job => ({
-    external_id: job.id,
+  return (data.jobs || []).map(job => ({
+    external_id: job.id || job.jobUrl || job.title,
     title: job.title,
-    department: classifyDept(job.title, job.teamName || ''),
-    location: job.locationName || '',
-    url: job.externalLink || `https://jobs.ashbyhq.com/${exchange.board}/${job.id}`,
+    department: classifyDept(job.title, job.department || job.team || ''),
+    location: job.location || '',
+    url: job.jobUrl || `https://jobs.ashbyhq.com/${exchange.board}`,
     source: 'ashby',
   }));
 }
