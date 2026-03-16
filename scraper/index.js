@@ -38,7 +38,7 @@ const EXCHANGES = [
 
   // ── GREENHOUSE EU (different API domain) ──────────────────
   // API: https://boards-api.eu.greenhouse.io/v1/boards/{board}/jobs
-  { id: 'bitpanda',   source: 'greenhouse-eu', board: 'bitpanda' }, // VERIFIED: job-boards.eu.greenhouse.io/bitpanda
+  { id: 'bitpanda',   source: 'greenhouse', board: 'bitpanda' }, // VERIFIED: job-boards.eu.greenhouse.io/bitpanda
 
   // ── LEVER (Public JSON API) ───────────────────────────────
   // API: https://api.lever.co/v0/postings/{board}?mode=json
@@ -47,7 +47,7 @@ const EXCHANGES = [
   // ── ASHBY (Public GraphQL API) ────────────────────────────
   // API: https://jobs.ashbyhq.com/api/non-user-graphql
   { id: 'kraken',     source: 'ashby', board: 'kraken.com' },       // VERIFIED: jobs.ashbyhq.com/kraken.com
-  { id: 'cryptocom',  source: 'ashby', board: 'crypto.com' },       // VERIFIED: jobs.ashbyhq.com/crypto.com
+  { id: 'cryptocom',  source: 'lever', board: 'crypto' },       // VERIFIED: jobs.ashbyhq.com/crypto.com
   { id: 'bitvavo',    source: 'ashby', board: 'bitvavo' },          // VERIFIED: jobs.ashbyhq.com/bitvavo
 ];
 
