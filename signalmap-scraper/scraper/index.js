@@ -6,7 +6,11 @@
 
 import { createClient } from '@supabase/supabase-js';
 import fetch from 'node-fetch';
-import crypto from 'crypto';
+
+if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
+  console.error('Fatal: SUPABASE_URL and SUPABASE_SERVICE_KEY must be set');
+  process.exit(1);
+}
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -102,6 +106,7 @@ async function scrapeAshby(exchange) {
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
+  if (data.errors?.length) throw new Error(`GraphQL error: ${data.errors[0].message}`);
   const postings = data?.data?.jobBoard?.jobPostings || [];
   return postings.filter(j => j.jobPostingState === 'Published').map(job => ({
     external_id: job.id,
@@ -143,7 +148,7 @@ async function upsertListings(exchangeId, listings) {
     const { error } = await supabase
       .from('job_listings')
       .upsert(batch, { onConflict: 'exchange_id,external_id', ignoreDuplicates: false });
-    if (error) throw error;
+    if (error) throw new Error(`Batch upsert failed (${exchangeId} batch ${i / 100 + 1}): ${error.message}`);
   }
 
   // Count new listings (first_seen within last 2 hours)
@@ -158,14 +163,14 @@ async function upsertListings(exchangeId, listings) {
 
 // ── Recalculate exchange score ────────────────────────────────
 async function recalculateScore(exchangeId) {
-  // Get counts directly since the view might not update immediately
-  const { data: activeJobs } = await supabase
+  // Get department breakdown in one query
+  const { data: activeJobs, count: totalCount } = await supabase
     .from('job_listings')
     .select('department', { count: 'exact' })
     .eq('exchange_id', exchangeId)
     .eq('is_active', true);
 
-  const total = activeJobs?.length || 0;
+  const total = totalCount || 0;
   const compliance = activeJobs?.filter(j => j.department === 'compliance').length || 0;
   const engineering = activeJobs?.filter(j => j.department === 'engineering').length || 0;
   const product = activeJobs?.filter(j => j.department === 'product').length || 0;
@@ -254,7 +259,7 @@ async function main() {
       results.push({ exchange: exchange.id, total, new: newCount, score, status: 'ok' });
 
     } catch (err) {
-      status = err.message?.includes('429') || err.message?.includes('rate') ? 'rate_limited' : 'error';
+      status = err.message?.includes('429') || err.message?.toLowerCase().includes('rate') ? 'rate_limited' : 'error';
       errorMsg = err.message;
       console.log(`     ✗ ${status}: ${errorMsg}`);
       results.push({ exchange: exchange.id, status, error: errorMsg });
