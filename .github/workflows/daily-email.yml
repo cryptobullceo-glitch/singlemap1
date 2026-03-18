@@ -1,0 +1,64 @@
+name: Signalmap Daily Email Automation
+
+on:
+  schedule:
+    - cron: '0 7 * * *'   # Every day at 7am UTC
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (no emails sent)'
+        type: boolean
+        default: false
+
+jobs:
+  email-drip:
+    name: Run email drip sequence
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger email-drip edge function
+        env:
+          SUPABASE_URL:          ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY:     ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          DRY_RUN="${{ github.event.inputs.dry_run || 'false' }}"
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -H "Authorization: Bearer ${SUPABASE_ANON_KEY}" \
+            -H "Content-Type: application/json" \
+            "${SUPABASE_URL}/functions/v1/email-drip?dry_run=${DRY_RUN}")
+
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -1)
+
+          echo "HTTP Status: $HTTP_CODE"
+          echo "Response: $BODY"
+
+          if [ "$HTTP_CODE" -ne 200 ]; then
+            echo "::warning::Email drip returned non-200: $HTTP_CODE"
+          fi
+
+  prediction-tracker:
+    name: Check prediction outcomes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger prediction-tracker edge function
+        env:
+          SUPABASE_URL:          ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY:     ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          DRY_RUN="${{ github.event.inputs.dry_run || 'false' }}"
+          RESPONSE=$(curl -s -w "\n%{http_code}" \
+            -H "Authorization: Bearer ${SUPABASE_ANON_KEY}" \
+            -H "Content-Type: application/json" \
+            "${SUPABASE_URL}/functions/v1/prediction-tracker?dry_run=${DRY_RUN}")
+
+          HTTP_CODE=$(echo "$RESPONSE" | tail -1)
+          BODY=$(echo "$RESPONSE" | head -1)
+
+          echo "HTTP Status: $HTTP_CODE"
+          echo "Response: $BODY"
+
+          if [ "$HTTP_CODE" -ne 200 ]; then
+            echo "::warning::Prediction tracker returned non-200: $HTTP_CODE"
+          fi
