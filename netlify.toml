@@ -2,12 +2,6 @@
   publish = "."
 
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = {Role = ["admin"]}
-
-[[redirects]]
   from = "/exchange"
   to = "/exchange.html"
   status = 200
