@@ -6,7 +6,11 @@
 
 import { createClient } from '@supabase/supabase-js';
 import fetch from 'node-fetch';
-import crypto from 'crypto';
+
+if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) {
+  console.error('Fatal: SUPABASE_URL and SUPABASE_SERVICE_KEY must be set');
+  process.exit(1);
+}
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -34,27 +38,54 @@ function classifyDept(title = '', dept = '') {
 }
 
 // ── Exchange config ───────────────────────────────────────────
-// ONLY sources with real, tested public APIs
+// Verified sources with tested public APIs (March 2026)
 const EXCHANGES = [
   // Greenhouse ATS (public JSON API — no auth needed)
   { id: 'coinbase',  source: 'greenhouse', board: 'coinbase'    },
-  { id: 'kraken',    source: 'greenhouse', board: 'kraken'      },
+  { id: 'okx',       source: 'greenhouse', board: 'okx'         },
+  { id: 'robinhood', source: 'greenhouse', board: 'robinhood'   },
   { id: 'gemini',    source: 'greenhouse', board: 'gemini'      },
-  { id: 'deribit',   source: 'greenhouse', board: 'deribit'     },
+  { id: 'bitmex',    source: 'greenhouse', board: 'bitmex'      },
+  { id: 'bitpanda',  source: 'greenhouse', board: 'bitpanda'    }, // EU board, using standard GH
 
   // Lever ATS (public JSON API — no auth needed)
-  { id: 'robinhood', source: 'lever',      board: 'robinhood'   },
-  { id: 'bitget',    source: 'lever',      board: 'bitget'      },
-  { id: 'bitstamp',  source: 'lever',      board: 'bitstamp'    },
+  { id: 'binance',   source: 'lever',      board: 'binance'     },
+  { id: 'crypto',    source: 'lever',      board: 'crypto'      }, // Crypto.com uses Lever, board='crypto'
 
   // Ashby ATS (public GraphQL API)
-  { id: 'cryptocom', source: 'ashby',      board: 'crypto.com'  },
+  { id: 'kraken',    source: 'ashby',      board: 'kraken.com'  },
+  { id: 'bitvavo',   source: 'ashby',      board: 'bitvavo'     },
 ];
+
+// ── Retry helper ─────────────────────────────────────────────
+async function fetchWithRetry(url, options, maxRetries = 3) {
+  let lastError;
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const res = await fetch(url, options);
+      if (res.status === 429) {
+        const wait = Math.pow(2, attempt) * 2000;
+        console.log(`     ⏳ Rate limited, waiting ${wait}ms...`);
+        await new Promise(r => setTimeout(r, wait));
+        lastError = new Error('HTTP 429');
+        continue;
+      }
+      return res;
+    } catch (err) {
+      lastError = err;
+      if (attempt < maxRetries) {
+        const wait = Math.pow(2, attempt) * 1000;
+        await new Promise(r => setTimeout(r, wait));
+      }
+    }
+  }
+  throw lastError;
+}
 
 // ── Greenhouse scraper ────────────────────────────────────────
 async function scrapeGreenhouse(exchange) {
   const url = `https://boards-api.greenhouse.io/v1/boards/${exchange.board}/jobs?content=true`;
-  const res = await fetch(url, { headers: { 'User-Agent': 'SignalmapBot/1.0' }, timeout: 15000 });
+  const res = await fetchWithRetry(url, { headers: { 'User-Agent': 'SignalmapBot/1.0' }, timeout: 15000 });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
   return (data.jobs || []).map(job => ({
@@ -70,7 +101,7 @@ async function scrapeGreenhouse(exchange) {
 // ── Lever scraper ─────────────────────────────────────────────
 async function scrapeLever(exchange) {
   const url = `https://api.lever.co/v0/postings/${exchange.board}?mode=json`;
-  const res = await fetch(url, { headers: { 'User-Agent': 'SignalmapBot/1.0' }, timeout: 15000 });
+  const res = await fetchWithRetry(url, { headers: { 'User-Agent': 'SignalmapBot/1.0' }, timeout: 15000 });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
   return (Array.isArray(data) ? data : []).map(job => ({
@@ -86,7 +117,7 @@ async function scrapeLever(exchange) {
 // ── Ashby scraper ─────────────────────────────────────────────
 async function scrapeAshby(exchange) {
   const url = `https://jobs.ashbyhq.com/api/non-user-graphql?op=ApiJobBoardWithTeams`;
-  const res = await fetch(url, {
+  const res = await fetchWithRetry(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'User-Agent': 'SignalmapBot/1.0' },
     body: JSON.stringify({
@@ -102,6 +133,7 @@ async function scrapeAshby(exchange) {
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = await res.json();
+  if (data.errors?.length) throw new Error(`GraphQL error: ${data.errors[0].message}`);
   const postings = data?.data?.jobBoard?.jobPostings || [];
   return postings.filter(j => j.jobPostingState === 'Published').map(job => ({
     external_id: job.id,
@@ -143,7 +175,7 @@ async function upsertListings(exchangeId, listings) {
     const { error } = await supabase
       .from('job_listings')
       .upsert(batch, { onConflict: 'exchange_id,external_id', ignoreDuplicates: false });
-    if (error) throw error;
+    if (error) throw new Error(`Batch upsert failed (${exchangeId} batch ${i / 100 + 1}): ${error.message}`);
   }
 
   // Count new listings (first_seen within last 2 hours)
@@ -158,14 +190,14 @@ async function upsertListings(exchangeId, listings) {
 
 // ── Recalculate exchange score ────────────────────────────────
 async function recalculateScore(exchangeId) {
-  // Get counts directly since the view might not update immediately
-  const { data: activeJobs } = await supabase
+  // Get department breakdown in one query
+  const { data: activeJobs, count: totalCount } = await supabase
     .from('job_listings')
     .select('department', { count: 'exact' })
     .eq('exchange_id', exchangeId)
     .eq('is_active', true);
 
-  const total = activeJobs?.length || 0;
+  const total = totalCount || 0;
   const compliance = activeJobs?.filter(j => j.department === 'compliance').length || 0;
   const engineering = activeJobs?.filter(j => j.department === 'engineering').length || 0;
   const product = activeJobs?.filter(j => j.department === 'product').length || 0;
@@ -254,7 +286,7 @@ async function main() {
       results.push({ exchange: exchange.id, total, new: newCount, score, status: 'ok' });
 
     } catch (err) {
-      status = err.message?.includes('429') || err.message?.includes('rate') ? 'rate_limited' : 'error';
+      status = err.message?.includes('429') || err.message?.toLowerCase().includes('rate') ? 'rate_limited' : 'error';
       errorMsg = err.message;
       console.log(`     ✗ ${status}: ${errorMsg}`);
       results.push({ exchange: exchange.id, status, error: errorMsg });

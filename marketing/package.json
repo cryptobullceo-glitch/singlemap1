@@ -1,0 +1,18 @@
+{
+  "name": "signalmap-marketing",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Automated marketing scripts for Signalmap",
+  "scripts": {
+    "generate": "node generate-content.js",
+    "twitter":  "node post-twitter.js",
+    "reddit":   "node post-reddit.js",
+    "linkedin": "node post-linkedin.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "node-fetch": "^3.3.2",
+    "twitter-api-v2": "^1.17.0",
+    "snoowrap": "^1.23.0"
+  }
+}
