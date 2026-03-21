@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CEX Intelligence Dashboard — Signalmap</title>
+  <meta name="description" content="Live hiring signal dashboard for major crypto exchanges. Track compliance, engineering, and product hiring in real-time.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #059669; --green2: #34d399;
+      --bg: #07090d; --surface: #0e1117; --surface2: #161b22;
+      --border: #21262d; --border2: #30363d;
+      --text: #e6edf3; --muted: #7d8590; --dim: #3d444d;
+      --ink: #09090B; --paper: #FAFAF7; --light: #E4E4E7; --pale: #ECFDF5;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+
+    /* NAV */
+    nav {
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
+    .logo-icon { display: flex; align-items: flex-end; gap: 2px; height: 18px; }
+    .logo-icon span { background: var(--green); border-radius: 2px; width: 3px; }
+    .logo-icon span:nth-child(1) { height: 7px; opacity: 0.35; }
+    .logo-icon span:nth-child(2) { height: 10px; opacity: 0.55; }
+    .logo-icon span:nth-child(3) { height: 13px; opacity: 0.75; }
+    .logo-icon span:nth-child(4) { height: 16px; opacity: 0.9; }
+    .logo-icon span:nth-child(5) { height: 18px; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-link { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .nav-link:hover { color: var(--text); }
+    .nav-cta { background: var(--green); color: #fff; text-decoration: none; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 600; }
+    .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--green2); animation: pulse 2s infinite; margin-right: 4px; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* TABS */
+    .tab-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; gap: 0; overflow-x: auto; }
+    .tab-bar::-webkit-scrollbar { display: none; }
+    .tab { padding: 16px 18px; font-size: 14px; font-weight: 500; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.15s; }
+    .tab:hover { color: var(--text); }
+    .tab.active { color: var(--green2); border-bottom-color: var(--green2); }
+    .tab-pro { font-size: 10px; font-weight: 700; background: #92400E; color: #FEF3C7; padding: 2px 6px; border-radius: 3px; margin-left: 6px; letter-spacing: 0.05em; }
+
+    /* PANELS */
+    .panel { display: none; padding: 28px 24px; max-width: 1100px; margin: 0 auto; }
+    .panel.active { display: block; }
+
+    /* OVERVIEW PANEL */
+    .summary-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+    @media (max-width: 700px) { .summary-row { grid-template-columns: repeat(2, 1fr); } }
+    .summary-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .sum-val { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--green2); line-height: 1; margin-bottom: 4px; }
+    .sum-lbl { font-size: 12px; color: var(--muted); font-weight: 500; }
+
+    /* EXCHANGE GRID */
+    .section-head { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .section-head::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .exchange-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+    .ex-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px; cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .ex-card:hover { border-color: var(--border2); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .ex-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .ex-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .ex-name { font-size: 16px; font-weight: 700; }
+    .ex-score { margin-left: auto; text-align: right; }
+    .score-num { font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 500; color: var(--green2); }
+    .score-lbl { font-size: 11px; color: var(--muted); }
+    .dept-bars { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .dept-row { display: flex; align-items: center; gap: 8px; }
+    .dept-lbl { font-size: 11px; color: var(--muted); width: 90px; flex-shrink: 0; }
+    .dept-bar-wrap { flex: 1; background: var(--surface2); border-radius: 3px; height: 4px; }
+    .dept-bar { height: 4px; border-radius: 3px; background: var(--green); transition: width 0.6s ease; }
+    .dept-count { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; width: 28px; text-align: right; }
+    .ex-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--border); }
+    .ex-total { font-size: 12px; color: var(--muted); }
+    .ex-total strong { color: var(--text); }
+    .ex-link { font-size: 12px; color: var(--green); text-decoration: none; font-weight: 500; }
+    .ex-link:hover { text-decoration: underline; }
+
+    /* PRO GATE */
+    .pro-gate { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; text-align: center; }
+    .gate-icon { font-size: 48px; margin-bottom: 20px; }
+    .gate-title { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; margin-bottom: 12px; }
+    .gate-sub { color: var(--muted); font-size: 16px; max-width: 400px; margin-bottom: 28px; line-height: 1.6; }
+    .gate-btn { background: var(--green); color: #fff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 16px; }
+    .gate-link { display: block; margin-top: 12px; font-size: 13px; color: var(--muted); text-decoration: none; }
+    .gate-link:hover { color: var(--text); }
+
+    /* PREDICTIONS PANEL */
+    .pred-grid { display: flex; flex-direction: column; gap: 14px; }
+    .pred-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; display: grid; grid-template-columns: 1fr auto; gap: 16px; }
+    .pred-card.status-correct { border-color: #16a34a40; background: linear-gradient(135deg, #052e1608, var(--surface)); }
+    .pred-card.status-expired { border-color: #dc262640; opacity: 0.75; }
+    .pred-exch { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 6px; }
+    .pred-title { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
+    .pred-rat { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 12px; }
+    .pred-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+    .meta-chip { font-size: 11px; background: var(--surface2); color: var(--muted); padding: 3px 9px; border-radius: 10px; border: 1px solid var(--border); }
+    .status-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 9px; border-radius: 10px; }
+    .badge-active { background: #052e16; color: var(--green2); border: 1px solid #16a34a40; }
+    .badge-correct { background: #052e16; color: #4ade80; border: 1px solid #16a34a; }
+    .badge-expired { background: #1a0606; color: #f87171; border: 1px solid #dc262640; }
+    .conf-block { text-align: right; flex-shrink: 0; }
+    .conf-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; line-height: 1; }
+    .conf-lbl { font-size: 11px; color: var(--muted); }
+
+    /* LOADING */
+    .loading { color: var(--muted); font-size: 14px; padding: 60px; text-align: center; }
+
+    /* UPDATED LABEL */
+    .updated { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-icon"><span></span><span></span><span></span><span></span><span></span></div>
+    SIGNALMAP
+  </a>
+  <div class="nav-right">
+    <span class="updated"><span class="live-dot"></span>Live data</span>
+    <a href="/scorecard.html" class="nav-link">Scorecard</a>
+    <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="nav-cta">Pro — $79/mo</a>
+  </div>
+</nav>
+
+<div class="tab-bar">
+  <div class="tab active" data-tab="overview">Overview</div>
+  <div class="tab" data-tab="intel">Intel <span class="tab-pro">PRO</span></div>
+  <div class="tab" data-tab="predictions">Predictions</div>
+  <div class="tab" data-tab="regulatory">Regulatory</div>
+  <div class="tab" data-tab="sources">Sources <span class="tab-pro">PRO</span></div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="panel active" id="tab-overview">
+  <div class="summary-row">
+    <div class="summary-card"><div class="sum-val" id="ov-exchanges">10</div><div class="sum-lbl">Exchanges tracked</div></div>
+    <div class="summary-card"><div class="sum-val" id="ov-jobs">—</div><div class="sum-lbl">Active listings</div></div>
+    <div class="summary-card"><div class="sum-val" id="ov-compliance">—</div><div class="sum-lbl">Compliance roles</div></div>
+    <div class="summary-card"><div class="sum-val" id="ov-preds">—</div><div class="sum-lbl">Active predictions</div></div>
+  </div>
+
+  <div class="section-head">Exchange signal scores</div>
+  <div class="exchange-grid" id="exchange-grid">
+    <div class="loading">Loading exchange data…</div>
+  </div>
+</div>
+
+<!-- INTEL (PRO GATE) -->
+<div class="panel" id="tab-intel">
+  <div class="pro-gate">
+    <div class="gate-icon">🔐</div>
+    <div class="gate-title">Intel is a Pro feature</div>
+    <div class="gate-sub">Full department-level breakdowns, week-over-week deltas, and analyst commentary for every exchange.</div>
+    <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="gate-btn">Unlock Pro — $79/mo →</a>
+    <a href="/" class="gate-link">← Back to landing page</a>
+  </div>
+</div>
+
+<!-- PREDICTIONS -->
+<div class="panel" id="tab-predictions">
+  <p style="font-size:14px;color:var(--muted);margin-bottom:20px">All predictions are public and logged. Win or lose. <a href="/scorecard.html" style="color:var(--green2)">View full scorecard →</a></p>
+  <div class="pred-grid" id="pred-grid"><div class="loading">Loading predictions…</div></div>
+</div>
+
+<!-- REGULATORY (TEASER) -->
+<div class="panel" id="tab-regulatory">
+  <div class="summary-row" style="margin-bottom:28px">
+    <div class="summary-card"><div class="sum-val" id="reg-count">—</div><div class="sum-lbl">Compliance roles live</div></div>
+    <div class="summary-card"><div class="sum-val" id="reg-legal">—</div><div class="sum-lbl">Legal roles live</div></div>
+    <div class="summary-card"><div class="sum-val" id="reg-top">—</div><div class="sum-lbl">Top compliance exchange</div></div>
+    <div class="summary-card"><div class="sum-val" id="reg-ratio">—</div><div class="sum-lbl">Avg compliance ratio</div></div>
+  </div>
+  <div class="section-head">Compliance hiring by exchange</div>
+  <div id="reg-grid" class="exchange-grid"><div class="loading">Loading…</div></div>
+  <div style="margin-top:32px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center">
+    <p style="color:var(--muted);margin-bottom:16px;font-size:14px">Full regulatory signal analysis — jurisdiction breakdowns, MiCA tracking, and compliance velocity — is available in Pro.</p>
+    <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" style="background:var(--green);color:#fff;padding:11px 24px;border-radius:7px;text-decoration:none;font-weight:600;font-size:14px">Upgrade to Pro →</a>
+  </div>
+</div>
+
+<!-- SOURCES (PRO GATE) -->
+<div class="panel" id="tab-sources">
+  <div class="pro-gate">
+    <div class="gate-icon">📡</div>
+    <div class="gate-title">Data sources are a Pro feature</div>
+    <div class="gate-sub">See every job board URL, scrape timestamp, and raw listing count we use to build each signal score.</div>
+    <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="gate-btn">Unlock Pro — $79/mo →</a>
+    <a href="/" class="gate-link">← Back to landing page</a>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
+const IS_ADMIN = new URLSearchParams(location.search).get('admin') === 'signalmap2026';
+
+async function db(table, params = '') {
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}${params}`, {
+    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+  });
+  return r.json();
+}
+
+const META = {
+  coinbase:  { name: 'Coinbase',   color: '#0052FF', initials: 'CB' },
+  binance:   { name: 'Binance',    color: '#D4A017', initials: 'BN' },
+  kraken:    { name: 'Kraken',     color: '#5741D9', initials: 'KR' },
+  okx:       { name: 'OKX',        color: '#555',    initials: 'OX' },
+  gemini:    { name: 'Gemini',     color: '#0091FF', initials: 'GM' },
+  cryptocom: { name: 'Crypto.com', color: '#1249A0', initials: 'CC' },
+  robinhood: { name: 'Robinhood',  color: '#00C805', initials: 'RH' },
+  bitmex:    { name: 'BitMEX',     color: '#FF4C00', initials: 'BX' },
+  bitpanda:  { name: 'Bitpanda',   color: '#E5415A', initials: 'BP' },
+  bitvavo:   { name: 'Bitvavo',    color: '#1C53F0', initials: 'BV' },
+};
+
+function confColor(c) { return c >= 75 ? '#4ade80' : c >= 55 ? '#facc15' : '#7d8590'; }
+
+async function loadOverview() {
+  try {
+    const signals = await db('signals', `?select=*&order=score.desc&week_start=eq.${getMondayISO()}`);
+    const fallback = !signals?.length;
+    const data = fallback ? await db('signals', '?select=exchange_id,total_active,compliance_count,engineering_count,product_count,score&order=score.desc&limit=10') : signals;
+
+    let totalJobs = 0, totalComp = 0;
+    if (!data?.length) { document.getElementById('exchange-grid').innerHTML = '<div class="loading">No data yet. Run the scraper to populate signals.</div>'; return; }
+
+    const cards = data.map(s => {
+      const m = META[s.exchange_id] || { name: s.exchange_id, color: '#059669', initials: s.exchange_id.slice(0,2).toUpperCase() };
+      const total = s.total_active || 0;
+      const comp = s.compliance_count || 0;
+      const eng = s.engineering_count || 0;
+      const prod = s.product_count || 0;
+      const other = Math.max(0, total - comp - eng - prod);
+      totalJobs += total; totalComp += comp;
+      const maxBar = Math.max(1, total);
+      return `
+        <div class="ex-card" onclick="location.href='/exchange.html?id=${s.exchange_id}'">
+          <div class="ex-header">
+            <div class="ex-icon" style="background:${m.color}">${m.initials}</div>
+            <div class="ex-name">${m.name}</div>
+            <div class="ex-score"><div class="score-num">${s.score ?? '—'}</div><div class="score-lbl">signal score</div></div>
+          </div>
+          <div class="dept-bars">
+            <div class="dept-row"><span class="dept-lbl">Compliance</span><div class="dept-bar-wrap"><div class="dept-bar" style="width:${(comp/maxBar*100).toFixed(1)}%;background:#059669"></div></div><span class="dept-count">${comp}</span></div>
+            <div class="dept-row"><span class="dept-lbl">Engineering</span><div class="dept-bar-wrap"><div class="dept-bar" style="width:${(eng/maxBar*100).toFixed(1)}%;background:#3b82f6"></div></div><span class="dept-count">${eng}</span></div>
+            <div class="dept-row"><span class="dept-lbl">Product</span><div class="dept-bar-wrap"><div class="dept-bar" style="width:${(prod/maxBar*100).toFixed(1)}%;background:#a78bfa"></div></div><span class="dept-count">${prod}</span></div>
+            <div class="dept-row"><span class="dept-lbl">Other</span><div class="dept-bar-wrap"><div class="dept-bar" style="width:${(other/maxBar*100).toFixed(1)}%;background:#3d444d"></div></div><span class="dept-count">${other}</span></div>
+          </div>
+          <div class="ex-footer">
+            <span class="ex-total"><strong>${total}</strong> active roles</span>
+            <a class="ex-link" href="/exchange.html?id=${s.exchange_id}">Details →</a>
+          </div>
+        </div>`;
+    });
+
+    document.getElementById('exchange-grid').innerHTML = cards.join('');
+    document.getElementById('ov-jobs').textContent = totalJobs.toLocaleString();
+    document.getElementById('ov-compliance').textContent = totalComp.toLocaleString();
+  } catch(e) { console.error(e); document.getElementById('exchange-grid').innerHTML = '<div class="loading">Error loading data.</div>'; }
+}
+
+async function loadPredictions() {
+  try {
+    const preds = await db('predictions', '?select=*&order=issued_at.desc');
+    document.getElementById('ov-preds').textContent = preds?.filter(p => p.status === 'active').length ?? '—';
+    if (!preds?.length) { document.getElementById('pred-grid').innerHTML = '<div class="loading">No predictions yet.</div>'; return; }
+    const html = preds.map(p => {
+      const m = META[p.exchange_id] || { name: p.exchange_id };
+      const st = p.status === 'correct' || p.status === 'announced' ? {cls:'status-correct', badge:'badge-correct', lbl:'✓ Correct'}
+               : p.status === 'expired' ? {cls:'status-expired', badge:'badge-expired', lbl:'Expired'}
+               : {cls:'', badge:'badge-active', lbl:'Active'};
+      const issued = new Date(p.issued_at).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+      return `
+        <div class="pred-card ${st.cls}">
+          <div>
+            <div class="pred-exch">${m.name}</div>
+            <div class="pred-title">${p.title}</div>
+            ${p.rationale ? `<div class="pred-rat">${p.rationale}</div>` : ''}
+            <div class="pred-meta">
+              <span class="meta-chip">📅 ${issued}</span>
+              <span class="meta-chip">⏱ ${p.horizon || '90'}-day horizon</span>
+              <span class="status-badge ${st.badge}">${st.lbl}</span>
+            </div>
+          </div>
+          <div class="conf-block">
+            <div class="conf-num" style="color:${confColor(p.confidence)}">${p.confidence}%</div>
+            <div class="conf-lbl">confidence</div>
+          </div>
+        </div>`;
+    }).join('');
+    document.getElementById('pred-grid').innerHTML = html;
+  } catch(e) { document.getElementById('pred-grid').innerHTML = '<div class="loading">Error loading predictions.</div>'; }
+}
+
+async function loadRegulatory() {
+  try {
+    const signals = await db('signals', '?select=exchange_id,total_active,compliance_count&order=compliance_count.desc');
+    if (!signals?.length) return;
+    let totalComp = 0, totalLegal = 0, totalAll = 0;
+    signals.forEach(s => { totalComp += s.compliance_count || 0; totalAll += s.total_active || 0; });
+    const top = signals[0];
+    const topMeta = META[top?.exchange_id] || { name: top?.exchange_id };
+    document.getElementById('reg-count').textContent = totalComp;
+    document.getElementById('reg-legal').textContent = '—';
+    document.getElementById('reg-top').textContent = topMeta.name;
+    document.getElementById('reg-ratio').textContent = totalAll > 0 ? (totalComp / totalAll * 100).toFixed(1) + '%' : '—';
+
+    const cards = signals.map(s => {
+      const m = META[s.exchange_id] || { name: s.exchange_id, color: '#059669', initials: s.exchange_id.slice(0,2).toUpperCase() };
+      const total = s.total_active || 0;
+      const comp = s.compliance_count || 0;
+      const ratio = total > 0 ? (comp/total*100).toFixed(1) : '0';
+      return `
+        <div class="ex-card">
+          <div class="ex-header">
+            <div class="ex-icon" style="background:${m.color}">${m.initials}</div>
+            <div class="ex-name">${m.name}</div>
+            <div class="ex-score"><div class="score-num" style="color:#059669">${ratio}%</div><div class="score-lbl">of hires</div></div>
+          </div>
+          <div class="dept-bars">
+            <div class="dept-row"><span class="dept-lbl">Compliance</span><div class="dept-bar-wrap"><div class="dept-bar" style="width:${ratio}%;background:#059669"></div></div><span class="dept-count">${comp}</span></div>
+          </div>
+          <div class="ex-footer"><span class="ex-total"><strong>${comp}</strong> compliance of <strong>${total}</strong> total</span></div>
+        </div>`;
+    }).join('');
+    document.getElementById('reg-grid').innerHTML = cards;
+  } catch(e) { console.error('reg', e); }
+}
+
+function getMondayISO() {
+  const d = new Date();
+  const day = d.getDay();
+  const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+  d.setDate(diff); d.setHours(0,0,0,0);
+  return d.toISOString().split('T')[0];
+}
+
+// Tab switching
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    const id = t.dataset.tab;
+    if (IS_ADMIN || !['intel','sources'].includes(id)) {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById('tab-' + id).classList.add('active');
+    } else {
+      location.href = 'https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800';
+    }
+  });
+});
+
+// Init
+loadOverview();
+loadPredictions();
+loadRegulatory();
+</script>
+</body>
+</html>
