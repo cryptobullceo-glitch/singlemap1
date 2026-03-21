@@ -1,0 +1,33 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = ["admin"]}
+
+[[redirects]]
+  from = "/exchange"
+  to = "/exchange.html"
+  status = 200
+
+[[redirects]]
+  from = "/intelligence"
+  to = "/cex-intelligence.html"
+  status = 200
+
+[[redirects]]
+  from = "/scorecard"
+  to = "/scorecard.html"
+  status = 200
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=300"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
