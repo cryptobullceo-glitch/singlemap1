@@ -185,6 +185,17 @@
     .btn-ghost { display: inline-block; padding: 14px 28px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); color: #fff; text-decoration: none; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; transition: border-color 0.15s, background 0.15s; }
     .btn-ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
 
+    /* EXIT INTENT POPUP */
+    .popup-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; }
+    .popup-overlay.show { display: flex; }
+    .popup { background: #fff; border-radius: 16px; padding: 40px; max-width: 480px; width: calc(100% - 32px); position: relative; }
+    .popup-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; color: var(--mid); cursor: pointer; line-height: 1; padding: 4px; }
+    .popup h2 { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; margin-bottom: 10px; line-height: 1.2; }
+    .popup h2 em { color: var(--green); font-style: normal; }
+    .popup p { font-size: 14px; color: var(--mid); margin-bottom: 20px; line-height: 1.6; }
+    .popup .email-form { margin-bottom: 8px; }
+    .popup .form-note { margin-bottom: 0; }
+
     /* URGENCY STRIP */
     .urgency-strip { background: var(--green-dark); color: #fff; text-align: center; padding: 10px 24px; font-size: 13px; font-weight: 500; letter-spacing: 0.01em; }
     .urgency-strip strong { font-weight: 700; }
@@ -237,11 +248,25 @@
     SIGNALMAP
   </a>
   <div class="nav-links">
-    <a href="/cex-intelligence.html" class="nav-hide">Dashboard</a>
+    <a href="/weekly" class="nav-hide">Weekly report</a>
     <a href="/scorecard.html" class="nav-hide">Scorecard</a>
     <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="nav-cta">Pro — $79/mo</a>
   </div>
 </nav>
+
+<!-- EXIT INTENT POPUP -->
+<div class="popup-overlay" id="exit-popup">
+  <div class="popup">
+    <button class="popup-close" onclick="closePopup()">✕</button>
+    <h2>Before you go — get the <em>free</em> Friday brief.</h2>
+    <p>One email, every Friday. The most important hiring signal from the past week, explained in plain language. No credit card, no dashboard tour. Just the signal.</p>
+    <form class="email-form" id="popup-form">
+      <input type="email" placeholder="your@email.com" required id="popup-email">
+      <button type="submit">Send me the brief →</button>
+    </form>
+    <p class="form-note" id="popup-note">Free forever. Unsubscribe anytime.</p>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -412,8 +437,9 @@
 <div class="section" style="margin-top:80px">
   <div class="section-head">
     <div class="section-label">Pricing</div>
-    <h2>Start free. Upgrade when you need more.</h2>
+    <h2>Bloomberg charges $24,000/yr for this.<br>We charge $79/mo.</h2>
   </div>
+  <p style="text-align:center;color:var(--mid);font-size:15px;margin-bottom:40px;margin-top:-24px">Crypto-specific. Hiring-focused. Updated weekly. No 2-year contract.</p>
   <div class="pricing-grid">
     <div class="plan">
       <div class="plan-name">Free</div>
@@ -634,6 +660,45 @@ document.getElementById('subscribe-form').addEventListener('submit', async (e) =
 
 loadTicker();
 loadStats();
+
+// Exit intent popup
+let popupShown = false;
+function closePopup() {
+  document.getElementById('exit-popup').classList.remove('show');
+  sessionStorage.setItem('popup-dismissed', '1');
+}
+document.addEventListener('mouseleave', (e) => {
+  if (e.clientY <= 0 && !popupShown && !sessionStorage.getItem('popup-dismissed')) {
+    popupShown = true;
+    document.getElementById('exit-popup').classList.add('show');
+  }
+});
+document.getElementById('exit-popup').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('exit-popup')) closePopup();
+});
+
+async function subscribeEmail(email) {
+  return fetch(`${SUPABASE_URL}/rest/v1/subscribers`, {
+    method: 'POST',
+    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+    body: JSON.stringify({ email }),
+  });
+}
+
+document.getElementById('popup-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('popup-email').value.trim();
+  const btn = e.target.querySelector('button');
+  btn.textContent = 'Subscribing…'; btn.disabled = true;
+  try {
+    const r = await subscribeEmail(email);
+    document.getElementById('popup-form').style.display = 'none';
+    document.getElementById('popup-note').textContent = r.ok || r.status === 409
+      ? '✓ You\'re on the list. Brief arrives Fridays.'
+      : 'Something went wrong — try again.';
+    setTimeout(closePopup, 2000);
+  } catch { btn.textContent = 'Send me the brief →'; btn.disabled = false; }
+});
 </script>
 </body>
 </html>
