@@ -87,12 +87,15 @@
     .ex-link:hover { text-decoration: underline; }
 
     /* PRO GATE */
-    .pro-gate { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; text-align: center; }
-    .gate-icon { font-size: 48px; margin-bottom: 20px; }
-    .gate-title { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 800; margin-bottom: 12px; }
-    .gate-sub { color: var(--muted); font-size: 16px; max-width: 400px; margin-bottom: 28px; line-height: 1.6; }
-    .gate-btn { background: var(--green); color: #fff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 16px; }
-    .gate-link { display: block; margin-top: 12px; font-size: 13px; color: var(--muted); text-decoration: none; }
+    .pro-gate { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; text-align: center; padding: 40px 24px; }
+    .gate-icon { width: 56px; height: 56px; border-radius: 16px; background: rgba(5,150,105,0.12); border: 1px solid rgba(5,150,105,0.25); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .gate-icon svg { width: 26px; height: 26px; }
+    .gate-title { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+    .gate-sub { color: var(--muted); font-size: 15px; max-width: 420px; margin-bottom: 8px; line-height: 1.7; }
+    .gate-price { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--green2); margin-bottom: 28px; }
+    .gate-btn { background: var(--green); color: #fff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; letter-spacing: 0.02em; transition: background 0.15s; }
+    .gate-btn:hover { background: #047857; }
+    .gate-link { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); text-decoration: none; }
     .gate-link:hover { color: var(--text); }
 
     /* PREDICTIONS PANEL */
@@ -110,7 +113,7 @@
     .badge-correct { background: #052e16; color: #4ade80; border: 1px solid #16a34a; }
     .badge-expired { background: #1a0606; color: #f87171; border: 1px solid #dc262640; }
     .conf-block { text-align: right; flex-shrink: 0; }
-    .conf-num { font-family: 'Space Grotesk', sans-serif; font-size: 36px; font-weight: 800; line-height: 1; }
+    .conf-num { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 700; line-height: 1; }
     .conf-lbl { font-size: 11px; color: var(--muted); }
 
     /* LOADING */
@@ -160,9 +163,14 @@
 <!-- INTEL (PRO GATE) -->
 <div class="panel" id="tab-intel">
   <div class="pro-gate">
-    <div class="gate-icon">🔐</div>
-    <div class="gate-title">Intel is a Pro feature</div>
-    <div class="gate-sub">Full department-level breakdowns, week-over-week deltas, and analyst commentary for every exchange.</div>
+    <div class="gate-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="var(--green2)">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/>
+      </svg>
+    </div>
+    <div class="gate-title">Full Intel is Pro only</div>
+    <div class="gate-sub">Department-level breakdowns, week-over-week hiring velocity, and analyst commentary for all 10 exchanges. Updated every Friday.</div>
+    <div class="gate-price">Launch pricing — $79/mo until April 30, then $149/mo</div>
     <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="gate-btn">Unlock Pro — $79/mo →</a>
     <a href="/" class="gate-link">← Back to landing page</a>
   </div>
