@@ -202,17 +202,27 @@
     .urgency-strip a { color: var(--green2); font-weight: 700; text-decoration: none; margin-left: 12px; }
     .urgency-strip a:hover { text-decoration: underline; }
 
-    /* SOCIAL PROOF */
-    .proof { max-width: 880px; margin: 0 auto 96px; padding: 0 24px; }
-    .proof-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-    @media (max-width: 640px) { .proof-grid { grid-template-columns: 1fr; } }
-    .proof-card { background: #fff; border: 1px solid var(--light); border-radius: 12px; padding: 24px 24px 20px; position: relative; }
-    .proof-card::before { content: '\201C'; position: absolute; top: 12px; left: 20px; font-size: 40px; line-height: 1; color: var(--green); opacity: 0.25; font-family: Georgia, serif; }
-    .proof-quote { font-size: 14px; line-height: 1.7; color: #374151; padding-top: 16px; margin-bottom: 16px; }
-    .proof-author { display: flex; align-items: center; gap: 10px; }
-    .proof-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--alt-bg); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--mid); flex-shrink: 0; }
-    .proof-name { font-size: 13px; font-weight: 600; color: var(--ink); }
-    .proof-role { font-size: 12px; color: var(--mid); }
+    /* LIVE SIGNALS */
+    .live-signals { max-width: 880px; margin: 0 auto 96px; padding: 0 24px; }
+    .live-signals-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    @media (max-width: 640px) { .live-signals-grid { grid-template-columns: 1fr; } }
+    .signal-card { background: #fff; border: 1px solid var(--light); border-radius: 12px; padding: 24px; transition: transform 0.15s, box-shadow 0.15s; }
+    .signal-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .signal-ex-row { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .signal-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .signal-ex-name { font-size: 15px; font-weight: 700; color: var(--ink); }
+    .signal-ex-sub { font-size: 12px; color: var(--mid); }
+    .signal-score-block { margin-left: auto; text-align: right; }
+    .signal-score-num { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: var(--green); line-height: 1; }
+    .signal-score-lbl { font-size: 10px; color: var(--mid); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+    .signal-divider { height: 1px; background: var(--light); margin-bottom: 14px; }
+    .signal-stats-row { display: flex; justify-content: space-between; align-items: center; }
+    .signal-stat-item { font-size: 13px; color: var(--mid); }
+    .signal-stat-item strong { color: var(--ink); font-weight: 600; }
+    .signal-delta { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 10px; }
+    .delta-up { background: var(--pale); color: var(--green); }
+    .delta-dn { background: #FEF2F2; color: #DC2626; }
+    .delta-flat { background: #F4F4F5; color: var(--mid); }
 
     /* SAMPLE BRIEF */
     .sample-brief { background: var(--ink); border-radius: 16px; overflow: hidden; max-width: 680px; margin: 0 auto; }
@@ -236,7 +246,7 @@
 <body>
 
 <div class="urgency-strip">
-  <strong>Launch pricing ends April 30.</strong> Pro is $79/mo — price increases to $149 on May 1.
+  <strong><span id="days-left"></span> left at $79/mo.</strong> Price increases to $149 on May 1.
   <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800">Lock in now →</a>
 </div>
 
@@ -279,7 +289,7 @@
     <button type="submit">Get the free brief →</button>
   </form>
   <div id="form-msg" style="display:none"></div>
-  <p class="form-note" id="form-note">Free every Friday. No spam. <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" style="color:var(--green);font-weight:600;text-decoration:none">Pro — $79/mo</a> unlocks the full dashboard.</p>
+  <p class="form-note" id="form-note"><span id="sub-count-note">Free every Friday. No spam.</span> <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" style="color:var(--green);font-weight:600;text-decoration:none">Pro — $79/mo</a> unlocks the full dashboard.</p>
 </section>
 
 <!-- LIVE TICKER -->
@@ -303,34 +313,20 @@
   </div>
 </div>
 
-<!-- SOCIAL PROOF -->
-<div class="proof">
+<!-- LIVE SIGNALS -->
+<div class="live-signals">
   <div class="section-head" style="margin-bottom:36px">
-    <div class="section-label">What readers say</div>
+    <div class="section-label">Live signal data</div>
+    <h2 id="signals-week-head">Top exchanges this week</h2>
   </div>
-  <div class="proof-grid">
-    <div class="proof-card">
-      <p class="proof-quote">I caught Kraken's EU expansion move 8 weeks before they announced it. The compliance hiring spike was obvious in hindsight. I wasn't looking for it — Signalmap flagged it in my Friday brief.</p>
-      <div class="proof-author">
-        <div class="proof-avatar">MK</div>
-        <div><div class="proof-name">Marcus K.</div><div class="proof-role">Crypto fund analyst</div></div>
-      </div>
-    </div>
-    <div class="proof-card">
-      <p class="proof-quote">This is the kind of edge that used to require a Bloomberg terminal and an intern. Now it's $79/month and I read it over coffee on Friday mornings.</p>
-      <div class="proof-author">
-        <div class="proof-avatar">SL</div>
-        <div><div class="proof-name">Sofia L.</div><div class="proof-role">Independent trader</div></div>
-      </div>
-    </div>
-    <div class="proof-card">
-      <p class="proof-quote">The prediction scorecard is what sold me. Most services bury their misses. These guys publish everything. That kind of accountability is rare in crypto.</p>
-      <div class="proof-author">
-        <div class="proof-avatar">RJ</div>
-        <div><div class="proof-name">Raj J.</div><div class="proof-role">VC, fintech portfolio</div></div>
-      </div>
-    </div>
+  <div class="live-signals-grid" id="live-signals-grid">
+    <div class="signal-card" style="opacity:0.4;pointer-events:none"><div class="signal-ex-row"><div class="signal-icon" style="background:var(--light)"></div><div><div class="signal-ex-name" style="background:var(--light);height:14px;width:80px;border-radius:4px"></div></div></div></div>
+    <div class="signal-card" style="opacity:0.4;pointer-events:none"><div class="signal-ex-row"><div class="signal-icon" style="background:var(--light)"></div><div><div class="signal-ex-name" style="background:var(--light);height:14px;width:80px;border-radius:4px"></div></div></div></div>
+    <div class="signal-card" style="opacity:0.4;pointer-events:none"><div class="signal-ex-row"><div class="signal-icon" style="background:var(--light)"></div><div><div class="signal-ex-name" style="background:var(--light);height:14px;width:80px;border-radius:4px"></div></div></div></div>
   </div>
+  <p style="text-align:center;margin-top:28px;font-size:14px;color:var(--mid)">
+    <a href="/cex-intelligence.html" style="color:var(--green);font-weight:600;text-decoration:none">View all 10 exchanges with full department breakdown →</a>
+  </p>
 </div>
 
 <!-- HOW IT WORKS -->
@@ -659,8 +655,74 @@ document.getElementById('subscribe-form').addEventListener('submit', async (e) =
   }
 });
 
+function updateCountdown() {
+  const deadline = new Date('2026-04-30T23:59:59');
+  const days = Math.max(0, Math.ceil((deadline - new Date()) / 86400000));
+  const el = document.getElementById('days-left');
+  if (el) el.textContent = days + ' day' + (days !== 1 ? 's' : '');
+}
+
+async function loadSubCount() {
+  try {
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/subscribers?select=id`, {
+      headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, Prefer: 'count=exact' }
+    });
+    const range = r.headers.get('content-range');
+    const count = range ? parseInt(range.split('/')[1]) : 0;
+    if (count > 0) {
+      const el = document.getElementById('sub-count-note');
+      if (el) el.textContent = `Join ${count} reader${count !== 1 ? 's' : ''} getting the Friday brief. No spam.`;
+    }
+  } catch(e) {}
+}
+
+async function loadHomepageSignals() {
+  try {
+    const data = await db('signals', '?select=exchange_id,score,total_active,compliance_count,week_start&order=week_start.desc,score.desc&limit=30');
+    if (!data?.length) return;
+    const seen = new Set();
+    const latest = data.filter(s => { if (seen.has(s.exchange_id)) return false; seen.add(s.exchange_id); return true; });
+    const latestWeek = latest[0]?.week_start;
+    const prev = {};
+    data.filter(s => s.week_start !== latestWeek).forEach(s => { if (!prev[s.exchange_id]) prev[s.exchange_id] = s; });
+    const top3 = latest.slice(0, 3);
+    const fmt = w => { const d = new Date(w + 'T00:00:00'); return d.toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}); };
+    document.getElementById('signals-week-head').textContent = 'Top signals · ' + fmt(latestWeek);
+    document.getElementById('live-signals-grid').innerHTML = top3.map(s => {
+      const m = EXCHANGE_META[s.exchange_id] || { name: s.exchange_id, color: '#059669', initials: s.exchange_id.slice(0,2).toUpperCase() };
+      const ratio = s.total_active > 0 ? (s.compliance_count / s.total_active * 100).toFixed(1) : '0';
+      const p = prev[s.exchange_id];
+      const delta = p != null ? s.score - p.score : null;
+      const deltaHtml = delta !== null
+        ? `<span class="signal-delta ${delta > 0 ? 'delta-up' : delta < 0 ? 'delta-dn' : 'delta-flat'}">${delta > 0 ? '↑' : delta < 0 ? '↓' : '→'} ${Math.abs(delta)} pts</span>`
+        : '';
+      return `<div class="signal-card">
+        <div class="signal-ex-row">
+          <div class="signal-icon" style="background:${m.color}">${m.initials}</div>
+          <div>
+            <div class="signal-ex-name">${m.name}</div>
+            <div class="signal-ex-sub">${s.total_active} active roles</div>
+          </div>
+          <div class="signal-score-block">
+            <div class="signal-score-num">${s.score}</div>
+            <div class="signal-score-lbl">signal score</div>
+          </div>
+        </div>
+        <div class="signal-divider"></div>
+        <div class="signal-stats-row">
+          <span class="signal-stat-item"><strong>${s.compliance_count}</strong> compliance · <strong>${ratio}%</strong></span>
+          ${deltaHtml}
+        </div>
+      </div>`;
+    }).join('');
+  } catch(e) { console.warn('signals', e); }
+}
+
 loadTicker();
 loadStats();
+loadHomepageSignals();
+loadSubCount();
+updateCountdown();
 
 // Exit intent popup
 let popupShown = false;
