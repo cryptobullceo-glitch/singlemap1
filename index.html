@@ -182,7 +182,7 @@
     .bottom-cta p { color: #9CA3AF; font-size: 16px; margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
     .bottom-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
     .bottom-cta-btns .btn-primary { display: inline-block; padding: 14px 28px; border-radius: 8px; }
-    .btn-ghost { display: inline-block; padding: 14px 28px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); color: #fff; text-decoration: none; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; transition: border-color 0.15s, background 0.15s; }
+    .btn-ghost { display: inline-block; padding: 14px 28px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #fff; text-decoration: none; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; font-family: inherit; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
     .btn-ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
 
     /* EXIT INTENT POPUP */
@@ -442,6 +442,7 @@
   <p style="text-align:center;color:var(--mid);font-size:15px;margin-bottom:40px;margin-top:-24px">Crypto-specific. Hiring-focused. Updated weekly. No 2-year contract.</p>
   <div class="pricing-grid">
     <div class="plan">
+      <div class="plan-badge" style="visibility:hidden">placeholder</div>
       <div class="plan-name">Free</div>
       <div class="plan-price"><span class="plan-currency">$</span><span class="plan-amount">0</span></div>
       <div class="plan-cadence">forever</div>

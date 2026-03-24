@@ -315,8 +315,11 @@ async function loadPredictions() {
 
 async function loadRegulatory() {
   try {
-    const signals = await db('signals', '?select=exchange_id,total_active,compliance_count&order=compliance_count.desc');
-    if (!signals?.length) return;
+    const raw = await db('signals', '?select=exchange_id,total_active,compliance_count&order=compliance_count.desc');
+    if (!raw?.length) return;
+    // Deduplicate: keep highest compliance_count row per exchange
+    const seen = new Set();
+    const signals = raw.filter(s => { if (seen.has(s.exchange_id)) return false; seen.add(s.exchange_id); return true; });
     let totalComp = 0, totalLegal = 0, totalAll = 0;
     signals.forEach(s => { totalComp += s.compliance_count || 0; totalAll += s.total_active || 0; });
     const top = signals[0];
