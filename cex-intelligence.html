@@ -6,7 +6,7 @@
   <title>CEX Intelligence Dashboard — Signalmap</title>
   <meta name="description" content="Live hiring signal dashboard for major crypto exchanges. Track compliance, engineering, and product hiring in real-time.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -24,7 +24,7 @@
       padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px;
       position: sticky; top: 0; z-index: 100;
     }
-    .logo { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
     .logo-icon { display: flex; align-items: flex-end; gap: 2px; height: 18px; }
     .logo-icon span { background: var(--green); border-radius: 2px; width: 3px; }
     .logo-icon span:nth-child(1) { height: 7px; opacity: 0.35; }
@@ -55,7 +55,7 @@
     .summary-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
     @media (max-width: 700px) { .summary-row { grid-template-columns: repeat(2, 1fr); } }
     .summary-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
-    .sum-val { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--green2); line-height: 1; margin-bottom: 4px; }
+    .sum-val { font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 800; color: var(--green2); line-height: 1; margin-bottom: 4px; }
     .sum-lbl { font-size: 12px; color: var(--muted); font-weight: 500; }
 
     /* EXCHANGE GRID */
@@ -72,14 +72,14 @@
     .ex-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; flex-shrink: 0; }
     .ex-name { font-size: 16px; font-weight: 700; }
     .ex-score { margin-left: auto; text-align: right; }
-    .score-num { font-family: 'DM Mono', monospace; font-size: 22px; font-weight: 500; color: var(--green2); }
+    .score-num { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 500; color: var(--green2); }
     .score-lbl { font-size: 11px; color: var(--muted); }
     .dept-bars { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
     .dept-row { display: flex; align-items: center; gap: 8px; }
     .dept-lbl { font-size: 11px; color: var(--muted); width: 90px; flex-shrink: 0; }
     .dept-bar-wrap { flex: 1; background: var(--surface2); border-radius: 3px; height: 4px; }
     .dept-bar { height: 4px; border-radius: 3px; background: var(--green); transition: width 0.6s ease; }
-    .dept-count { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; width: 28px; text-align: right; }
+    .dept-count { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; width: 28px; text-align: right; }
     .ex-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid var(--border); }
     .ex-total { font-size: 12px; color: var(--muted); }
     .ex-total strong { color: var(--text); }
@@ -87,12 +87,15 @@
     .ex-link:hover { text-decoration: underline; }
 
     /* PRO GATE */
-    .pro-gate { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; text-align: center; }
-    .gate-icon { font-size: 48px; margin-bottom: 20px; }
-    .gate-title { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; margin-bottom: 12px; }
-    .gate-sub { color: var(--muted); font-size: 16px; max-width: 400px; margin-bottom: 28px; line-height: 1.6; }
-    .gate-btn { background: var(--green); color: #fff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 16px; }
-    .gate-link { display: block; margin-top: 12px; font-size: 13px; color: var(--muted); text-decoration: none; }
+    .pro-gate { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 400px; text-align: center; padding: 40px 24px; }
+    .gate-icon { width: 56px; height: 56px; border-radius: 16px; background: rgba(5,150,105,0.12); border: 1px solid rgba(5,150,105,0.25); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .gate-icon svg { width: 26px; height: 26px; }
+    .gate-title { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; margin-bottom: 10px; color: var(--text); }
+    .gate-sub { color: var(--muted); font-size: 15px; max-width: 420px; margin-bottom: 8px; line-height: 1.7; }
+    .gate-price { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--green2); margin-bottom: 28px; }
+    .gate-btn { background: var(--green); color: #fff; text-decoration: none; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; letter-spacing: 0.02em; transition: background 0.15s; }
+    .gate-btn:hover { background: #047857; }
+    .gate-link { display: block; margin-top: 14px; font-size: 13px; color: var(--muted); text-decoration: none; }
     .gate-link:hover { color: var(--text); }
 
     /* PREDICTIONS PANEL */
@@ -110,14 +113,14 @@
     .badge-correct { background: #052e16; color: #4ade80; border: 1px solid #16a34a; }
     .badge-expired { background: #1a0606; color: #f87171; border: 1px solid #dc262640; }
     .conf-block { text-align: right; flex-shrink: 0; }
-    .conf-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; line-height: 1; }
+    .conf-num { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 700; line-height: 1; }
     .conf-lbl { font-size: 11px; color: var(--muted); }
 
     /* LOADING */
     .loading { color: var(--muted); font-size: 14px; padding: 60px; text-align: center; }
 
     /* UPDATED LABEL */
-    .updated { font-size: 11px; color: var(--muted); font-family: 'DM Mono', monospace; }
+    .updated { font-size: 11px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
   </style>
 </head>
 <body>
@@ -160,9 +163,14 @@
 <!-- INTEL (PRO GATE) -->
 <div class="panel" id="tab-intel">
   <div class="pro-gate">
-    <div class="gate-icon">🔐</div>
-    <div class="gate-title">Intel is a Pro feature</div>
-    <div class="gate-sub">Full department-level breakdowns, week-over-week deltas, and analyst commentary for every exchange.</div>
+    <div class="gate-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="var(--green2)">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/>
+      </svg>
+    </div>
+    <div class="gate-title">Full Intel is Pro only</div>
+    <div class="gate-sub">Department-level breakdowns, week-over-week hiring velocity, and analyst commentary for all 10 exchanges. Updated every Friday.</div>
+    <div class="gate-price">Launch pricing — $79/mo until April 30, then $149/mo</div>
     <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="gate-btn">Unlock Pro — $79/mo →</a>
     <a href="/" class="gate-link">← Back to landing page</a>
   </div>

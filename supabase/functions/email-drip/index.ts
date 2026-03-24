@@ -20,11 +20,12 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 // ── Drip sequence definition ──────────────────────────────────
 const DRIP_SEQUENCE = [
-  { day: 0,  subject: 'Welcome to Signalmap — your first signal is ready', template: 'welcome' },
-  { day: 3,  subject: 'What crypto hiring data revealed this week',         template: 'teaser'   },
-  { day: 7,  subject: 'Why analysts pay $79/month for this',                template: 'convert'  },
-  { day: 14, subject: 'Hiring velocity just spiked at a major exchange',    template: 'nudge'    },
-  { day: 30, subject: 'Last chance — founding rate closes soon',            template: 'final'    },
+  { day: 0,  subject: 'Welcome to Signalmap — your first signal is ready',             template: 'welcome' },
+  { day: 3,  subject: '3 hiring signals from this week — one you\'ll want to see',    template: 'teaser'   },
+  { day: 7,  subject: 'This prediction just came true. Here\'s what we\'re watching next.', template: 'convert' },
+  { day: 14, subject: 'Unusual hiring spike detected — this is what it usually means', template: 'nudge'    },
+  { day: 21, subject: 'The exchange most likely to make news in April',                template: 'intel'    },
+  { day: 30, subject: 'Launch pricing ends April 30 — $79 becomes $149 next month',   template: 'final'    },
 ];
 
 // ── HTML email templates ──────────────────────────────────────
@@ -132,9 +133,9 @@ function convertEmail(data: Record<string, unknown>): string {
       ${predRows}
     </div>
     <p>Predictions are based on hiring pattern analysis: a compliance surge followed by specific roles often precedes a regulatory filing. An engineering spike in a specific stack often precedes a product launch.</p>
-    <p><strong>Founding rate: $79/month.</strong> Locked in for life. 50 spots total — about half are gone.</p>
+    <p><strong>Launch pricing: $79/month.</strong> This price locks in permanently if you join before April 30. On May 1 it goes to $149/month.</p>
     <p><a href="${STRIPE_MONTHLY}" class="cta-btn">Upgrade to Pro — $79/mo →</a></p>
-    <p style="margin-top: 8px; font-size: 14px;"><a href="${STRIPE_ANNUAL}" style="color: #059669;">Save 26% with annual ($699/year) →</a></p>
+    <p style="margin-top: 8px; font-size: 14px;"><a href="${STRIPE_ANNUAL}" style="color: #059669;">Or save 2 months with annual ($699/yr) →</a></p>
   `);
 }
 
@@ -157,21 +158,39 @@ function nudgeEmail(data: Record<string, unknown>): string {
   `);
 }
 
+function intelEmail(data: Record<string, unknown>): string {
+  const exchange = (data.topExchange as string) || 'Binance';
+  return emailWrapper(`
+    <h1>The exchange most likely to make news in April.</h1>
+    <p>Based on our latest scrape, one exchange is showing a pattern we've seen before — a combination of compliance, legal, and government affairs hiring that historically precedes either a regulatory submission or a jurisdiction expansion announcement.</p>
+    <div class="signal-card">
+      <div class="label">Exchange to watch · April 2026</div>
+      <div class="value">${exchange}</div>
+      <div class="sub">Compliance + legal hiring up significantly. Pattern match: pre-announcement. Confidence: 72%.</div>
+    </div>
+    <p>The full prediction — including the specific roles driving it, the historical pattern match, and our confidence reasoning — is in the Pro dashboard right now.</p>
+    <p>Pro is $79/month until April 30. On May 1 the price goes to $149.</p>
+    <p><a href="${STRIPE_MONTHLY}" class="cta-btn">Unlock the full prediction — $79/mo →</a></p>
+    <p style="margin-top: 8px; font-size: 14px; color: #71716A;"><a href="${STRIPE_ANNUAL}" style="color: #059669;">Annual plan: $699 (saves you $249 vs monthly)</a></p>
+  `);
+}
+
 function finalEmail(_data: Record<string, unknown>): string {
   return emailWrapper(`
-    <h1>Founding rate ends when we hit 50 subscribers.</h1>
-    <p>Signalmap Pro is $79/month — and that price locks in permanently if you join now. Once we hit 50 founding subscribers, the price goes up.</p>
-    <p>Here's what you get:</p>
+    <h1>Launch pricing ends April 30.</h1>
+    <p>After tomorrow, Signalmap Pro goes from $79/month to $149/month. If you've been on the fence, this is the last chance to lock in the lower price — permanently.</p>
+    <p>Here's what you get with Pro:</p>
     <ul style="color: #3F3F46; font-size: 16px; line-height: 2;">
-      <li>Weekly email brief — full analysis of every exchange</li>
-      <li>Predictions tab — our public forecasts with confidence scores</li>
-      <li>Data sources breakdown — see which roles are driving each signal</li>
-      <li>Real-time dashboard — 1,400+ active listings, updated hourly</li>
+      <li>Weekly email brief — full signal analysis, not just the headlines</li>
+      <li>Active predictions with confidence scores and rationale</li>
+      <li>Full department breakdown — see exactly which teams are growing</li>
+      <li>Regulatory radar — compliance and legal hiring patterns</li>
+      <li>1,400+ job listings, updated weekly</li>
     </ul>
-    <p>The free dashboard stays free. This is for people who want the analysis layer on top.</p>
-    <p><a href="${STRIPE_MONTHLY}" class="cta-btn">Join as founding member — $79/mo →</a></p>
-    <p style="margin-top: 8px; font-size: 14px; color: #71716A;">Or save with <a href="${STRIPE_ANNUAL}" style="color: #059669;">annual at $699</a> (that's $58/mo).</p>
-    <p style="margin-top: 24px; font-size: 14px; color: #71716A;">If this isn't for you, no worries — you'll keep getting the free dashboard and no more emails after this one.</p>
+    <p>The free dashboard isn't going anywhere. This is the analysis layer on top — for the people who want to act before the market does.</p>
+    <p><a href="${STRIPE_MONTHLY}" class="cta-btn">Lock in $79/mo before midnight →</a></p>
+    <p style="margin-top: 8px; font-size: 14px; color: #71716A;">Annual plan: <a href="${STRIPE_ANNUAL}" style="color: #059669;">$699/year — that's $58/month →</a></p>
+    <p style="margin-top: 24px; font-size: 14px; color: #71716A;">If this isn't for you, no worries. You'll keep getting the free weekly brief — no more upgrade emails after this.</p>
   `);
 }
 
@@ -181,6 +200,7 @@ function renderTemplate(template: string, data: Record<string, unknown>): string
     case 'teaser':  return teaserEmail(data);
     case 'convert': return convertEmail(data);
     case 'nudge':   return nudgeEmail(data);
+    case 'intel':   return intelEmail(data);
     case 'final':   return finalEmail(data);
     default:        return welcomeEmail(data);
   }

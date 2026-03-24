@@ -6,7 +6,7 @@
   <title id="page-title">Exchange — Signalmap</title>
   <meta name="description" id="page-desc" content="Hiring signal intelligence for this crypto exchange.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -16,7 +16,7 @@
     body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
 
     nav { position: sticky; top: 0; z-index: 100; background: rgba(250,250,247,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--light); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
-    .logo { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
     .logo-icon { display: flex; align-items: flex-end; gap: 2px; height: 18px; }
     .logo-icon span { background: var(--green); border-radius: 2px; width: 3px; }
     .logo-icon span:nth-child(1) { height: 7px; opacity: 0.35; }
@@ -36,7 +36,7 @@
     .breadcrumb a:hover { color: var(--ink); }
     .ex-header { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
     .ex-icon { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: #fff; flex-shrink: 0; }
-    .ex-info h1 { font-family: 'Syne', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 800; line-height: 1.1; }
+    .ex-info h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 4vw, 36px); font-weight: 800; line-height: 1.1; }
     .ex-info .subtitle { font-size: 14px; color: var(--mid); margin-top: 4px; }
     .ex-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
     .ex-badge { font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
@@ -44,7 +44,7 @@
     .badge-tier-1 { background: #FEF3C7; color: #92400E; }
     .badge-tier-2 { background: #EFF6FF; color: #1D4ED8; }
     .score-big { margin-left: auto; text-align: right; }
-    .score-big .num { font-family: 'Syne', sans-serif; font-size: 52px; font-weight: 800; color: var(--green); line-height: 1; }
+    .score-big .num { font-family: 'JetBrains Mono', monospace; font-size: 52px; font-weight: 700; color: var(--green); line-height: 1; }
     .score-big .lbl { font-size: 12px; color: var(--mid); margin-top: 2px; }
 
     /* CONTENT */
@@ -55,7 +55,7 @@
     .dept-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 32px; }
     @media (max-width: 500px) { .dept-grid { grid-template-columns: 1fr; } }
     .dept-card { background: #fff; border: 1px solid var(--light); border-radius: 12px; padding: 20px; }
-    .dept-card-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+    .dept-card-num { font-family: 'JetBrains Mono', monospace; font-size: 36px; font-weight: 700; line-height: 1; margin-bottom: 6px; }
     .dept-card-lbl { font-size: 12px; color: var(--mid); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
 
     /* JOB LISTINGS */

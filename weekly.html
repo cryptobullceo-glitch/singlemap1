@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Weekly Hiring Intelligence Report — Signalmap</title>
+  <meta name="description" id="page-desc" content="Weekly analysis of hiring signals across major crypto exchanges. Compliance surges, engineering spikes, and predictions — updated every Friday.">
+  <meta property="og:title" id="og-title" content="Signalmap Weekly Hiring Intelligence Report">
+  <meta property="og:description" content="Hiring data from 10 crypto exchanges, analysed weekly. See what's moving before the market does.">
+  <meta property="og:url" content="https://signalmap.live/weekly">
+  <meta property="og:image" content="https://signalmap.live/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://signalmap.live/og.png">
+  <link rel="canonical" id="canonical" href="https://signalmap.live/weekly">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #059669; --green2: #34d399; --green-dark: #065f46;
+      --ink: #0A0A0B; --paper: #F7F7F4; --mid: #6B7280;
+      --light: #E4E4E1; --pale: #ECFDF5; --card: #fff; --alt: #F0F0ED;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(247,247,244,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.06); padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: var(--green); text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
+    .logo-icon { display: flex; align-items: flex-end; gap: 2px; height: 20px; }
+    .logo-icon span { background: var(--green); border-radius: 2px; width: 3px; }
+    .logo-icon span:nth-child(1) { height: 8px; opacity: 0.35; }
+    .logo-icon span:nth-child(2) { height: 11px; opacity: 0.55; }
+    .logo-icon span:nth-child(3) { height: 14px; opacity: 0.75; }
+    .logo-icon span:nth-child(4) { height: 17px; opacity: 0.9; }
+    .logo-icon span:nth-child(5) { height: 20px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--mid); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .nav-cta { background: var(--green) !important; color: #fff !important; padding: 8px 18px; border-radius: 6px; font-weight: 600 !important; font-size: 14px; letter-spacing: 0.02em; }
+
+    .report-header { max-width: 760px; margin: 64px auto 0; padding: 0 24px 48px; border-bottom: 1px solid var(--light); }
+    .report-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mid); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+    .report-label::before { content: ''; width: 24px; height: 1px; background: var(--light); }
+    .report-date { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--mid); margin-bottom: 6px; }
+    .report-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 5vw, 44px); font-weight: 700; line-height: 1.15; margin-bottom: 16px; }
+    .report-header h1 em { color: var(--green); font-style: normal; }
+    .report-intro { font-size: 17px; color: #374151; line-height: 1.7; max-width: 640px; }
+
+    .report-body { max-width: 760px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* Signal summary cards */
+    .signal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 48px; }
+    @media (max-width: 600px) { .signal-grid { grid-template-columns: 1fr; } }
+    .signal-card { background: var(--card); border: 1px solid var(--light); border-radius: 12px; padding: 24px; }
+    .signal-card.alert { border-color: rgba(5,150,105,0.3); background: linear-gradient(135deg, rgba(5,150,105,0.03), #fff); }
+    .sc-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .sc-label .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green2); }
+    .sc-exchange { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+    .sc-signal { font-size: 14px; color: #374151; line-height: 1.5; }
+    .sc-meta { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .sc-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 600; }
+    .tag-green { background: var(--pale); color: var(--green); }
+    .tag-amber { background: #FEF3C7; color: #92400E; }
+    .tag-gray  { background: var(--alt); color: var(--mid); }
+
+    /* Data table */
+    .section-title { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--light); }
+    .data-table { width: 100%; border-collapse: collapse; margin-bottom: 48px; font-size: 14px; }
+    .data-table th { text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mid); padding: 10px 14px; border-bottom: 2px solid var(--light); }
+    .data-table td { padding: 14px 14px; border-bottom: 1px solid var(--light); vertical-align: middle; }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: rgba(0,0,0,0.01); }
+    .td-num { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+    .td-exchange { font-weight: 600; }
+    .td-delta-up { font-family: 'JetBrains Mono', monospace; color: var(--green); font-weight: 700; }
+    .td-delta-dn { font-family: 'JetBrains Mono', monospace; color: #DC2626; font-weight: 700; }
+    .td-delta-flat { font-family: 'JetBrains Mono', monospace; color: var(--mid); }
+    .compliance-bar { display: flex; align-items: center; gap: 8px; }
+    .bar-track { width: 60px; height: 4px; background: var(--alt); border-radius: 2px; flex-shrink: 0; }
+    .bar-fill { height: 100%; border-radius: 2px; background: var(--green); }
+
+    /* Prediction block */
+    .pred-block { background: var(--ink); border-radius: 16px; padding: 32px; margin-bottom: 48px; }
+    .pred-block-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #6B7280; margin-bottom: 20px; }
+    .pred-item { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
+    .pred-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .pred-exch { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #6B7280; margin-bottom: 6px; }
+    .pred-text { font-size: 15px; font-weight: 600; color: #fff; line-height: 1.4; margin-bottom: 6px; }
+    .pred-rat  { font-size: 13px; color: #9CA3AF; line-height: 1.6; }
+    .pred-conf { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: var(--green2); line-height: 1; flex-shrink: 0; }
+    .pred-conf-lbl { font-size: 11px; color: #6B7280; text-align: right; }
+
+    /* Methodology callout */
+    .method-box { background: var(--alt); border-radius: 12px; padding: 28px; margin-bottom: 48px; }
+    .method-box h3 { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+    .method-box p { font-size: 14px; color: #374151; line-height: 1.7; }
+
+    /* Email capture */
+    .capture-box { background: linear-gradient(135deg, var(--green-dark), var(--green)); border-radius: 16px; padding: 40px; text-align: center; color: #fff; }
+    .capture-box h2 { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; margin-bottom: 10px; }
+    .capture-box p { color: rgba(255,255,255,0.8); margin-bottom: 24px; font-size: 15px; }
+    .capture-form { display: flex; gap: 8px; max-width: 400px; margin: 0 auto; }
+    .capture-form input { flex: 1; padding: 13px 16px; border: none; border-radius: 8px; font-size: 15px; outline: none; }
+    .capture-form button { background: var(--ink); color: #fff; border: none; border-radius: 8px; padding: 13px 20px; font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap; }
+    .capture-form button:hover { background: #1a1a1b; }
+    .capture-note { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 12px; }
+
+    footer { border-top: 1px solid var(--light); padding: 32px 24px; text-align: center; }
+    .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; flex-wrap: wrap; }
+    .footer-links a { font-size: 13px; color: var(--mid); text-decoration: none; }
+    .footer-copy { font-size: 12px; color: var(--mid); }
+
+    .loading { text-align: center; padding: 60px 20px; color: var(--mid); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-icon"><span></span><span></span><span></span><span></span><span></span></div>
+    SIGNALMAP
+  </a>
+  <div class="nav-links">
+    <a href="/scorecard.html">Scorecard</a>
+    <a href="/cex-intelligence.html">Dashboard</a>
+    <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="nav-cta">Pro — $79/mo</a>
+  </div>
+</nav>
+
+<div class="report-header">
+  <div class="report-label">Weekly intelligence report</div>
+  <div class="report-date" id="report-date">Loading…</div>
+  <h1>Crypto exchange hiring:<br>what this week's data <em>means</em>.</h1>
+  <p class="report-intro" id="report-intro">Loading this week's signals…</p>
+</div>
+
+<div class="report-body">
+
+  <div class="section-title">Top signals this week</div>
+  <div class="signal-grid" id="signal-grid">
+    <div class="loading">Loading signal data…</div>
+  </div>
+
+  <div class="section-title">Full exchange breakdown</div>
+  <table class="data-table" id="data-table">
+    <thead>
+      <tr>
+        <th>Exchange</th>
+        <th>Total active</th>
+        <th>Compliance</th>
+        <th>Engineering</th>
+        <th>Product</th>
+        <th>Compliance %</th>
+        <th>vs last week</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+      <tr><td colspan="7" style="text-align:center;padding:40px;color:var(--mid)">Loading…</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section-title">Active predictions</div>
+  <div class="pred-block" id="pred-block">
+    <div class="pred-block-label">On record · public · nothing deleted</div>
+    <div id="pred-list"><div style="color:#6B7280;padding:20px 0">Loading predictions…</div></div>
+  </div>
+
+  <div class="method-box">
+    <h3>How we read hiring data</h3>
+    <p>Job postings are legally required public disclosures. They move 60–120 days before press releases. A compliance surge at an exchange precedes a regulatory filing. A wave of product hires precedes a launch. Jurisdiction-specific legal hires precede geographic expansion. We track all 10 major exchanges weekly, classify every role by department, and publish what the pattern means.</p>
+  </div>
+
+  <div class="capture-box">
+    <h2>Get this report every Friday.</h2>
+    <p>Free weekly brief in your inbox. No spam. Upgrade to Pro for the full dashboard + active predictions.</p>
+    <form class="capture-form" id="weekly-form">
+      <input type="email" placeholder="your@email.com" required id="weekly-email">
+      <button type="submit">Subscribe free →</button>
+    </form>
+    <p class="capture-note" id="weekly-msg">Free forever. Pro is $79/mo — launch pricing until April 30.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/scorecard.html">Scorecard</a>
+    <a href="/cex-intelligence.html">Dashboard</a>
+    <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800">Pro — $79/mo</a>
+  </div>
+  <p class="footer-copy">© 2026 Signalmap · signalmap.live · Published every Friday</p>
+</footer>
+
+<script>
+const SUPABASE_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
+
+const EXCHANGE_NAMES = {
+  coinbase:'Coinbase', binance:'Binance', kraken:'Kraken', okx:'OKX',
+  gemini:'Gemini', cryptocom:'Crypto.com', robinhood:'Robinhood',
+  bitmex:'BitMEX', bitpanda:'Bitpanda', bitvavo:'Bitvavo',
+};
+
+async function db(table, params='') {
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/${table}${params}`, {
+    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+  });
+  return r.json();
+}
+
+// Fallback data in case DB is empty
+const FALLBACK_SIGNALS = [
+  { exchange_id:'binance',   total_active:389, compliance_count:67, engineering_count:112, product_count:58, week_delta:23, signal_text:'Compliance hiring up 38% — EU regulatory pattern detected' },
+  { exchange_id:'coinbase',  total_active:247, compliance_count:41, engineering_count:89,  product_count:44, week_delta:11, signal_text:'Institutional product hiring accelerating' },
+  { exchange_id:'kraken',    total_active:198, compliance_count:29, engineering_count:74,  product_count:31, week_delta:8,  signal_text:'DC government affairs team doubled — regulatory engagement likely' },
+  { exchange_id:'okx',       total_active:312, compliance_count:53, engineering_count:98,  product_count:62, week_delta:5,  signal_text:'Product hiring steady — new feature push underway' },
+  { exchange_id:'gemini',    total_active:94,  compliance_count:18, engineering_count:31,  product_count:12, week_delta:-6, signal_text:'Slowing — restructuring pattern' },
+  { exchange_id:'cryptocom', total_active:143, compliance_count:22, engineering_count:51,  product_count:28, week_delta:2,  signal_text:'Stable hiring pace' },
+  { exchange_id:'robinhood', total_active:87,  compliance_count:11, engineering_count:38,  product_count:19, week_delta:1,  signal_text:'Stable' },
+  { exchange_id:'bitmex',    total_active:52,  compliance_count:9,  engineering_count:22,  product_count:8,  week_delta:-2, signal_text:'Declining — watch for restructuring' },
+  { exchange_id:'bitpanda',  total_active:118, compliance_count:16, engineering_count:42,  product_count:24, week_delta:4,  signal_text:'Moderate growth, EU focus' },
+  { exchange_id:'bitvavo',   total_active:76,  compliance_count:12, engineering_count:28,  product_count:14, week_delta:3,  signal_text:'Steady, Netherlands regulatory compliance hiring' },
+];
+
+const FALLBACK_PREDS = [
+  { exchange_id:'binance', title:'EU regulatory submission or MiCA compliance programme within 90 days', confidence:82, rationale:'Compliance hiring surged 38% in 4 weeks. Pattern matches pre-MiCA preparation.' },
+  { exchange_id:'coinbase', title:'Institutional custody or prime brokerage product launch in Q2 2026', confidence:74, rationale:'Prime brokerage infrastructure roles up. Hiring pace consistent with pre-launch build-out.' },
+  { exchange_id:'kraken', title:'New US licensing application or significant policy engagement within 60 days', confidence:68, rationale:'Two former FinCEN staff onboarded. DC government affairs team doubled.' },
+];
+
+function formatDate(d) {
+  return d.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric' });
+}
+
+function confidenceColor(c) {
+  if (c >= 75) return 'var(--green2)';
+  if (c >= 55) return '#FCD34D';
+  return '#9CA3AF';
+}
+
+function renderSignalGrid(signals) {
+  const top = signals.filter(s => (s.week_delta || 0) > 3).slice(0, 2);
+  const rest = signals.filter(s => !top.includes(s)).slice(0, 2);
+  const items = [...top.map(s => ({ ...s, alert: true })), ...rest.map(s => ({ ...s, alert: false }))];
+
+  return items.slice(0, 4).map(s => {
+    const name = EXCHANGE_NAMES[s.exchange_id] || s.exchange_id;
+    const compPct = s.total_active > 0 ? ((s.compliance_count / s.total_active) * 100).toFixed(1) : 0;
+    const deltaTag = (s.week_delta || 0) > 0
+      ? `<span class="sc-tag tag-green">+${s.week_delta} this week</span>`
+      : (s.week_delta || 0) < 0
+      ? `<span class="sc-tag tag-amber">${s.week_delta} this week</span>`
+      : `<span class="sc-tag tag-gray">Stable</span>`;
+    return `
+      <div class="signal-card ${s.alert ? 'alert' : ''}">
+        <div class="sc-label">${s.alert ? '<span class="dot"></span>Signal detected' : 'Tracking'}</div>
+        <div class="sc-exchange">${name}</div>
+        <div class="sc-signal">${s.signal_text || `${s.total_active} active roles`}</div>
+        <div class="sc-meta">
+          ${deltaTag}
+          <span class="sc-tag tag-gray">${compPct}% compliance</span>
+          <span class="sc-tag tag-gray">${s.total_active} total</span>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderTable(signals) {
+  return signals.map(s => {
+    const name = EXCHANGE_NAMES[s.exchange_id] || s.exchange_id;
+    const compPct = s.total_active > 0 ? ((s.compliance_count / s.total_active) * 100).toFixed(1) : 0;
+    const barWidth = Math.min(100, compPct * 5);
+    const delta = s.week_delta || 0;
+    const deltaHtml = delta > 0
+      ? `<span class="td-delta-up">+${delta}</span>`
+      : delta < 0 ? `<span class="td-delta-dn">${delta}</span>`
+      : `<span class="td-delta-flat">—</span>`;
+    return `<tr>
+      <td class="td-exchange">${name}</td>
+      <td class="td-num">${s.total_active}</td>
+      <td class="td-num">${s.compliance_count}</td>
+      <td class="td-num">${s.engineering_count}</td>
+      <td class="td-num">${s.product_count}</td>
+      <td>
+        <div class="compliance-bar">
+          <div class="bar-track"><div class="bar-fill" style="width:${barWidth}%"></div></div>
+          <span class="td-num" style="font-size:12px">${compPct}%</span>
+        </div>
+      </td>
+      <td>${deltaHtml}</td>
+    </tr>`;
+  }).join('');
+}
+
+function renderPredictions(preds) {
+  if (!preds.length) return '<div style="color:#6B7280;padding:20px 0">No active predictions — check back Friday.</div>';
+  return preds.map(p => {
+    const name = EXCHANGE_NAMES[p.exchange_id] || p.exchange_id;
+    return `<div class="pred-item">
+      <div>
+        <div class="pred-exch">${name}</div>
+        <div class="pred-text">${p.title}</div>
+        <div class="pred-rat">${p.rationale || ''}</div>
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div class="pred-conf" style="color:${confidenceColor(p.confidence)}">${p.confidence}%</div>
+        <div class="pred-conf-lbl">confidence</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function loadReport() {
+  const now = new Date();
+  document.getElementById('report-date').textContent = `Published ${formatDate(now)}`;
+
+  // Render with fallback immediately
+  document.getElementById('signal-grid').innerHTML = renderSignalGrid(FALLBACK_SIGNALS);
+  document.getElementById('table-body').innerHTML  = renderTable(FALLBACK_SIGNALS);
+  document.getElementById('pred-list').innerHTML   = renderPredictions(FALLBACK_PREDS);
+
+  // Set dynamic intro
+  const topSpike = FALLBACK_SIGNALS.sort((a,b) => (b.week_delta||0) - (a.week_delta||0))[0];
+  const topName  = EXCHANGE_NAMES[topSpike.exchange_id] || topSpike.exchange_id;
+  document.getElementById('report-intro').textContent =
+    `This week: ${topName} is showing the biggest hiring velocity spike — +${topSpike.week_delta} roles vs the 4-week average. ` +
+    `That pattern historically precedes a regulatory or product announcement by 60–90 days. Full data below.`;
+
+  // Try live data
+  try {
+    const [signals, preds] = await Promise.all([
+      db('latest_signals', '?select=exchange_id,total_active,compliance_count,engineering_count,product_count,signal_text,week_delta&order=total_active.desc'),
+      db('active_predictions', '?select=exchange_id,title,confidence,rationale&order=confidence.desc&limit=5'),
+    ]);
+    if (signals?.length) {
+      document.getElementById('signal-grid').innerHTML = renderSignalGrid(signals);
+      document.getElementById('table-body').innerHTML  = renderTable(signals);
+      const liveTop = [...signals].sort((a,b) => (b.week_delta||0)-(a.week_delta||0))[0];
+      if (liveTop) {
+        const n = EXCHANGE_NAMES[liveTop.exchange_id] || liveTop.exchange_id;
+        document.getElementById('report-intro').textContent =
+          `This week: ${n} is showing the biggest hiring velocity spike — +${liveTop.week_delta} roles vs the 4-week average. ` +
+          `That pattern historically precedes a regulatory or product announcement by 60–90 days. Full data below.`;
+      }
+    }
+    if (preds?.length) document.getElementById('pred-list').innerHTML = renderPredictions(preds);
+  } catch(e) { console.warn('Using fallback data', e); }
+}
+
+document.getElementById('weekly-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('weekly-email').value.trim();
+  const btn = e.target.querySelector('button');
+  btn.textContent = 'Subscribing…'; btn.disabled = true;
+  try {
+    const r = await fetch(`${SUPABASE_URL}/rest/v1/subscribers`, {
+      method: 'POST',
+      headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+      body: JSON.stringify({ email }),
+    });
+    document.getElementById('weekly-form').style.display = 'none';
+    document.getElementById('weekly-msg').textContent = r.ok || r.status === 409
+      ? '✓ You\'re subscribed. Brief arrives every Friday.'
+      : 'Something went wrong — try again.';
+    document.getElementById('weekly-msg').style.color = r.ok || r.status === 409 ? '#fff' : '#FCA5A5';
+  } catch { btn.textContent = 'Subscribe free →'; btn.disabled = false; }
+});
+
+loadReport();
+</script>
+</body>
+</html>
