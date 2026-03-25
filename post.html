@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading… | Signalmap</title>
+  <meta name="description" content="">
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://signalmap.live/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://signalmap.live/og.png">
+  <link rel="canonical" href="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json" id="json-ld"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #059669; --green2: #34d399; --green-dark: #065f46; --ink: #0A0A0B;
+      --paper: #F7F7F4; --mid: #6B7280; --light: #E4E4E1; --pale: #ECFDF5;
+      --card: #FFFFFF; --alt-bg: #F0F0ED;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; height: 600px; background: radial-gradient(ellipse 80% 60% at 50% -5%, rgba(5,150,105,0.07), transparent); pointer-events: none; z-index: 0; }
+
+    /* READING PROGRESS BAR */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--green-dark), var(--green2));
+      z-index: 9999; transition: width 0.1s linear;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,247,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px;
+    }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
+    .logo-icon { display: flex; align-items: flex-end; gap: 2px; height: 20px; }
+    .logo-icon span { background: var(--green); border-radius: 2px; width: 3px; }
+    .logo-icon span:nth-child(1) { height: 8px; opacity: 0.35; }
+    .logo-icon span:nth-child(2) { height: 11px; opacity: 0.55; }
+    .logo-icon span:nth-child(3) { height: 14px; opacity: 0.75; }
+    .logo-icon span:nth-child(4) { height: 17px; opacity: 0.9; }
+    .logo-icon span:nth-child(5) { height: 20px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--mid); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { background: var(--green) !important; color: #fff !important; padding: 8px 18px; border-radius: 6px; font-weight: 600 !important; font-size: 14px; }
+    @media (max-width: 600px) { .nav-hide { display: none; } }
+
+    /* LAYOUT */
+    .post-wrap {
+      max-width: 1100px; margin: 0 auto; padding: 48px 24px 80px;
+      display: grid; grid-template-columns: 1fr 280px; gap: 48px;
+      position: relative; z-index: 1;
+    }
+    @media (max-width: 860px) {
+      .post-wrap { grid-template-columns: 1fr; }
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb { font-size: 13px; color: var(--mid); margin-bottom: 20px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .breadcrumb a { color: var(--green); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb-sep { color: var(--light); }
+
+    /* POST HEADER */
+    .post-header { margin-bottom: 40px; }
+    .post-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .post-tag { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; padding: 4px 12px; border-radius: 20px; background: var(--pale); color: var(--green); border: 1px solid rgba(5,150,105,0.2); }
+    .post-date { font-size: 13px; color: var(--mid); margin-bottom: 16px; font-family: 'JetBrains Mono', monospace; }
+    .post-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 4vw, 44px); font-weight: 800; line-height: 1.15; margin-bottom: 20px; color: var(--ink); }
+    .post-lead { font-size: 19px; color: #374151; line-height: 1.75; margin-bottom: 32px; font-weight: 400; border-left: 3px solid var(--green); padding-left: 20px; background: var(--pale); padding: 18px 20px; border-radius: 0 8px 8px 0; }
+
+    /* SHARE BAR (mobile — below title) */
+    .share-bar-mobile {
+      display: none; align-items: center; gap: 12px; flex-wrap: wrap;
+      margin-bottom: 32px; padding: 14px 16px; background: #fff;
+      border: 1px solid var(--light); border-radius: 10px;
+    }
+    @media (max-width: 860px) { .share-bar-mobile { display: flex; } }
+    .share-label { font-size: 13px; font-weight: 600; color: var(--mid); white-space: nowrap; }
+    .share-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 7px 14px; border-radius: 6px; font-size: 13px; font-weight: 600;
+      text-decoration: none; border: none; cursor: pointer; transition: background 0.15s, color 0.15s;
+    }
+    .share-btn-x { background: #0f1011; color: #fff; }
+    .share-btn-x:hover { background: #333; }
+    .share-btn-copy { background: var(--alt-bg); color: var(--ink); }
+    .share-btn-copy:hover { background: var(--light); }
+
+    /* ARTICLE CONTENT */
+    article { min-width: 0; }
+    article h2 {
+      font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700;
+      color: var(--ink); margin: 48px 0 16px;
+      border-left: 4px solid var(--green); padding-left: 16px; line-height: 1.25;
+    }
+    article h3 {
+      font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700;
+      color: var(--ink); margin: 36px 0 12px; line-height: 1.3;
+    }
+    article h4 {
+      font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 700;
+      color: var(--ink); margin: 28px 0 10px;
+    }
+    article p { font-size: 17px; line-height: 1.8; color: #374151; margin-bottom: 20px; }
+    article ul, article ol { margin: 0 0 20px 24px; }
+    article li { font-size: 17px; line-height: 1.8; color: #374151; margin-bottom: 8px; }
+    article strong { color: var(--ink); font-weight: 700; }
+    article em { font-style: italic; }
+    article a { color: var(--green); text-decoration: none; font-weight: 500; }
+    article a:hover { text-decoration: underline; }
+    article blockquote {
+      border-left: 4px solid var(--green2); padding: 16px 20px; margin: 28px 0;
+      background: var(--pale); border-radius: 0 8px 8px 0; font-style: italic;
+      color: #374151;
+    }
+    article blockquote p { margin-bottom: 0; }
+    article code {
+      font-family: 'JetBrains Mono', monospace; font-size: 14px;
+      background: #F0F0ED; padding: 2px 7px; border-radius: 4px; color: var(--green-dark);
+    }
+    article pre {
+      background: #0A0A0B; border-radius: 10px; padding: 24px; overflow-x: auto;
+      margin: 28px 0;
+    }
+    article pre code { background: none; color: #34d399; font-size: 14px; padding: 0; }
+    article hr { border: none; border-top: 1px solid var(--light); margin: 40px 0; }
+    article img { max-width: 100%; border-radius: 10px; margin: 24px 0; display: block; }
+    article table {
+      width: 100%; border-collapse: collapse; margin: 28px 0;
+      font-size: 15px; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 0 0 1px var(--light);
+    }
+    article th {
+      background: var(--alt-bg); font-weight: 700; text-align: left;
+      padding: 12px 16px; font-size: 13px; text-transform: uppercase;
+      letter-spacing: 0.05em; color: var(--mid); border-bottom: 1px solid var(--light);
+    }
+    article td { padding: 12px 16px; border-bottom: 1px solid var(--light); color: #374151; }
+    article tr:last-child td { border-bottom: none; }
+    article tr:nth-child(even) td { background: #FAFAF8; }
+    article tr:hover td { background: var(--pale); }
+
+    /* SIDEBAR */
+    .sidebar { position: relative; }
+    .sidebar-inner {
+      position: sticky; top: 80px;
+      display: flex; flex-direction: column; gap: 24px;
+    }
+    @media (max-width: 860px) { .sidebar { display: none; } }
+
+    /* SHARE BAR (desktop sticky sidebar) */
+    .share-bar-desktop {
+      background: #fff; border: 1px solid var(--light); border-radius: 12px; padding: 20px;
+    }
+    .share-bar-desktop .share-label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mid); margin-bottom: 12px; }
+    .share-bar-desktop .share-btns { display: flex; flex-direction: column; gap: 8px; }
+    .share-bar-desktop .share-btn { justify-content: center; }
+
+    /* MID-ARTICLE CTA */
+    .mid-cta {
+      background: linear-gradient(135deg, var(--green-dark) 0%, #059669 100%);
+      border-radius: 16px; padding: 40px; margin: 48px 0; color: #fff;
+    }
+    .mid-cta h3 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+    .mid-cta p { font-size: 15px; color: rgba(255,255,255,0.85); margin-bottom: 20px; line-height: 1.6; }
+    .mid-cta-form { display: flex; gap: 8px; flex-wrap: wrap; }
+    .mid-cta-form input {
+      flex: 1; min-width: 200px; padding: 12px 16px;
+      border: 1.5px solid rgba(255,255,255,0.3); border-radius: 8px;
+      font-size: 15px; background: rgba(255,255,255,0.12); color: #fff;
+      outline: none; transition: border-color 0.15s; font-family: inherit;
+    }
+    .mid-cta-form input::placeholder { color: rgba(255,255,255,0.55); }
+    .mid-cta-form input:focus { border-color: rgba(255,255,255,0.7); }
+    .mid-cta-form button {
+      background: #fff; color: var(--green-dark); border: none; border-radius: 8px;
+      padding: 12px 22px; font-size: 15px; font-weight: 700; cursor: pointer;
+      white-space: nowrap; transition: background 0.15s; font-family: inherit;
+    }
+    .mid-cta-form button:hover { background: var(--pale); }
+    .mid-cta-note { font-size: 13px; color: rgba(255,255,255,0.7); margin-top: 10px; }
+    .mid-cta-note a { color: var(--green2); font-weight: 600; text-decoration: none; }
+    .mid-cta-note a:hover { text-decoration: underline; }
+    #cta-msg { font-size: 14px; font-weight: 600; color: #fff; margin-top: 10px; min-height: 20px; }
+
+    /* RELATED POSTS */
+    .related { margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--light); }
+    .related-heading { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 24px; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 640px) { .related-grid { grid-template-columns: 1fr; } }
+    .related-card {
+      background: #fff; border: 1px solid var(--light); border-radius: 12px;
+      padding: 20px; text-decoration: none; display: block;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .related-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .related-card-date { font-size: 12px; color: var(--mid); font-family: 'JetBrains Mono', monospace; margin-bottom: 8px; }
+    .related-card-title { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.4; }
+    .related-card:hover .related-card-title { color: var(--green); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--light); padding: 48px 40px; }
+    .footer-inner { max-width: 880px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+    .footer-brand .logo { font-size: 16px; margin-bottom: 6px; display: inline-flex; }
+    .footer-tagline { font-size: 13px; color: var(--mid); margin-top: 4px; }
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: flex-end; }
+    .footer-links a { font-size: 13px; color: var(--mid); text-decoration: none; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: 12px; color: var(--mid); }
+    @media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-right { align-items: flex-start; } }
+
+    /* LOADING / ERROR STATES */
+    .state-box { max-width: 640px; margin: 80px auto; padding: 0 24px; text-align: center; position: relative; z-index: 1; }
+    .state-box h2 { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; margin-bottom: 14px; }
+    .state-box p { font-size: 16px; color: var(--mid); margin-bottom: 24px; line-height: 1.6; }
+    .state-box a { color: var(--green); font-weight: 600; text-decoration: none; }
+    .state-box a:hover { text-decoration: underline; }
+    .spinner {
+      width: 40px; height: 40px; border: 3px solid var(--light);
+      border-top-color: var(--green); border-radius: 50%;
+      animation: spin 0.7s linear infinite; margin: 80px auto;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* SKELETON */
+    .skeleton { background: linear-gradient(90deg, var(--light) 25%, #E8E8E5 50%, var(--light) 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 6px; }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+  </style>
+</head>
+<body>
+
+<!-- Reading Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-icon">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    SIGNALMAP
+  </a>
+  <div class="nav-links">
+    <a href="/cex-intelligence.html" class="nav-hide">Dashboard</a>
+    <a href="/scorecard.html" class="nav-hide">Scorecard</a>
+    <a href="/weekly" class="nav-hide">Weekly</a>
+    <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="nav-cta" target="_blank" rel="noopener">Pro</a>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div id="loading-state">
+  <div class="spinner"></div>
+</div>
+
+<div id="post-content" style="display:none;">
+  <div class="post-wrap">
+    <!-- LEFT: Article -->
+    <main>
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/blog">Blog</a>
+        <span class="breadcrumb-sep">›</span>
+        <span id="bc-title"></span>
+      </nav>
+
+      <!-- Post Header -->
+      <header class="post-header">
+        <div id="post-tags" class="post-tags"></div>
+        <div id="post-date" class="post-date"></div>
+        <h1 class="post-title" id="post-title"></h1>
+        <p class="post-lead" id="post-lead"></p>
+
+        <!-- Share bar (mobile) -->
+        <div class="share-bar-mobile">
+          <span class="share-label">Share this:</span>
+          <a id="share-x-mobile" href="#" target="_blank" rel="noopener" class="share-btn share-btn-x">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.254 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Share on X
+          </a>
+          <button id="copy-link-mobile" class="share-btn share-btn-copy">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy link
+          </button>
+        </div>
+      </header>
+
+      <!-- Article body -->
+      <article id="article-body"></article>
+
+      <!-- Mid-article CTA -->
+      <div class="mid-cta">
+        <h3>Want the full picture every Friday?</h3>
+        <p>Get our weekly intelligence brief — hiring signals, exchange moves, and what it means for the market — delivered to your inbox.</p>
+        <form class="mid-cta-form" id="subscribe-form" onsubmit="handleSubscribe(event)">
+          <input type="email" id="subscribe-email" placeholder="your@email.com" required autocomplete="email">
+          <button type="submit" id="subscribe-btn">Subscribe free</button>
+        </form>
+        <div id="cta-msg"></div>
+        <p class="mid-cta-note">or <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" target="_blank" rel="noopener">upgrade to Pro →</a></p>
+      </div>
+
+      <!-- Related Posts -->
+      <section class="related" id="related-section" style="display:none;">
+        <h2 class="related-heading">More from Signalmap</h2>
+        <div class="related-grid" id="related-grid"></div>
+      </section>
+    </main>
+
+    <!-- RIGHT: Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <!-- Share bar (desktop) -->
+        <div class="share-bar-desktop">
+          <span class="share-label">Share this:</span>
+          <div class="share-btns">
+            <a id="share-x-desktop" href="#" target="_blank" rel="noopener" class="share-btn share-btn-x">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.254 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              Share on X
+            </a>
+            <button id="copy-link-desktop" class="share-btn share-btn-copy">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy link
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- 404 State -->
+<div id="not-found-state" style="display:none;">
+  <div class="state-box">
+    <h2>Post not found</h2>
+    <p>We couldn't find the article you're looking for. It may have been moved or the link might be incorrect.</p>
+    <a href="/blog">← Back to Blog</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="/" class="logo">
+        <div class="logo-icon">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        SIGNALMAP
+      </a>
+      <p class="footer-tagline">Crypto exchange hiring intelligence.</p>
+    </div>
+    <div class="footer-right">
+      <div class="footer-links">
+        <a href="/cex-intelligence.html">Dashboard</a>
+        <a href="/scorecard.html">Scorecard</a>
+        <a href="/weekly">Weekly</a>
+        <a href="/blog">Blog</a>
+        <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" target="_blank" rel="noopener">Pro</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Signalmap. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const SUPABASE_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
+
+  const slug = new URLSearchParams(window.location.search).get('slug');
+
+  // Reading progress
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrolled = doc.scrollTop || document.body.scrollTop;
+    const total = doc.scrollHeight - doc.clientHeight;
+    const pct = total > 0 ? (scrolled / total) * 100 : 0;
+    document.getElementById('progress-bar').style.width = pct + '%';
+  });
+
+  function formatDate(iso) {
+    if (!iso) return '';
+    const d = new Date(iso);
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  function setMeta(post) {
+    const url = `https://signalmap.live/blog/${post.slug}`;
+
+    document.title = post.title + ' | Signalmap';
+
+    document.querySelector('meta[name="description"]').setAttribute('content', post.meta_description || '');
+    document.querySelector('meta[property="og:title"]').setAttribute('content', post.title);
+    document.querySelector('meta[property="og:description"]').setAttribute('content', post.meta_description || '');
+    document.querySelector('meta[property="og:url"]').setAttribute('content', url);
+    document.querySelector('meta[name="twitter:card"]').setAttribute('content', 'summary_large_image');
+
+    // canonical
+    let canonical = document.querySelector('link[rel="canonical"]');
+    canonical.setAttribute('href', url);
+
+    // JSON-LD
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": post.title,
+      "description": post.meta_description || '',
+      "url": url,
+      "publisher": {
+        "@type": "Organization",
+        "name": "Signalmap",
+        "url": "https://signalmap.live"
+      },
+      "datePublished": post.created_at
+    };
+    document.getElementById('json-ld').textContent = JSON.stringify(schema);
+  }
+
+  function setShareLinks(post) {
+    const url = `https://signalmap.live/blog/${post.slug}`;
+    const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(url)}`;
+
+    document.getElementById('share-x-mobile').href = tweetUrl;
+    document.getElementById('share-x-desktop').href = tweetUrl;
+
+    function makeCopyHandler(btnId) {
+      document.getElementById(btnId).addEventListener('click', () => {
+        navigator.clipboard.writeText(url).then(() => {
+          const btn = document.getElementById(btnId);
+          const original = btn.innerHTML;
+          btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+          setTimeout(() => { btn.innerHTML = original; }, 2000);
+        }).catch(() => {
+          // fallback
+          const ta = document.createElement('textarea');
+          ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0';
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+          document.body.removeChild(ta);
+        });
+      });
+    }
+    makeCopyHandler('copy-link-mobile');
+    makeCopyHandler('copy-link-desktop');
+  }
+
+  async function fetchRelated(currentSlug) {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/blog_posts?slug=neq.${encodeURIComponent(currentSlug)}&select=slug,title,created_at&order=created_at.desc&limit=3`,
+      { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
+    );
+    if (!res.ok) return [];
+    return await res.json();
+  }
+
+  async function loadPost() {
+    if (!slug) {
+      showNotFound();
+      return;
+    }
+
+    try {
+      const res = await fetch(
+        `${SUPABASE_URL}/rest/v1/blog_posts?slug=eq.${encodeURIComponent(slug)}&select=*`,
+        { headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } }
+      );
+
+      if (!res.ok) throw new Error('Fetch failed');
+
+      const posts = await res.json();
+      if (!posts || posts.length === 0) {
+        showNotFound();
+        return;
+      }
+
+      const post = posts[0];
+      renderPost(post);
+
+      // Fetch related posts in background
+      fetchRelated(post.slug).then(related => {
+        if (related && related.length > 0) {
+          renderRelated(related);
+        }
+      }).catch(() => {});
+
+    } catch (e) {
+      showNotFound();
+    }
+  }
+
+  function renderPost(post) {
+    // Set meta
+    setMeta(post);
+
+    // Breadcrumb
+    document.getElementById('bc-title').textContent = post.title;
+
+    // Tags
+    const tagsEl = document.getElementById('post-tags');
+    if (post.tags && post.tags.length > 0) {
+      const tagList = Array.isArray(post.tags) ? post.tags : post.tags.split(',').map(t => t.trim());
+      tagsEl.innerHTML = tagList.map(t => `<span class="post-tag">${t}</span>`).join('');
+    }
+
+    // Date
+    document.getElementById('post-date').textContent = formatDate(post.created_at || post.published_at);
+
+    // Title
+    document.getElementById('post-title').textContent = post.title;
+
+    // Lead / meta description
+    const lead = post.meta_description || '';
+    document.getElementById('post-lead').textContent = lead;
+
+    // Share links
+    setShareLinks(post);
+
+    // Article content
+    document.getElementById('article-body').innerHTML = post.content || '';
+
+    // Show content
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('post-content').style.display = '';
+  }
+
+  function renderRelated(posts) {
+    const grid = document.getElementById('related-grid');
+    grid.innerHTML = posts.map(p => `
+      <a href="/post.html?slug=${encodeURIComponent(p.slug)}" class="related-card">
+        <div class="related-card-date">${formatDate(p.created_at)}</div>
+        <div class="related-card-title">${escapeHtml(p.title)}</div>
+      </a>
+    `).join('');
+    document.getElementById('related-section').style.display = '';
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function showNotFound() {
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('not-found-state').style.display = '';
+    document.title = 'Post not found | Signalmap';
+  }
+
+  async function handleSubscribe(e) {
+    e.preventDefault();
+    const email = document.getElementById('subscribe-email').value.trim();
+    const btn = document.getElementById('subscribe-btn');
+    const msg = document.getElementById('cta-msg');
+
+    if (!email) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Subscribing…';
+    msg.textContent = '';
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/subscribers`, {
+        method: 'POST',
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify({ email })
+      });
+
+      if (res.status === 409) {
+        msg.textContent = "You're already subscribed — we'll see you Friday!";
+        btn.disabled = false;
+        btn.textContent = 'Subscribe free';
+        return;
+      }
+
+      if (!res.ok) {
+        const err = await res.text();
+        throw new Error(err);
+      }
+
+      msg.textContent = 'You\'re in! First issue lands Friday.';
+      document.getElementById('subscribe-form').reset();
+      btn.textContent = 'Subscribed!';
+    } catch (err) {
+      console.error(err);
+      msg.textContent = 'Something went wrong. Please try again.';
+      btn.disabled = false;
+      btn.textContent = 'Subscribe free';
+    }
+  }
+
+  // Boot
+  loadPost();
+</script>
+</body>
+</html>
