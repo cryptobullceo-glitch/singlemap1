@@ -2,6 +2,16 @@
   publish = "."
 
 [[redirects]]
+  from = "/blog/:slug"
+  to = "/post.html?slug=:slug"
+  status = 200
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 200
+
+[[redirects]]
   from = "/exchange"
   to = "/exchange.html"
   status = 200
