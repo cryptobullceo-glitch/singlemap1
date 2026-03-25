@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto Exchange Hiring Intelligence Blog | Signalmap</title>
+  <meta name="description" content="Weekly hiring data, predictions, and signals from 10 major crypto exchanges. Stay ahead with Signalmap's intelligence blog — updated automatically.">
+  <link rel="canonical" href="https://signalmap.live/blog">
+  <meta property="og:title" content="Crypto Exchange Hiring Intelligence Blog | Signalmap">
+  <meta property="og:description" content="Weekly hiring data, predictions, and signals from 10 major crypto exchanges. Updated automatically.">
+  <meta property="og:url" content="https://signalmap.live/blog">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://signalmap.live/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Crypto Exchange Hiring Intelligence Blog | Signalmap">
+  <meta name="twitter:description" content="Weekly hiring data, predictions, and signals from 10 major crypto exchanges. Updated automatically.">
+  <meta name="twitter:image" content="https://signalmap.live/og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #059669; --green2: #34d399; --green-dark: #065f46; --ink: #0A0A0B;
+      --paper: #F7F7F4; --mid: #6B7280; --light: #E4E4E1; --pale: #ECFDF5;
+      --card: #FFFFFF; --alt-bg: #F0F0ED;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; height: 600px; background: radial-gradient(ellipse 80% 60% at 50% -5%, rgba(5,150,105,0.07), transparent); pointer-events: none; z-index: 0; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,247,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px;
+    }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
+    .logo-icon { display: flex; align-items: flex-end; gap: 2px; height: 20px; }
+    .logo-icon span { background: var(--green); border-radius: 2px; width: 3px; }
+    .logo-icon span:nth-child(1) { height: 8px; opacity: 0.35; }
+    .logo-icon span:nth-child(2) { height: 11px; opacity: 0.55; }
+    .logo-icon span:nth-child(3) { height: 14px; opacity: 0.75; }
+    .logo-icon span:nth-child(4) { height: 17px; opacity: 0.9; }
+    .logo-icon span:nth-child(5) { height: 20px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--mid); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--ink); }
+    .nav-cta { background: var(--green) !important; color: #fff !important; padding: 8px 18px; border-radius: 6px; font-weight: 600 !important; font-size: 14px; }
+    .nav-cta:hover { background: #047857 !important; }
+    @media (max-width: 600px) { .nav-hide { display: none; } }
+
+    /* HERO */
+    .hero { max-width: 760px; margin: 80px auto 0; padding: 0 24px 60px; text-align: center; position: relative; z-index: 1; }
+    .section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mid); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .section-label::before, .section-label::after { content: ''; flex: 0 0 32px; height: 1px; background: var(--light); }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+    h1 em { color: var(--green); font-style: normal; }
+    .hero-sub { font-size: 17px; color: #52525B; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+    /* BLOG CONTROLS */
+    .blog-controls { max-width: 1060px; margin: 48px auto 32px; padding: 0 24px; position: relative; z-index: 1; display: flex; flex-direction: column; gap: 20px; }
+    .controls-top { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .search-wrap { position: relative; flex: 1; min-width: 220px; max-width: 360px; }
+    .search-wrap svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--mid); pointer-events: none; }
+    #search-input {
+      width: 100%; padding: 10px 12px 10px 36px;
+      border: 1.5px solid var(--light); border-radius: 8px;
+      font-size: 14px; background: #fff; outline: none; font-family: 'Inter', sans-serif;
+      transition: border-color 0.15s, box-shadow 0.15s; color: var(--ink);
+    }
+    #search-input::placeholder { color: var(--mid); }
+    #search-input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(5,150,105,0.08); }
+    .post-count { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--mid); margin-left: auto; white-space: nowrap; }
+    .post-count strong { color: var(--ink); }
+    .tag-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag-btn {
+      padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 600;
+      border: 1.5px solid var(--light); background: #fff; color: var(--mid);
+      cursor: pointer; transition: all 0.15s; font-family: 'Inter', sans-serif;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .tag-btn:hover { border-color: var(--green); color: var(--green); background: var(--pale); }
+    .tag-btn.active { border-color: var(--green); background: var(--green); color: #fff; }
+
+    /* BLOG GRID */
+    .blog-grid-wrap { max-width: 1060px; margin: 0 auto 80px; padding: 0 24px; position: relative; z-index: 1; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .blog-grid { grid-template-columns: 1fr; } }
+
+    /* POST CARD */
+    .post-card {
+      background: var(--card); border: 1px solid var(--light); border-radius: 12px;
+      padding: 28px; display: flex; flex-direction: column; gap: 14px;
+      transition: transform 0.15s, box-shadow 0.15s, border-left-color 0.15s;
+      border-left: 3px solid transparent;
+    }
+    .post-card:hover {
+      transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.09);
+      border-left-color: var(--green);
+    }
+    .post-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .post-tag {
+      font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+      padding: 3px 8px; border-radius: 4px;
+      background: var(--pale); color: var(--green);
+    }
+    .post-tag.tag-compliance { background: #EFF6FF; color: #1D4ED8; }
+    .post-tag.tag-predictions { background: #FEF3C7; color: #92400E; }
+    .post-tag.tag-rankings { background: #F3E8FF; color: #7C3AED; }
+    .post-tag.tag-weekly { background: #F0F9FF; color: #0369A1; }
+    .post-tag.tag-hiring { background: var(--pale); color: var(--green); }
+    .post-title { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 700; line-height: 1.3; color: var(--ink); flex: 1; }
+    .post-excerpt { font-size: 14px; color: #52525B; line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .post-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+    .post-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--mid); letter-spacing: 0.04em; }
+    .post-read-link { font-size: 13px; font-weight: 700; color: var(--green); text-decoration: none; letter-spacing: 0.02em; transition: gap 0.1s; display: inline-flex; align-items: center; gap: 4px; }
+    .post-read-link:hover { gap: 8px; }
+
+    /* SKELETON */
+    .skeleton-card { background: var(--card); border: 1px solid var(--light); border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+    .skel { background: linear-gradient(90deg, #ebebeb 25%, #f5f5f5 50%, #ebebeb 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 4px; }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    .skel-tag { height: 18px; width: 64px; border-radius: 4px; }
+    .skel-title { height: 22px; width: 85%; }
+    .skel-title2 { height: 22px; width: 60%; }
+    .skel-line { height: 14px; width: 100%; }
+    .skel-line2 { height: 14px; width: 80%; }
+    .skel-line3 { height: 14px; width: 90%; }
+    .skel-date { height: 11px; width: 80px; }
+    .skel-link { height: 13px; width: 60px; }
+
+    /* EMPTY STATE */
+    .empty-state { text-align: center; padding: 72px 24px; color: var(--mid); grid-column: 1 / -1; }
+    .empty-state svg { width: 48px; height: 48px; margin: 0 auto 16px; opacity: 0.3; display: block; }
+    .empty-state p { font-size: 15px; }
+
+    /* BOTTOM CTA STRIP */
+    .bottom-cta { background: var(--ink); padding: 72px 24px; text-align: center; }
+    .bottom-cta h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(22px, 4vw, 34px); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .bottom-cta p { color: #9CA3AF; font-size: 16px; margin-bottom: 32px; max-width: 460px; margin-left: auto; margin-right: auto; }
+    .bottom-cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-block; text-align: center; background: var(--green); color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; transition: background 0.15s; }
+    .btn-primary:hover { background: #047857; }
+    .btn-ghost { display: inline-block; padding: 14px 28px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #fff; text-decoration: none; font-weight: 600; font-size: 15px; letter-spacing: 0.02em; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--light); padding: 48px 40px; }
+    .footer-inner { max-width: 880px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+    .footer-brand .logo { font-size: 16px; margin-bottom: 6px; display: inline-flex; }
+    .footer-tagline { font-size: 13px; color: var(--mid); margin-top: 4px; }
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: flex-end; }
+    .footer-links a { font-size: 13px; color: var(--mid); text-decoration: none; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { font-size: 12px; color: var(--mid); }
+    @media (max-width: 600px) { .footer-inner { flex-direction: column; align-items: flex-start; } .footer-right { align-items: flex-start; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="logo">
+      <div class="logo-icon">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      SIGNALMAP
+    </a>
+    <div class="nav-links">
+      <a href="/cex-intelligence.html" class="nav-hide">Dashboard</a>
+      <a href="/scorecard.html" class="nav-hide">Scorecard</a>
+      <a href="/weekly" class="nav-hide">Weekly</a>
+      <a href="/blog" class="active nav-hide">Blog</a>
+      <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="nav-cta" target="_blank" rel="noopener">Pro</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="section-label">Intelligence Blog</div>
+    <h1>Crypto Exchange <em>Hiring Intelligence.</em></h1>
+    <p class="hero-sub">Weekly hiring data, predictions, and signals from 10 major exchanges. Updated automatically.</p>
+  </section>
+
+  <!-- CONTROLS -->
+  <div class="blog-controls">
+    <div class="controls-top">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="search-input" placeholder="Search posts…" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="post-count" id="post-count">— posts</div>
+    </div>
+    <div class="tag-filters" id="tag-filters">
+      <button class="tag-btn active" data-tag="all">All</button>
+      <button class="tag-btn" data-tag="hiring">Hiring</button>
+      <button class="tag-btn" data-tag="compliance">Compliance</button>
+      <button class="tag-btn" data-tag="predictions">Predictions</button>
+      <button class="tag-btn" data-tag="rankings">Rankings</button>
+      <button class="tag-btn" data-tag="weekly">Weekly</button>
+    </div>
+  </div>
+
+  <!-- BLOG GRID -->
+  <div class="blog-grid-wrap">
+    <div class="blog-grid" id="blog-grid">
+      <!-- Skeleton loading cards -->
+      <div class="skeleton-card" id="skel-1">
+        <div class="post-tags"><div class="skel skel-tag"></div></div>
+        <div class="skel skel-title"></div>
+        <div class="skel skel-title2"></div>
+        <div class="skel skel-line"></div>
+        <div class="skel skel-line3"></div>
+        <div class="skel skel-line2"></div>
+        <div class="post-footer">
+          <div class="skel skel-date"></div>
+          <div class="skel skel-link"></div>
+        </div>
+      </div>
+      <div class="skeleton-card" id="skel-2">
+        <div class="post-tags"><div class="skel skel-tag"></div></div>
+        <div class="skel skel-title"></div>
+        <div class="skel skel-title2"></div>
+        <div class="skel skel-line"></div>
+        <div class="skel skel-line3"></div>
+        <div class="skel skel-line2"></div>
+        <div class="post-footer">
+          <div class="skel skel-date"></div>
+          <div class="skel skel-link"></div>
+        </div>
+      </div>
+      <div class="skeleton-card" id="skel-3">
+        <div class="post-tags"><div class="skel skel-tag"></div></div>
+        <div class="skel skel-title"></div>
+        <div class="skel skel-title2"></div>
+        <div class="skel skel-line"></div>
+        <div class="skel skel-line3"></div>
+        <div class="skel skel-line2"></div>
+        <div class="post-footer">
+          <div class="skel skel-date"></div>
+          <div class="skel skel-link"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM CTA STRIP -->
+  <section class="bottom-cta">
+    <h2>Get the signal before the market does.</h2>
+    <p>Join intelligence-driven traders and analysts tracking exchange hiring in real time.</p>
+    <div class="bottom-cta-btns">
+      <a href="/" class="btn-primary">Subscribe Free</a>
+      <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="btn-ghost" target="_blank" rel="noopener">Pro &mdash; &euro;79/mo</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="logo">
+          <div class="logo-icon">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          SIGNALMAP
+        </a>
+        <div class="footer-tagline">Crypto exchange intelligence, updated weekly.</div>
+      </div>
+      <div class="footer-right">
+        <div class="footer-links">
+          <a href="/cex-intelligence.html">Dashboard</a>
+          <a href="/scorecard.html">Scorecard</a>
+          <a href="/weekly">Weekly</a>
+          <a href="/blog">Blog</a>
+          <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" target="_blank" rel="noopener">Pro</a>
+        </div>
+        <div class="footer-copy">&copy; 2026 Signalmap. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const SUPABASE_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
+
+    let allPosts = [];
+    let activeTag = 'all';
+    let searchQuery = '';
+
+    function formatDate(iso) {
+      const d = new Date(iso);
+      return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+
+    function tagClass(tag) {
+      const map = { compliance: 'tag-compliance', predictions: 'tag-predictions', rankings: 'tag-rankings', weekly: 'tag-weekly', hiring: 'tag-hiring' };
+      return map[tag.toLowerCase()] || '';
+    }
+
+    function renderPosts(posts) {
+      const grid = document.getElementById('blog-grid');
+      const countEl = document.getElementById('post-count');
+      countEl.innerHTML = `<strong>${posts.length}</strong> post${posts.length !== 1 ? 's' : ''}`;
+
+      if (posts.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+              <rect x="9" y="3" width="6" height="4" rx="1"/>
+              <line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="12" y2="16"/>
+            </svg>
+            <p>No posts found. Try a different search or tag.</p>
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = posts.map(post => {
+        const tags = Array.isArray(post.tags) ? post.tags : [];
+        const tagPills = tags.map(t => `<span class="post-tag ${tagClass(t)}">${t}</span>`).join('');
+        const excerpt = post.meta_description || '';
+        const date = post.created_at ? formatDate(post.created_at) : '';
+        return `
+          <article class="post-card">
+            ${tags.length ? `<div class="post-tags">${tagPills}</div>` : ''}
+            <div class="post-title">${escapeHtml(post.title)}</div>
+            ${excerpt ? `<div class="post-excerpt">${escapeHtml(excerpt)}</div>` : ''}
+            <div class="post-footer">
+              <span class="post-date">${date}</span>
+              <a href="/blog/${post.slug}" class="post-read-link">Read <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </article>`;
+      }).join('');
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function filterAndRender() {
+      let filtered = allPosts;
+      if (activeTag !== 'all') {
+        filtered = filtered.filter(p => Array.isArray(p.tags) && p.tags.map(t => t.toLowerCase()).includes(activeTag));
+      }
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        filtered = filtered.filter(p => p.title && p.title.toLowerCase().includes(q));
+      }
+      renderPosts(filtered);
+    }
+
+    async function fetchPosts() {
+      try {
+        const url = `${SUPABASE_URL}/rest/v1/blog_posts?select=slug,title,meta_description,tags,created_at&published=eq.true&order=created_at.desc`;
+        const res = await fetch(url, {
+          headers: {
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`
+          }
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        allPosts = await res.json();
+        filterAndRender();
+      } catch (err) {
+        console.error('Failed to fetch posts:', err);
+        document.getElementById('blog-grid').innerHTML = `
+          <div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <p>Could not load posts. Please try again shortly.</p>
+          </div>`;
+        document.getElementById('post-count').textContent = '0 posts';
+      }
+    }
+
+    // Tag filter
+    document.getElementById('tag-filters').addEventListener('click', e => {
+      const btn = e.target.closest('.tag-btn');
+      if (!btn) return;
+      document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeTag = btn.dataset.tag;
+      filterAndRender();
+    });
+
+    // Search
+    document.getElementById('search-input').addEventListener('input', e => {
+      searchQuery = e.target.value.trim();
+      filterAndRender();
+    });
+
+    fetchPosts();
+  </script>
+</body>
+</html>
