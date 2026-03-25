@@ -919,14 +919,14 @@ document.getElementById('popup-form').addEventListener('submit', async (e) => {
   } catch { btn.textContent = 'Send me the brief →'; btn.disabled = false; }
 });
 
-const ANNUAL_STRIPE = '#annual'; // placeholder — user will replace with real Stripe annual link
+const ANNUAL_STRIPE = 'https://buy.stripe.com/fZu28r0Qw4223yD7nb8k801';
 const MONTHLY_STRIPE = 'https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800';
 function setBilling(type) {
   const isAnnual = type === 'annual';
   document.getElementById('pro-price').textContent = isAnnual ? '66' : '79';
-  document.getElementById('pro-cadence').textContent = isAnnual ? 'per month, billed $790/yr · cancel anytime' : 'per month · cancel anytime';
+  document.getElementById('pro-cadence').textContent = isAnnual ? 'per month, billed €699/yr · cancel anytime' : 'per month · cancel anytime';
   document.getElementById('pro-cta-link').href = isAnnual ? ANNUAL_STRIPE : MONTHLY_STRIPE;
-  document.getElementById('pro-cta-link').innerHTML = isAnnual ? 'Start Pro Annual — $790/yr →' : 'Start Pro — $<span id="pro-cta-price">79</span>/mo →';
+  document.getElementById('pro-cta-link').innerHTML = isAnnual ? 'Start Pro Annual — €699/yr →' : 'Start Pro — $<span id="pro-cta-price">79</span>/mo →';
   document.getElementById('toggle-monthly').style.background = isAnnual ? 'var(--alt-bg)' : 'var(--green)';
   document.getElementById('toggle-monthly').style.color = isAnnual ? 'var(--mid)' : '#fff';
   document.getElementById('toggle-annual').style.background = isAnnual ? 'var(--green)' : 'var(--alt-bg)';
