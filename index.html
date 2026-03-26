@@ -120,8 +120,9 @@
     .tag-pro  { background: #FEF3C7; color: #92400E; }
 
     /* PRICING */
-    .pricing-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 20px; max-width: 680px; margin: 0 auto; }
-    @media (max-width: 600px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1.1fr 1fr; gap: 20px; max-width: 960px; margin: 0 auto; }
+    @media (max-width: 860px) { .pricing-grid { grid-template-columns: 1fr 1.1fr; } .pricing-grid .plan-team { display: none; } }
+    @media (max-width: 600px) { .pricing-grid { grid-template-columns: 1fr; } .pricing-grid .plan-team { display: block; } }
     .plan { background: #fff; border: 1px solid var(--light); border-radius: 16px; padding: 40px; }
     .plan.featured { border-color: var(--green); box-shadow: 0 0 0 1px var(--green); position: relative; overflow: hidden; }
     .plan.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--green-dark), var(--green2)); }
@@ -567,6 +568,25 @@
         <strong style="color:var(--ink)">30-day money-back guarantee.</strong> If you're not seeing value in 30 days, email us and we'll refund in full. No questions.
       </p>
     </div>
+    <div class="plan plan-team">
+      <div class="plan-badge" style="background:var(--ink);color:#fff">For funds &amp; teams</div>
+      <div class="plan-name">Team</div>
+      <div class="plan-price"><span class="plan-currency">€</span><span class="plan-amount">299</span></div>
+      <div class="plan-cadence">per month · up to 5 seats</div>
+      <ul class="plan-features">
+        <li>Everything in Pro</li>
+        <li>5 team seats included</li>
+        <li>Slack / webhook alerts</li>
+        <li>CSV data exports</li>
+        <li>Custom exchange watchlist</li>
+        <li>Dedicated briefing calls (monthly)</li>
+        <li>API access (beta)</li>
+      </ul>
+      <a href="mailto:team@signalmap.live?subject=Team%20Plan%20Enquiry" class="btn-secondary" style="display:block;text-align:center">Contact for Team plan →</a>
+      <p style="text-align:center;margin-top:14px;font-size:12px;color:var(--mid);line-height:1.6">
+        Larger team or custom data needs? <a href="mailto:team@signalmap.live" style="color:var(--green);font-weight:600">Email us</a> for enterprise pricing.
+      </p>
+    </div>
   </div>
   <p class="annual-note" style="margin-top:14px">Annual billing saves €249/yr. <a href="#" onclick="setBilling('annual');return false">Switch to annual →</a></p>
 </div>
@@ -627,6 +647,8 @@
       <div class="footer-links">
         <a href="/cex-intelligence.html">Dashboard</a>
         <a href="/scorecard.html">Scorecard</a>
+        <a href="/blog">Blog</a>
+        <a href="/refer">Refer &amp; Earn</a>
         <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800">Pro — €79/mo</a>
       </div>
       <p class="footer-copy">© 2026 Signalmap · signalmap.live</p>
@@ -733,6 +755,16 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
+// Capture referral code from URL
+const _refCode = new URLSearchParams(window.location.search).get('ref') || '';
+if (_refCode) {
+  // Show a subtle referral banner
+  const banner = document.createElement('div');
+  banner.style.cssText = 'background:var(--pale);border-bottom:1px solid rgba(5,150,105,.2);padding:10px 24px;text-align:center;font-size:13px;color:var(--green);font-weight:600;';
+  banner.textContent = '👋 You were invited by a Signalmap member — sign up below to get started.';
+  document.body.insertBefore(banner, document.body.firstChild);
+}
+
 // Subscribe form
 document.getElementById('subscribe-form').addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -740,16 +772,26 @@ document.getElementById('subscribe-form').addEventListener('submit', async (e) =
   const btn = e.target.querySelector('button');
   btn.textContent = 'Subscribing…'; btn.disabled = true;
   try {
+    const payload = { email, source: _refCode ? 'referral' : 'hero', referred_by: _refCode || null };
     const r = await fetch(`${SUPABASE_URL}/rest/v1/subscribers`, {
       method: 'POST',
       headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify(payload),
     });
+    // Track referral if applicable
+    if (_refCode && (r.ok || r.status === 409)) {
+      fetch(`${SUPABASE_URL}/functions/v1/referral/track`, {
+        method: 'POST',
+        headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ref_code: _refCode, email }),
+      }).catch(() => {});
+    }
     document.getElementById('subscribe-form').style.display = 'none';
     document.getElementById('form-note').style.display = 'none';
     const msg = document.getElementById('form-msg');
     if (r.ok || r.status === 409) {
-      msg.style.color = '#059669'; msg.textContent = '✓ You\'re on the list. Brief arrives Fridays.';
+      msg.style.color = '#059669';
+      msg.textContent = _refCode ? '✓ You\'re on the list! Your referrer has been notified.' : '✓ You\'re on the list. Brief arrives Fridays.';
     } else {
       msg.style.color = '#DC2626'; msg.textContent = 'Something went wrong — try again.';
     }
