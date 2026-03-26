@@ -26,6 +26,26 @@
   to = "/scorecard.html"
   status = 200
 
+[[redirects]]
+  from = "/refer"
+  to = "/refer.html"
+  status = 200
+
+[[redirects]]
+  from = "/predictions"
+  to = "/predictions.html"
+  status = 200
+
+[[redirects]]
+  from = "/enterprise"
+  to = "/enterprise.html"
+  status = 200
+
+[[redirects]]
+  from = "/weekly"
+  to = "/weekly.html"
+  status = 200
+
 [[headers]]
   for = "/*.html"
   [headers.values]
