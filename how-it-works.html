@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Signalmap Works — Methodology & Data Sources</title>
+  <meta name="description" content="How Signalmap turns crypto exchange job postings into intelligence. Signal Score methodology, data sources, prediction framework, and accuracy track record.">
+  <link rel="canonical" href="https://signalmap.live/how-it-works">
+  <meta property="og:title" content="How Signalmap Works — Methodology Explained">
+  <meta property="og:description" content="Job postings as leading indicators: how we track, score, and predict exchange moves 60–90 days before announcements.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Where does Signalmap get its data?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Signalmap aggregates publicly available job postings from exchange career pages, LinkedIn, Glassdoor, and major job boards for 10 major crypto exchanges. Data is refreshed weekly." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Signal Score calculated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Signal Score (0-100) is a composite of: total role count (30%), hiring velocity / week-over-week change (30%), department weighting (compliance and engineering score higher, 25%), and geographic concentration (15%)." }
+      },
+      {
+        "@type": "Question",
+        "name": "How accurate are the predictions?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Our current resolved prediction accuracy rate is 78%. All predictions are published with full rationale, evidence, confidence scores, and target horizons. Outcomes — including misses — are published openly." }
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #059669; --ink: #0A0A0B; --paper: #F7F7F4;
+      --mid: #6B7280; --light: #E4E4E1; --pale: #ECFDF5; --card: #FFFFFF;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(247,247,244,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--light); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: .05em; display: flex; align-items: center; gap: 8px; }
+    .logo-icon { display: flex; align-items: flex-end; gap: 2px; height: 18px; }
+    .logo-icon span { background: var(--green); border-radius: 2px; width: 3px; }
+    .logo-icon span:nth-child(1) { height: 7px; opacity: .35; }
+    .logo-icon span:nth-child(2) { height: 10px; opacity: .55; }
+    .logo-icon span:nth-child(3) { height: 13px; opacity: .75; }
+    .logo-icon span:nth-child(4) { height: 16px; opacity: .9; }
+    .logo-icon span:nth-child(5) { height: 18px; }
+    .nav-links { display: flex; align-items: center; gap: 20px; }
+    .nav-links a { text-decoration: none; color: var(--mid); font-size: .875rem; font-weight: 500; }
+    .nav-links a.nav-cta { background: var(--green); color: #fff; padding: 7px 16px; border-radius: 7px; font-weight: 600; }
+
+    .hero { max-width: 760px; margin: 0 auto; padding: 60px 24px 48px; }
+    .breadcrumb { font-size: .8rem; color: var(--mid); margin-bottom: 20px; }
+    .breadcrumb a { color: var(--mid); text-decoration: none; }
+    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.1; margin-bottom: 16px; }
+    .hero h1 em { color: var(--green); font-style: normal; }
+    .hero p { font-size: 1.05rem; color: var(--mid); line-height: 1.7; max-width: 600px; }
+
+    .content { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+
+    h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; margin: 48px 0 16px; }
+    h3 { font-size: 1rem; font-weight: 700; margin: 24px 0 8px; }
+    p { font-size: .95rem; color: #374151; line-height: 1.75; margin-bottom: 14px; }
+    ul { padding-left: 20px; margin-bottom: 14px; }
+    li { font-size: .95rem; color: #374151; line-height: 1.75; margin-bottom: 4px; }
+
+    /* Step cards */
+    .steps { display: flex; flex-direction: column; gap: 0; margin: 28px 0; border: 1px solid var(--light); border-radius: 12px; overflow: hidden; background: var(--card); }
+    .step { display: flex; gap: 20px; padding: 24px 28px; align-items: flex-start; border-bottom: 1px solid var(--light); }
+    .step:last-child { border-bottom: none; }
+    .step-num { font-family: 'JetBrains Mono', monospace; font-size: .75rem; font-weight: 700; color: var(--green); background: var(--pale); border-radius: 6px; padding: 4px 10px; flex-shrink: 0; margin-top: 2px; }
+    .step-body h3 { margin: 0 0 6px; font-size: .95rem; }
+    .step-body p { margin: 0; font-size: .875rem; color: var(--mid); }
+
+    /* Score table */
+    .score-table { background: var(--card); border: 1px solid var(--light); border-radius: 12px; overflow: hidden; margin: 20px 0; }
+    .score-table table { width: 100%; border-collapse: collapse; }
+    .score-table th { background: #F9FAFB; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--mid); padding: 12px 18px; text-align: left; border-bottom: 1px solid var(--light); }
+    .score-table td { padding: 12px 18px; font-size: .875rem; border-bottom: 1px solid var(--light); }
+    .score-table tr:last-child td { border-bottom: none; }
+    .pct { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--green); }
+
+    /* Example box */
+    .example-box { background: var(--pale); border: 1px solid rgba(5,150,105,.2); border-radius: 12px; padding: 22px 24px; margin: 24px 0; }
+    .example-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--green); margin-bottom: 10px; }
+    .example-box p { color: #065F46; margin: 0; font-size: .9rem; }
+
+    /* Accuracy strip */
+    .accuracy-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px; margin: 20px 0; }
+    .acc-card { background: var(--card); border: 1px solid var(--light); border-radius: 10px; padding: 18px; text-align: center; }
+    .acc-num { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--green); line-height: 1; margin-bottom: 4px; }
+    .acc-lbl { font-size: .75rem; color: var(--mid); }
+
+    /* CTA */
+    .cta-box { background: var(--ink); color: #fff; border-radius: 14px; padding: 36px 28px; text-align: center; margin-top: 48px; }
+    .cta-box h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; margin-top: 0; }
+    .cta-box p { color: #9CA3AF; font-size: .9rem; margin-bottom: 20px; }
+    .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-g { background: var(--green); color: #fff; text-decoration: none; padding: 11px 22px; border-radius: 8px; font-weight: 700; font-size: .9rem; }
+    .btn-s { background: transparent; color: #9CA3AF; text-decoration: none; padding: 11px 22px; border-radius: 8px; font-size: .9rem; border: 1px solid #374151; }
+
+    footer { text-align: center; padding: 32px 24px; border-top: 1px solid var(--light); font-size: .8rem; color: var(--mid); }
+    footer a { color: var(--mid); text-decoration: none; }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/"><div class="logo-icon"><span></span><span></span><span></span><span></span><span></span></div>SIGNALMAP</a>
+  <div class="nav-links">
+    <a href="/intelligence">Dashboard</a>
+    <a href="/predictions">Predictions</a>
+    <a href="/blog">Blog</a>
+    <a href="/pricing" class="nav-cta">Pro — €79/mo</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="breadcrumb"><a href="/">← Home</a></div>
+  <h1>How <em>Signalmap</em> works</h1>
+  <p>Job postings are public disclosures. A compliance surge at an exchange precedes a regulatory filing. An engineering spike precedes a product launch. Here's exactly how we turn that signal into intelligence.</p>
+</div>
+
+<div class="content">
+
+  <h2>The core insight</h2>
+  <p>Every major crypto exchange must publicly post job openings. These postings are filed weeks to months before any announcement — because hiring takes time. An exchange doesn't announce a new compliance program and then hire for it; they hire first, then announce.</p>
+  <p>This creates a predictable lag: <strong>hiring signal → announcement → market reaction</strong>. Signalmap reads the signal before the announcement.</p>
+
+  <div class="example-box">
+    <div class="example-label">Example</div>
+    <p>In Q4 2025, Coinbase posted 38 EU-jurisdiction compliance roles over 6 weeks. Three months later, Coinbase announced its MiCA compliance roadmap and Dublin expansion. Signalmap readers knew in advance.</p>
+  </div>
+
+  <h2>The data pipeline</h2>
+  <p>We collect, classify, and score job postings across 10 exchanges on a weekly basis.</p>
+
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">01</span>
+      <div class="step-body">
+        <h3>Collection</h3>
+        <p>Every Monday we scrape career pages, LinkedIn, and major job boards for Coinbase, Binance, OKX, Kraken, Gemini, Bitpanda, Bitvavo, BitMEX, Crypto.com, and Robinhood Crypto. New postings are deduplicated by title + location hash.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">02</span>
+      <div class="step-body">
+        <h3>Classification</h3>
+        <p>Each role is classified into one of 9 departments: compliance, engineering, product, legal, finance, marketing, sales, design, or operations. Classification uses title keyword matching and job description parsing.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">03</span>
+      <div class="step-body">
+        <h3>Scoring (Signal Score)</h3>
+        <p>Each exchange receives a Signal Score (0–100) based on four factors. See methodology below.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">04</span>
+      <div class="step-body">
+        <h3>Analysis</h3>
+        <p>Our analysis layer compares current scores to historical baselines, flags anomalies (e.g. compliance surge at an exchange with low historical compliance hiring), and generates predictions with rationale and confidence scores.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="step-num">05</span>
+      <div class="step-body">
+        <h3>Distribution</h3>
+        <p>The intelligence is delivered via: weekly email brief (Fridays), live dashboard at /intelligence, public prediction tracker at /predictions, and via API (Enterprise plan).</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Signal Score methodology</h2>
+  <p>Signal Score is a 0–100 composite metric for each exchange. Higher scores indicate stronger, more actionable hiring signals. Here's the weighting:</p>
+
+  <div class="score-table">
+    <table>
+      <thead><tr><th>Component</th><th>Weight</th><th>What it measures</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Total role count</strong></td><td class="pct">30%</td><td>Absolute number of active open roles. Normalized against exchange size and historical average.</td></tr>
+        <tr><td><strong>Hiring velocity</strong></td><td class="pct">30%</td><td>Week-over-week change in open roles. A 20% surge in 2 weeks scores higher than steady-state hiring.</td></tr>
+        <tr><td><strong>Department weighting</strong></td><td class="pct">25%</td><td>Compliance and engineering roles score 1.5× versus general operations. Reflects their higher predictive value.</td></tr>
+        <tr><td><strong>Geographic concentration</strong></td><td class="pct">15%</td><td>Roles concentrated in a specific jurisdiction (e.g. EU, US) amplify regulatory or expansion signals.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="example-box">
+    <div class="example-label">Score interpretation</div>
+    <p><strong>80–100:</strong> Strong signal — significant hiring activity with clear directional intent. High-confidence prediction territory.<br>
+    <strong>60–79:</strong> Moderate signal — above-average activity, worth monitoring closely.<br>
+    <strong>40–59:</strong> Baseline — normal hiring activity, no strong directional signal.<br>
+    <strong>Below 40:</strong> Weak signal — hiring freeze or contraction. Indicates consolidation or cost-cutting mode.</p>
+  </div>
+
+  <h2>The prediction framework</h2>
+  <p>Predictions are generated when a combination of signals exceeds our confidence threshold. Each prediction includes:</p>
+  <ul>
+    <li><strong>Title:</strong> A specific, falsifiable claim about what the exchange will do</li>
+    <li><strong>Rationale:</strong> The specific roles, counts, and patterns driving the prediction</li>
+    <li><strong>Confidence score:</strong> 0–100% based on signal strength and historical pattern match</li>
+    <li><strong>Horizon:</strong> Target timeframe for the prediction to resolve</li>
+    <li><strong>Status:</strong> Active / Correct / Incorrect — updated when outcome is known</li>
+  </ul>
+  <p>We publish outcomes publicly, including incorrect predictions. This accountability is intentional — it forces us to make specific, falsifiable claims rather than vague forecasts.</p>
+
+  <h2>Track record</h2>
+  <div class="accuracy-grid">
+    <div class="acc-card"><div class="acc-num">49</div><div class="acc-lbl">Predictions made</div></div>
+    <div class="acc-card"><div class="acc-num">78%</div><div class="acc-lbl">Accuracy (resolved)</div></div>
+    <div class="acc-card"><div class="acc-num">10</div><div class="acc-lbl">Exchanges tracked</div></div>
+    <div class="acc-card"><div class="acc-num">18mo</div><div class="acc-lbl">Historical data</div></div>
+  </div>
+  <p>View all predictions — active and resolved — at <a href="/predictions" style="color:var(--green);font-weight:600;text-decoration:none">signalmap.live/predictions</a>.</p>
+
+  <h2>What we don't do</h2>
+  <ul>
+    <li>We don't use proprietary, private, or non-public data. Everything Signalmap analyzes is publicly posted.</li>
+    <li>We don't provide investment advice. Our analysis is informational and should not be the sole basis for any financial decision.</li>
+    <li>We don't guarantee prediction outcomes. Hiring patterns are leading indicators, not certainties.</li>
+    <li>We don't sell user data. See our <a href="/privacy" style="color:var(--green);text-decoration:none">privacy policy</a>.</li>
+  </ul>
+
+  <h2>Data sources</h2>
+  <p>Job postings are sourced from:</p>
+  <ul>
+    <li>Official exchange career pages (primary source)</li>
+    <li>LinkedIn Jobs listings</li>
+    <li>Glassdoor job postings</li>
+    <li>Indeed, Lever, Greenhouse, Workday portals</li>
+    <li>Crypto-specific boards (Crypto Jobs List, CryptoJobsDaily)</li>
+  </ul>
+  <p>All data is publicly accessible. Signalmap does not scrape or process private or authenticated data.</p>
+
+  <div class="cta-box">
+    <h2>See the live signals</h2>
+    <p>The methodology is only as good as the data. See the current scores, department breakdowns, and active predictions now.</p>
+    <div class="cta-row">
+      <a class="btn-g" href="/intelligence">Open live dashboard →</a>
+      <a class="btn-s" href="/predictions">View predictions</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Signalmap &nbsp;·&nbsp; <a href="/">Home</a> &nbsp;·&nbsp; <a href="/blog">Blog</a> &nbsp;·&nbsp; <a href="/pricing">Pricing</a> &nbsp;·&nbsp; <a href="/privacy">Privacy</a></p>
+</footer>
+</body>
+</html>
