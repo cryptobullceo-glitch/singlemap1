@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Guide: Reading Crypto Exchange Hiring Signals — Signalmap</title>
+  <meta name="description" content="Download the free 2026 guide to reading crypto exchange hiring signals. Learn how Signal Score works, which departments predict product launches, and how to act before announcements.">
+  <link rel="canonical" href="https://signalmap.live/guide">
+  <meta property="og:title" content="Free Guide: Crypto Exchange Hiring Signals 2026">
+  <meta property="og:description" content="The complete guide to using hiring data as a crypto intelligence signal. Free download.">
+  <meta property="og:url" content="https://signalmap.live/guide">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Read Crypto Exchange Hiring Signals",
+    "description": "A step-by-step guide to using exchange job posting data as an intelligence signal for crypto traders and analysts.",
+    "url": "https://signalmap.live/guide",
+    "publisher": { "@type": "Organization", "name": "Signalmap", "url": "https://signalmap.live" },
+    "step": [
+      { "@type": "HowToStep", "name": "Track hiring velocity", "text": "Monitor the rate of new job postings, not just total count." },
+      { "@type": "HowToStep", "name": "Identify department signals", "text": "Compliance hires signal regulatory expansion; engineering hires signal product launches." },
+      { "@type": "HowToStep", "name": "Compare exchanges", "text": "Signal Score normalizes hiring data for direct comparison." },
+      { "@type": "HowToStep", "name": "Act before announcements", "text": "Hiring patterns typically precede announcements by 60-90 days." }
+    ]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #059669; --green-dark: #065f46; --ink: #0A0A0B;
+      --paper: #F7F7F4; --mid: #6B7280; --light: #E4E4E1;
+      --pale: #ECFDF5; --card: #FFFFFF;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(247,247,244,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--light); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--green); }
+    .nav-links { display: flex; align-items: center; gap: 20px; }
+    .nav-links a { text-decoration: none; color: var(--mid); font-size: .875rem; font-weight: 500; }
+    .nav-cta { background: var(--green); color: #fff !important; padding: 6px 16px; border-radius: 8px; font-weight: 600 !important; }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f0f9ff 100%); border-bottom: 1px solid var(--light); padding: 64px 24px 56px; text-align: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--pale); border: 1px solid rgba(5,150,105,0.25); color: var(--green); font-size: .75rem; font-weight: 700; padding: 5px 14px; border-radius: 100px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: .06em; }
+    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; max-width: 700px; margin: 0 auto 16px; line-height: 1.1; }
+    .hero h1 em { color: var(--green); font-style: normal; }
+    .hero p { color: var(--mid); font-size: 1.05rem; max-width: 560px; margin: 0 auto 32px; }
+    .hero-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .hero-form input { flex: 1; min-width: 220px; padding: 13px 16px; border: 1.5px solid var(--light); border-radius: 10px; font-size: .95rem; background: #fff; outline: none; font-family: inherit; }
+    .hero-form input:focus { border-color: var(--green); }
+    .hero-form button { background: var(--green); color: #fff; border: none; border-radius: 10px; padding: 13px 22px; font-size: .95rem; font-weight: 700; cursor: pointer; font-family: inherit; white-space: nowrap; }
+    .hero-form button:hover { background: var(--green-dark); }
+    .hero-note { font-size: .75rem; color: var(--mid); margin-top: 10px; }
+    #success-msg { display: none; background: var(--pale); border: 1px solid rgba(5,150,105,0.3); border-radius: 10px; padding: 16px 24px; max-width: 420px; margin: 0 auto; color: var(--green-dark); font-weight: 600; font-size: .9rem; }
+
+    /* WHAT'S INSIDE */
+    main { max-width: 900px; margin: 0 auto; padding: 60px 24px 80px; }
+    .section-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--mid); margin-bottom: 24px; }
+    .chapters { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 56px; }
+    .chapter { background: var(--card); border: 1px solid var(--light); border-radius: 12px; padding: 22px; }
+    .chapter-num { font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+    .chapter h3 { font-family: 'Space Grotesk', sans-serif; font-size: .95rem; font-weight: 700; margin-bottom: 8px; }
+    .chapter p { font-size: .825rem; color: var(--mid); line-height: 1.5; }
+
+    /* STATS */
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; margin-bottom: 56px; }
+    .stat { background: var(--card); border: 1px solid var(--light); border-radius: 12px; padding: 22px; text-align: center; }
+    .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--green); line-height: 1; margin-bottom: 6px; }
+    .stat-lbl { font-size: .75rem; color: var(--mid); font-weight: 500; }
+
+    /* EXAMPLES */
+    .example-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 56px; }
+    .example { background: var(--card); border: 1px solid var(--light); border-radius: 12px; padding: 22px; }
+    .example-tag { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 3px 8px; border-radius: 4px; background: var(--pale); color: var(--green); display: inline-block; margin-bottom: 10px; }
+    .example h3 { font-family: 'Space Grotesk', sans-serif; font-size: .9rem; font-weight: 700; margin-bottom: 6px; }
+    .example p { font-size: .825rem; color: #374151; line-height: 1.5; }
+    .example-arrow { display: inline-block; background: #f0fdf4; border: 1px solid rgba(5,150,105,0.2); border-radius: 6px; padding: 6px 12px; font-size: .75rem; font-weight: 600; color: var(--green); margin-top: 10px; }
+
+    /* BOTTOM CTA */
+    .cta-box { background: var(--ink); color: #fff; border-radius: 16px; padding: 40px 32px; text-align: center; }
+    .cta-box h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
+    .cta-box p { color: #9ca3af; font-size: .9rem; margin-bottom: 24px; }
+    .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn-primary { background: var(--green); color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 10px; font-weight: 700; font-size: .95rem; }
+    .cta-btn-secondary { background: transparent; color: #9ca3af; text-decoration: none; padding: 12px 24px; border-radius: 10px; font-weight: 500; font-size: .95rem; border: 1px solid #374151; }
+
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--light); font-size: .8rem; color: var(--mid); }
+    footer a { color: var(--mid); text-decoration: none; }
+
+    @media (max-width: 540px) {
+      .hero-form { flex-direction: column; }
+      .hero-form input { width: 100%; }
+      .hero-form button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="/"><span>Signal</span>map</a>
+    <div class="nav-links">
+      <a href="/intelligence">Dashboard</a>
+      <a href="/blog">Blog</a>
+      <a href="/predictions">Predictions</a>
+      <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="nav-cta">Pro — €79/mo</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-badge">📘 Free Guide</div>
+    <h1>How to Read <em>Crypto Exchange</em> Hiring Signals</h1>
+    <p>The complete 2026 playbook — how to interpret job postings, Signal Score, and department-level hiring patterns to get ahead of exchange announcements.</p>
+    <div class="hero-form">
+      <input type="email" id="guide-email" placeholder="Enter your email" autocomplete="email">
+      <button onclick="getGuide()">Send me the guide →</button>
+    </div>
+    <p class="hero-note">Free. No credit card. Unsubscribe anytime.</p>
+    <div id="success-msg">✓ Guide sent! Check your inbox — and check out the live dashboard below.</div>
+  </div>
+
+  <main>
+    <p class="section-label">What's inside the guide</p>
+    <div class="chapters">
+      <div class="chapter">
+        <div class="chapter-num">Chapter 1</div>
+        <h3>Why Hiring Data Works as Alpha</h3>
+        <p>Job postings are public, legally required, and published 60–90 days before announcements. This chapter explains why they're one of the best leading indicators available.</p>
+      </div>
+      <div class="chapter">
+        <div class="chapter-num">Chapter 2</div>
+        <h3>The Signal Score Explained</h3>
+        <p>How Signalmap converts raw job count + velocity + department weighting into a 0–100 score. What scores above 80 mean, and how to act on them.</p>
+      </div>
+      <div class="chapter">
+        <div class="chapter-num">Chapter 3</div>
+        <h3>Department-Level Reading</h3>
+        <p>Compliance hires predict regulatory filings. Engineering surges predict product launches. Finance hires predict M&A or IPO. The full department decoding guide.</p>
+      </div>
+      <div class="chapter">
+        <div class="chapter-num">Chapter 4</div>
+        <h3>Exchange-by-Exchange Playbook</h3>
+        <p>What to watch at OKX, Binance, Coinbase, Kraken, Gemini, and Bitpanda — each exchange's current signal pattern and what it predicts for Q2 2026.</p>
+      </div>
+      <div class="chapter">
+        <div class="chapter-num">Chapter 5</div>
+        <h3>Timing Your Analysis</h3>
+        <p>How to set up weekly signal reviews, what threshold triggers an action, and how to combine hiring signals with price action for high-conviction setups.</p>
+      </div>
+      <div class="chapter">
+        <div class="chapter-num">Chapter 6</div>
+        <h3>Case Studies: Predictions That Hit</h3>
+        <p>Three verified examples where Signalmap's hiring analysis predicted exchange announcements 8–12 weeks in advance — with the exact signals and reasoning.</p>
+      </div>
+    </div>
+
+    <p class="section-label">By the numbers</p>
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">112</div><div class="stat-lbl">Blog posts</div></div>
+      <div class="stat"><div class="stat-num">41</div><div class="stat-lbl">Active predictions</div></div>
+      <div class="stat"><div class="stat-num">10</div><div class="stat-lbl">Exchanges tracked</div></div>
+      <div class="stat"><div class="stat-num">78%</div><div class="stat-lbl">Prediction accuracy</div></div>
+    </div>
+
+    <p class="section-label">Real examples</p>
+    <div class="example-grid">
+      <div class="example">
+        <span class="example-tag">OKX · Score 95/100</span>
+        <h3>446 roles open — Web3 &amp; DeFi concentration</h3>
+        <p>OKX's job mix: 38% engineering, 24% product, majority Web3-related. Pattern matches pre-major-product-launch posture from 2023.</p>
+        <div class="example-arrow">→ Prediction: Web3 wallet launch by May 2026</div>
+      </div>
+      <div class="example">
+        <span class="example-tag">Kraken · Score 72/100</span>
+        <h3>Finance &amp; Legal hires surging pre-IPO</h3>
+        <p>Kraken has added 12 finance/accounting roles and 8 legal/compliance roles in Q1 2026 — typical 12–18 month pre-IPO preparation pattern.</p>
+        <div class="example-arrow">→ Prediction: IPO filing Q3 2026</div>
+      </div>
+      <div class="example">
+        <span class="example-tag">Gemini · Score 22/100</span>
+        <h3>Only 8 open roles — signal freeze</h3>
+        <p>Gemini's near-zero hiring velocity is a meaningful signal: the exchange is in consolidation or cost-cutting mode, not expansion.</p>
+        <div class="example-arrow">→ Prediction: No major launches H1 2026</div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <h2>See the live signals now</h2>
+      <p>The guide gives you the framework — the dashboard gives you live data updated weekly for every exchange.</p>
+      <div class="cta-row">
+        <a class="cta-btn-primary" href="/intelligence">Open live dashboard →</a>
+        <a class="cta-btn-secondary" href="/predictions">View active predictions</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Signalmap &nbsp;·&nbsp; <a href="/">Home</a> &nbsp;·&nbsp; <a href="/blog">Blog</a> &nbsp;·&nbsp; <a href="/privacy">Privacy</a> &nbsp;·&nbsp; <a href="/unsubscribe">Unsubscribe</a></p>
+  </footer>
+
+  <script>
+  const SUPABASE_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
+
+  const ref = new URLSearchParams(location.search).get('ref') || '';
+
+  async function getGuide() {
+    const emailEl = document.getElementById('guide-email');
+    const email = emailEl.value.trim();
+    if (!email || !email.includes('@')) { emailEl.style.borderColor = '#dc2626'; return; }
+    emailEl.style.borderColor = '';
+
+    try {
+      const body = { email, source: 'guide', subscribed: true };
+      if (ref) body.referred_by = ref;
+      await fetch(`${SUPABASE_URL}/rest/v1/subscribers`, {
+        method: 'POST',
+        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', Prefer: 'resolution=ignore-duplicates' },
+        body: JSON.stringify(body)
+      });
+      document.querySelector('.hero-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+      document.querySelector('.hero-note').style.display = 'none';
+    } catch {
+      emailEl.style.borderColor = '#dc2626';
+    }
+  }
+
+  document.getElementById('guide-email').addEventListener('keydown', e => { if (e.key === 'Enter') getGuide(); });
+  </script>
+</body>
+</html>

@@ -12,6 +12,16 @@
   status = 200
 
 [[redirects]]
+  from = "/guide"
+  to = "/guide.html"
+  status = 200
+
+[[redirects]]
+  from = "/exchange/:slug"
+  to = "/exchange.html?id=:slug"
+  status = 200
+
+[[redirects]]
   from = "/exchange"
   to = "/exchange.html"
   status = 200
