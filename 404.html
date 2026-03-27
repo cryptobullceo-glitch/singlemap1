@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Signalmap</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --green: #059669; --green-dark: #065f46; --ink: #0A0A0B; --paper: #F7F7F4; --mid: #6B7280; --light: #E4E4E1; --pale: #ECFDF5; }
+    body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+    nav { background: rgba(247,247,244,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--light); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--green); }
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 24px; }
+    .content { text-align: center; max-width: 520px; }
+    .code { font-family: 'JetBrains Mono', monospace; font-size: 5rem; font-weight: 700; color: var(--green); line-height: 1; margin-bottom: 16px; }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
+    p { color: var(--mid); margin-bottom: 28px; }
+    .links { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 10px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: .875rem; }
+    .btn-green { background: var(--green); color: #fff; }
+    .btn-outline { border: 1.5px solid var(--light); color: var(--ink); }
+    .popular { margin-top: 36px; }
+    .popular h2 { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--mid); margin-bottom: 12px; }
+    .popular-links { display: flex; flex-direction: column; gap: 6px; }
+    .popular-link { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: #fff; border: 1px solid var(--light); border-radius: 8px; text-decoration: none; color: var(--ink); font-size: .8rem; font-weight: 500; }
+    .popular-link:hover { background: var(--pale); }
+    .popular-link::after { content: '→'; color: var(--green); margin-left: auto; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="/"><span>Signal</span>map</a>
+  </nav>
+  <main>
+    <div class="content">
+      <div class="code">404</div>
+      <h1>Page not found</h1>
+      <p>This page doesn't exist or may have moved. Try one of the links below.</p>
+      <div class="links">
+        <a href="/" class="btn btn-green">Go home</a>
+        <a href="/blog" class="btn btn-outline">Browse blog</a>
+      </div>
+      <div class="popular">
+        <h2>Popular pages</h2>
+        <div class="popular-links">
+          <a href="/intelligence" class="popular-link">Live CEX intelligence dashboard</a>
+          <a href="/predictions" class="popular-link">Prediction tracker</a>
+          <a href="/compare" class="popular-link">Compare exchanges</a>
+          <a href="/scorecard" class="popular-link">Predictions scorecard</a>
+          <a href="/enterprise" class="popular-link">Enterprise plans</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
