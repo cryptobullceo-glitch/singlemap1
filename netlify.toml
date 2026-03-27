@@ -46,6 +46,16 @@
   to = "/weekly.html"
   status = 200
 
+[[redirects]]
+  from = "/compare"
+  to = "/compare.html"
+  status = 200
+
+[[redirects]]
+  from = "/pricing"
+  to = "/#pricing"
+  status = 301
+
 [[headers]]
   for = "/*.html"
   [headers.values]
