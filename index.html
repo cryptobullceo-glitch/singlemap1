@@ -340,6 +340,7 @@
   <div class="stats" id="stats-bar">
     <div class="stat"><div class="stat-n" id="s-exchanges">10</div><div class="stat-l">Exchanges tracked</div></div>
     <div class="stat"><div class="stat-n" id="s-jobs">—</div><div class="stat-l">Active job listings</div></div>
+    <div class="stat"><div class="stat-n" id="s-posts">88+</div><div class="stat-l">Intelligence posts</div></div>
     <div class="stat"><div class="stat-n" id="s-preds">—</div><div class="stat-l">Predictions made</div></div>
     <div class="stat"><div class="stat-n" id="s-hit">—</div><div class="stat-l">Hit rate (resolved)</div></div>
   </div>
@@ -737,9 +738,12 @@ async function loadTicker() {
 
 async function loadStats() {
   try {
-    const [jobs, preds] = await Promise.all([
+    const [jobs, preds, postsR] = await Promise.all([
       db('job_listings', '?select=id&is_active=eq.true'),
       db('predictions', '?select=status'),
+      fetch(`${SUPABASE_URL}/rest/v1/blog_posts?published=eq.true&select=id`, {
+        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, Prefer: 'count=exact' }
+      }),
     ]);
     if (jobs?.length)  document.getElementById('s-jobs').textContent = jobs.length.toLocaleString();
     const total    = preds?.length ?? 0;
@@ -747,6 +751,10 @@ async function loadStats() {
     const resolved = preds?.filter(p => p.status !== 'active').length ?? 0;
     if (total)    document.getElementById('s-preds').textContent = total;
     if (resolved) document.getElementById('s-hit').textContent  = Math.round(correct/resolved*100) + '%';
+    // Blog post count
+    const range = postsR.headers?.get('content-range');
+    const postCount = range ? parseInt(range.split('/')[1]) : 88;
+    if (postCount > 0) document.getElementById('s-posts').textContent = postCount + '+';
   } catch(e) { console.warn('stats', e); }
 }
 
