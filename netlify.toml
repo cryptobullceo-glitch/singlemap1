@@ -63,8 +63,8 @@
 
 [[redirects]]
   from = "/pricing"
-  to = "/#pricing"
-  status = 301
+  to = "/pricing.html"
+  status = 200
 
 [[redirects]]
   from = "/sitemap-dynamic.xml"

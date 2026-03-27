@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — Signalmap Pro · €79/mo or €699/yr</title>
+  <meta name="description" content="Signalmap Pro: full crypto exchange hiring intelligence for €79/month or €699/year (save 26%). Includes live dashboard, 41 active predictions, weekly brief, and team access.">
+  <link rel="canonical" href="https://signalmap.live/pricing">
+  <meta property="og:title" content="Signalmap Pricing — €79/mo or €699/yr">
+  <meta property="og:description" content="Full crypto exchange hiring intelligence. €79/month or €699/year saves you €249.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Signalmap Pro",
+    "description": "Crypto exchange hiring intelligence platform — Signal Score, department breakdowns, 41 active predictions, weekly brief",
+    "url": "https://signalmap.live/pricing",
+    "brand": { "@type": "Brand", "name": "Signalmap" },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Pro Monthly",
+        "price": "79",
+        "priceCurrency": "EUR",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": "79", "priceCurrency": "EUR", "billingDuration": "P1M" },
+        "url": "https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro Annual",
+        "price": "699",
+        "priceCurrency": "EUR",
+        "priceSpecification": { "@type": "UnitPriceSpecification", "price": "699", "priceCurrency": "EUR", "billingDuration": "P1Y" },
+        "url": "https://buy.stripe.com/fZu28r0Qw4223yD7nb8k801"
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #059669; --green-dark: #047857; --ink: #0A0A0B;
+      --paper: #F7F7F4; --mid: #6B7280; --light: #E4E4E1;
+      --pale: #ECFDF5; --card: #FFFFFF;
+      --amber: #D97706; --amber-pale: #FFFBEB;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(247,247,244,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--light); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: .05em; display: flex; align-items: center; gap: 8px; }
+    .logo-icon { display: flex; align-items: flex-end; gap: 2px; height: 18px; }
+    .logo-icon span { background: var(--green); border-radius: 2px; width: 3px; }
+    .logo-icon span:nth-child(1) { height: 7px; opacity: .35; }
+    .logo-icon span:nth-child(2) { height: 10px; opacity: .55; }
+    .logo-icon span:nth-child(3) { height: 13px; opacity: .75; }
+    .logo-icon span:nth-child(4) { height: 16px; opacity: .9; }
+    .logo-icon span:nth-child(5) { height: 18px; }
+    .nav-links { display: flex; align-items: center; gap: 20px; }
+    .nav-links a { text-decoration: none; color: var(--mid); font-size: .875rem; font-weight: 500; }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* HERO */
+    .hero { text-align: center; padding: 64px 24px 48px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--amber-pale); border: 1px solid rgba(217,119,6,.25); color: var(--amber); font-size: .75rem; font-weight: 700; padding: 5px 14px; border-radius: 100px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: .06em; }
+    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 14px; }
+    .hero p { color: var(--mid); font-size: 1.05rem; max-width: 500px; margin: 0 auto; }
+
+    /* PLAN CARDS */
+    .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 900px; margin: 48px auto 0; padding: 0 24px; }
+    .plan { background: var(--card); border: 1.5px solid var(--light); border-radius: 16px; padding: 32px; position: relative; }
+    .plan.recommended { border-color: var(--green); box-shadow: 0 0 0 4px rgba(5,150,105,.08); }
+    .plan-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; font-size: .7rem; font-weight: 700; padding: 4px 14px; border-radius: 100px; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+    .plan-name { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: var(--mid); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px; }
+    .plan-price { display: flex; align-items: flex-end; gap: 6px; margin-bottom: 6px; }
+    .plan-price-num { font-family: 'JetBrains Mono', monospace; font-size: 3rem; font-weight: 700; color: var(--ink); line-height: 1; }
+    .plan-price-unit { font-size: .9rem; color: var(--mid); padding-bottom: 6px; }
+    .plan-save { font-size: .8rem; font-weight: 700; color: var(--green); background: var(--pale); padding: 3px 10px; border-radius: 100px; margin-bottom: 20px; display: inline-block; }
+    .plan-note { font-size: .8rem; color: var(--mid); margin-bottom: 20px; height: 18px; }
+    .plan-btn { display: block; text-align: center; padding: 13px; border-radius: 10px; font-weight: 700; font-size: .95rem; text-decoration: none; transition: background .15s; }
+    .plan-btn-primary { background: var(--green); color: #fff; }
+    .plan-btn-primary:hover { background: var(--green-dark); }
+    .plan-btn-secondary { background: transparent; color: var(--green); border: 1.5px solid var(--green); }
+    .plan-btn-secondary:hover { background: var(--pale); }
+    .plan-btn-enterprise { background: var(--ink); color: #fff; }
+    .plan-btn-enterprise:hover { background: #18181B; }
+    .plan-divider { border: none; border-top: 1px solid var(--light); margin: 20px 0; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .plan-features li { font-size: .875rem; color: #374151; display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+    .plan-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .plan-features li.muted { color: var(--mid); }
+    .plan-features li.muted::before { content: '—'; color: var(--light); }
+
+    /* FEATURE TABLE */
+    .comparison { max-width: 860px; margin: 72px auto 0; padding: 0 24px; }
+    .comp-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; text-align: center; margin-bottom: 32px; }
+    table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--light); }
+    th { background: #F9FAFB; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--mid); padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--light); }
+    th:not(:first-child) { text-align: center; }
+    td { padding: 13px 18px; font-size: .875rem; border-bottom: 1px solid var(--light); vertical-align: middle; }
+    td:not(:first-child) { text-align: center; }
+    tr:last-child td { border-bottom: none; }
+    .check { color: var(--green); font-weight: 700; font-size: 1rem; }
+    .dash { color: var(--light); font-size: 1rem; }
+    .row-label { font-weight: 500; }
+
+    /* FAQ */
+    .faq { max-width: 680px; margin: 72px auto 0; padding: 0 24px; }
+    .faq-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; text-align: center; margin-bottom: 32px; }
+    .faq-item { border-bottom: 1px solid var(--light); }
+    .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 18px 0; font-size: .95rem; font-weight: 600; color: var(--ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: inherit; }
+    .faq-q:hover { color: var(--green); }
+    .faq-icon { flex-shrink: 0; font-size: 1.2rem; color: var(--mid); transition: transform .2s; }
+    .faq-a { font-size: .9rem; color: var(--mid); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .2s; }
+    .faq-item.open .faq-a { max-height: 300px; padding-bottom: 18px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* BOTTOM CTA */
+    .bottom-cta { background: var(--ink); text-align: center; padding: 72px 24px; margin-top: 72px; }
+    .bottom-cta h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .bottom-cta p { color: #9CA3AF; font-size: .95rem; max-width: 460px; margin: 0 auto 28px; }
+    .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .cta-primary { background: var(--green); color: #fff; text-decoration: none; padding: 13px 28px; border-radius: 10px; font-weight: 700; font-size: .95rem; }
+    .cta-secondary { background: transparent; color: #9CA3AF; text-decoration: none; padding: 13px 28px; border-radius: 10px; font-weight: 500; font-size: .95rem; border: 1px solid #374151; }
+    .guarantee { display: flex; align-items: center; gap: 8px; justify-content: center; margin-top: 20px; font-size: .8rem; color: #6B7280; }
+
+    footer { text-align: center; padding: 32px 24px; font-size: .8rem; color: var(--mid); }
+    footer a { color: var(--mid); text-decoration: none; }
+
+    @media (max-width: 600px) { .plans { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="/"><div class="logo-icon"><span></span><span></span><span></span><span></span><span></span></div>SIGNALMAP</a>
+  <div class="nav-links">
+    <a href="/intelligence">Dashboard</a>
+    <a href="/predictions">Predictions</a>
+    <a href="/enterprise">Enterprise</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">💰 Simple, transparent pricing</div>
+  <h1>Choose your plan</h1>
+  <p>Start free with the weekly brief. Upgrade to Pro for the full signal stack — live dashboard, predictions, and department-level intelligence.</p>
+</div>
+
+<div class="plans">
+  <!-- FREE -->
+  <div class="plan">
+    <div class="plan-name">Free</div>
+    <div class="plan-price">
+      <div class="plan-price-num">€0</div>
+      <div class="plan-price-unit">/mo</div>
+    </div>
+    <div class="plan-note">No credit card required</div>
+    <a href="/" class="plan-btn plan-btn-secondary">Subscribe free →</a>
+    <hr class="plan-divider">
+    <ul class="plan-features">
+      <li>Weekly signal brief (Fridays)</li>
+      <li>Top exchange by hiring volume</li>
+      <li>Signal of the week highlight</li>
+      <li class="muted">Live dashboard access</li>
+      <li class="muted">Department breakdowns</li>
+      <li class="muted">41 active predictions</li>
+      <li class="muted">Compare tool (all exchanges)</li>
+      <li class="muted">Regulatory radar</li>
+    </ul>
+  </div>
+
+  <!-- PRO ANNUAL (recommended) -->
+  <div class="plan recommended">
+    <div class="plan-badge">Most popular</div>
+    <div class="plan-name">Pro Annual</div>
+    <div class="plan-price">
+      <div class="plan-price-num">€699</div>
+      <div class="plan-price-unit">/year</div>
+    </div>
+    <div class="plan-save">Save €249 vs monthly — €58/mo effective</div>
+    <a href="https://buy.stripe.com/fZu28r0Qw4223yD7nb8k801" class="plan-btn plan-btn-primary">Start Pro Annual →</a>
+    <hr class="plan-divider">
+    <ul class="plan-features">
+      <li>Everything in Free</li>
+      <li>Live CEX Intelligence Dashboard</li>
+      <li>Department-level breakdowns (compliance, eng, product, legal)</li>
+      <li>41 active predictions with rationale + confidence</li>
+      <li>Exchange compare tool — all pairs</li>
+      <li>Regulatory radar — MiCA, SEC, FCA signals</li>
+      <li>Historical signal data (18 months)</li>
+      <li>Exchange-specific hiring alerts</li>
+    </ul>
+  </div>
+
+  <!-- PRO MONTHLY -->
+  <div class="plan">
+    <div class="plan-name">Pro Monthly</div>
+    <div class="plan-price">
+      <div class="plan-price-num">€79</div>
+      <div class="plan-price-unit">/mo</div>
+    </div>
+    <div class="plan-note">Cancel anytime</div>
+    <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="plan-btn plan-btn-secondary">Start Pro Monthly →</a>
+    <hr class="plan-divider">
+    <ul class="plan-features">
+      <li>Everything in Free</li>
+      <li>Live CEX Intelligence Dashboard</li>
+      <li>Department-level breakdowns</li>
+      <li>41 active predictions with rationale</li>
+      <li>Exchange compare tool</li>
+      <li>Regulatory radar</li>
+      <li>Historical signal data (18 months)</li>
+      <li>Exchange-specific hiring alerts</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Enterprise note -->
+<p style="text-align:center;margin:24px 24px 0;font-size:.875rem;color:var(--mid)">
+  Need team seats, API access, or custom data? <a href="/enterprise" style="color:var(--green);font-weight:600;text-decoration:none">See Enterprise →</a>
+</p>
+
+<!-- COMPARISON TABLE -->
+<div class="comparison">
+  <div class="comp-title">What's included</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Free</th>
+        <th>Pro</th>
+        <th>Enterprise</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="row-label">Weekly signal brief (email)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td class="row-label">Live CEX Intelligence Dashboard</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td class="row-label">Department breakdown (compliance, eng, product)</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td class="row-label">Signal Score for all 10 exchanges</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td class="row-label">Active predictions (41) with rationale</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td class="row-label">Exchange compare tool</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td class="row-label">Regulatory radar (MiCA, SEC, FCA)</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td class="row-label">18-month historical data</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td class="row-label">Exchange-specific signal alerts</td><td><span class="dash">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td class="row-label">API access</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td class="row-label">Team seats (up to 5)</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td class="row-label">Dedicated Slack channel</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td class="row-label">Weekly briefing call</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+      <tr><td class="row-label">Raw data exports (CSV/JSON)</td><td><span class="dash">—</span></td><td><span class="dash">—</span></td><td><span class="check">✓</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+  <div class="faq-title">Frequently asked questions</div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What data sources power Signalmap?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Signalmap aggregates publicly available job postings from exchange career pages, LinkedIn, and third-party job boards for 10 major crypto exchanges: Coinbase, Binance, OKX, Kraken, Gemini, Bitpanda, Bitvavo, BitMEX, Crypto.com, and Robinhood Crypto. Data is refreshed weekly. We do not use proprietary or non-public data.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      How accurate are the predictions?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Our current resolved prediction accuracy rate is 78%. Predictions are published with full rationale, evidence (specific roles and counts), a confidence score (0–100%), and a target horizon. You can see all active and resolved predictions at signalmap.live/predictions. We publish outcomes publicly, including misses.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Can I cancel anytime?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Yes. Monthly plans cancel immediately with no questions. Annual plans are non-refundable but you keep access through the end of your billing period. Cancel from your Stripe customer portal or reply to any email from us.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      What does "department breakdown" mean?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      For each exchange, we categorize open roles into departments: compliance, engineering, product, legal, finance, marketing, and operations. The department breakdown shows the count and percentage of roles in each department, and the week-over-week change. Compliance-heavy hiring often precedes regulatory actions; product-heavy hiring often precedes launches.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Is there a free trial for Pro?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      There's no free trial for Pro, but the Free tier gives you a real taste — the Friday weekly brief includes our top signal picks and prediction updates. You can also read all 118 of our published intelligence posts for free at signalmap.live/blog before deciding.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Is Signalmap investment advice?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      No. Signalmap provides data and analysis based on publicly available hiring information. Nothing on this site constitutes financial or investment advice. Predictions are analytical exercises based on pattern recognition, not guarantees of future events. Always do your own research.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-q" onclick="toggle(this)">
+      Do you offer team or enterprise pricing?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-a">
+      Yes. Enterprise includes 5 team seats, API access, dedicated Slack, weekly briefing calls, and raw data exports for €299/month. See signalmap.live/enterprise or email us directly to discuss a custom arrangement.
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <h2>Start reading the signal.</h2>
+  <p>Join analysts, traders, and researchers using hiring data to get ahead of crypto exchange moves.</p>
+  <div class="cta-row">
+    <a class="cta-primary" href="https://buy.stripe.com/fZu28r0Qw4223yD7nb8k801">Pro Annual — €699/yr →</a>
+    <a class="cta-secondary" href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800">Monthly — €79/mo</a>
+  </div>
+  <div class="guarantee">🔒 Secure checkout via Stripe &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; GDPR compliant</div>
+</div>
+
+<footer>
+  <p>© 2026 Signalmap &nbsp;·&nbsp; <a href="/">Home</a> &nbsp;·&nbsp; <a href="/blog">Blog</a> &nbsp;·&nbsp; <a href="/predictions">Predictions</a> &nbsp;·&nbsp; <a href="/enterprise">Enterprise</a> &nbsp;·&nbsp; <a href="/privacy">Privacy</a></p>
+</footer>
+
+<script>
+function toggle(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
