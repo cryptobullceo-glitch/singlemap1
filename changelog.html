@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Changelog — Signalmap</title>
+  <meta name="description" content="What's new in Signalmap — product updates, new exchanges tracked, new features, and intelligence improvements.">
+  <link rel="canonical" href="https://signalmap.live/changelog">
+  <meta property="og:title" content="Signalmap Changelog">
+  <meta property="og:description" content="What's new — product updates, new exchanges, new features.">
+  <meta property="og:url" content="https://signalmap.live/changelog">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --green: #059669; --green-dark: #065f46; --ink: #0A0A0B; --paper: #F7F7F4; --mid: #6B7280; --light: #E4E4E1; --pale: #ECFDF5; --card: #FFFFFF; --alt-bg: #F0F0ED; }
+    body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(247,247,244,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--light); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--green); }
+    .nav-links { display: flex; align-items: center; gap: 20px; }
+    .nav-links a { text-decoration: none; color: var(--mid); font-size: .875rem; font-weight: 500; }
+    .nav-cta { background: var(--green); color: #fff !important; padding: 6px 16px; border-radius: 8px; font-weight: 600 !important; }
+
+    main { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
+    .hero { margin-bottom: 56px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--pale); border: 1px solid rgba(5,150,105,0.25); color: var(--green); font-size: .75rem; font-weight: 600; padding: 4px 12px; border-radius: 100px; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .05em; }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+    .hero p { color: var(--mid); font-size: .95rem; }
+
+    /* Timeline */
+    .timeline { position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 120px; top: 0; bottom: 0; width: 1px; background: var(--light); }
+
+    .entry { display: grid; grid-template-columns: 120px 1fr; gap: 0 32px; margin-bottom: 48px; position: relative; }
+    .entry-date { padding-top: 4px; text-align: right; }
+    .entry-date-text { font-family: 'JetBrains Mono', monospace; font-size: .7rem; font-weight: 600; color: var(--mid); text-transform: uppercase; letter-spacing: .05em; }
+    .entry-version { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: .75rem; font-weight: 700; color: var(--green); background: var(--pale); border: 1px solid rgba(5,150,105,0.2); padding: 2px 6px; border-radius: 4px; margin-top: 4px; }
+
+    .entry-dot { position: absolute; left: 113px; top: 6px; width: 14px; height: 14px; background: var(--card); border: 2px solid var(--green); border-radius: 50%; z-index: 1; }
+    .entry-dot.major { background: var(--green); }
+
+    .entry-body { padding-left: 0; }
+    .entry-body h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .entry-body p { font-size: .875rem; color: #374151; margin-bottom: 8px; }
+    .entry-body ul { font-size: .875rem; color: #374151; margin-left: 18px; margin-bottom: 8px; }
+    .entry-body li { margin-bottom: 4px; }
+    .tag { display: inline-block; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; padding: 2px 7px; border-radius: 100px; margin-right: 4px; margin-bottom: 8px; }
+    .tag-new { background: #DCFCE7; color: #166534; }
+    .tag-improved { background: #DBEAFE; color: #1E40AF; }
+    .tag-fix { background: #FEF3C7; color: #92400E; }
+    .tag-content { background: var(--pale); color: var(--green-dark); }
+
+    footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--light); font-size: .8rem; color: var(--mid); }
+    footer a { color: var(--mid); text-decoration: none; }
+
+    @media (max-width: 540px) {
+      .timeline::before { left: 80px; }
+      .entry { grid-template-columns: 80px 1fr; gap: 0 20px; }
+      .entry-dot { left: 73px; }
+      .entry-date-text { font-size: .6rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-logo" href="/"><span>Signal</span>map</a>
+    <div class="nav-links">
+      <a href="/blog">Blog</a>
+      <a href="/predictions">Predictions</a>
+      <a href="/#pricing" class="nav-cta">Pro — €79/mo</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="hero">
+      <div class="hero-badge">📋 Changelog</div>
+      <h1>What's new in Signalmap</h1>
+      <p>Product updates, new exchanges, new features, and intelligence improvements — logged here as they ship.</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="entry">
+        <div class="entry-date">
+          <div class="entry-date-text">Mar 27, 2026</div>
+          <div class="entry-version">v1.8</div>
+        </div>
+        <div class="entry-dot major"></div>
+        <div class="entry-body">
+          <span class="tag tag-new">New</span><span class="tag tag-new">New</span><span class="tag tag-improved">Improved</span>
+          <h2>Exchange comparison, predictions tracker, enterprise page</h2>
+          <ul>
+            <li><strong>Compare tool</strong> — side-by-side Signal Score comparison for any two exchanges, with shareable URLs (/compare?a=Coinbase&b=Binance)</li>
+            <li><strong>Predictions tracker</strong> — public page showing all predictions, accuracy stats, and resolution history</li>
+            <li><strong>Enterprise landing page</strong> — dedicated B2B page with features, pricing, and demo request form</li>
+            <li><strong>93 intelligence posts</strong> published — covering exchange spotlights, topic deep-dives, comparisons, and SEO content</li>
+            <li><strong>41 active predictions</strong> across 8 exchanges with full rationale</li>
+            <li><strong>Dynamic sitemap</strong> — auto-updates as new posts are published</li>
+            <li><strong>IndexNow integration</strong> — new posts submitted to search engines automatically every 6 hours</li>
+            <li>Unsubscribe page, privacy policy, custom 404</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">
+          <div class="entry-date-text">Mar 25, 2026</div>
+          <div class="entry-version">v1.7</div>
+        </div>
+        <div class="entry-dot"></div>
+        <div class="entry-body">
+          <span class="tag tag-new">New</span><span class="tag tag-improved">Improved</span>
+          <h2>Referral system + blog infrastructure</h2>
+          <ul>
+            <li><strong>Referral system</strong> — 3 referrals = 1 free Pro month, tracked automatically</li>
+            <li><strong>Blog live</strong> — /blog listing page + /blog/[slug] post renderer</li>
+            <li><strong>63 blog posts</strong> seeded covering hiring signals, exchange analysis, comparisons</li>
+            <li>Referral tracking edge function with email notifications</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">
+          <div class="entry-date-text">Mar 22, 2026</div>
+          <div class="entry-version">v1.6</div>
+        </div>
+        <div class="entry-dot"></div>
+        <div class="entry-body">
+          <span class="tag tag-new">New</span><span class="tag tag-improved">Improved</span>
+          <h2>Email automation: drip + weekly brief + prediction alerts</h2>
+          <ul>
+            <li><strong>6-email drip sequence</strong> — automated onboarding over 30 days</li>
+            <li><strong>Weekly brief</strong> — HTML email every Friday with signal leaderboard + predictions</li>
+            <li><strong>Prediction tracker</strong> — sends viral "hit" emails when predictions confirm, transparency emails on misses</li>
+            <li>Cold outreach edge function with 4 prospect segments</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">
+          <div class="entry-date-text">Mar 20, 2026</div>
+          <div class="entry-version">v1.5</div>
+        </div>
+        <div class="entry-dot"></div>
+        <div class="entry-body">
+          <span class="tag tag-improved">Improved</span>
+          <h2>EUR pricing + annual plan + team tier</h2>
+          <ul>
+            <li>All pricing switched to EUR (€79/mo, €699/yr)</li>
+            <li>Annual plan with Stripe payment link (saves €249)</li>
+            <li>Team/Enterprise tier added (€299/mo, 5 seats)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">
+          <div class="entry-date-text">Mar 15, 2026</div>
+          <div class="entry-version">v1.4</div>
+        </div>
+        <div class="entry-dot"></div>
+        <div class="entry-body">
+          <span class="tag tag-new">New</span>
+          <h2>29 predictions published + scorecard</h2>
+          <ul>
+            <li>29 high-confidence predictions across Coinbase, Binance, OKX, Kraken, Gemini</li>
+            <li>Public scorecard page showing prediction history and accuracy</li>
+            <li>Prediction rationale based on department-level hiring analysis</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">
+          <div class="entry-date-text">Mar 1, 2026</div>
+          <div class="entry-version">v1.0</div>
+        </div>
+        <div class="entry-dot major"></div>
+        <div class="entry-body">
+          <span class="tag tag-new">Launch</span>
+          <h2>Signalmap launches</h2>
+          <ul>
+            <li>Live dashboard tracking 10 crypto exchanges</li>
+            <li>Signal Score algorithm (0–100) based on hiring velocity + department weighting</li>
+            <li>Weekly intelligence brief email</li>
+            <li>Free tier + Pro subscription (€79/mo)</li>
+            <li>Exchange-specific pages for Coinbase, Binance, OKX, Kraken, Gemini, Bitpanda, BitMEX, Bitvavo</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Signalmap &nbsp;·&nbsp; <a href="/">Home</a> &nbsp;·&nbsp; <a href="/blog">Blog</a> &nbsp;·&nbsp; <a href="/privacy">Privacy</a></p>
+  </footer>
+</body>
+</html>
