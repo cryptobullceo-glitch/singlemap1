@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://signalmap.live/sitemap.xml
+Sitemap: https://signalmap.live/sitemap-dynamic.xml
