@@ -162,6 +162,15 @@
     .share-bar-desktop {
       background: #fff; border: 1px solid var(--light); border-radius: 12px; padding: 20px;
     }
+    /* SIDEBAR QUICK LINKS */
+    .sidebar-quicklinks {
+      background: #fff; border: 1px solid var(--light); border-radius: 12px; padding: 18px;
+    }
+    .sidebar-quicklinks .ql-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--mid); margin-bottom: 12px; }
+    .sidebar-quicklinks a { display: flex; align-items: center; gap: 8px; padding: 7px 0; font-size: 13px; font-weight: 500; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--light); }
+    .sidebar-quicklinks a:last-child { border-bottom: none; padding-bottom: 0; }
+    .sidebar-quicklinks a:hover { color: var(--green); }
+    .sidebar-quicklinks a::after { content: '→'; margin-left: auto; color: var(--green); font-size: 12px; }
     .share-bar-desktop .share-label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mid); margin-bottom: 12px; }
     .share-bar-desktop .share-btns { display: flex; flex-direction: column; gap: 8px; }
     .share-bar-desktop .share-btn { justify-content: center; }
@@ -309,7 +318,7 @@
           <button type="submit" id="subscribe-btn">Subscribe free</button>
         </form>
         <div id="cta-msg"></div>
-        <p class="mid-cta-note">or <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" target="_blank" rel="noopener">upgrade to Pro →</a></p>
+        <p class="mid-cta-note">or <a href="/pricing">see Pro plans →</a> &nbsp;·&nbsp; <a href="/predictions">54 active predictions →</a></p>
       </div>
 
       <!-- Related Posts -->
@@ -335,6 +344,17 @@
               Copy link
             </button>
           </div>
+        </div>
+
+        <!-- Quick links widget -->
+        <div class="sidebar-quicklinks">
+          <div class="ql-title">Explore Signalmap</div>
+          <a href="/intelligence">Live CEX dashboard</a>
+          <a href="/predictions">54 active predictions</a>
+          <a href="/compare">Compare exchanges</a>
+          <a href="/scorecard">Prediction scorecard</a>
+          <a href="/guide">Free signal guide</a>
+          <a href="/pricing">Pro — €79/mo</a>
         </div>
       </div>
     </aside>
@@ -556,7 +576,7 @@
   function renderRelated(posts) {
     const grid = document.getElementById('related-grid');
     grid.innerHTML = posts.map(p => `
-      <a href="/post.html?slug=${encodeURIComponent(p.slug)}" class="related-card">
+      <a href="/blog/${encodeURIComponent(p.slug)}" class="related-card">
         <div class="related-card-date">${formatDate(p.created_at)}</div>
         <div class="related-card-title">${escapeHtml(p.title)}</div>
       </a>
