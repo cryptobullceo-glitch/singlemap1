@@ -535,7 +535,7 @@
       </div>
     </div>
   </div>
-  <p class="pred-footer"><a href="/predictions">View all 54 predictions and outcomes →</a></p>
+  <p class="pred-footer"><a href="/predictions">View all 64 predictions and outcomes →</a></p>
 </div>
 
 <!-- PRICING -->
@@ -717,7 +717,7 @@
 <!-- BOTTOM CTA -->
 <div class="bottom-cta">
   <h2>Start reading the signal.</h2>
-  <p>Free weekly brief every Friday. Upgrade to Pro for the full signal stack — dashboard, 54 predictions, department breakdowns. <strong style="color:#fff">83% accuracy.</strong></p>
+  <p>Free weekly brief every Friday. Upgrade to Pro for the full signal stack — dashboard, 64 predictions, department breakdowns. <strong style="color:#fff">83% accuracy.</strong></p>
   <div class="bottom-cta-btns">
     <a href="/pricing" class="btn-primary">See Pro plans →</a>
     <button class="btn-ghost" onclick="window.scrollTo({top:0,behavior:'smooth'})">Get free brief →</button>
@@ -754,7 +754,7 @@
 </footer>
 
 <div class="sticky-cta" id="sticky-cta">
-  <span class="sticky-cta-text"><strong>54 active predictions</strong> · 83% accuracy · Save €249 with annual</span>
+  <span class="sticky-cta-text"><strong>64 active predictions</strong> · 83% accuracy · Save €249 with annual</span>
   <a href="/pricing" class="sticky-cta-btn">See Pro plans →</a>
   <button class="sticky-cta-dismiss" onclick="dismissSticky()" aria-label="Dismiss">✕</button>
 </div>
@@ -797,7 +797,7 @@ const STATIC_SIGNALS = [
   { exchange_id: 'bitvavo',   score: 57, total_active: 76,  compliance_count: 12 },
 ];
 const STATIC_JOBS  = 1417;
-const STATIC_PREDS = 54;
+const STATIC_PREDS = 64;
 const STATIC_HIT   = '83%';
 
 function renderTicker(signals) {
@@ -898,7 +898,7 @@ document.getElementById('subscribe-form').addEventListener('submit', async (e) =
       if (_refCode) {
         msg.innerHTML = '✓ You\'re on the list! Your referrer has been notified. &nbsp;<a href="/archive" style="color:var(--green);font-weight:700;text-decoration:none">Browse past issues →</a>';
       } else {
-        msg.innerHTML = '✓ You\'re on the list. Brief arrives Fridays. &nbsp;<a href="/archive" style="color:var(--green);font-weight:700;text-decoration:none">Browse past issues →</a> &nbsp;·&nbsp; <a href="/predictions" style="color:var(--green);font-weight:700;text-decoration:none">See 54 active predictions →</a>';
+        msg.innerHTML = '✓ You\'re on the list. Brief arrives Fridays. &nbsp;<a href="/archive" style="color:var(--green);font-weight:700;text-decoration:none">Browse past issues →</a> &nbsp;·&nbsp; <a href="/predictions" style="color:var(--green);font-weight:700;text-decoration:none">See 64 active predictions →</a>';
       }
     } else {
       msg.style.color = '#DC2626'; msg.textContent = 'Something went wrong — try again.';
