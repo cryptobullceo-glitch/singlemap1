@@ -202,8 +202,8 @@
     }
 
     function getStatus(p) {
-      if (p.status === 'correct') return 'hit';
-      if (p.status === 'incorrect') return 'miss';
+      if (p.status === 'correct' || p.status === 'announced') return 'hit';
+      if (p.status === 'incorrect' || p.status === 'expired') return 'miss';
       return 'active';
     }
 
@@ -278,8 +278,8 @@
 
     function updateAccuracy() {
       const total = allPredictions.length;
-      const hit = allPredictions.filter(p => p.status === 'correct').length;
-      const miss = allPredictions.filter(p => p.status === 'incorrect').length;
+      const hit = allPredictions.filter(p => p.status === 'correct' || p.status === 'announced').length;
+      const miss = allPredictions.filter(p => p.status === 'incorrect' || p.status === 'expired').length;
       const active = total - hit - miss;
       const pct = total > 0 ? Math.round((hit / Math.max(1, hit + miss)) * 100) : 0;
 
