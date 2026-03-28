@@ -254,6 +254,18 @@
   <url><loc>https://signalmap.live/compare?a=Bitpanda&amp;b=Bitvavo</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://signalmap.live/compare?a=OKX&amp;b=Gemini</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
 
+  <!-- Batch J posts: DeFi, NFT, payments, institutional (Mar 2026) -->
+  <url><loc>https://signalmap.live/blog/crypto-exchange-defi-hiring-signals-2026</loc><lastmod>2026-03-28</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://signalmap.live/blog/crypto-exchange-nft-hiring-signals-2026</loc><lastmod>2026-03-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://signalmap.live/blog/binance-us-vs-binance-global-hiring-2026</loc><lastmod>2026-03-28</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://signalmap.live/blog/coinbase-institutional-hiring-signals-2026</loc><lastmod>2026-03-28</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://signalmap.live/blog/crypto-exchange-payments-hiring-2026</loc><lastmod>2026-03-28</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://signalmap.live/blog/kraken-futures-hiring-signals-2026</loc><lastmod>2026-03-28</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://signalmap.live/blog/bybit-global-expansion-hiring-2026</loc><lastmod>2026-03-28</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://signalmap.live/blog/coinbase-base-l2-hiring-signals-2026</loc><lastmod>2026-03-28</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://signalmap.live/blog/okx-institutional-expansion-2026</loc><lastmod>2026-03-28</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
+  <url><loc>https://signalmap.live/blog/crypto-exchange-security-hiring-2026</loc><lastmod>2026-03-28</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
   <!-- Batch I posts: comparison & analysis (Mar 2026) -->
   <url><loc>https://signalmap.live/blog/coinbase-vs-kraken-hiring-comparison-2026</loc><lastmod>2026-03-28</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://signalmap.live/blog/okx-vs-binance-hiring-comparison-2026</loc><lastmod>2026-03-28</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>

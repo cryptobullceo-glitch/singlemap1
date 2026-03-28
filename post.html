@@ -162,6 +162,17 @@
     .share-bar-desktop {
       background: #fff; border: 1px solid var(--light); border-radius: 12px; padding: 20px;
     }
+    /* SIDEBAR PRO CARD */
+    .sidebar-pro-card { background: linear-gradient(135deg, #065f46 0%, #047857 100%); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+    .spc-badge { display: inline-block; background: rgba(255,255,255,.2); color: #fff; font-size: .65rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-bottom: 10px; }
+    .spc-title { font-family: 'Space Grotesk', sans-serif; font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .spc-features { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .spc-features li { font-size: .78rem; color: rgba(255,255,255,.85); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
+    .spc-features li::before { content: '✓'; color: #6EE7B7; font-weight: 700; flex-shrink: 0; }
+    .spc-btn { display: block; text-align: center; background: #fff; color: #065f46; font-weight: 700; font-size: .85rem; padding: 10px; border-radius: 8px; text-decoration: none; margin-bottom: 8px; }
+    .spc-btn:hover { background: #ECFDF5; }
+    .spc-note { font-size: .72rem; color: rgba(255,255,255,.6); text-align: center; }
+
     /* SIDEBAR QUICK LINKS */
     .sidebar-quicklinks {
       background: #fff; border: 1px solid var(--light); border-radius: 12px; padding: 18px;
@@ -346,6 +357,21 @@
           </div>
         </div>
 
+        <!-- Pro upgrade card -->
+        <div class="sidebar-pro-card">
+          <div class="spc-badge">Pro</div>
+          <div class="spc-title">Get the full signal stack</div>
+          <ul class="spc-features">
+            <li>54 active predictions (83% accuracy)</li>
+            <li>Live exchange dashboard</li>
+            <li>Department-level breakdowns</li>
+            <li>Compare all 10 exchanges</li>
+            <li>Regulatory radar</li>
+          </ul>
+          <a href="/pricing" class="spc-btn">See Pro plans →</a>
+          <div class="spc-note">€699/yr · 14-day guarantee</div>
+        </div>
+
         <!-- Quick links widget -->
         <div class="sidebar-quicklinks">
           <div class="ql-title">Explore Signalmap</div>
@@ -354,7 +380,6 @@
           <a href="/compare">Compare exchanges</a>
           <a href="/scorecard">Prediction scorecard</a>
           <a href="/guide">Free signal guide</a>
-          <a href="/pricing">Pro — €79/mo</a>
         </div>
       </div>
     </aside>
