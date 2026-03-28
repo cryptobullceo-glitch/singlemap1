@@ -412,21 +412,37 @@
     let canonical = document.querySelector('link[rel="canonical"]');
     canonical.setAttribute('href', url);
 
-    // JSON-LD
+    // JSON-LD - enriched with Article + BreadcrumbList for rich snippets
     const schema = {
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": post.title,
-      "description": post.meta_description || '',
+      "description": post.meta_description || post.title,
       "url": url,
+      "mainEntityOfPage": { "@type": "WebPage", "@id": url },
       "publisher": {
         "@type": "Organization",
         "name": "Signalmap",
-        "url": "https://signalmap.live"
+        "url": "https://signalmap.live",
+        "logo": { "@type": "ImageObject", "url": "https://signalmap.live/favicon.ico" }
       },
-      "datePublished": post.created_at
+      "author": { "@type": "Organization", "name": "Signalmap", "url": "https://signalmap.live" },
+      "datePublished": post.created_at,
+      "dateModified": post.created_at,
+      "keywords": (post.tags || []).join(', '),
+      "articleSection": "Crypto Exchange Intelligence",
+      "inLanguage": "en"
     };
-    document.getElementById('json-ld').textContent = JSON.stringify(schema);
+    const breadcrumb = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://signalmap.live" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://signalmap.live/blog" },
+        { "@type": "ListItem", "position": 3, "name": post.title, "item": url }
+      ]
+    };
+    document.getElementById('json-ld').textContent = JSON.stringify([schema, breadcrumb]);
   }
 
   function setShareLinks(post) {
