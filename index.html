@@ -322,7 +322,7 @@
     <button type="submit">Get the free brief →</button>
   </form>
   <div id="form-msg" style="display:none"></div>
-  <p class="form-note" id="form-note"><span id="sub-count-note">Free every Friday. No spam.</span> <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" style="color:var(--green);font-weight:600;text-decoration:none">Pro — €79/mo</a> unlocks the full dashboard.</p>
+  <p class="form-note" id="form-note"><span id="sub-count-note">Free every Friday. No spam.</span> <a href="/pricing" style="color:var(--green);font-weight:600;text-decoration:none">Pro — €79/mo</a> unlocks the full dashboard.</p>
   <p style="margin-top:8px;font-size:13px;color:var(--mid)">Want to see what you're getting? <a href="/archive" style="color:var(--green);font-weight:600;text-decoration:none">Browse past issues →</a> &nbsp;·&nbsp; <a href="/guide" style="color:var(--green);font-weight:600;text-decoration:none">Free signal guide →</a></p>
 </section>
 
@@ -450,7 +450,7 @@
     </div>
     <div class="sample-brief-cta">
       <p>The third signal and 4 more are in the Pro brief. Free subscribers get the summary — Pro gets the full picture.</p>
-      <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="btn-primary" style="display:inline-block;padding:13px 28px">Unlock full brief — €79/mo →</a>
+      <a href="/pricing" class="btn-primary" style="display:inline-block;padding:13px 28px">Unlock full brief — €79/mo →</a>
     </div>
   </div>
 </div>
@@ -841,7 +841,11 @@ document.getElementById('subscribe-form').addEventListener('submit', async (e) =
     const msg = document.getElementById('form-msg');
     if (r.ok || r.status === 409) {
       msg.style.color = '#059669';
-      msg.textContent = _refCode ? '✓ You\'re on the list! Your referrer has been notified.' : '✓ You\'re on the list. Brief arrives Fridays.';
+      if (_refCode) {
+        msg.innerHTML = '✓ You\'re on the list! Your referrer has been notified. &nbsp;<a href="/archive" style="color:var(--green);font-weight:700;text-decoration:none">Browse past issues →</a>';
+      } else {
+        msg.innerHTML = '✓ You\'re on the list. Brief arrives Fridays. &nbsp;<a href="/archive" style="color:var(--green);font-weight:700;text-decoration:none">Browse past issues →</a> &nbsp;·&nbsp; <a href="/predictions" style="color:var(--green);font-weight:700;text-decoration:none">See 54 active predictions →</a>';
+      }
     } else {
       msg.style.color = '#DC2626'; msg.textContent = 'Something went wrong — try again.';
     }
