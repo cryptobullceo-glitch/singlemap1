@@ -201,25 +201,32 @@
       return new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
     }
 
+    function getStatus(p) {
+      if (p.status === 'correct') return 'hit';
+      if (p.status === 'incorrect') return 'miss';
+      return 'active';
+    }
+
     function renderCard(p) {
-      const status = (p.resolved_at ? (p.resolution === 'hit' ? 'hit' : 'miss') : 'active');
-      const exch = (p.exchange || '').toLowerCase();
+      const status = getStatus(p);
+      const exch = (p.exchange_id || p.exchange || '').toLowerCase();
       const conf = Math.round((p.confidence || 0.7) * 100);
-      const dl = p.deadline ? daysLeft(p.deadline) : null;
+      const dl = p.horizon ? daysLeft(p.horizon) : null;
       const deadlineText = p.resolved_at
         ? `<div class="pred-deadline resolved">Resolved ${fmtDate(p.resolved_at)}</div>`
         : dl !== null
-          ? `<div class="pred-deadline ${dl <= 14 ? 'soon' : ''}">Deadline: ${fmtDate(p.deadline)}${dl <= 14 ? ` (${dl}d)` : ''}</div>`
+          ? `<div class="pred-deadline ${dl <= 14 ? 'soon' : ''}">Horizon: ${fmtDate(p.horizon)}${dl <= 14 ? ` (${dl}d)` : ''}</div>`
           : '';
 
+      const exchLabel = (p.exchange_id || p.exchange || 'Market');
       return `
         <div class="pred-card" data-status="${status}" data-exchange="${exch}">
           <div class="pred-status">
             <div class="status-badge ${statusClass[status]}">${statusLabel[status]}</div>
-            <div class="exchange-tag">${p.exchange || 'Market'}</div>
+            <div class="exchange-tag">${exchLabel}</div>
           </div>
           <div class="pred-body">
-            <h3>${escHtml(p.prediction)}</h3>
+            <h3>${escHtml(p.title || p.prediction || '')}</h3>
             ${p.rationale ? `<div class="rationale">${escHtml(p.rationale.slice(0, 180))}${p.rationale.length > 180 ? '…' : ''}</div>` : ''}
             <div class="conf-bar">
               <span class="conf-label">${conf}%</span>
@@ -227,7 +234,7 @@
             </div>
           </div>
           <div class="pred-meta">
-            <div class="pred-date">Published ${fmtDate(p.created_at)}</div>
+            <div class="pred-date">Published ${fmtDate(p.issued_at || p.created_at)}</div>
             ${deadlineText}
           </div>
         </div>`;
@@ -246,8 +253,8 @@
 
     function getFiltered() {
       return allPredictions.filter(p => {
-        const status = p.resolved_at ? (p.resolution === 'hit' ? 'hit' : 'miss') : 'active';
-        const exch = (p.exchange || '').toLowerCase();
+        const status = getStatus(p);
+        const exch = (p.exchange_id || p.exchange || '').toLowerCase();
         if (currentFilter === 'all') return true;
         if (['active','hit','miss'].includes(currentFilter)) return status === currentFilter;
         return exch.includes(currentFilter);
@@ -271,8 +278,8 @@
 
     function updateAccuracy() {
       const total = allPredictions.length;
-      const hit = allPredictions.filter(p => p.resolved_at && p.resolution === 'hit').length;
-      const miss = allPredictions.filter(p => p.resolved_at && p.resolution !== 'hit').length;
+      const hit = allPredictions.filter(p => p.status === 'correct').length;
+      const miss = allPredictions.filter(p => p.status === 'incorrect').length;
       const active = total - hit - miss;
       const pct = total > 0 ? Math.round((hit / Math.max(1, hit + miss)) * 100) : 0;
 
