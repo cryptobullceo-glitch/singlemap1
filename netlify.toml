@@ -27,6 +27,11 @@
   status = 200
 
 [[redirects]]
+  from = "/archive"
+  to = "/archive.html"
+  status = 200
+
+[[redirects]]
   from = "/exchange/:slug"
   to = "/exchange.html?id=:slug"
   status = 200
