@@ -127,6 +127,14 @@
     footer { text-align: center; padding: 32px 24px; font-size: .8rem; color: var(--mid); }
     footer a { color: var(--mid); text-decoration: none; }
 
+    /* PROOF STRIP */
+    .proof-strip { display: flex; justify-content: center; gap: 0; flex-wrap: wrap; max-width: 720px; margin: 0 auto; padding: 0 24px 48px; }
+    .proof-item { text-align: center; padding: 20px 28px; border-right: 1px solid var(--light); flex: 1; min-width: 120px; }
+    .proof-item:last-child { border-right: none; }
+    .proof-num { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: var(--green); line-height: 1; margin-bottom: 4px; }
+    .proof-lbl { font-size: .75rem; color: var(--mid); }
+    @media (max-width: 540px) { .proof-item { border-right: none; border-bottom: 1px solid var(--light); min-width: 45%; } }
+
     @media (max-width: 600px) { .plans { grid-template-columns: 1fr; } }
   </style>
 </head>
@@ -144,6 +152,13 @@
   <div class="hero-badge">💰 Simple, transparent pricing</div>
   <h1>Choose your plan</h1>
   <p>Start free with the weekly brief. Upgrade to Pro for the full signal stack — live dashboard, predictions, and department-level intelligence.</p>
+</div>
+
+<div class="proof-strip">
+  <div class="proof-item"><div class="proof-num">80%+</div><div class="proof-lbl">Prediction accuracy</div></div>
+  <div class="proof-item"><div class="proof-num">66</div><div class="proof-lbl">Predictions tracked</div></div>
+  <div class="proof-item"><div class="proof-num">10</div><div class="proof-lbl">Exchanges monitored</div></div>
+  <div class="proof-item"><div class="proof-num">157+</div><div class="proof-lbl">Intelligence posts</div></div>
 </div>
 
 <div class="plans">
@@ -271,7 +286,7 @@
       <span class="faq-icon">+</span>
     </button>
     <div class="faq-a">
-      Our current resolved prediction accuracy rate is 78%. Predictions are published with full rationale, evidence (specific roles and counts), a confidence score (0–100%), and a target horizon. You can see all active and resolved predictions at signalmap.live/predictions. We publish outcomes publicly, including misses.
+      Our current resolved prediction accuracy rate is 80%. Predictions are published with full rationale, evidence (specific roles and counts), a confidence score (0–100%), and a target horizon. You can see all active and resolved predictions at signalmap.live/predictions. We publish outcomes publicly, including misses.
     </div>
   </div>
 
@@ -301,7 +316,7 @@
       <span class="faq-icon">+</span>
     </button>
     <div class="faq-a">
-      There's no free trial for Pro, but the Free tier gives you a real taste — the Friday weekly brief includes our top signal picks and prediction updates. You can also read all 118 of our published intelligence posts for free at signalmap.live/blog before deciding.
+      There's no free trial for Pro, but the Free tier gives you a real taste — the Friday weekly brief includes our top signal picks and prediction updates. You can also read all 157 of our published intelligence posts for free at signalmap.live/blog before deciding.
     </div>
   </div>
 
