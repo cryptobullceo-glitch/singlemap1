@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unsubscribe | Signalmap</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --green: #059669; --green-dark: #065f46; --ink: #0A0A0B; --paper: #F7F7F4; --mid: #6B7280; --light: #E4E4E1; --pale: #ECFDF5; }
+    body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; display: flex; flex-direction: column; }
+    nav { background: rgba(247,247,244,0.9); border-bottom: 1px solid var(--light); padding: 0 24px; height: 60px; display: flex; align-items: center; }
+    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+    .nav-logo span { color: var(--green); }
+    main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 24px; }
+    .card { background: #fff; border: 1px solid var(--light); border-radius: 20px; padding: 40px; max-width: 480px; width: 100%; text-align: center; }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-size: 1.375rem; font-weight: 700; margin-bottom: 10px; }
+    p { color: var(--mid); font-size: .9rem; margin-bottom: 20px; }
+    .email-display { background: var(--paper); border: 1px solid var(--light); border-radius: 8px; padding: 10px 14px; font-size: .9rem; margin-bottom: 20px; color: var(--mid); font-weight: 500; }
+    .btn { display: block; width: 100%; padding: 13px; border-radius: 10px; font-weight: 700; font-size: .95rem; cursor: pointer; font-family: inherit; border: none; transition: all .2s; }
+    .btn-red { background: #dc2626; color: #fff; }
+    .btn-red:hover { background: #b91c1c; }
+    .btn-green { background: var(--green); color: #fff; }
+    .btn-green:hover { background: var(--green-dark); }
+    .btn-outline { background: transparent; border: 1.5px solid var(--light); color: var(--ink); margin-top: 10px; }
+    .success { display: none; }
+    .success .icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .success h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.125rem; font-weight: 700; margin-bottom: 8px; }
+    .back { display: inline-block; margin-top: 20px; color: var(--green); text-decoration: none; font-size: .875rem; font-weight: 500; }
+  </style>
+</head>
+<body>
+  <nav><a class="nav-logo" href="/"><span>Signal</span>map</a></nav>
+  <main>
+    <div class="card" id="unsub-card">
+      <h1>Unsubscribe</h1>
+      <p>You're about to remove yourself from Signalmap emails. You won't receive weekly briefs, prediction alerts, or intelligence updates.</p>
+      <div class="email-display" id="email-display">Loading…</div>
+      <button class="btn btn-red" id="unsub-btn" onclick="doUnsubscribe()">Yes, unsubscribe me</button>
+      <a href="/" class="btn btn-outline" style="display:block;text-align:center;text-decoration:none;padding:12px;margin-top:10px;border-radius:10px;border:1.5px solid #E4E4E1;color:#0A0A0B;font-weight:600;font-size:.875rem;">Keep my subscription</a>
+    </div>
+    <div class="card success" id="success-card">
+      <div class="icon">✅</div>
+      <h2>You've been unsubscribed</h2>
+      <p>You'll no longer receive emails from Signalmap. If this was a mistake, you can resubscribe any time.</p>
+      <a href="/" class="back">← Back to Signalmap</a>
+    </div>
+  </main>
+
+  <script>
+    const SUPABASE_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDI4NDg4MDgsImV4cCI6MjA1ODQyNDgwOH0.RJck-TfcNk8-gGKi0YoHWfCWx4wFiCjsj6JRbNxqhPQ';
+
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get('email') || '';
+    document.getElementById('email-display').textContent = email || 'your email address';
+
+    async function doUnsubscribe() {
+      if (!email) { alert('No email address found. Please use the unsubscribe link from your email.'); return; }
+      const btn = document.getElementById('unsub-btn');
+      btn.disabled = true;
+      btn.textContent = 'Processing…';
+
+      try {
+        await fetch(`${SUPABASE_URL}/rest/v1/subscribers?email=eq.${encodeURIComponent(email)}`, {
+          method: 'PATCH',
+          headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+          body: JSON.stringify({ unsubscribed: true, unsubscribed_at: new Date().toISOString() }),
+        });
+      } catch (_) {}
+
+      document.getElementById('unsub-card').style.display = 'none';
+      document.getElementById('success-card').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

@@ -162,6 +162,26 @@
     .share-bar-desktop {
       background: #fff; border: 1px solid var(--light); border-radius: 12px; padding: 20px;
     }
+    /* SIDEBAR PRO CARD */
+    .sidebar-pro-card { background: linear-gradient(135deg, #065f46 0%, #047857 100%); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+    .spc-badge { display: inline-block; background: rgba(255,255,255,.2); color: #fff; font-size: .65rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; margin-bottom: 10px; }
+    .spc-title { font-family: 'Space Grotesk', sans-serif; font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .spc-features { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .spc-features li { font-size: .78rem; color: rgba(255,255,255,.85); display: flex; align-items: flex-start; gap: 6px; line-height: 1.4; }
+    .spc-features li::before { content: '✓'; color: #6EE7B7; font-weight: 700; flex-shrink: 0; }
+    .spc-btn { display: block; text-align: center; background: #fff; color: #065f46; font-weight: 700; font-size: .85rem; padding: 10px; border-radius: 8px; text-decoration: none; margin-bottom: 8px; }
+    .spc-btn:hover { background: #ECFDF5; }
+    .spc-note { font-size: .72rem; color: rgba(255,255,255,.6); text-align: center; }
+
+    /* SIDEBAR QUICK LINKS */
+    .sidebar-quicklinks {
+      background: #fff; border: 1px solid var(--light); border-radius: 12px; padding: 18px;
+    }
+    .sidebar-quicklinks .ql-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--mid); margin-bottom: 12px; }
+    .sidebar-quicklinks a { display: flex; align-items: center; gap: 8px; padding: 7px 0; font-size: 13px; font-weight: 500; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--light); }
+    .sidebar-quicklinks a:last-child { border-bottom: none; padding-bottom: 0; }
+    .sidebar-quicklinks a:hover { color: var(--green); }
+    .sidebar-quicklinks a::after { content: '→'; margin-left: auto; color: var(--green); font-size: 12px; }
     .share-bar-desktop .share-label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mid); margin-bottom: 12px; }
     .share-bar-desktop .share-btns { display: flex; flex-direction: column; gap: 8px; }
     .share-bar-desktop .share-btn { justify-content: center; }
@@ -252,10 +272,11 @@
     SIGNALMAP
   </a>
   <div class="nav-links">
-    <a href="/cex-intelligence.html" class="nav-hide">Dashboard</a>
-    <a href="/scorecard.html" class="nav-hide">Scorecard</a>
-    <a href="/weekly" class="nav-hide">Weekly</a>
-    <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="nav-cta" target="_blank" rel="noopener">Pro</a>
+    <a href="/intelligence" class="nav-hide">Dashboard</a>
+    <a href="/predictions" class="nav-hide">Predictions</a>
+    <a href="/compare" class="nav-hide">Compare</a>
+    <a href="/blog" class="nav-hide">Blog</a>
+    <a href="/pricing" class="nav-cta">Pro — €79/mo</a>
   </div>
 </nav>
 
@@ -308,7 +329,7 @@
           <button type="submit" id="subscribe-btn">Subscribe free</button>
         </form>
         <div id="cta-msg"></div>
-        <p class="mid-cta-note">or <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" target="_blank" rel="noopener">upgrade to Pro →</a></p>
+        <p class="mid-cta-note">or <a href="/pricing">see Pro plans →</a> &nbsp;·&nbsp; <a href="/predictions">64 active predictions →</a></p>
       </div>
 
       <!-- Related Posts -->
@@ -334,6 +355,31 @@
               Copy link
             </button>
           </div>
+        </div>
+
+        <!-- Pro upgrade card -->
+        <div class="sidebar-pro-card">
+          <div class="spc-badge">Pro</div>
+          <div class="spc-title">Get the full signal stack</div>
+          <ul class="spc-features">
+            <li>64 active predictions (83% accuracy)</li>
+            <li>Live exchange dashboard</li>
+            <li>Department-level breakdowns</li>
+            <li>Compare all 10 exchanges</li>
+            <li>Regulatory radar</li>
+          </ul>
+          <a href="/pricing" class="spc-btn">See Pro plans →</a>
+          <div class="spc-note">€699/yr · 14-day guarantee</div>
+        </div>
+
+        <!-- Quick links widget -->
+        <div class="sidebar-quicklinks">
+          <div class="ql-title">Explore Signalmap</div>
+          <a href="/intelligence">Live CEX dashboard</a>
+          <a href="/predictions">64 active predictions</a>
+          <a href="/compare">Compare exchanges</a>
+          <a href="/scorecard">Prediction scorecard</a>
+          <a href="/guide">Free signal guide</a>
         </div>
       </div>
     </aside>
@@ -363,11 +409,14 @@
     </div>
     <div class="footer-right">
       <div class="footer-links">
-        <a href="/cex-intelligence.html">Dashboard</a>
-        <a href="/scorecard.html">Scorecard</a>
-        <a href="/weekly">Weekly</a>
+        <a href="/intelligence">Dashboard</a>
+        <a href="/predictions">Predictions</a>
+        <a href="/compare">Compare</a>
         <a href="/blog">Blog</a>
-        <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" target="_blank" rel="noopener">Pro</a>
+        <a href="/archive">Newsletter archive</a>
+        <a href="/how-it-works">Methodology</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/enterprise">Enterprise</a>
       </div>
       <p class="footer-copy">&copy; 2026 Signalmap. All rights reserved.</p>
     </div>
@@ -410,21 +459,37 @@
     let canonical = document.querySelector('link[rel="canonical"]');
     canonical.setAttribute('href', url);
 
-    // JSON-LD
+    // JSON-LD - enriched with Article + BreadcrumbList for rich snippets
     const schema = {
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": post.title,
-      "description": post.meta_description || '',
+      "description": post.meta_description || post.title,
       "url": url,
+      "mainEntityOfPage": { "@type": "WebPage", "@id": url },
       "publisher": {
         "@type": "Organization",
         "name": "Signalmap",
-        "url": "https://signalmap.live"
+        "url": "https://signalmap.live",
+        "logo": { "@type": "ImageObject", "url": "https://signalmap.live/favicon.ico" }
       },
-      "datePublished": post.created_at
+      "author": { "@type": "Organization", "name": "Signalmap", "url": "https://signalmap.live" },
+      "datePublished": post.created_at,
+      "dateModified": post.created_at,
+      "keywords": (post.tags || []).join(', '),
+      "articleSection": "Crypto Exchange Intelligence",
+      "inLanguage": "en"
     };
-    document.getElementById('json-ld').textContent = JSON.stringify(schema);
+    const breadcrumb = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://signalmap.live" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://signalmap.live/blog" },
+        { "@type": "ListItem", "position": 3, "name": post.title, "item": url }
+      ]
+    };
+    document.getElementById('json-ld').textContent = JSON.stringify([schema, breadcrumb]);
   }
 
   function setShareLinks(post) {
@@ -536,7 +601,7 @@
   function renderRelated(posts) {
     const grid = document.getElementById('related-grid');
     grid.innerHTML = posts.map(p => `
-      <a href="/post.html?slug=${encodeURIComponent(p.slug)}" class="related-card">
+      <a href="/blog/${encodeURIComponent(p.slug)}" class="related-card">
         <div class="related-card-date">${formatDate(p.created_at)}</div>
         <div class="related-card-title">${escapeHtml(p.title)}</div>
       </a>

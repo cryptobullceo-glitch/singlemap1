@@ -12,6 +12,31 @@
   status = 200
 
 [[redirects]]
+  from = "/guide"
+  to = "/guide.html"
+  status = 200
+
+[[redirects]]
+  from = "/how-it-works"
+  to = "/how-it-works.html"
+  status = 200
+
+[[redirects]]
+  from = "/methodology"
+  to = "/how-it-works.html"
+  status = 200
+
+[[redirects]]
+  from = "/archive"
+  to = "/archive.html"
+  status = 200
+
+[[redirects]]
+  from = "/exchange/:slug"
+  to = "/exchange.html?id=:slug"
+  status = 200
+
+[[redirects]]
   from = "/exchange"
   to = "/exchange.html"
   status = 200
@@ -25,6 +50,62 @@
   from = "/scorecard"
   to = "/scorecard.html"
   status = 200
+
+[[redirects]]
+  from = "/refer"
+  to = "/refer.html"
+  status = 200
+
+[[redirects]]
+  from = "/predictions"
+  to = "/predictions.html"
+  status = 200
+
+[[redirects]]
+  from = "/enterprise"
+  to = "/enterprise.html"
+  status = 200
+
+[[redirects]]
+  from = "/weekly"
+  to = "/weekly.html"
+  status = 200
+
+[[redirects]]
+  from = "/compare"
+  to = "/compare.html"
+  status = 200
+
+[[redirects]]
+  from = "/pricing"
+  to = "/pricing.html"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap-dynamic.xml"
+  to = "https://ufrscgfutnjzfsvaxzmf.supabase.co/functions/v1/sitemap"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/changelog"
+  to = "/changelog.html"
+  status = 200
+
+[[redirects]]
+  from = "/unsubscribe"
+  to = "/unsubscribe.html"
+  status = 200
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
 
 [[headers]]
   for = "/*.html"
