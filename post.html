@@ -256,12 +256,23 @@
     /* SKELETON */
     .skeleton { background: linear-gradient(90deg, var(--light) 25%, #E8E8E5 50%, var(--light) 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: 6px; }
     @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    /* URGENCY STRIP */
+    .urgency-strip { background: var(--green-dark); color: #fff; text-align: center; padding: 10px 24px; font-size: 13px; font-weight: 500; letter-spacing: 0.01em; }
+    .urgency-strip strong { font-weight: 700; }
+    .urgency-strip a { color: var(--green2); font-weight: 700; text-decoration: none; margin-left: 12px; }
+    .urgency-strip a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
 <!-- Reading Progress Bar -->
 <div id="progress-bar"></div>
+
+<div class="urgency-strip">
+  <strong><span id="days-left"></span> left at €79/mo.</strong> Price increases to €149 on May 1.
+  <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800">Lock in now →</a>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -668,6 +679,12 @@
 
   // Boot
   loadPost();
+  (function() {
+    const deadline = new Date('2026-04-30T23:59:59');
+    const days = Math.max(0, Math.ceil((deadline - new Date()) / 86400000));
+    const el = document.getElementById('days-left');
+    if (el) el.textContent = days + ' day' + (days !== 1 ? 's' : '');
+  })();
 </script>
 </body>
 </html>
