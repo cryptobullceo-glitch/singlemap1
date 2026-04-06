@@ -438,7 +438,9 @@
   const SUPABASE_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
 
-  const slug = new URLSearchParams(window.location.search).get('slug');
+  // Support both ?slug=foo (dev) and /blog/foo (Netlify rewrite)
+  const slug = new URLSearchParams(window.location.search).get('slug')
+    || window.location.pathname.replace(/^\/blog\//, '').split('/')[0] || null;
 
   // Reading progress
   window.addEventListener('scroll', () => {
