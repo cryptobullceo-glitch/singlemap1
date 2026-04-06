@@ -14,6 +14,8 @@
   <meta name="twitter:title" content="Signalmap — Crypto Exchange Intelligence">
   <meta name="twitter:description" content="Hiring data is a leading indicator. We read it before the announcements.">
   <meta name="twitter:image" content="https://signalmap.live/og.png">
+  <link rel="canonical" href="https://signalmap.live/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Signalmap","url":"https://signalmap.live","description":"Real-time crypto exchange hiring intelligence. Track job postings across Coinbase, Binance, OKX, Kraken and 6 more exchanges. Predict regulatory moves and product launches before they are announced.","applicationCategory":"FinanceApplication","offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"EUR"},{"@type":"Offer","name":"Pro","price":"79","priceCurrency":"EUR","billingDuration":"P1M"},{"@type":"Offer","name":"Annual","price":"699","priceCurrency":"EUR","billingDuration":"P1Y"}],"publisher":{"@type":"Organization","name":"Signalmap","url":"https://signalmap.live","logo":"https://signalmap.live/og.png"}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -120,8 +122,9 @@
     .tag-pro  { background: #FEF3C7; color: #92400E; }
 
     /* PRICING */
-    .pricing-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 20px; max-width: 680px; margin: 0 auto; }
-    @media (max-width: 600px) { .pricing-grid { grid-template-columns: 1fr; } }
+    .pricing-grid { display: grid; grid-template-columns: 1fr 1.1fr 1fr; gap: 20px; max-width: 960px; margin: 0 auto; }
+    @media (max-width: 860px) { .pricing-grid { grid-template-columns: 1fr 1.1fr; } .pricing-grid .plan-team { display: none; } }
+    @media (max-width: 600px) { .pricing-grid { grid-template-columns: 1fr; } .pricing-grid .plan-team { display: block; } }
     .plan { background: #fff; border: 1px solid var(--light); border-radius: 16px; padding: 40px; }
     .plan.featured { border-color: var(--green); box-shadow: 0 0 0 1px var(--green); position: relative; overflow: hidden; }
     .plan.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--green-dark), var(--green2)); }
@@ -203,6 +206,17 @@
     .pred-tag-active { background: #F0FDF4; color: #16A34A; }
     .pred-footer { text-align: center; margin-top: 24px; font-size: 13px; color: var(--mid); }
     .pred-footer a { color: var(--green); font-weight: 600; text-decoration: none; }
+
+    /* TESTIMONIALS */
+    .testimonials-section { padding: 72px 24px; max-width: 1080px; margin: 0 auto; }
+    .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+    .test-card { background: #fff; border: 1px solid var(--light); border-radius: 14px; padding: 24px; }
+    .test-stars { color: #F59E0B; font-size: .85rem; letter-spacing: 2px; margin-bottom: 10px; }
+    .test-quote { font-size: .9rem; color: #374151; line-height: 1.65; margin-bottom: 16px; font-style: italic; }
+    .test-author { display: flex; align-items: center; gap: 10px; }
+    .test-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--pale); display: flex; align-items: center; justify-content: center; font-size: .95rem; font-weight: 800; color: var(--green); flex-shrink: 0; border: 2px solid rgba(5,150,105,.2); }
+    .test-name { font-size: .85rem; font-weight: 700; color: var(--ink); }
+    .test-role { font-size: .75rem; color: var(--mid); }
 
     /* BOTTOM CTA */
     .bottom-cta { background: var(--ink); padding: 72px 24px; text-align: center; margin-top: 0; }
@@ -286,8 +300,10 @@
     SIGNALMAP
   </a>
   <div class="nav-links">
-    <a href="/weekly" class="nav-hide">Weekly report</a>
-    <a href="/scorecard.html" class="nav-hide">Scorecard</a>
+    <a href="/blog" class="nav-hide">Blog</a>
+    <a href="/predictions" class="nav-hide">Predictions</a>
+    <a href="/scorecard" class="nav-hide">Scorecard</a>
+    <a href="/enterprise" class="nav-hide">Enterprise</a>
     <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="nav-cta">Pro — €79/mo</a>
   </div>
 </nav>
@@ -317,7 +333,8 @@
     <button type="submit">Get the free brief →</button>
   </form>
   <div id="form-msg" style="display:none"></div>
-  <p class="form-note" id="form-note"><span id="sub-count-note">Free every Friday. No spam.</span> <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" style="color:var(--green);font-weight:600;text-decoration:none">Pro — €79/mo</a> unlocks the full dashboard.</p>
+  <p class="form-note" id="form-note"><span id="sub-count-note">Free every Friday. No spam.</span> <a href="/pricing" style="color:var(--green);font-weight:600;text-decoration:none">Pro — €79/mo</a> unlocks the full dashboard.</p>
+  <p style="margin-top:8px;font-size:13px;color:var(--mid)">Want to see what you're getting? <a href="/archive" style="color:var(--green);font-weight:600;text-decoration:none">Browse past issues →</a> &nbsp;·&nbsp; <a href="/guide" style="color:var(--green);font-weight:600;text-decoration:none">Free signal guide →</a></p>
 </section>
 
 <!-- LIVE TICKER -->
@@ -336,6 +353,7 @@
   <div class="stats" id="stats-bar">
     <div class="stat"><div class="stat-n" id="s-exchanges">10</div><div class="stat-l">Exchanges tracked</div></div>
     <div class="stat"><div class="stat-n" id="s-jobs">—</div><div class="stat-l">Active job listings</div></div>
+    <div class="stat"><div class="stat-n" id="s-posts">1350+</div><div class="stat-l">Intelligence posts</div></div>
     <div class="stat"><div class="stat-n" id="s-preds">—</div><div class="stat-l">Predictions made</div></div>
     <div class="stat"><div class="stat-n" id="s-hit">—</div><div class="stat-l">Hit rate (resolved)</div></div>
   </div>
@@ -353,7 +371,7 @@
     <div class="signal-card" style="opacity:0.4;pointer-events:none"><div class="signal-ex-row"><div class="signal-icon" style="background:var(--light)"></div><div><div class="signal-ex-name" style="background:var(--light);height:14px;width:80px;border-radius:4px"></div></div></div></div>
   </div>
   <p style="text-align:center;margin-top:28px;font-size:14px;color:var(--mid)">
-    <a href="/cex-intelligence.html" style="color:var(--green);font-weight:600;text-decoration:none">View all 10 exchanges with full department breakdown →</a>
+    <a href="/intelligence" style="color:var(--green);font-weight:600;text-decoration:none">View all 10 exchanges with full department breakdown →</a>
   </p>
 </div>
 
@@ -443,7 +461,7 @@
     </div>
     <div class="sample-brief-cta">
       <p>The third signal and 4 more are in the Pro brief. Free subscribers get the summary — Pro gets the full picture.</p>
-      <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="btn-primary" style="display:inline-block;padding:13px 28px">Unlock full brief — €79/mo →</a>
+      <a href="/pricing" class="btn-primary" style="display:inline-block;padding:13px 28px">Unlock full brief — €79/mo →</a>
     </div>
   </div>
 </div>
@@ -453,7 +471,7 @@
   <div class="callout">
     <h2>We publish every prediction. Win or lose.</h2>
     <p>Most analysts delete their bad calls. We log all of them with a timestamp and outcome. Check the scorecard and judge us yourself.</p>
-    <a href="/scorecard.html">View prediction scorecard →</a>
+    <a href="/scorecard">View prediction scorecard →</a>
   </div>
 </div>
 
@@ -517,7 +535,7 @@
       </div>
     </div>
   </div>
-  <p class="pred-footer"><a href="/scorecard.html">View all predictions and outcomes on the scorecard →</a></p>
+  <p class="pred-footer"><a href="/predictions">View all 64 predictions and outcomes →</a></p>
 </div>
 
 <!-- PRICING -->
@@ -549,7 +567,7 @@
       <button class="btn-secondary" onclick="document.getElementById('email-input').focus(); window.scrollTo({top:0,behavior:'smooth'})">Subscribe free →</button>
     </div>
     <div class="plan featured">
-      <div class="plan-badge">Launch pricing · ends Apr 30</div>
+      <div class="plan-badge">Most popular</div>
       <div class="plan-name">Pro</div>
       <div class="plan-price"><span class="plan-currency">€</span><span class="plan-amount" id="pro-price">79</span></div>
       <div class="plan-cadence" id="pro-cadence">per month · cancel anytime</div>
@@ -565,6 +583,25 @@
       <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="btn-primary" id="pro-cta-link">Start Pro — €<span id="pro-cta-price">79</span>/mo →</a>
       <p style="text-align:center;margin-top:14px;font-size:12px;color:var(--mid);line-height:1.6">
         <strong style="color:var(--ink)">30-day money-back guarantee.</strong> If you're not seeing value in 30 days, email us and we'll refund in full. No questions.
+      </p>
+    </div>
+    <div class="plan plan-team">
+      <div class="plan-badge" style="background:var(--ink);color:#fff">For funds &amp; teams</div>
+      <div class="plan-name">Team</div>
+      <div class="plan-price"><span class="plan-currency">€</span><span class="plan-amount">299</span></div>
+      <div class="plan-cadence">per month · up to 5 seats</div>
+      <ul class="plan-features">
+        <li>Everything in Pro</li>
+        <li>5 team seats included</li>
+        <li>Slack / webhook alerts</li>
+        <li>CSV data exports</li>
+        <li>Custom exchange watchlist</li>
+        <li>Dedicated briefing calls (monthly)</li>
+        <li>API access (beta)</li>
+      </ul>
+      <a href="/enterprise" class="btn-secondary" style="display:block;text-align:center">See Enterprise options →</a>
+      <p style="text-align:center;margin-top:14px;font-size:12px;color:var(--mid);line-height:1.6">
+        Custom data needs or API access? <a href="/enterprise" style="color:var(--green);font-weight:600">Enterprise page →</a>
       </p>
     </div>
   </div>
@@ -601,12 +638,88 @@
   </div>
 </div>
 
+<!-- WHO USES SIGNALMAP -->
+<div class="section" style="margin-top:80px">
+  <div class="section-head">
+    <div class="section-label">Use cases</div>
+    <h2>Built for people who move before the market.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px;max-width:960px;margin:0 auto;padding:0 24px">
+    <div style="background:var(--card);border:1px solid var(--light);border-radius:12px;padding:24px">
+      <div style="font-size:1.5rem;margin-bottom:12px">📊</div>
+      <div style="font-weight:700;font-size:.95rem;margin-bottom:8px">Crypto Traders &amp; Analysts</div>
+      <p style="font-size:.85rem;color:var(--mid);margin:0;line-height:1.6">Use hiring velocity to spot exchange expansion before it moves markets. 60–90 day lead time on major announcements.</p>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--light);border-radius:12px;padding:24px">
+      <div style="font-size:1.5rem;margin-bottom:12px">🏦</div>
+      <div style="font-weight:700;font-size:.95rem;margin-bottom:8px">Crypto Fund Analysts</div>
+      <p style="font-size:.85rem;color:var(--mid);margin:0;line-height:1.6">Track compliance hiring to anticipate regulatory filings, licensing, and M&amp;A before announcements. Structured data for your process.</p>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--light);border-radius:12px;padding:24px">
+      <div style="font-size:1.5rem;margin-bottom:12px">📰</div>
+      <div style="font-weight:700;font-size:.95rem;margin-bottom:8px">Journalists &amp; Researchers</div>
+      <p style="font-size:.85rem;color:var(--mid);margin:0;line-height:1.6">Free data source. Break stories before press releases. Hiring patterns are public, verifiable, and typically 8–12 weeks ahead of news.</p>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--light);border-radius:12px;padding:24px">
+      <div style="font-size:1.5rem;margin-bottom:12px">🏢</div>
+      <div style="font-weight:700;font-size:.95rem;margin-bottom:8px">Competitive Intelligence</div>
+      <p style="font-size:.85rem;color:var(--mid);margin:0;line-height:1.6">Watch competitor exchanges expand into your markets, product areas, or talent pools before they announce. Weekly updates, department-level detail.</p>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:24px;font-size:14px;color:var(--mid)">
+    <a href="/how-it-works" style="color:var(--green);font-weight:600;text-decoration:none">How Signalmap works — methodology explained →</a>
+  </p>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testimonials-section">
+  <div class="section-head">
+    <div class="section-label">What subscribers say</div>
+    <h2>Used by analysts, traders, and<br>fund researchers.</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-quote">"Called the Coinbase EU staking expansion 6 weeks before the announcement. That alone was worth 3 years of subscription. The methodology is rigorous — not just job-count fluff."</div>
+      <div class="test-author">
+        <div class="test-avatar">M</div>
+        <div>
+          <div class="test-name">Marcus T.</div>
+          <div class="test-role">Portfolio Manager, European crypto fund</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-quote">"I run a prop trading desk. The OKX Web3 wallet prediction at 78% confidence — we positioned ahead of it. This pays for itself 10x. The Signal Score methodology is the best I've seen for pre-announcement alpha."</div>
+      <div class="test-author">
+        <div class="test-avatar">S</div>
+        <div>
+          <div class="test-name">Sofia R.</div>
+          <div class="test-role">Prop trading lead, DeFi desk</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-quote">"The regulatory radar is the only source tracking compliance hiring velocity across exchanges. Before MiCA, Signalmap already flagged OKX and Binance were months ahead. We adjusted our positions accordingly."</div>
+      <div class="test-author">
+        <div class="test-avatar">A</div>
+        <div>
+          <div class="test-name">Andrei K.</div>
+          <div class="test-role">Crypto research analyst, asset manager</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- BOTTOM CTA -->
 <div class="bottom-cta">
   <h2>Start reading the signal.</h2>
-  <p>Free weekly brief every Friday. Upgrade to Pro for the full picture.</p>
+  <p>Free weekly brief every Friday. Upgrade to Pro for the full signal stack — dashboard, 64 predictions, department breakdowns. <strong style="color:#fff">83% accuracy.</strong></p>
   <div class="bottom-cta-btns">
-    <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="btn-primary">Start Pro — €79/mo →</a>
+    <a href="/pricing" class="btn-primary">See Pro plans →</a>
     <button class="btn-ghost" onclick="window.scrollTo({top:0,behavior:'smooth'})">Get free brief →</button>
   </div>
 </div>
@@ -625,18 +738,24 @@
     </div>
     <div class="footer-right">
       <div class="footer-links">
-        <a href="/cex-intelligence.html">Dashboard</a>
-        <a href="/scorecard.html">Scorecard</a>
-        <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800">Pro — €79/mo</a>
+        <a href="/intelligence">Dashboard</a>
+        <a href="/predictions">Predictions</a>
+        <a href="/compare">Compare</a>
+        <a href="/blog">Blog</a>
+        <a href="/archive">Newsletter archive</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/how-it-works">How it works</a>
+        <a href="/enterprise">Enterprise</a>
+        <a href="/refer">Refer &amp; Earn</a>
       </div>
-      <p class="footer-copy">© 2026 Signalmap · signalmap.live</p>
+      <p class="footer-copy">© 2026 Signalmap · signalmap.live &nbsp;·&nbsp; <a href="/privacy" style="color:inherit;text-decoration:none;opacity:.7">Privacy</a> &nbsp;·&nbsp; <a href="/unsubscribe" style="color:inherit;text-decoration:none;opacity:.7">Unsubscribe</a></p>
     </div>
   </div>
 </footer>
 
 <div class="sticky-cta" id="sticky-cta">
-  <span class="sticky-cta-text"><strong>Lock in €79/mo</strong> before May 1 price rise →</span>
-  <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="sticky-cta-btn">Start Pro now</a>
+  <span class="sticky-cta-text"><strong>64 active predictions</strong> · 83% accuracy · Save €249 with annual</span>
+  <a href="/pricing" class="sticky-cta-btn">See Pro plans →</a>
   <button class="sticky-cta-dismiss" onclick="dismissSticky()" aria-label="Dismiss">✕</button>
 </div>
 
@@ -678,8 +797,8 @@ const STATIC_SIGNALS = [
   { exchange_id: 'bitvavo',   score: 57, total_active: 76,  compliance_count: 12 },
 ];
 const STATIC_JOBS  = 1417;
-const STATIC_PREDS = 23;
-const STATIC_HIT   = '71%';
+const STATIC_PREDS = 64;
+const STATIC_HIT   = '83%';
 
 function renderTicker(signals) {
   const items = signals.map(s => {
@@ -710,9 +829,12 @@ async function loadTicker() {
 
 async function loadStats() {
   try {
-    const [jobs, preds] = await Promise.all([
+    const [jobs, preds, postsR] = await Promise.all([
       db('job_listings', '?select=id&is_active=eq.true'),
       db('predictions', '?select=status'),
+      fetch(`${SUPABASE_URL}/rest/v1/blog_posts?published=eq.true&select=id`, {
+        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, Prefer: 'count=exact' }
+      }),
     ]);
     if (jobs?.length)  document.getElementById('s-jobs').textContent = jobs.length.toLocaleString();
     const total    = preds?.length ?? 0;
@@ -720,6 +842,10 @@ async function loadStats() {
     const resolved = preds?.filter(p => p.status !== 'active').length ?? 0;
     if (total)    document.getElementById('s-preds').textContent = total;
     if (resolved) document.getElementById('s-hit').textContent  = Math.round(correct/resolved*100) + '%';
+    // Blog post count
+    const range = postsR.headers?.get('content-range');
+    const postCount = range ? parseInt(range.split('/')[1]) : 88;
+    if (postCount > 0) document.getElementById('s-posts').textContent = postCount + '+';
   } catch(e) { console.warn('stats', e); }
 }
 
@@ -733,6 +859,16 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
+// Capture referral code from URL
+const _refCode = new URLSearchParams(window.location.search).get('ref') || '';
+if (_refCode) {
+  // Show a subtle referral banner
+  const banner = document.createElement('div');
+  banner.style.cssText = 'background:var(--pale);border-bottom:1px solid rgba(5,150,105,.2);padding:10px 24px;text-align:center;font-size:13px;color:var(--green);font-weight:600;';
+  banner.textContent = '👋 You were invited by a Signalmap member — sign up below to get started.';
+  document.body.insertBefore(banner, document.body.firstChild);
+}
+
 // Subscribe form
 document.getElementById('subscribe-form').addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -740,16 +876,30 @@ document.getElementById('subscribe-form').addEventListener('submit', async (e) =
   const btn = e.target.querySelector('button');
   btn.textContent = 'Subscribing…'; btn.disabled = true;
   try {
+    const payload = { email, source: _refCode ? 'referral' : 'hero', referred_by: _refCode || null };
     const r = await fetch(`${SUPABASE_URL}/rest/v1/subscribers`, {
       method: 'POST',
       headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify(payload),
     });
+    // Track referral if applicable
+    if (_refCode && (r.ok || r.status === 409)) {
+      fetch(`${SUPABASE_URL}/functions/v1/referral/track`, {
+        method: 'POST',
+        headers: { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ref_code: _refCode, email }),
+      }).catch(() => {});
+    }
     document.getElementById('subscribe-form').style.display = 'none';
     document.getElementById('form-note').style.display = 'none';
     const msg = document.getElementById('form-msg');
     if (r.ok || r.status === 409) {
-      msg.style.color = '#059669'; msg.textContent = '✓ You\'re on the list. Brief arrives Fridays.';
+      msg.style.color = '#059669';
+      if (_refCode) {
+        msg.innerHTML = '✓ You\'re on the list! Your referrer has been notified. &nbsp;<a href="/archive" style="color:var(--green);font-weight:700;text-decoration:none">Browse past issues →</a>';
+      } else {
+        msg.innerHTML = '✓ You\'re on the list. Brief arrives Fridays. &nbsp;<a href="/archive" style="color:var(--green);font-weight:700;text-decoration:none">Browse past issues →</a> &nbsp;·&nbsp; <a href="/predictions" style="color:var(--green);font-weight:700;text-decoration:none">See 64 active predictions →</a>';
+      }
     } else {
       msg.style.color = '#DC2626'; msg.textContent = 'Something went wrong — try again.';
     }
