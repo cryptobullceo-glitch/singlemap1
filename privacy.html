@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy | Signalmap</title>
   <meta name="description" content="Signalmap privacy policy — how we collect, use, and protect your data.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://signalmap.live/privacy">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -13,8 +14,15 @@
     :root { --green: #059669; --ink: #0A0A0B; --paper: #F7F7F4; --mid: #6B7280; --light: #E4E4E1; }
     body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; }
     nav { background: rgba(247,247,244,0.9); border-bottom: 1px solid var(--light); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
-    .nav-logo span { color: var(--green); }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
+    .logo-icon { display: flex; align-items: flex-end; gap: 2px; height: 18px; }
+    .logo-icon span { background: var(--green); border-radius: 2px; width: 3px; }
+    .logo-icon span:nth-child(1) { height: 7px; opacity: 0.35; }
+    .logo-icon span:nth-child(2) { height: 10px; opacity: 0.55; }
+    .logo-icon span:nth-child(3) { height: 13px; opacity: 0.75; }
+    .logo-icon span:nth-child(4) { height: 16px; opacity: 0.9; }
+    .logo-icon span:nth-child(5) { height: 18px; }
+
     main { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
     h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
     .updated { font-size: .8rem; color: var(--mid); margin-bottom: 40px; }
@@ -27,7 +35,7 @@
   </style>
 </head>
 <body>
-  <nav><a class="nav-logo" href="/"><span>Signal</span>map</a></nav>
+  <nav><a href="/" class="logo"><div class="logo-icon"><span></span><span></span><span></span><span></span><span></span></div>SIGNALMAP</a></nav>
   <main>
     <h1>Privacy Policy</h1>
     <div class="updated">Last updated: March 27, 2026</div>
