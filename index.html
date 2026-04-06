@@ -50,7 +50,8 @@
     @media (max-width: 600px) { .nav-hide { display: none; } }
 
     /* HERO */
-    .hero { max-width: 760px; margin: 96px auto 0; padding: 0 24px 80px; text-align: center; position: relative; z-index: 1; }
+    .hero { max-width: 760px; margin: 96px auto 0; padding: 0 24px 80px; text-align: center; position: relative; z-index: 1; overflow: visible; }
+    .hero > *:not(canvas):not(.hero-disk) { position: relative; z-index: 1; }
     .badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(5,150,105,0.08); border: 1px solid rgba(5,150,105,0.2); color: var(--green); font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 28px; }
     .badge-dot { width: 6px; height: 6px; background: var(--green2); border-radius: 50%; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
@@ -178,6 +179,120 @@
 
     .pad { padding: 0 24px; }
     .section { position: relative; z-index: 1; }
+
+    /* ── VISUAL ENHANCEMENTS ── */
+
+    /* Hero canvas particles */
+    #hero-canvas {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 100vw; height: 100%;
+      pointer-events: none; z-index: 0; opacity: 0.55;
+    }
+
+    /* Floating disk above hero badge */
+    .hero-disk {
+      position: absolute;
+      top: -20px; left: 50%;
+      transform: translateX(-50%);
+      width: 480px; height: 60px;
+      pointer-events: none; z-index: 0;
+    }
+    .hero-disk::before {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(5,150,105,0.10) 0%, rgba(5,150,105,0.03) 55%, transparent 75%);
+      filter: blur(10px);
+      animation: disk-float 7s ease-in-out infinite;
+    }
+    .hero-disk::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 340px; height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(52,211,153,0.18);
+      box-shadow: 0 0 18px rgba(5,150,105,0.12), inset 0 0 18px rgba(5,150,105,0.06);
+      animation: disk-float 7s ease-in-out infinite, disk-glow 3.5s ease-in-out infinite alternate;
+    }
+    @keyframes disk-float {
+      0%,100% { transform: translate(-50%,-50%) translateY(0); opacity: 0.7; }
+      50%      { transform: translate(-50%,-50%) translateY(-9px); opacity: 1; }
+    }
+    @keyframes disk-glow {
+      from { box-shadow: 0 0 14px rgba(5,150,105,0.10), inset 0 0 14px rgba(5,150,105,0.04); }
+      to   { box-shadow: 0 0 32px rgba(5,150,105,0.25), inset 0 0 24px rgba(5,150,105,0.12); }
+    }
+
+    /* Hero breathing radial glow */
+    .hero::after {
+      content: '';
+      position: absolute; top: 5%; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 380px;
+      background: radial-gradient(ellipse at center, rgba(5,150,105,0.07) 0%, transparent 70%);
+      animation: hero-breathe 5s ease-in-out infinite;
+      pointer-events: none; z-index: 0;
+    }
+    @keyframes hero-breathe {
+      0%,100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+      50%      { opacity: 1;   transform: translateX(-50%) scale(1.08); }
+    }
+
+    /* h1 em shimmer */
+    h1 em {
+      background: linear-gradient(120deg, var(--green) 0%, #34d399 45%, var(--green) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3.5s linear infinite;
+    }
+    @keyframes shimmer {
+      from { background-position: 0% center; }
+      to   { background-position: 200% center; }
+    }
+
+    /* Badge glow pulse */
+    .badge { animation: badge-glow 3s ease-in-out infinite; }
+    @keyframes badge-glow {
+      0%,100% { box-shadow: 0 0 0 0 rgba(52,211,153,0); }
+      50%      { box-shadow: 0 0 0 5px rgba(52,211,153,0.12); }
+    }
+
+    /* Signal score & stat number glow */
+    .signal-score-num { text-shadow: 0 0 18px rgba(5,150,105,0.45); }
+    .stat-n           { text-shadow: 0 0 22px rgba(5,150,105,0.30); }
+    .pred-conf-pct    { text-shadow: 0 0 12px rgba(5,150,105,0.40); }
+
+    /* Confidence bar glow */
+    .pred-conf-fill { box-shadow: 0 0 7px rgba(5,150,105,0.55); }
+
+    /* Card hover — green glow instead of plain shadow */
+    .step:hover       { transform: translateY(-3px) !important; box-shadow: 0 8px 28px rgba(0,0,0,0.08), 0 0 0 1px rgba(5,150,105,0.22), 0 0 22px rgba(5,150,105,0.09) !important; }
+    .feat:hover       { transform: translateY(-3px) !important; box-shadow: 0 8px 28px rgba(0,0,0,0.08), 0 0 0 1px rgba(5,150,105,0.22), 0 0 22px rgba(5,150,105,0.09) !important; }
+    .signal-card:hover{ transform: translateY(-3px) !important; box-shadow: 0 8px 28px rgba(0,0,0,0.08), 0 0 0 1px rgba(5,150,105,0.22), 0 0 22px rgba(5,150,105,0.09) !important; }
+    .pred-card:hover  { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(0,0,0,0.07), 0 0 0 1px rgba(5,150,105,0.18), 0 0 18px rgba(5,150,105,0.07); transition: transform 0.15s, box-shadow 0.15s; }
+
+    /* Scroll-reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.08s; }
+    .reveal-d2 { transition-delay: 0.17s; }
+    .reveal-d3 { transition-delay: 0.26s; }
+
+    /* Subtle film grain for depth */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9998;
+      opacity: 0.022;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 300px 300px;
+    }
 
     /* STICKY CTA */
     .sticky-cta { position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; background: var(--ink); border-top: 1px solid rgba(255,255,255,0.1); padding: 14px 24px; display: flex; align-items: center; justify-content: center; gap: 16px; transform: translateY(100%); transition: transform 0.3s ease; flex-wrap: wrap; }
@@ -324,6 +439,8 @@
 
 <!-- HERO -->
 <section class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-disk"></div>
   <div class="badge"><span class="badge-dot"></span>Live · 10 exchanges tracked</div>
   <h1>Read the market<br><em>before</em> it moves.</h1>
   <p class="hero-sub">Job postings are public disclosures. A compliance surge at Binance precedes a regulatory filing. A wave of product hires precedes a launch. <strong>Signalmap reads the signal 60–120 days before the announcement</strong> — and puts it in your inbox every Friday.</p>
@@ -1068,6 +1185,73 @@ document.getElementById('popup-form').addEventListener('submit', async (e) => {
     setTimeout(closePopup, 2000);
   } catch { btn.textContent = 'Send me the brief →'; btn.disabled = false; }
 });
+
+// ── HERO CANVAS PARTICLES (phone-light crowd effect) ──
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize() {
+    W = canvas.width  = canvas.parentElement.offsetWidth;
+    H = canvas.height = canvas.parentElement.offsetHeight;
+  }
+
+  function mkP() {
+    return {
+      x: Math.random() * W,
+      y: H * (0.4 + Math.random() * 0.6),
+      r: Math.random() * 1.4 + 0.4,
+      vy: -(Math.random() * 0.35 + 0.08),
+      vx: (Math.random() - 0.5) * 0.18,
+      life: 0,
+      maxLife: Math.random() * 180 + 90,
+      hue: [160, 160, 160, 42, 195][Math.floor(Math.random() * 5)],
+    };
+  }
+
+  // Pre-seed particles at random scroll positions
+  resize();
+  for (let i = 0; i < 80; i++) {
+    const p = mkP();
+    p.y = Math.random() * H;
+    p.life = Math.random() * p.maxLife;
+    particles.push(p);
+  }
+
+  function tick() {
+    ctx.clearRect(0, 0, W, H);
+    if (Math.random() < 0.35 && particles.length < 120) particles.push(mkP());
+    particles = particles.filter(p => {
+      p.x += p.vx; p.y += p.vy; p.life++;
+      const t = p.life / p.maxLife;
+      const a = (t < 0.15 ? t / 0.15 : t > 0.8 ? (1 - t) / 0.2 : 1) * 0.55;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `hsla(${p.hue},75%,72%,${a})`;
+      ctx.fill();
+      return p.life < p.maxLife && p.y > -10;
+    });
+    requestAnimationFrame(tick);
+  }
+
+  window.addEventListener('resize', resize);
+  tick();
+})();
+
+// ── SCROLL REVEAL ──
+const _revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); _revealObs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.step, .feat, .signal-card, .pred-card, .test-card, .stat, .callout').forEach((el, i) => {
+  el.classList.add('reveal');
+  if (i % 3 === 1) el.classList.add('reveal-d1');
+  if (i % 3 === 2) el.classList.add('reveal-d2');
+  _revealObs.observe(el);
+});
+document.querySelectorAll('.section-head').forEach(el => { el.classList.add('reveal'); _revealObs.observe(el); });
 
 const ANNUAL_STRIPE = 'https://buy.stripe.com/fZu28r0Qw4223yD7nb8k801';
 const MONTHLY_STRIPE = 'https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800';
