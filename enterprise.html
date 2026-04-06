@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signalmap for Teams — Custom Plans for Funds & Desks</title>
   <meta name="description" content="Signalmap for teams and funds. Custom pricing, multiple seats, and direct analyst support. Get in touch to discuss your needs.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://signalmap.live/enterprise">
   <meta property="og:title" content="Signalmap for Teams">
   <meta property="og:description" content="Custom plans for crypto funds, trading desks, and research teams.">
@@ -22,8 +23,15 @@
     }
     body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
     nav { max-width: 900px; margin: 0 auto; width: 100%; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
-    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; text-decoration: none; color: var(--ink); }
-    .nav-logo span { color: var(--green); }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
+    .logo-icon { display: flex; align-items: flex-end; gap: 2px; height: 18px; }
+    .logo-icon span { background: var(--green); border-radius: 2px; width: 3px; }
+    .logo-icon span:nth-child(1) { height: 7px; opacity: 0.35; }
+    .logo-icon span:nth-child(2) { height: 10px; opacity: 0.55; }
+    .logo-icon span:nth-child(3) { height: 13px; opacity: 0.75; }
+    .logo-icon span:nth-child(4) { height: 16px; opacity: 0.9; }
+    .logo-icon span:nth-child(5) { height: 18px; }
+
     .nav-links { display: flex; align-items: center; gap: 24px; }
     .nav-links a { font-size: .875rem; color: var(--mid); text-decoration: none; }
     .nav-links a:hover { color: var(--ink); }
@@ -62,7 +70,7 @@
 </head>
 <body>
   <nav>
-    <a class="nav-logo" href="/"><span>Signal</span>map</a>
+    <a href="/" class="logo"><div class="logo-icon"><span></span><span></span><span></span><span></span><span></span></div>SIGNALMAP</a>
     <div class="nav-links">
       <a href="/">Home</a>
       <a href="/pricing">Pricing</a>

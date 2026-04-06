@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Unsubscribe | Signalmap</title>
   <meta name="robots" content="noindex">
@@ -12,8 +13,15 @@
     :root { --green: #059669; --green-dark: #065f46; --ink: #0A0A0B; --paper: #F7F7F4; --mid: #6B7280; --light: #E4E4E1; --pale: #ECFDF5; }
     body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; display: flex; flex-direction: column; }
     nav { background: rgba(247,247,244,0.9); border-bottom: 1px solid var(--light); padding: 0 24px; height: 60px; display: flex; align-items: center; }
-    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
-    .nav-logo span { color: var(--green); }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
+    .logo-icon { display: flex; align-items: flex-end; gap: 2px; height: 18px; }
+    .logo-icon span { background: var(--green); border-radius: 2px; width: 3px; }
+    .logo-icon span:nth-child(1) { height: 7px; opacity: 0.35; }
+    .logo-icon span:nth-child(2) { height: 10px; opacity: 0.55; }
+    .logo-icon span:nth-child(3) { height: 13px; opacity: 0.75; }
+    .logo-icon span:nth-child(4) { height: 16px; opacity: 0.9; }
+    .logo-icon span:nth-child(5) { height: 18px; }
+
     main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 24px; }
     .card { background: #fff; border: 1px solid var(--light); border-radius: 20px; padding: 40px; max-width: 480px; width: 100%; text-align: center; }
     h1 { font-family: 'Space Grotesk', sans-serif; font-size: 1.375rem; font-weight: 700; margin-bottom: 10px; }
@@ -32,7 +40,7 @@
   </style>
 </head>
 <body>
-  <nav><a class="nav-logo" href="/"><span>Signal</span>map</a></nav>
+  <nav><a href="/" class="logo"><div class="logo-icon"><span></span><span></span><span></span><span></span><span></span></div>SIGNALMAP</a></nav>
   <main>
     <div class="card" id="unsub-card">
       <h1>Unsubscribe</h1>

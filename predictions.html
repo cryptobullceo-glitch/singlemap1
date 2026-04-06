@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto Exchange Predictions Tracker 2026 | Signalmap</title>
   <meta name="description" content="Track Signalmap's public predictions on crypto exchange moves — hiring surges, product launches, compliance shifts — with full resolution history and accuracy score.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://signalmap.live/predictions">
   <meta property="og:title" content="Crypto Exchange Predictions Tracker 2026 | Signalmap">
   <meta property="og:description" content="Track verified predictions on crypto exchange moves. Hiring-based signals with 75%+ accuracy.">
@@ -37,8 +38,15 @@
     body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; height: 600px; background: radial-gradient(ellipse 80% 60% at 50% -5%, rgba(5,150,105,0.07), transparent); pointer-events: none; z-index: 0; }
 
     nav { position: sticky; top: 0; z-index: 100; background: rgba(247,247,244,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--light); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .nav-logo span { color: var(--green); }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
+    .logo-icon { display: flex; align-items: flex-end; gap: 2px; height: 18px; }
+    .logo-icon span { background: var(--green); border-radius: 2px; width: 3px; }
+    .logo-icon span:nth-child(1) { height: 7px; opacity: 0.35; }
+    .logo-icon span:nth-child(2) { height: 10px; opacity: 0.55; }
+    .logo-icon span:nth-child(3) { height: 13px; opacity: 0.75; }
+    .logo-icon span:nth-child(4) { height: 16px; opacity: 0.9; }
+    .logo-icon span:nth-child(5) { height: 18px; }
+
     .nav-links { display: flex; align-items: center; gap: 20px; }
     .nav-links a { text-decoration: none; color: var(--mid); font-size: .875rem; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--ink); }
@@ -121,7 +129,7 @@
 </head>
 <body>
   <nav>
-    <a class="nav-logo" href="/"><span>Signal</span>map</a>
+    <a href="/" class="logo"><div class="logo-icon"><span></span><span></span><span></span><span></span><span></span></div>SIGNALMAP</a>
     <div class="nav-links">
       <a href="/intelligence">Dashboard</a>
       <a href="/blog">Blog</a>
