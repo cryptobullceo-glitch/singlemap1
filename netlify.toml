@@ -102,6 +102,108 @@
   to = "/privacy.html"
   status = 200
 
+# ── Exchange hiring intelligence pages ──
+[[redirects]]
+  from = "/coinbase-hiring"
+  to = "/coinbase-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/binance-hiring"
+  to = "/binance-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/okx-hiring"
+  to = "/okx-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/kraken-hiring"
+  to = "/kraken-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/bybit-hiring"
+  to = "/bybit-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/cryptocom-hiring"
+  to = "/cryptocom-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/gemini-hiring"
+  to = "/gemini-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/robinhood-hiring"
+  to = "/robinhood-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/bitpanda-hiring"
+  to = "/bitpanda-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/bitvavo-hiring"
+  to = "/bitvavo-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/kucoin-hiring"
+  to = "/kucoin-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/gate-hiring"
+  to = "/gate-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/bitget-hiring"
+  to = "/bitget-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/bitstamp-hiring"
+  to = "/bitstamp-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/htx-hiring"
+  to = "/htx-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/mexc-hiring"
+  to = "/mexc-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/deribit-hiring"
+  to = "/deribit-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/bitflyer-hiring"
+  to = "/bitflyer-hiring.html"
+  status = 200
+
+# ── Hub pages ──
+[[redirects]]
+  from = "/crypto-jobs"
+  to = "/crypto-jobs.html"
+  status = 200
+
+[[redirects]]
+  from = "/protocols"
+  to = "/protocols.html"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/404.html"
