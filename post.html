@@ -312,6 +312,7 @@
       <header class="post-header">
         <div id="post-tags" class="post-tags"></div>
         <div id="post-date" class="post-date"></div>
+        <div id="post-read-time" class="post-date" style="margin-top:-10px;margin-bottom:16px"></div>
         <h1 class="post-title" id="post-title"></h1>
         <p class="post-lead" id="post-lead"></p>
 
@@ -603,6 +604,11 @@
 
     // Share links
     setShareLinks(post);
+
+    // Read time (computed from word count, ~200 wpm)
+    const wordCount = (post.content || '').replace(/<[^>]+>/g, ' ').trim().split(/\s+/).length;
+    const minutes = Math.max(1, Math.round(wordCount / 200));
+    document.getElementById('post-read-time').textContent = `${minutes} min read`;
 
     // Article content
     document.getElementById('article-body').innerHTML = post.content || '';
