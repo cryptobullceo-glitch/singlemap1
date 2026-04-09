@@ -488,12 +488,21 @@ async function deleteAlert(id) {
   } catch (err) { console.error(err); }
 }
 
-// Pre-fill email from URL param
-const urlEmail = new URLSearchParams(location.search).get('email');
-if (urlEmail) {
-  document.getElementById('f-email').value = urlEmail;
-  document.getElementById('lookup-email').value = urlEmail;
-  loadAlerts(urlEmail);
+// Pre-fill form fields from URL params
+const params = new URLSearchParams(location.search);
+const urlEmail    = params.get('email');
+const urlExchange = params.get('exchange');
+const urlDept     = params.get('department');
+const urlKeyword  = params.get('keyword');
+
+if (urlEmail)    { document.getElementById('f-email').value = urlEmail; document.getElementById('lookup-email').value = urlEmail; loadAlerts(urlEmail); }
+if (urlExchange) { document.getElementById('f-exchange').value = urlExchange; }
+if (urlDept)     { document.getElementById('f-department').value = urlDept; }
+if (urlKeyword)  { document.getElementById('f-keyword').value = urlKeyword; }
+
+// If any filter param was passed, scroll form into view
+if (urlExchange || urlDept || urlKeyword) {
+  document.getElementById('alert-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 </script>
 </body>

@@ -153,8 +153,9 @@ function nudgeEmail(data: Record<string, unknown>): string {
       <div class="sub">+${delta} roles vs 4-week average · likely precedes a regulatory announcement</div>
     </div>
     <p>Free tier shows you that the number changed. Pro tier shows you the week-by-week trend, the specific roles driving the spike, and our prediction for what it means.</p>
-    <p><a href="${SITE_URL}/cex-intelligence.html" class="cta-btn">View the full signal →</a></p>
-    <p style="margin-top: 16px; font-size: 14px;">Lock in founding rate ($79/mo): <a href="${STRIPE_MONTHLY}" style="color: #059669; font-weight: 600;">Upgrade now →</a></p>
+    <p>Pro also includes <strong>competitor hiring alerts</strong> — set a watch on ${exchange} (or any exchange) and get an email with our analysis the moment they post a new role in a department you care about.</p>
+    <p><a href="${SITE_URL}/intelligence" class="cta-btn">View the full signal →</a></p>
+    <p style="margin-top: 16px; font-size: 14px;">Lock in founding rate (€79/mo): <a href="${STRIPE_MONTHLY}" style="color: #059669; font-weight: 600;">Upgrade now →</a></p>
   `);
 }
 
@@ -181,11 +182,12 @@ function finalEmail(_data: Record<string, unknown>): string {
     <p>After tomorrow, Signalmap Pro goes from $79/month to $149/month. If you've been on the fence, this is the last chance to lock in the lower price — permanently.</p>
     <p>Here's what you get with Pro:</p>
     <ul style="color: #3F3F46; font-size: 16px; line-height: 2;">
-      <li>Weekly email brief — full signal analysis, not just the headlines</li>
+      <li>Live intelligence dashboard — all 18 exchanges, updated weekly</li>
       <li>Active predictions with confidence scores and rationale</li>
       <li>Full department breakdown — see exactly which teams are growing</li>
       <li>Regulatory radar — compliance and legal hiring patterns</li>
-      <li>1,400+ job listings, updated weekly</li>
+      <li><strong>Competitor hiring alerts</strong> — get an email with analysis the moment a target exchange posts a role matching your filter</li>
+      <li>1,800+ job listings tracked across CEX + DeFi protocols</li>
     </ul>
     <p>The free dashboard isn't going anywhere. This is the analysis layer on top — for the people who want to act before the market does.</p>
     <p><a href="${STRIPE_MONTHLY}" class="cta-btn">Lock in $79/mo before midnight →</a></p>
