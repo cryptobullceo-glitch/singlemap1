@@ -512,6 +512,13 @@
   <!-- Hub pages -->
   <url><loc>https://signalmap.live/crypto-jobs</loc><lastmod>2026-04-07</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://signalmap.live/protocols</loc><lastmod>2026-04-07</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://signalmap.live/alerts</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://signalmap.live/coinbase-vs-kraken</loc><lastmod>2026-04-09</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/binance-vs-okx</loc><lastmod>2026-04-09</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/coinbase-vs-gemini</loc><lastmod>2026-04-09</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/bybit-vs-okx</loc><lastmod>2026-04-09</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/kraken-vs-binance</loc><lastmod>2026-04-09</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/binance-vs-coinbase</loc><lastmod>2026-04-09</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
   <!-- Per-exchange hiring intelligence pages -->
   <url><loc>https://signalmap.live/coinbase-hiring</loc><lastmod>2026-04-07</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>

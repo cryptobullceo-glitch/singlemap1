@@ -209,6 +209,37 @@
   to = "/alerts.html"
   status = 200
 
+# ── Exchange comparison pages ──
+[[redirects]]
+  from = "/coinbase-vs-kraken"
+  to = "/coinbase-vs-kraken.html"
+  status = 200
+
+[[redirects]]
+  from = "/binance-vs-okx"
+  to = "/binance-vs-okx.html"
+  status = 200
+
+[[redirects]]
+  from = "/coinbase-vs-gemini"
+  to = "/coinbase-vs-gemini.html"
+  status = 200
+
+[[redirects]]
+  from = "/bybit-vs-okx"
+  to = "/bybit-vs-okx.html"
+  status = 200
+
+[[redirects]]
+  from = "/kraken-vs-binance"
+  to = "/kraken-vs-binance.html"
+  status = 200
+
+[[redirects]]
+  from = "/binance-vs-coinbase"
+  to = "/binance-vs-coinbase.html"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/404.html"
