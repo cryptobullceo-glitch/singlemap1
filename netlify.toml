@@ -1,6 +1,13 @@
 [build]
   publish = "."
 
+# ── Edge Functions ──────────────────────────────────────────────────────────────
+# blog-seo runs before the /blog/:slug rewrite and injects real <title> +
+# meta tags from Supabase so Google sees SSR'd metadata on the first byte.
+[[edge_functions]]
+  path     = "/blog/*"
+  function = "blog-seo"
+
 [[redirects]]
   from = "/blog/:slug"
   to = "/post.html?slug=:slug"
