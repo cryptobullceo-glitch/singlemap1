@@ -108,6 +108,11 @@ const EXCHANGES = [
   { id: 'shakepay',    source: 'greenhouse', board: 'shakepay'      }, // Shakepay — Canadian exchange
   { id: 'block',       source: 'greenhouse', board: 'block'         }, // Block Inc (Cash App, Spiral)
   { id: 'spiral',      source: 'ashby',      board: 'spiral'        }, // Spiral — Bitcoin dev (Block)
+  { id: 'river',       source: 'ashby',      board: 'river'         }, // River — Bitcoin financial services
+  { id: 'strike',      source: 'greenhouse', board: 'strike'        }, // Strike — Bitcoin Lightning payments
+  { id: 'bitso',       source: 'greenhouse', board: 'bitso'         }, // Bitso — LatAm exchange (compliance signal)
+  { id: 'luno',        source: 'greenhouse', board: 'luno'          }, // Luno — Africa/EU exchange (AML signal)
+  { id: 'sfox',        source: 'greenhouse', board: 'sfox'          }, // sFOX — institutional crypto
 ];
 
 // ── Retry helper ─────────────────────────────────────────────
