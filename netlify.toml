@@ -216,57 +216,6 @@
   to = "/alerts.html"
   status = 200
 
-# ── Protocol hiring pages ──
-[[redirects]]
-  from = "/uniswap-hiring"
-  to = "/uniswap-hiring.html"
-  status = 200
-
-[[redirects]]
-  from = "/chainlink-hiring"
-  to = "/chainlink-hiring.html"
-  status = 200
-
-[[redirects]]
-  from = "/solana-hiring"
-  to = "/solana-hiring.html"
-  status = 200
-
-[[redirects]]
-  from = "/polygon-hiring"
-  to = "/polygon-hiring.html"
-  status = 200
-
-[[redirects]]
-  from = "/arbitrum-hiring"
-  to = "/arbitrum-hiring.html"
-  status = 200
-
-[[redirects]]
-  from = "/circle-hiring"
-  to = "/circle-hiring.html"
-  status = 200
-
-[[redirects]]
-  from = "/ripple-hiring"
-  to = "/ripple-hiring.html"
-  status = 200
-
-[[redirects]]
-  from = "/consensys-hiring"
-  to = "/consensys-hiring.html"
-  status = 200
-
-[[redirects]]
-  from = "/fireblocks-hiring"
-  to = "/fireblocks-hiring.html"
-  status = 200
-
-[[redirects]]
-  from = "/chainalysis-hiring"
-  to = "/chainalysis-hiring.html"
-  status = 200
-
 # ── Exchange comparison pages ──
 [[redirects]]
   from = "/coinbase-vs-kraken"
