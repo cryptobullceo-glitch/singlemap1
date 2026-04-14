@@ -78,8 +78,11 @@
     .protocol-card {
       background: var(--card); border: 1px solid var(--light); border-radius: 12px;
       padding: 20px; transition: box-shadow 0.15s, border-color 0.15s;
+      display: block; text-decoration: none; color: inherit;
     }
     .protocol-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); border-color: #d1d5db; }
+    a.protocol-card .protocol-name { color: var(--ink); }
+    a.protocol-card:hover .protocol-name { color: var(--green); }
     .protocol-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
     .protocol-avatar { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 800; color: #fff; flex-shrink: 0; }
     .protocol-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; }
@@ -158,7 +161,7 @@
     <p class="section-sub">Decentralised finance — lending, DEX, oracle, and governance hiring signals.</p>
     <div class="protocol-grid">
 
-      <div class="protocol-card">
+      <a href="/uniswap-hiring" class="protocol-card">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#FF007A">UNI</div>
           <div class="protocol-name">Uniswap Labs</div>
@@ -168,7 +171,7 @@
           <span class="score-badge score-mid">72</span>
           <span class="jobs-count">23 active roles</span>
         </div>
-      </div>
+      </a>
 
       <div class="protocol-card">
         <div class="protocol-header">
@@ -182,7 +185,7 @@
         </div>
       </div>
 
-      <div class="protocol-card">
+      <a href="/chainlink-hiring" class="protocol-card">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#375BD2">LINK</div>
           <div class="protocol-name">Chainlink</div>
@@ -192,7 +195,7 @@
           <span class="score-badge score-mid">79</span>
           <span class="jobs-count">31 active roles</span>
         </div>
-      </div>
+      </a>
 
       <div class="protocol-card">
         <div class="protocol-header">
@@ -230,7 +233,7 @@
     <p class="section-sub">Layer 1 and Layer 2 blockchain network hiring signals — validators, tooling, and ecosystem growth.</p>
     <div class="protocol-grid">
 
-      <div class="protocol-card">
+      <a href="/solana-hiring" class="protocol-card">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#9945FF">SOL</div>
           <div class="protocol-name">Solana Foundation</div>
@@ -240,9 +243,9 @@
           <span class="score-badge score-mid">74</span>
           <span class="jobs-count">19 active roles</span>
         </div>
-      </div>
+      </a>
 
-      <div class="protocol-card">
+      <a href="/polygon-hiring" class="protocol-card">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#8247E5">POL</div>
           <div class="protocol-name">Polygon</div>
@@ -252,9 +255,9 @@
           <span class="score-badge score-mid">71</span>
           <span class="jobs-count">28 active roles</span>
         </div>
-      </div>
+      </a>
 
-      <div class="protocol-card">
+      <a href="/arbitrum-hiring" class="protocol-card">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#2D374B">ARB</div>
           <div class="protocol-name">Arbitrum</div>
@@ -264,7 +267,7 @@
           <span class="score-badge score-mid">76</span>
           <span class="jobs-count">22 active roles</span>
         </div>
-      </div>
+      </a>
 
       <div class="protocol-card">
         <div class="protocol-header">
@@ -302,7 +305,7 @@
     <p class="section-sub">Stablecoins, custody, compliance tooling, and cross-chain infrastructure hiring signals.</p>
     <div class="protocol-grid">
 
-      <div class="protocol-card">
+      <a href="/circle-hiring" class="protocol-card">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#2775CA">USDC</div>
           <div class="protocol-name">Circle</div>
@@ -312,9 +315,9 @@
           <span class="score-badge score-high">81</span>
           <span class="jobs-count">44 active roles</span>
         </div>
-      </div>
+      </a>
 
-      <div class="protocol-card">
+      <a href="/ripple-hiring" class="protocol-card">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#346AA9">XRP</div>
           <div class="protocol-name">Ripple</div>
@@ -324,9 +327,9 @@
           <span class="score-badge score-mid">77</span>
           <span class="jobs-count">38 active roles</span>
         </div>
-      </div>
+      </a>
 
-      <div class="protocol-card">
+      <a href="/consensys-hiring" class="protocol-card">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#E17726">ETH</div>
           <div class="protocol-name">Consensys</div>
@@ -336,9 +339,9 @@
           <span class="score-badge score-mid">66</span>
           <span class="jobs-count">29 active roles</span>
         </div>
-      </div>
+      </a>
 
-      <div class="protocol-card">
+      <a href="/fireblocks-hiring" class="protocol-card">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#5A2EBA">FB</div>
           <div class="protocol-name">Fireblocks</div>
@@ -348,9 +351,9 @@
           <span class="score-badge score-mid">73</span>
           <span class="jobs-count">35 active roles</span>
         </div>
-      </div>
+      </a>
 
-      <div class="protocol-card">
+      <a href="/chainalysis-hiring" class="protocol-card">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#1B4EEA">CA</div>
           <div class="protocol-name">Chainalysis</div>
@@ -360,7 +363,7 @@
           <span class="score-badge score-mid">70</span>
           <span class="jobs-count">26 active roles</span>
         </div>
-      </div>
+      </a>
 
     </div>
 
