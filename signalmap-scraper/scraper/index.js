@@ -49,7 +49,11 @@ const EXCHANGES = [
   { id: 'bitpanda',  source: 'greenhouse', board: 'bitpanda'    }, // EU board, using standard GH
 
   // ── DeFi / Web3 protocols ─────────────────────────────────────
-  { id: 'uniswap',   source: 'greenhouse', board: 'uniswap'     },
+  // Verified via ATS API probe April 2026
+  { id: 'ripple',     source: 'greenhouse', board: 'ripple'      },
+  { id: 'fireblocks', source: 'greenhouse', board: 'fireblocks'  },
+  { id: 'consensys',  source: 'greenhouse', board: 'consensys'   },
+  { id: 'arbitrum',   source: 'lever',      board: 'offchainlabs' }, // Arbitrum = Offchain Labs
 
   // Lever ATS (public JSON API — no auth needed)
   { id: 'binance',   source: 'lever',      board: 'binance'     },
