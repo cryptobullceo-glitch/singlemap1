@@ -64,6 +64,20 @@ const EXCHANGES = [
   { id: 'bitvavo',   source: 'ashby',      board: 'bitvavo'     },
   { id: 'uniswap',   source: 'ashby',      board: 'uniswap'     },
   { id: 'polygon',   source: 'ashby',      board: 'polygon-labs' }, // Polygon Labs
+
+  // ── Additional Web3 / infrastructure — verified April 2026 ───
+  { id: 'alchemy',       source: 'greenhouse', board: 'alchemy'       }, // Web3 dev platform
+  { id: 'anchorage',     source: 'lever',      board: 'anchorage'     }, // OCC-chartered crypto bank (97 jobs)
+  { id: 'gauntlet',      source: 'lever',      board: 'gauntlet'      }, // DeFi risk management
+  { id: 'figment',       source: 'greenhouse', board: 'figment'       }, // Ethereum staking infra
+  { id: 'nansen',        source: 'greenhouse', board: 'nansen'        }, // On-chain analytics
+  { id: 'phantom',       source: 'ashby',      board: 'phantom'       }, // Multi-chain wallet
+  { id: 'opensea',       source: 'ashby',      board: 'opensea'       }, // NFT marketplace
+  { id: 'coinmarketcap', source: 'lever',      board: 'coinmarketcap' }, // Crypto data (Binance subsidiary)
+  { id: 'coingecko',     source: 'lever',      board: 'coingecko'     }, // Crypto data
+  { id: 'paradigm',      source: 'ashby',      board: 'paradigm'      }, // Crypto VC / research
+  { id: 'a16z',          source: 'greenhouse', board: 'a16z'          }, // a16z Crypto VC
+  { id: 'ledger',        source: 'ashby',      board: 'ledger'        }, // Hardware wallet
 ];
 
 // ── Retry helper ─────────────────────────────────────────────
