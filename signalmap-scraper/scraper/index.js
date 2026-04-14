@@ -93,6 +93,21 @@ const EXCHANGES = [
   { id: 'superstate',  source: 'lever',      board: 'superstate'    }, // Tokenized US treasuries
   { id: 'bybit',       source: 'greenhouse', board: 'bybit'         }, // Top-5 exchange
   { id: 'gate',        source: 'lever',      board: 'gate'          }, // Gate.io exchange
+  { id: 'jito',        source: 'lever',      board: 'jito'          }, // Jito — Solana MEV/LST
+  { id: 'zora',        source: 'greenhouse', board: 'zora'          }, // Zora — NFT protocol
+  { id: 'magiceden',   source: 'ashby',      board: 'magiceden'     }, // Magic Eden — NFT marketplace
+  { id: 'injective',   source: 'ashby',      board: 'injective'     }, // Injective — L1 DeFi chain
+  { id: 'morpho',      source: 'ashby',      board: 'morpho'        }, // Morpho — DeFi lending
+  { id: 'securitize',  source: 'greenhouse', board: 'securitize'    }, // Securitize — tokenized assets
+  { id: 'elliptic',    source: 'ashby',      board: 'elliptic'      }, // Elliptic — blockchain compliance
+  { id: 'moonpay',     source: 'lever',      board: 'moonpay'       }, // MoonPay — crypto on-ramp
+  { id: 'quicknode',   source: 'ashby',      board: 'quicknode'     }, // QuickNode — node infrastructure
+  { id: 'taxbit',      source: 'greenhouse', board: 'taxbit'        }, // TaxBit — crypto tax software
+  { id: 'cointracker', source: 'ashby',      board: 'cointracker'   }, // CoinTracker — portfolio/tax
+  { id: 'helius',      source: 'ashby',      board: 'helius'        }, // Helius — Solana RPC
+  { id: 'shakepay',    source: 'greenhouse', board: 'shakepay'      }, // Shakepay — Canadian exchange
+  { id: 'block',       source: 'greenhouse', board: 'block'         }, // Block Inc (Cash App, Spiral)
+  { id: 'spiral',      source: 'ashby',      board: 'spiral'        }, // Spiral — Bitcoin dev (Block)
 ];
 
 // ── Retry helper ─────────────────────────────────────────────
