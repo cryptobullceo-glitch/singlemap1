@@ -78,6 +78,11 @@ const EXCHANGES = [
   { id: 'paradigm',      source: 'ashby',      board: 'paradigm'      }, // Crypto VC / research
   { id: 'a16z',          source: 'greenhouse', board: 'a16z'          }, // a16z Crypto VC
   { id: 'ledger',        source: 'ashby',      board: 'ledger'        }, // Hardware wallet
+  { id: 'celestia',     source: 'lever',      board: 'celestia'      }, // Modular blockchain
+  { id: 'blockdaemon',  source: 'ashby',      board: 'blockdaemon'   }, // Staking infrastructure
+  { id: 'oplabs',      source: 'ashby',      board: 'oplabs'        }, // OP Labs (Optimism)
+  { id: 'mystenlabs',  source: 'ashby',      board: 'mystenlabs'    }, // Mysten Labs (Sui)
+  { id: 'aptoslabs',   source: 'greenhouse', board: 'aptoslabs'     }, // Aptos Labs
 ];
 
 // ── Retry helper ─────────────────────────────────────────────
