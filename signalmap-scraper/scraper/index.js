@@ -48,6 +48,9 @@ const EXCHANGES = [
   { id: 'bitmex',    source: 'greenhouse', board: 'bitmex'      },
   { id: 'bitpanda',  source: 'greenhouse', board: 'bitpanda'    }, // EU board, using standard GH
 
+  // ── DeFi / Web3 protocols ─────────────────────────────────────
+  { id: 'uniswap',   source: 'greenhouse', board: 'uniswap'     },
+
   // Lever ATS (public JSON API — no auth needed)
   { id: 'binance',   source: 'lever',      board: 'binance'     },
   { id: 'crypto',    source: 'lever',      board: 'crypto'      }, // Crypto.com uses Lever, board='crypto'
