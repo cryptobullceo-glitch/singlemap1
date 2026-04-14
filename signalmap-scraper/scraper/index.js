@@ -113,6 +113,10 @@ const EXCHANGES = [
   { id: 'bitso',       source: 'greenhouse', board: 'bitso'         }, // Bitso — LatAm exchange (compliance signal)
   { id: 'luno',        source: 'greenhouse', board: 'luno'          }, // Luno — Africa/EU exchange (AML signal)
   { id: 'sfox',        source: 'greenhouse', board: 'sfox'          }, // sFOX — institutional crypto
+  { id: 'blockstream', source: 'ashby',      board: 'blockstream'   }, // Blockstream — Bitcoin infrastructure
+  { id: 'maple',       source: 'ashby',      board: 'maple'         }, // Maple Finance — institutional DeFi
+  { id: 'nubank',      source: 'greenhouse', board: 'nubank'        }, // Nubank — Brazil neobank/crypto (AML signal)
+  { id: 'cobo',        source: 'greenhouse', board: 'cobo'          }, // Cobo — crypto asset management
 ];
 
 // ── Retry helper ─────────────────────────────────────────────
