@@ -116,6 +116,36 @@
     .load-more { display: block; width: 100%; margin-top: 24px; padding: 12px; background: var(--alt-bg); border: 1px solid var(--light); border-radius: 10px; font-size: .875rem; font-weight: 600; color: var(--mid); cursor: pointer; font-family: inherit; transition: all .2s; }
     .load-more:hover { background: var(--light); color: var(--ink); }
 
+    /* Rationale blur gate */
+    .rationale-wrap { position: relative; }
+    .rationale-blur { filter: blur(5px); user-select: none; pointer-events: none; }
+    .rationale-gate {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(to right, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.85) 30%);
+      border-radius: 4px;
+    }
+    .rationale-gate a {
+      background: var(--green); color: #fff; font-size: .72rem; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px; text-decoration: none; white-space: nowrap;
+      letter-spacing: .02em;
+    }
+    .rationale-gate a:hover { background: var(--green-dark); }
+
+    /* Sticky upgrade nudge */
+    .pro-nudge {
+      position: fixed; bottom: 24px; right: 24px; z-index: 200;
+      background: #0A0A0B; color: #fff; border-radius: 14px; padding: 14px 18px;
+      max-width: 280px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      transform: translateY(120px); opacity: 0; transition: all .4s cubic-bezier(.34,1.56,.64,1);
+    }
+    .pro-nudge.show { transform: translateY(0); opacity: 1; }
+    .pro-nudge-close { position: absolute; top: 8px; right: 12px; background: none; border: none; color: #6b7280; cursor: pointer; font-size: 16px; line-height: 1; padding: 0; }
+    .pro-nudge h4 { font-family: 'Space Grotesk', sans-serif; font-size: .85rem; font-weight: 700; margin-bottom: 4px; }
+    .pro-nudge p { font-size: .75rem; color: #9ca3af; margin-bottom: 10px; line-height: 1.4; }
+    .pro-nudge a { display: block; background: var(--green); color: #fff; text-align: center; font-size: .8rem; font-weight: 700; padding: 9px; border-radius: 8px; text-decoration: none; }
+    .pro-nudge a:hover { background: var(--green-dark); }
+    @media (max-width: 600px) { .pro-nudge { bottom: 12px; right: 12px; max-width: 260px; } }
+
     footer { text-align: center; padding: 40px 24px; border-top: 1px solid var(--light); font-size: .8rem; color: var(--mid); }
     footer a { color: var(--mid); text-decoration: none; }
     footer a:hover { color: var(--ink); }
@@ -176,14 +206,21 @@
     <button class="load-more" id="load-more" style="display:none" onclick="loadMore()">Load more predictions</button>
 
     <div class="upgrade-cta">
-      <h2>See predictions before they resolve</h2>
-      <p>Pro subscribers get access to all active predictions with full rationale, confidence scores, and weekly updates as hiring data evolves.</p>
+      <h2>Unlock the rationale behind every active prediction</h2>
+      <p>64 active predictions are live right now. Pro subscribers see the full hiring analysis, confidence reasoning, and weekly updates as the data evolves. Resolved predictions stay public for anyone.</p>
       <div class="cta-btns">
         <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="btn-primary">Start Pro — €79/mo</a>
         <a href="https://buy.stripe.com/fZu28r0Qw4223yD7nb8k801" class="btn-secondary">Annual — €699/yr (save 26%)</a>
       </div>
     </div>
   </main>
+
+  <div class="pro-nudge" id="pro-nudge">
+    <button class="pro-nudge-close" onclick="dismissNudge()" aria-label="Close">×</button>
+    <h4>64 active predictions locked</h4>
+    <p>You're reading the headlines. Pro unlocks the full hiring-based rationale behind each call.</p>
+    <a href="/pricing">Unlock with Pro — €79/mo →</a>
+  </div>
 
   <footer>
     <p>© 2026 Signalmap &nbsp;·&nbsp; <a href="/">Home</a> &nbsp;·&nbsp; <a href="/intelligence">Dashboard</a> &nbsp;·&nbsp; <a href="/blog">Blog</a> &nbsp;·&nbsp; <a href="/compare">Compare</a> &nbsp;·&nbsp; <a href="/pricing">Pricing</a> &nbsp;·&nbsp; <a href="/how-it-works">Methodology</a> &nbsp;·&nbsp; <a href="/refer">Refer &amp; Earn</a></p>
@@ -228,6 +265,15 @@
           : '';
 
       const exchLabel = (p.exchange_id || p.exchange || 'Market');
+      const rationaleHtml = p.rationale
+        ? (status === 'active'
+          ? `<div class="rationale-wrap">
+               <div class="rationale rationale-blur">${escHtml(p.rationale.slice(0, 180))}${p.rationale.length > 180 ? '…' : ''}</div>
+               <div class="rationale-gate"><a href="/pricing">Unlock with Pro →</a></div>
+             </div>`
+          : `<div class="rationale">${escHtml(p.rationale.slice(0, 180))}${p.rationale.length > 180 ? '…' : ''}</div>`)
+        : '';
+
       return `
         <div class="pred-card" data-status="${status}" data-exchange="${exch}">
           <div class="pred-status">
@@ -236,7 +282,7 @@
           </div>
           <div class="pred-body">
             <h3>${escHtml(p.title || p.prediction || '')}</h3>
-            ${p.rationale ? `<div class="rationale">${escHtml(p.rationale.slice(0, 180))}${p.rationale.length > 180 ? '…' : ''}</div>` : ''}
+            ${rationaleHtml}
             <div class="conf-bar">
               <span class="conf-label">${conf}%</span>
               <div class="conf-track"><div class="conf-fill" style="width:${conf}%"></div></div>
@@ -316,6 +362,22 @@
     }
 
     loadPredictions();
+
+    // Sticky nudge — show after scrolling 600px, once per session
+    let nudgeDismissed = sessionStorage.getItem('nudge_dismissed');
+    let nudgeShown = false;
+    function dismissNudge() {
+      document.getElementById('pro-nudge').classList.remove('show');
+      sessionStorage.setItem('nudge_dismissed', '1');
+      nudgeDismissed = '1';
+    }
+    window.addEventListener('scroll', () => {
+      if (nudgeDismissed || nudgeShown) return;
+      if (window.scrollY > 600) {
+        document.getElementById('pro-nudge').classList.add('show');
+        nudgeShown = true;
+      }
+    }, { passive: true });
   </script>
 </body>
 </html>
