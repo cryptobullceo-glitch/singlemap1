@@ -57,7 +57,7 @@ const EXCHANGES = [
 
   // Lever ATS (public JSON API — no auth needed)
   { id: 'binance',   source: 'lever',      board: 'binance'     },
-  { id: 'crypto',    source: 'lever',      board: 'crypto'      }, // Crypto.com uses Lever, board='crypto'
+  { id: 'cryptocom', source: 'lever',      board: 'crypto'      }, // Crypto.com uses Lever, board='crypto'
 
   // Ashby ATS (public GraphQL API)
   { id: 'kraken',    source: 'ashby',      board: 'kraken.com'  },
