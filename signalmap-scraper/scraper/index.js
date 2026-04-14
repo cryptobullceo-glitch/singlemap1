@@ -62,6 +62,7 @@ const EXCHANGES = [
   // Ashby ATS (public GraphQL API)
   { id: 'kraken',    source: 'ashby',      board: 'kraken.com'  },
   { id: 'bitvavo',   source: 'ashby',      board: 'bitvavo'     },
+  { id: 'uniswap',   source: 'ashby',      board: 'uniswap'     },
 ];
 
 // ── Retry helper ─────────────────────────────────────────────
@@ -130,9 +131,10 @@ async function scrapeAshby(exchange) {
     body: JSON.stringify({
       operationName: 'ApiJobBoardWithTeams',
       variables: { organizationHostedJobsPageName: exchange.board },
+      // Uses jobBoardWithTeams (not publishedJobBoard — deprecated as of April 2026)
       query: `query ApiJobBoardWithTeams($organizationHostedJobsPageName: String!) {
-        jobBoard: publishedJobBoard(organizationHostedJobsPageName: $organizationHostedJobsPageName) {
-          jobPostings { id title locationName teamName jobPostingState externalLink }
+        jobBoard: jobBoardWithTeams(organizationHostedJobsPageName: $organizationHostedJobsPageName) {
+          jobPostings { id title }
         }
       }`
     }),
@@ -142,12 +144,12 @@ async function scrapeAshby(exchange) {
   const data = await res.json();
   if (data.errors?.length) throw new Error(`GraphQL error: ${data.errors[0].message}`);
   const postings = data?.data?.jobBoard?.jobPostings || [];
-  return postings.filter(j => j.jobPostingState === 'Published').map(job => ({
+  return postings.map(job => ({
     external_id: job.id,
     title:       job.title,
-    department:  classifyDept(job.title, job.teamName || ''),
-    location:    job.locationName || '',
-    url:         job.externalLink || `https://jobs.ashbyhq.com/${exchange.board}/${job.id}`,
+    department:  classifyDept(job.title, ''),
+    location:    '',
+    url:         `https://jobs.ashbyhq.com/${exchange.board}/${job.id}`,
     source:      'ashby',
   }));
 }
