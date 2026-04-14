@@ -83,6 +83,16 @@ const EXCHANGES = [
   { id: 'oplabs',      source: 'ashby',      board: 'oplabs'        }, // OP Labs (Optimism)
   { id: 'mystenlabs',  source: 'ashby',      board: 'mystenlabs'    }, // Mysten Labs (Sui)
   { id: 'aptoslabs',   source: 'greenhouse', board: 'aptoslabs'     }, // Aptos Labs
+  { id: 'bitgo',       source: 'greenhouse', board: 'bitgo'         }, // Crypto custody (57 jobs)
+  { id: 'paxos',       source: 'ashby',      board: 'paxos'         }, // Stablecoin / NYDFS (35 jobs)
+  { id: 'dapper',      source: 'ashby',      board: 'dapper'        }, // Dapper Labs / Flow
+  { id: 'immutable',   source: 'lever',      board: 'immutable'     }, // Immutable gaming L2
+  { id: 'nethermind',  source: 'ashby',      board: 'nethermind'    }, // Ethereum client / auditing
+  { id: 'certik',      source: 'lever',      board: 'certik'        }, // Blockchain security
+  { id: 'jump',        source: 'ashby',      board: 'jump'          }, // Jump Crypto
+  { id: 'superstate',  source: 'lever',      board: 'superstate'    }, // Tokenized US treasuries
+  { id: 'bybit',       source: 'greenhouse', board: 'bybit'         }, // Top-5 exchange
+  { id: 'gate',        source: 'lever',      board: 'gate'          }, // Gate.io exchange
 ];
 
 // ── Retry helper ─────────────────────────────────────────────
