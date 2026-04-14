@@ -63,6 +63,7 @@ const EXCHANGES = [
   { id: 'kraken',    source: 'ashby',      board: 'kraken.com'  },
   { id: 'bitvavo',   source: 'ashby',      board: 'bitvavo'     },
   { id: 'uniswap',   source: 'ashby',      board: 'uniswap'     },
+  { id: 'polygon',   source: 'ashby',      board: 'polygon-labs' }, // Polygon Labs
 ];
 
 // ── Retry helper ─────────────────────────────────────────────
