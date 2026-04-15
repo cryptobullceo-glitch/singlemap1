@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Alerts — Signalmap Pro · Competitor Hiring Notifications</title>
+  <meta name="description" content="Get notified the moment your competitors post new jobs. Filter by exchange, department, seniority, or keyword. Pro feature.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://signalmap.live/alerts">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #059669; --green-dark: #047857; --ink: #0A0A0B;
+      --paper: #F7F7F4; --mid: #6B7280; --light: #E4E4E1;
+      --pale: #ECFDF5; --card: #FFFFFF;
+      --amber: #D97706; --amber-pale: #FFFBEB;
+      --red: #DC2626; --red-pale: #FEF2F2;
+    }
+    body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(247,247,244,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--light); padding: 0 24px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 800; color: var(--green); text-decoration: none; letter-spacing: .05em; display: flex; align-items: center; gap: 8px; }
+    .logo-icon { display: flex; align-items: flex-end; gap: 2px; height: 18px; }
+    .logo-icon span { background: var(--green); border-radius: 2px; width: 3px; }
+    .logo-icon span:nth-child(1) { height: 7px; opacity: .35; }
+    .logo-icon span:nth-child(2) { height: 10px; opacity: .55; }
+    .logo-icon span:nth-child(3) { height: 13px; opacity: .75; }
+    .logo-icon span:nth-child(4) { height: 16px; opacity: .9; }
+    .logo-icon span:nth-child(5) { height: 18px; }
+    .nav-links { display: flex; align-items: center; gap: 20px; }
+    .nav-links a { text-decoration: none; color: var(--mid); font-size: .875rem; font-weight: 500; transition: color .15s; }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* HERO */
+    .hero { text-align: center; padding: 64px 24px 40px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--pale); border: 1px solid rgba(5,150,105,.25); color: var(--green); font-size: .75rem; font-weight: 700; padding: 5px 14px; border-radius: 100px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: .06em; }
+    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 14px; }
+    .hero p { color: var(--mid); font-size: 1rem; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+    /* HOW IT WORKS */
+    .how-row { display: flex; justify-content: center; gap: 0; flex-wrap: wrap; max-width: 760px; margin: 40px auto 0; padding: 0 24px; }
+    .how-step { text-align: center; padding: 20px 24px; flex: 1; min-width: 160px; }
+    .how-num { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: var(--green); line-height: 1; margin-bottom: 8px; }
+    .how-label { font-size: .8rem; color: var(--mid); line-height: 1.4; }
+
+    /* MAIN LAYOUT */
+    .main { max-width: 860px; margin: 48px auto 0; padding: 0 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+    @media (max-width: 680px) { .main { grid-template-columns: 1fr; } }
+
+    /* CARD */
+    .card { background: var(--card); border: 1.5px solid var(--light); border-radius: 16px; padding: 28px; }
+    .card-title { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
+    .card-title-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; }
+
+    /* FORM */
+    .field { margin-bottom: 16px; }
+    .field label { display: block; font-size: .8rem; font-weight: 600; color: var(--mid); margin-bottom: 5px; text-transform: uppercase; letter-spacing: .05em; }
+    .field input, .field select { width: 100%; padding: 10px 12px; border: 1.5px solid var(--light); border-radius: 8px; font-size: .9rem; font-family: inherit; color: var(--ink); background: var(--paper); transition: border .15s; outline: none; }
+    .field input:focus, .field select:focus { border-color: var(--green); }
+    .field-hint { font-size: .75rem; color: var(--mid); margin-top: 4px; }
+    .btn-primary { width: 100%; padding: 12px; background: var(--green); color: #fff; border: none; border-radius: 10px; font-weight: 700; font-size: .95rem; cursor: pointer; font-family: inherit; transition: background .15s; margin-top: 8px; }
+    .btn-primary:hover { background: var(--green-dark); }
+    .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+
+    /* EMAIL LOOKUP */
+    .lookup-card { background: var(--card); border: 1.5px solid var(--light); border-radius: 16px; padding: 28px; }
+    .lookup-row { display: flex; gap: 10px; }
+    .lookup-row input { flex: 1; padding: 10px 12px; border: 1.5px solid var(--light); border-radius: 8px; font-size: .9rem; font-family: inherit; color: var(--ink); background: var(--paper); transition: border .15s; outline: none; }
+    .lookup-row input:focus { border-color: var(--green); }
+    .lookup-row button { padding: 10px 18px; background: var(--ink); color: #fff; border: none; border-radius: 8px; font-weight: 600; font-size: .875rem; cursor: pointer; font-family: inherit; white-space: nowrap; transition: background .15s; }
+    .lookup-row button:hover { background: #18181B; }
+
+    /* ALERTS LIST */
+    .alerts-section { max-width: 860px; margin: 32px auto 0; padding: 0 24px 80px; }
+    .alerts-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .alerts-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; }
+    .alerts-count { font-size: .8rem; color: var(--mid); background: var(--paper); border: 1px solid var(--light); padding: 3px 10px; border-radius: 100px; }
+    .alert-item { background: var(--card); border: 1.5px solid var(--light); border-radius: 14px; padding: 18px 20px; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 16px; transition: border .15s; }
+    .alert-item.inactive { opacity: .5; }
+    .alert-item:hover { border-color: #CBD5E1; }
+    .alert-toggle { flex-shrink: 0; margin-top: 2px; }
+    .toggle { position: relative; width: 38px; height: 22px; cursor: pointer; }
+    .toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
+    .toggle-track { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--light); border-radius: 22px; transition: background .2s; }
+    .toggle input:checked + .toggle-track { background: var(--green); }
+    .toggle-thumb { position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; background: #fff; border-radius: 50%; transition: transform .2s; box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+    .toggle input:checked ~ .toggle-thumb { transform: translateX(16px); }
+    .alert-body { flex: 1; min-width: 0; }
+    .alert-label { font-weight: 700; font-size: .9rem; color: var(--ink); margin-bottom: 4px; }
+    .alert-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+    .alert-tag { font-size: .72rem; font-weight: 600; padding: 2px 8px; border-radius: 100px; background: var(--paper); border: 1px solid var(--light); color: var(--mid); text-transform: uppercase; letter-spacing: .04em; }
+    .alert-tag.exchange { background: var(--pale); border-color: rgba(5,150,105,.2); color: var(--green-dark); }
+    .alert-tag.dept { background: #EFF6FF; border-color: #BFDBFE; color: #1D4ED8; }
+    .alert-tag.keyword { background: var(--amber-pale); border-color: rgba(217,119,6,.2); color: var(--amber); }
+    .alert-tag.seniority { background: #FAF5FF; border-color: #E9D5FF; color: #7C3AED; }
+    .alert-meta { font-size: .75rem; color: var(--mid); }
+    .alert-delete { flex-shrink: 0; background: none; border: none; color: var(--mid); cursor: pointer; font-size: .8rem; padding: 4px 8px; border-radius: 6px; transition: background .15s, color .15s; }
+    .alert-delete:hover { background: var(--red-pale); color: var(--red); }
+
+    /* STATUS MESSAGES */
+    .msg { padding: 12px 16px; border-radius: 10px; font-size: .875rem; margin-top: 12px; display: none; }
+    .msg.success { background: var(--pale); color: var(--green-dark); border: 1px solid rgba(5,150,105,.2); }
+    .msg.error { background: var(--red-pale); color: var(--red); border: 1px solid rgba(220,38,38,.2); }
+    .msg.show { display: block; }
+
+    /* EMPTY STATE */
+    .empty-state { text-align: center; padding: 40px 24px; color: var(--mid); }
+    .empty-state .empty-icon { font-size: 2.5rem; margin-bottom: 12px; opacity: .4; }
+    .empty-state p { font-size: .9rem; }
+
+    /* LOADING */
+    .loading { text-align: center; padding: 32px; color: var(--mid); font-size: .875rem; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner { display: inline-block; width: 20px; height: 20px; border: 2px solid var(--light); border-top-color: var(--green); border-radius: 50%; animation: spin .7s linear infinite; vertical-align: middle; margin-right: 8px; }
+
+    /* PRO GATE */
+    .pro-gate { background: linear-gradient(135deg, #0A0A0B 0%, #111827 100%); border-radius: 16px; padding: 32px; text-align: center; margin-bottom: 24px; }
+    .pro-gate h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .pro-gate p { font-size: .875rem; color: #9CA3AF; margin-bottom: 20px; line-height: 1.6; }
+    .pro-gate a { display: inline-block; background: var(--green); color: #fff; text-decoration: none; padding: 11px 24px; border-radius: 8px; font-weight: 700; font-size: .9rem; transition: background .15s; }
+    .pro-gate a:hover { background: var(--green-dark); }
+
+    /* DIVIDER */
+    .section-divider { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .divider-inner { border-top: 1px solid var(--light); padding-top: 32px; }
+
+    footer { text-align: center; padding: 32px 24px; font-size: .8rem; color: var(--mid); }
+    footer a { color: var(--mid); text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+    .footer-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="/"><div class="logo-icon"><span></span><span></span><span></span><span></span><span></span></div>SIGNALMAP</a>
+  <div class="nav-links">
+    <a href="/intelligence">Dashboard</a>
+    <a href="/predictions">Predictions</a>
+    <a href="/alerts" style="color:var(--green);font-weight:600">Alerts</a>
+    <a href="/pricing" style="background:var(--green);color:#fff;padding:8px 18px;border-radius:6px;font-weight:600;font-size:14px;text-decoration:none">Pro — €79/mo</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">Pro Feature</div>
+  <h1>Competitor hiring alerts</h1>
+  <p>Set up a watch on any exchange, department, or keyword. The moment a matching job appears, we analyse it and send you the signal — before anyone else notices.</p>
+</div>
+
+<div class="how-row">
+  <div class="how-step">
+    <div class="how-num">01</div>
+    <div class="how-label">Pick your target: exchange, department, or keyword</div>
+  </div>
+  <div class="how-step">
+    <div class="how-num">02</div>
+    <div class="how-label">We scan job boards daily across 18+ companies</div>
+  </div>
+  <div class="how-step">
+    <div class="how-num">03</div>
+    <div class="how-label">Match found: you get an email with our intelligence</div>
+  </div>
+</div>
+
+<div class="main">
+  <!-- CREATE ALERT -->
+  <div class="card">
+    <div class="card-title"><div class="card-title-dot"></div>Create alert</div>
+    <form id="alert-form" autocomplete="off">
+      <div class="field">
+        <label>Your email</label>
+        <input type="email" id="f-email" placeholder="you@company.com" required autocomplete="email">
+      </div>
+      <div class="field">
+        <label>Label <span style="color:var(--light);font-weight:400">(optional)</span></label>
+        <input type="text" id="f-label" placeholder="e.g. Coinbase compliance watch" maxlength="80">
+        <div class="field-hint">A name to identify this alert</div>
+      </div>
+      <div class="field">
+        <label>Exchange</label>
+        <select id="f-exchange">
+          <option value="">Any exchange</option>
+          <option value="binance">Binance</option>
+          <option value="coinbase">Coinbase</option>
+          <option value="okx">OKX</option>
+          <option value="bybit">Bybit</option>
+          <option value="kraken">Kraken</option>
+          <option value="kucoin">KuCoin</option>
+          <option value="gemini">Gemini</option>
+          <option value="bitget">Bitget</option>
+          <option value="htx">HTX / Huobi</option>
+          <option value="gate">Gate.io</option>
+          <option value="mexc">MEXC</option>
+          <option value="cryptocom">Crypto.com</option>
+          <option value="bitstamp">Bitstamp</option>
+          <option value="deribit">Deribit</option>
+          <option value="bitpanda">Bitpanda</option>
+          <option value="bitflyer">bitFlyer</option>
+          <option value="bitvavo">Bitvavo</option>
+          <option value="uniswap">Uniswap</option>
+          <option value="aave">Aave</option>
+          <option value="chainlink">Chainlink</option>
+          <option value="solana">Solana Foundation</option>
+          <option value="polygon">Polygon</option>
+          <option value="arbitrum">Arbitrum</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Department</label>
+        <select id="f-department">
+          <option value="">Any department</option>
+          <option value="compliance">Compliance &amp; Legal</option>
+          <option value="engineering">Engineering</option>
+          <option value="product">Product</option>
+          <option value="marketing">Marketing &amp; Growth</option>
+          <option value="operations">Operations</option>
+          <option value="finance">Finance &amp; Accounting</option>
+          <option value="sales">Sales &amp; BD</option>
+          <option value="security">Security</option>
+          <option value="risk">Risk</option>
+          <option value="data">Data &amp; Analytics</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Keyword <span style="color:var(--light);font-weight:400">(optional)</span></label>
+        <input type="text" id="f-keyword" placeholder="e.g. MiCA, zkEVM, staking" maxlength="80">
+        <div class="field-hint">Match jobs containing this word in title or description</div>
+      </div>
+      <div class="field">
+        <label>Min. seniority</label>
+        <select id="f-seniority">
+          <option value="any">Any level</option>
+          <option value="senior">Senior+</option>
+          <option value="vp_head">VP / Head+</option>
+          <option value="c_suite">C-Suite only</option>
+        </select>
+      </div>
+      <button class="btn-primary" type="submit" id="create-btn">Create alert</button>
+      <div class="msg success" id="create-success">Alert created. You'll get an email the next time a match appears.</div>
+      <div class="msg error" id="create-error">Something went wrong. Please try again.</div>
+    </form>
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div>
+    <div class="pro-gate">
+      <h3>Pro subscribers only</h3>
+      <p>Alerts send real-time intelligence emails — not just a link, but our analysis of what the hire signals for that exchange's roadmap. Requires an active Pro subscription.</p>
+      <a href="/pricing">Get Pro — €79/mo →</a>
+    </div>
+
+    <!-- LOOKUP -->
+    <div class="lookup-card">
+      <div class="card-title"><div class="card-title-dot"></div>View your alerts</div>
+      <div class="lookup-row">
+        <input type="email" id="lookup-email" placeholder="Enter your email">
+        <button onclick="loadAlerts()">Load →</button>
+      </div>
+      <div class="msg error" id="lookup-error" style="margin-top:10px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ALERTS LIST -->
+<div class="alerts-section" id="alerts-section" style="display:none">
+  <div class="section-divider"><div class="divider-inner"></div></div>
+  <div class="alerts-header">
+    <h2 id="alerts-heading">Your alerts</h2>
+    <span class="alerts-count" id="alerts-count">0</span>
+  </div>
+  <div id="alerts-list">
+    <div class="loading"><span class="spinner"></span>Loading…</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/intelligence">Dashboard</a>
+    <a href="/predictions">Predictions</a>
+    <a href="/blog">Blog</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/alerts">Alerts</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+  © 2026 Signalmap · <a href="mailto:hello@signalmap.live">hello@signalmap.live</a>
+</footer>
+
+<script>
+const SB_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
+
+const EXCHANGE_NAMES = {
+  binance:'Binance', coinbase:'Coinbase', okx:'OKX', bybit:'Bybit',
+  kraken:'Kraken', kucoin:'KuCoin', gemini:'Gemini', bitget:'Bitget',
+  htx:'HTX', gate:'Gate.io', mexc:'MEXC', cryptocom:'Crypto.com',
+  bitstamp:'Bitstamp', deribit:'Deribit', bitpanda:'Bitpanda',
+  bitflyer:'bitFlyer', bitvavo:'Bitvavo', uniswap:'Uniswap',
+  aave:'Aave', chainlink:'Chainlink', solana:'Solana', polygon:'Polygon', arbitrum:'Arbitrum'
+};
+
+const DEPT_NAMES = {
+  compliance:'Compliance', engineering:'Engineering', product:'Product',
+  marketing:'Marketing', operations:'Operations', finance:'Finance',
+  sales:'Sales/BD', security:'Security', risk:'Risk', data:'Data'
+};
+
+const SENIORITY_NAMES = {
+  any:'Any level', senior:'Senior+', vp_head:'VP/Head+', c_suite:'C-Suite'
+};
+
+function sbHeaders() {
+  return { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=representation' };
+}
+
+function showMsg(id, show) {
+  document.getElementById(id).classList.toggle('show', show);
+}
+
+// CREATE ALERT
+document.getElementById('alert-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById('create-btn');
+  btn.disabled = true;
+  btn.textContent = 'Creating…';
+  showMsg('create-success', false);
+  showMsg('create-error', false);
+
+  const email     = document.getElementById('f-email').value.trim();
+  const label     = document.getElementById('f-label').value.trim() || null;
+  const exchange  = document.getElementById('f-exchange').value || null;
+  const dept      = document.getElementById('f-department').value || null;
+  const keyword   = document.getElementById('f-keyword').value.trim() || null;
+  const seniority = document.getElementById('f-seniority').value;
+
+  // Must have at least one filter
+  if (!exchange && !dept && !keyword) {
+    document.getElementById('create-error').textContent = 'Set at least one filter: exchange, department, or keyword.';
+    showMsg('create-error', true);
+    btn.disabled = false;
+    btn.textContent = 'Create alert';
+    return;
+  }
+
+  try {
+    const res = await fetch(SB_URL + '/rest/v1/alerts', {
+      method: 'POST',
+      headers: sbHeaders(),
+      body: JSON.stringify({
+        email,
+        label,
+        exchange_id: exchange,
+        department: dept,
+        keyword,
+        min_seniority: seniority,
+        active: true
+      })
+    });
+
+    if (!res.ok) throw new Error(await res.text());
+
+    showMsg('create-success', true);
+    e.target.reset();
+    // Auto-load alerts for this email
+    document.getElementById('lookup-email').value = email;
+    loadAlerts(email);
+  } catch (err) {
+    console.error(err);
+    document.getElementById('create-error').textContent = 'Something went wrong. Please try again.';
+    showMsg('create-error', true);
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Create alert';
+  }
+});
+
+// LOAD ALERTS
+async function loadAlerts(emailOverride) {
+  const email = emailOverride || document.getElementById('lookup-email').value.trim();
+  if (!email) {
+    const errEl = document.getElementById('lookup-error');
+    errEl.textContent = 'Enter your email first.';
+    errEl.classList.add('show');
+    return;
+  }
+  document.getElementById('lookup-error').classList.remove('show');
+  document.getElementById('alerts-section').style.display = 'block';
+  document.getElementById('alerts-list').innerHTML = '<div class="loading"><span class="spinner"></span>Loading…</div>';
+
+  try {
+    const res = await fetch(
+      SB_URL + '/rest/v1/alerts?email=eq.' + encodeURIComponent(email) + '&order=created_at.desc',
+      { headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY } }
+    );
+    const alerts = await res.json();
+    renderAlerts(alerts, email);
+  } catch (err) {
+    document.getElementById('alerts-list').innerHTML = '<div class="empty-state"><p>Failed to load alerts.</p></div>';
+  }
+}
+
+function renderAlerts(alerts, email) {
+  document.getElementById('alerts-heading').textContent = 'Alerts for ' + email;
+  document.getElementById('alerts-count').textContent = alerts.length + ' alert' + (alerts.length !== 1 ? 's' : '');
+
+  if (!alerts.length) {
+    document.getElementById('alerts-list').innerHTML =
+      '<div class="empty-state"><div class="empty-icon">&#9711;</div><p>No alerts yet. Create your first one above.</p></div>';
+    return;
+  }
+
+  const html = alerts.map(a => {
+    const label = a.label || buildAutoLabel(a);
+    const created = new Date(a.created_at).toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+    const triggered = a.last_triggered_at
+      ? 'Last triggered ' + new Date(a.last_triggered_at).toLocaleDateString('en-GB', { day:'numeric', month:'short' })
+      : 'Never triggered yet';
+
+    const tags = [];
+    if (a.exchange_id) tags.push(`<span class="alert-tag exchange">${EXCHANGE_NAMES[a.exchange_id] || a.exchange_id}</span>`);
+    if (a.department)  tags.push(`<span class="alert-tag dept">${DEPT_NAMES[a.department] || a.department}</span>`);
+    if (a.keyword)     tags.push(`<span class="alert-tag keyword">"${a.keyword}"</span>`);
+    if (a.min_seniority && a.min_seniority !== 'any') tags.push(`<span class="alert-tag seniority">${SENIORITY_NAMES[a.min_seniority] || a.min_seniority}</span>`);
+
+    return `
+    <div class="alert-item ${a.active ? '' : 'inactive'}" id="alert-${a.id}">
+      <div class="alert-toggle">
+        <label class="toggle">
+          <input type="checkbox" ${a.active ? 'checked' : ''} onchange="toggleAlert(${a.id}, this.checked)">
+          <div class="toggle-track"></div>
+          <div class="toggle-thumb"></div>
+        </label>
+      </div>
+      <div class="alert-body">
+        <div class="alert-label">${escHtml(label)}</div>
+        <div class="alert-tags">${tags.join('')}</div>
+        <div class="alert-meta">Created ${created} &middot; ${triggered}</div>
+      </div>
+      <button class="alert-delete" onclick="deleteAlert(${a.id})" title="Delete alert">✕</button>
+    </div>`;
+  }).join('');
+
+  document.getElementById('alerts-list').innerHTML = html;
+}
+
+function buildAutoLabel(a) {
+  const parts = [];
+  if (a.exchange_id) parts.push(EXCHANGE_NAMES[a.exchange_id] || a.exchange_id);
+  if (a.department)  parts.push(DEPT_NAMES[a.department] || a.department);
+  if (a.keyword)     parts.push('"' + a.keyword + '"');
+  return parts.join(' · ') || 'Alert';
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+async function toggleAlert(id, active) {
+  const item = document.getElementById('alert-' + id);
+  if (item) item.classList.toggle('inactive', !active);
+  try {
+    await fetch(SB_URL + '/rest/v1/alerts?id=eq.' + id, {
+      method: 'PATCH',
+      headers: sbHeaders(),
+      body: JSON.stringify({ active })
+    });
+  } catch (err) { console.error(err); }
+}
+
+async function deleteAlert(id) {
+  if (!confirm('Delete this alert?')) return;
+  try {
+    await fetch(SB_URL + '/rest/v1/alerts?id=eq.' + id, {
+      method: 'DELETE',
+      headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+    });
+    const el = document.getElementById('alert-' + id);
+    if (el) el.remove();
+    // Update count
+    const remaining = document.querySelectorAll('[id^="alert-"]').length;
+    document.getElementById('alerts-count').textContent = remaining + ' alert' + (remaining !== 1 ? 's' : '');
+    if (!remaining) {
+      document.getElementById('alerts-list').innerHTML =
+        '<div class="empty-state"><div class="empty-icon">&#9711;</div><p>No alerts yet. Create your first one above.</p></div>';
+    }
+  } catch (err) { console.error(err); }
+}
+
+// Pre-fill form fields from URL params
+const params = new URLSearchParams(location.search);
+const urlEmail    = params.get('email');
+const urlExchange = params.get('exchange');
+const urlDept     = params.get('department');
+const urlKeyword  = params.get('keyword');
+
+if (urlEmail)    { document.getElementById('f-email').value = urlEmail; document.getElementById('lookup-email').value = urlEmail; loadAlerts(urlEmail); }
+if (urlExchange) { document.getElementById('f-exchange').value = urlExchange; }
+if (urlDept)     { document.getElementById('f-department').value = urlDept; }
+if (urlKeyword)  { document.getElementById('f-keyword').value = urlKeyword; }
+
+// If any filter param was passed, scroll form into view
+if (urlExchange || urlDept || urlKeyword) {
+  document.getElementById('alert-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+</script>
+</body>
+</html>

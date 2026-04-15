@@ -12,6 +12,7 @@
   <meta property="og:image" content="https://signalmap.live/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://signalmap.live/og.png">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -311,6 +312,7 @@
       <header class="post-header">
         <div id="post-tags" class="post-tags"></div>
         <div id="post-date" class="post-date"></div>
+        <div id="post-read-time" class="post-date" style="margin-top:-10px;margin-bottom:16px"></div>
         <h1 class="post-title" id="post-title"></h1>
         <p class="post-lead" id="post-lead"></p>
 
@@ -438,7 +440,9 @@
   const SUPABASE_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
   const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
 
-  const slug = new URLSearchParams(window.location.search).get('slug');
+  // Support both ?slug=foo (dev) and /blog/foo (Netlify rewrite)
+  const slug = new URLSearchParams(window.location.search).get('slug')
+    || window.location.pathname.replace(/^\/blog\//, '').split('/')[0] || null;
 
   // Reading progress
   window.addEventListener('scroll', () => {
@@ -600,6 +604,11 @@
 
     // Share links
     setShareLinks(post);
+
+    // Read time (computed from word count, ~200 wpm)
+    const wordCount = (post.content || '').replace(/<[^>]+>/g, ' ').trim().split(/\s+/).length;
+    const minutes = Math.max(1, Math.round(wordCount / 200));
+    document.getElementById('post-read-time').textContent = `${minutes} min read`;
 
     // Article content
     document.getElementById('article-body').innerHTML = post.content || '';

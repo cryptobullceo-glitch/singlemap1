@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CEX Intelligence Dashboard — Signalmap</title>
   <meta name="description" content="Live hiring signal dashboard for major crypto exchanges. Track compliance, engineering, and product hiring in real-time.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://signalmap.live/intelligence">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
@@ -216,6 +217,16 @@
 <script>
 const SUPABASE_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
+
+// Dedicated hiring intelligence pages (tier 1 + 2)
+const HIRING_PAGES = {
+  coinbase: '/coinbase-hiring', binance: '/binance-hiring', okx: '/okx-hiring',
+  kraken: '/kraken-hiring',     bybit: '/bybit-hiring',    cryptocom: '/cryptocom-hiring',
+  gemini: '/gemini-hiring',     robinhood: '/robinhood-hiring', bitpanda: '/bitpanda-hiring',
+  bitvavo: '/bitvavo-hiring',   kucoin: '/kucoin-hiring',  gate: '/gate-hiring',
+  bitget: '/bitget-hiring',     bitstamp: '/bitstamp-hiring', htx: '/htx-hiring',
+  mexc: '/mexc-hiring',         deribit: '/deribit-hiring', bitflyer: '/bitflyer-hiring',
+};
 const IS_ADMIN = new URLSearchParams(location.search).get('admin') === 'signalmap2026';
 
 async function db(table, params = '') {
@@ -259,7 +270,7 @@ async function loadOverview() {
       totalJobs += total; totalComp += comp;
       const maxBar = Math.max(1, total);
       return `
-        <div class="ex-card" onclick="location.href='/exchange.html?id=${s.exchange_id}'">
+        <div class="ex-card" onclick="location.href='${HIRING_PAGES[s.exchange_id] || '/exchange.html?id='+s.exchange_id}'">
           <div class="ex-header">
             <div class="ex-icon" style="background:${m.color}">${m.initials}</div>
             <div class="ex-name">${m.name}</div>
@@ -273,7 +284,7 @@ async function loadOverview() {
           </div>
           <div class="ex-footer">
             <span class="ex-total"><strong>${total}</strong> active roles</span>
-            <a class="ex-link" href="/exchange.html?id=${s.exchange_id}">Details →</a>
+            <a class="ex-link" href="${HIRING_PAGES[s.exchange_id] || '/exchange.html?id='+s.exchange_id}">Deep dive →</a>
           </div>
         </div>`;
     });

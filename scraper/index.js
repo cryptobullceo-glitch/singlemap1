@@ -49,6 +49,19 @@ const EXCHANGES = [
   { id: 'kraken',     source: 'ashby', board: 'kraken.com' },       // VERIFIED: jobs.ashbyhq.com/kraken.com
   { id: 'cryptocom',  source: 'lever', board: 'crypto' },       // VERIFIED: jobs.ashbyhq.com/crypto.com
   { id: 'bitvavo',    source: 'ashby', board: 'bitvavo' },          // VERIFIED: jobs.ashbyhq.com/bitvavo
+
+  // ── DEFI / PROTOCOL / INFRASTRUCTURE (expanding beyond CEX) ──
+  // NOTE: board IDs are best-guess — verify before running scraper
+  { id: 'uniswap',     source: 'greenhouse', board: 'uniswaplabs' },
+  { id: 'chainlink',   source: 'greenhouse', board: 'chainlink' },
+  { id: 'circle',      source: 'greenhouse', board: 'circle' },
+  { id: 'ripple',      source: 'greenhouse', board: 'ripple' },
+  { id: 'consensys',   source: 'greenhouse', board: 'consensys' },
+  { id: 'fireblocks',  source: 'greenhouse', board: 'fireblocks' },
+  { id: 'chainalysis', source: 'greenhouse', board: 'chainalysis' },
+  { id: 'polygon',     source: 'greenhouse', board: 'polygon' },
+  { id: 'arbitrum',    source: 'greenhouse', board: 'offchainlabs' },
+  { id: 'solana',      source: 'greenhouse', board: 'solana' },
 ];
 
 // ═══════════════════════════════════════════════════════════════

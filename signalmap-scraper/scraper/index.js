@@ -48,13 +48,75 @@ const EXCHANGES = [
   { id: 'bitmex',    source: 'greenhouse', board: 'bitmex'      },
   { id: 'bitpanda',  source: 'greenhouse', board: 'bitpanda'    }, // EU board, using standard GH
 
+  // ── DeFi / Web3 protocols ─────────────────────────────────────
+  // Verified via ATS API probe April 2026
+  { id: 'ripple',     source: 'greenhouse', board: 'ripple'      },
+  { id: 'fireblocks', source: 'greenhouse', board: 'fireblocks'  },
+  { id: 'consensys',  source: 'greenhouse', board: 'consensys'   },
+  { id: 'arbitrum',   source: 'lever',      board: 'offchainlabs' }, // Arbitrum = Offchain Labs
+
   // Lever ATS (public JSON API — no auth needed)
   { id: 'binance',   source: 'lever',      board: 'binance'     },
-  { id: 'crypto',    source: 'lever',      board: 'crypto'      }, // Crypto.com uses Lever, board='crypto'
+  { id: 'cryptocom', source: 'lever',      board: 'crypto'      }, // Crypto.com uses Lever, board='crypto'
 
   // Ashby ATS (public GraphQL API)
   { id: 'kraken',    source: 'ashby',      board: 'kraken.com'  },
   { id: 'bitvavo',   source: 'ashby',      board: 'bitvavo'     },
+  { id: 'uniswap',   source: 'ashby',      board: 'uniswap'     },
+  { id: 'polygon',   source: 'ashby',      board: 'polygon-labs' }, // Polygon Labs
+
+  // ── Additional Web3 / infrastructure — verified April 2026 ───
+  { id: 'alchemy',       source: 'greenhouse', board: 'alchemy'       }, // Web3 dev platform
+  { id: 'anchorage',     source: 'lever',      board: 'anchorage'     }, // OCC-chartered crypto bank (97 jobs)
+  { id: 'gauntlet',      source: 'lever',      board: 'gauntlet'      }, // DeFi risk management
+  { id: 'figment',       source: 'greenhouse', board: 'figment'       }, // Ethereum staking infra
+  { id: 'nansen',        source: 'greenhouse', board: 'nansen'        }, // On-chain analytics
+  { id: 'phantom',       source: 'ashby',      board: 'phantom'       }, // Multi-chain wallet
+  { id: 'opensea',       source: 'ashby',      board: 'opensea'       }, // NFT marketplace
+  { id: 'coinmarketcap', source: 'lever',      board: 'coinmarketcap' }, // Crypto data (Binance subsidiary)
+  { id: 'coingecko',     source: 'lever',      board: 'coingecko'     }, // Crypto data
+  { id: 'paradigm',      source: 'ashby',      board: 'paradigm'      }, // Crypto VC / research
+  { id: 'a16z',          source: 'greenhouse', board: 'a16z'          }, // a16z Crypto VC
+  { id: 'ledger',        source: 'ashby',      board: 'ledger'        }, // Hardware wallet
+  { id: 'celestia',     source: 'lever',      board: 'celestia'      }, // Modular blockchain
+  { id: 'blockdaemon',  source: 'ashby',      board: 'blockdaemon'   }, // Staking infrastructure
+  { id: 'oplabs',      source: 'ashby',      board: 'oplabs'        }, // OP Labs (Optimism)
+  { id: 'mystenlabs',  source: 'ashby',      board: 'mystenlabs'    }, // Mysten Labs (Sui)
+  { id: 'aptoslabs',   source: 'greenhouse', board: 'aptoslabs'     }, // Aptos Labs
+  { id: 'bitgo',       source: 'greenhouse', board: 'bitgo'         }, // Crypto custody (57 jobs)
+  { id: 'paxos',       source: 'ashby',      board: 'paxos'         }, // Stablecoin / NYDFS (35 jobs)
+  { id: 'dapper',      source: 'ashby',      board: 'dapper'        }, // Dapper Labs / Flow
+  { id: 'immutable',   source: 'lever',      board: 'immutable'     }, // Immutable gaming L2
+  { id: 'nethermind',  source: 'ashby',      board: 'nethermind'    }, // Ethereum client / auditing
+  { id: 'certik',      source: 'lever',      board: 'certik'        }, // Blockchain security
+  { id: 'jump',        source: 'ashby',      board: 'jump'          }, // Jump Crypto
+  { id: 'superstate',  source: 'lever',      board: 'superstate'    }, // Tokenized US treasuries
+  { id: 'bybit',       source: 'greenhouse', board: 'bybit'         }, // Top-5 exchange
+  { id: 'gate',        source: 'lever',      board: 'gate'          }, // Gate.io exchange
+  { id: 'jito',        source: 'lever',      board: 'jito'          }, // Jito — Solana MEV/LST
+  { id: 'zora',        source: 'greenhouse', board: 'zora'          }, // Zora — NFT protocol
+  { id: 'magiceden',   source: 'ashby',      board: 'magiceden'     }, // Magic Eden — NFT marketplace
+  { id: 'injective',   source: 'ashby',      board: 'injective'     }, // Injective — L1 DeFi chain
+  { id: 'morpho',      source: 'ashby',      board: 'morpho'        }, // Morpho — DeFi lending
+  { id: 'securitize',  source: 'greenhouse', board: 'securitize'    }, // Securitize — tokenized assets
+  { id: 'elliptic',    source: 'ashby',      board: 'elliptic'      }, // Elliptic — blockchain compliance
+  { id: 'moonpay',     source: 'lever',      board: 'moonpay'       }, // MoonPay — crypto on-ramp
+  { id: 'quicknode',   source: 'ashby',      board: 'quicknode'     }, // QuickNode — node infrastructure
+  { id: 'taxbit',      source: 'greenhouse', board: 'taxbit'        }, // TaxBit — crypto tax software
+  { id: 'cointracker', source: 'ashby',      board: 'cointracker'   }, // CoinTracker — portfolio/tax
+  { id: 'helius',      source: 'ashby',      board: 'helius'        }, // Helius — Solana RPC
+  { id: 'shakepay',    source: 'greenhouse', board: 'shakepay'      }, // Shakepay — Canadian exchange
+  { id: 'block',       source: 'greenhouse', board: 'block'         }, // Block Inc (Cash App, Spiral)
+  { id: 'spiral',      source: 'ashby',      board: 'spiral'        }, // Spiral — Bitcoin dev (Block)
+  { id: 'river',       source: 'ashby',      board: 'river'         }, // River — Bitcoin financial services
+  { id: 'strike',      source: 'greenhouse', board: 'strike'        }, // Strike — Bitcoin Lightning payments
+  { id: 'bitso',       source: 'greenhouse', board: 'bitso'         }, // Bitso — LatAm exchange (compliance signal)
+  { id: 'luno',        source: 'greenhouse', board: 'luno'          }, // Luno — Africa/EU exchange (AML signal)
+  { id: 'sfox',        source: 'greenhouse', board: 'sfox'          }, // sFOX — institutional crypto
+  { id: 'blockstream', source: 'ashby',      board: 'blockstream'   }, // Blockstream — Bitcoin infrastructure
+  { id: 'maple',       source: 'ashby',      board: 'maple'         }, // Maple Finance — institutional DeFi
+  { id: 'nubank',      source: 'greenhouse', board: 'nubank'        }, // Nubank — Brazil neobank/crypto (AML signal)
+  { id: 'cobo',        source: 'greenhouse', board: 'cobo'          }, // Cobo — crypto asset management
 ];
 
 // ── Retry helper ─────────────────────────────────────────────
@@ -123,9 +185,10 @@ async function scrapeAshby(exchange) {
     body: JSON.stringify({
       operationName: 'ApiJobBoardWithTeams',
       variables: { organizationHostedJobsPageName: exchange.board },
+      // Uses jobBoardWithTeams (not publishedJobBoard — deprecated as of April 2026)
       query: `query ApiJobBoardWithTeams($organizationHostedJobsPageName: String!) {
-        jobBoard: publishedJobBoard(organizationHostedJobsPageName: $organizationHostedJobsPageName) {
-          jobPostings { id title locationName teamName jobPostingState externalLink }
+        jobBoard: jobBoardWithTeams(organizationHostedJobsPageName: $organizationHostedJobsPageName) {
+          jobPostings { id title }
         }
       }`
     }),
@@ -135,12 +198,12 @@ async function scrapeAshby(exchange) {
   const data = await res.json();
   if (data.errors?.length) throw new Error(`GraphQL error: ${data.errors[0].message}`);
   const postings = data?.data?.jobBoard?.jobPostings || [];
-  return postings.filter(j => j.jobPostingState === 'Published').map(job => ({
+  return postings.map(job => ({
     external_id: job.id,
     title:       job.title,
-    department:  classifyDept(job.title, job.teamName || ''),
-    location:    job.locationName || '',
-    url:         job.externalLink || `https://jobs.ashbyhq.com/${exchange.board}/${job.id}`,
+    department:  classifyDept(job.title, ''),
+    location:    '',
+    url:         `https://jobs.ashbyhq.com/${exchange.board}/${job.id}`,
     source:      'ashby',
   }));
 }

@@ -1,6 +1,13 @@
 [build]
   publish = "."
 
+# ── Edge Functions ──────────────────────────────────────────────────────────────
+# blog-seo runs before the /blog/:slug rewrite and injects real <title> +
+# meta tags from Supabase so Google sees SSR'd metadata on the first byte.
+[[edge_functions]]
+  path     = "/blog/*"
+  function = "blog-seo"
+
 [[redirects]]
   from = "/blog/:slug"
   to = "/post.html?slug=:slug"
@@ -100,6 +107,144 @@
 [[redirects]]
   from = "/privacy"
   to = "/privacy.html"
+  status = 200
+
+# ── Exchange hiring intelligence pages ──
+[[redirects]]
+  from = "/coinbase-hiring"
+  to = "/coinbase-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/binance-hiring"
+  to = "/binance-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/okx-hiring"
+  to = "/okx-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/kraken-hiring"
+  to = "/kraken-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/bybit-hiring"
+  to = "/bybit-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/cryptocom-hiring"
+  to = "/cryptocom-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/gemini-hiring"
+  to = "/gemini-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/robinhood-hiring"
+  to = "/robinhood-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/bitpanda-hiring"
+  to = "/bitpanda-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/bitvavo-hiring"
+  to = "/bitvavo-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/kucoin-hiring"
+  to = "/kucoin-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/gate-hiring"
+  to = "/gate-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/bitget-hiring"
+  to = "/bitget-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/bitstamp-hiring"
+  to = "/bitstamp-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/htx-hiring"
+  to = "/htx-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/mexc-hiring"
+  to = "/mexc-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/deribit-hiring"
+  to = "/deribit-hiring.html"
+  status = 200
+
+[[redirects]]
+  from = "/bitflyer-hiring"
+  to = "/bitflyer-hiring.html"
+  status = 200
+
+# ── Hub pages ──
+[[redirects]]
+  from = "/crypto-jobs"
+  to = "/crypto-jobs.html"
+  status = 200
+
+[[redirects]]
+  from = "/protocols"
+  to = "/protocols.html"
+  status = 200
+
+[[redirects]]
+  from = "/alerts"
+  to = "/alerts.html"
+  status = 200
+
+# ── Exchange comparison pages ──
+[[redirects]]
+  from = "/coinbase-vs-kraken"
+  to = "/coinbase-vs-kraken.html"
+  status = 200
+
+[[redirects]]
+  from = "/binance-vs-okx"
+  to = "/binance-vs-okx.html"
+  status = 200
+
+[[redirects]]
+  from = "/coinbase-vs-gemini"
+  to = "/coinbase-vs-gemini.html"
+  status = 200
+
+[[redirects]]
+  from = "/bybit-vs-okx"
+  to = "/bybit-vs-okx.html"
+  status = 200
+
+[[redirects]]
+  from = "/kraken-vs-binance"
+  to = "/kraken-vs-binance.html"
+  status = 200
+
+[[redirects]]
+  from = "/binance-vs-coinbase"
+  to = "/binance-vs-coinbase.html"
   status = 200
 
 [[redirects]]

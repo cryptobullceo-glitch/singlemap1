@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto Exchange Hiring Intelligence Blog | Signalmap</title>
   <meta name="description" content="Weekly hiring data, predictions, and signals from 10 major crypto exchanges. Stay ahead with Signalmap's intelligence blog — updated automatically.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://signalmap.live/blog">
   <meta property="og:title" content="Crypto Exchange Hiring Intelligence Blog | Signalmap">
   <meta property="og:description" content="Weekly hiring data, predictions, and signals from 10 major crypto exchanges. Updated automatically.">
@@ -126,6 +127,10 @@
     .post-tag.tag-rankings { background: #F3E8FF; color: #7C3AED; }
     .post-tag.tag-weekly { background: #F0F9FF; color: #0369A1; }
     .post-tag.tag-hiring { background: var(--pale); color: var(--green); }
+    .post-tag.tag-analysis { background: #FFF7ED; color: #C2410C; }
+    .post-tag.tag-methodology { background: #F0FDF4; color: #166534; }
+    .post-tag.tag-intelligence { background: #FAF5FF; color: #6D28D9; }
+    .post-tag.tag-binance { background: #FFFBEB; color: #92400E; }
     .post-title { font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 700; line-height: 1.3; color: var(--ink); flex: 1; }
     .post-excerpt { font-size: 14px; color: #52525B; line-height: 1.65; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     .post-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
@@ -226,7 +231,9 @@
       <button class="tag-btn active" data-tag="all">All</button>
       <button class="tag-btn" data-tag="hiring">Hiring</button>
       <button class="tag-btn" data-tag="compliance">Compliance</button>
+      <button class="tag-btn" data-tag="analysis">Analysis</button>
       <button class="tag-btn" data-tag="predictions">Predictions</button>
+      <button class="tag-btn" data-tag="methodology">Methodology</button>
       <button class="tag-btn" data-tag="rankings">Rankings</button>
       <button class="tag-btn" data-tag="weekly">Weekly</button>
     </div>
@@ -315,8 +322,11 @@
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
 
     let allPosts = [];
+    let filteredPosts = [];
     let activeTag = 'all';
     let searchQuery = '';
+    const PAGE_SIZE = 24;
+    let currentPage = 0;
 
     function formatDate(iso) {
       const d = new Date(iso);
@@ -324,16 +334,38 @@
     }
 
     function tagClass(tag) {
-      const map = { compliance: 'tag-compliance', predictions: 'tag-predictions', rankings: 'tag-rankings', weekly: 'tag-weekly', hiring: 'tag-hiring' };
+      const map = {
+        compliance: 'tag-compliance', predictions: 'tag-predictions',
+        rankings: 'tag-rankings', weekly: 'tag-weekly', hiring: 'tag-hiring',
+        analysis: 'tag-analysis', methodology: 'tag-methodology',
+        intelligence: 'tag-intelligence', binance: 'tag-binance',
+      };
       return map[tag.toLowerCase()] || '';
     }
 
-    function renderPosts(posts) {
+    function postCardHtml(post) {
+      const tags = Array.isArray(post.tags) ? post.tags : [];
+      const tagPills = tags.map(t => `<span class="post-tag ${tagClass(t)}">${t}</span>`).join('');
+      const excerpt = post.meta_description || '';
+      const date = post.created_at ? formatDate(post.created_at) : '';
+      return `
+        <article class="post-card">
+          ${tags.length ? `<div class="post-tags">${tagPills}</div>` : ''}
+          <div class="post-title">${escapeHtml(post.title)}</div>
+          ${excerpt ? `<div class="post-excerpt">${escapeHtml(excerpt)}</div>` : ''}
+          <div class="post-footer">
+            <span class="post-date">${date}</span>
+            <a href="/blog/${post.slug}" class="post-read-link">Read <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>`;
+    }
+
+    function renderPosts(reset) {
       const grid = document.getElementById('blog-grid');
       const countEl = document.getElementById('post-count');
-      countEl.innerHTML = `<strong>${posts.length}</strong> post${posts.length !== 1 ? 's' : ''}`;
+      countEl.innerHTML = `<strong>${filteredPosts.length}</strong> post${filteredPosts.length !== 1 ? 's' : ''}`;
 
-      if (posts.length === 0) {
+      if (filteredPosts.length === 0) {
         grid.innerHTML = `
           <div class="empty-state">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -343,25 +375,38 @@
             </svg>
             <p>No posts found. Try a different search or tag.</p>
           </div>`;
+        removeLoadMore();
         return;
       }
 
-      grid.innerHTML = posts.map(post => {
-        const tags = Array.isArray(post.tags) ? post.tags : [];
-        const tagPills = tags.map(t => `<span class="post-tag ${tagClass(t)}">${t}</span>`).join('');
-        const excerpt = post.meta_description || '';
-        const date = post.created_at ? formatDate(post.created_at) : '';
-        return `
-          <article class="post-card">
-            ${tags.length ? `<div class="post-tags">${tagPills}</div>` : ''}
-            <div class="post-title">${escapeHtml(post.title)}</div>
-            ${excerpt ? `<div class="post-excerpt">${escapeHtml(excerpt)}</div>` : ''}
-            <div class="post-footer">
-              <span class="post-date">${date}</span>
-              <a href="/blog/${post.slug}" class="post-read-link">Read <span aria-hidden="true">&rarr;</span></a>
-            </div>
-          </article>`;
-      }).join('');
+      const slice = filteredPosts.slice(0, (currentPage + 1) * PAGE_SIZE);
+      if (reset) {
+        grid.innerHTML = slice.map(postCardHtml).join('');
+      } else {
+        const prev = grid.querySelectorAll('article.post-card').length;
+        slice.slice(prev).forEach(post => {
+          grid.insertAdjacentHTML('beforeend', postCardHtml(post));
+        });
+      }
+
+      const hasMore = slice.length < filteredPosts.length;
+      hasMore ? ensureLoadMore() : removeLoadMore();
+    }
+
+    function ensureLoadMore() {
+      if (!document.getElementById('load-more-btn')) {
+        const btn = document.createElement('button');
+        btn.id = 'load-more-btn';
+        btn.textContent = 'Load more';
+        btn.style.cssText = 'display:block;margin:32px auto 0;padding:12px 32px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;';
+        btn.onclick = () => { currentPage++; renderPosts(false); };
+        document.getElementById('blog-grid').insertAdjacentElement('afterend', btn);
+      }
+    }
+
+    function removeLoadMore() {
+      const btn = document.getElementById('load-more-btn');
+      if (btn) btn.remove();
     }
 
     function escapeHtml(str) {
@@ -369,20 +414,21 @@
     }
 
     function filterAndRender() {
-      let filtered = allPosts;
+      currentPage = 0;
+      filteredPosts = allPosts;
       if (activeTag !== 'all') {
-        filtered = filtered.filter(p => Array.isArray(p.tags) && p.tags.map(t => t.toLowerCase()).includes(activeTag));
+        filteredPosts = filteredPosts.filter(p => Array.isArray(p.tags) && p.tags.map(t => t.toLowerCase()).includes(activeTag));
       }
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
-        filtered = filtered.filter(p => p.title && p.title.toLowerCase().includes(q));
+        filteredPosts = filteredPosts.filter(p => p.title && p.title.toLowerCase().includes(q));
       }
-      renderPosts(filtered);
+      renderPosts(true);
     }
 
     async function fetchPosts() {
       try {
-        const url = `${SUPABASE_URL}/rest/v1/blog_posts?select=slug,title,meta_description,tags,created_at&published=eq.true&order=created_at.desc`;
+        const url = `${SUPABASE_URL}/rest/v1/blog_posts?select=slug,title,meta_description,tags,created_at&published=eq.true&order=created_at.desc&limit=1000`;
         const res = await fetch(url, {
           headers: {
             'apikey': SUPABASE_KEY,
