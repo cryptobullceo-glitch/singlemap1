@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signalmap — Crypto Exchange Intelligence</title>
-  <meta name="description" content="We track hiring, regulatory moves, and product changes at major crypto exchanges — and turn it into a weekly intelligence brief.">
-  <meta property="og:title" content="Signalmap — Crypto Exchange Intelligence">
-  <meta property="og:description" content="Hiring data is a leading indicator. We read it before the announcements.">
+  <title>Signalmap — Crypto Hiring Intelligence</title>
+  <meta name="description" content="We track hiring signals across 67 crypto companies — exchanges, DeFi protocols, L1 networks, and infrastructure — and turn it into a weekly intelligence brief.">
+  <meta property="og:title" content="Signalmap — Crypto Hiring Intelligence">
+  <meta property="og:description" content="67 crypto companies tracked. Hiring data is a leading indicator. We read it before the announcements.">
   <meta property="og:url" content="https://signalmap.live/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://signalmap.live/og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Signalmap — Crypto Exchange Intelligence">
+  <meta name="twitter:title" content="Signalmap — Crypto Hiring Intelligence">
   <meta name="twitter:description" content="Hiring data is a leading indicator. We read it before the announcements.">
   <meta name="twitter:image" content="https://signalmap.live/og.png">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -22,10 +22,10 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"What is crypto exchange hiring intelligence?","acceptedAnswer":{"@type":"Answer","text":"Crypto exchange hiring intelligence tracks job postings at major exchanges like Coinbase, Binance, and OKX to identify patterns that predict regulatory moves, product launches, and market expansion 60-120 days before public announcements."}},
-    {"@type":"Question","name":"How accurate are Signalmap's predictions?","acceptedAnswer":{"@type":"Answer","text":"Signalmap has an 83% accuracy rate on resolved predictions. We currently track 64 active predictions across 10 exchanges, each with a confidence score and full methodology."}},
+    {"@type":"Question","name":"What is crypto hiring intelligence?","acceptedAnswer":{"@type":"Answer","text":"Crypto hiring intelligence tracks job postings at 67 crypto companies — exchanges, DeFi protocols, infrastructure firms, and L1/L2 networks — to identify patterns that predict regulatory moves, product launches, and market expansion 60-120 days before public announcements."}},
+    {"@type":"Question","name":"How accurate are Signalmap's predictions?","acceptedAnswer":{"@type":"Answer","text":"Signalmap has an 83% accuracy rate on resolved predictions. We currently track 78 active predictions across 67 companies, each with a confidence score and full methodology."}},
     {"@type":"Question","name":"How does hiring data predict crypto exchange moves?","acceptedAnswer":{"@type":"Answer","text":"Compliance hiring surges typically precede regulatory filings by 8-12 weeks. Engineering spikes in specific tech stacks precede product launches. IR and finance hiring is a pre-IPO signal. These patterns repeat consistently across exchanges."}},
-    {"@type":"Question","name":"What exchanges does Signalmap track?","acceptedAnswer":{"@type":"Answer","text":"Signalmap tracks Coinbase, Binance, OKX, Kraken, Bybit, Crypto.com, Gemini, Robinhood, Bitpanda, Bitvavo, and 14 more exchanges across 3 tiers — 24 exchanges total."}},
+    {"@type":"Question","name":"What companies does Signalmap track?","acceptedAnswer":{"@type":"Answer","text":"Signalmap tracks 67 crypto companies: exchanges (Coinbase, Binance, Kraken, OKX), DeFi protocols (Uniswap, Morpho, Maple), infrastructure (Fireblocks, Anchorage, Paxos), L1/L2 networks (Ripple, Polygon, Arbitrum, OP Labs), and Bitcoin infrastructure (Strike, River, Spiral)."}},
     {"@type":"Question","name":"How much does Signalmap cost?","acceptedAnswer":{"@type":"Answer","text":"Signalmap has a free tier with a weekly brief every Friday. Pro is €79/month or €699/year and includes the full dashboard, all active predictions, department breakdowns, and regulatory radar. There is a 30-day money-back guarantee."}}
   ]
 }
@@ -431,6 +431,7 @@
   <div class="nav-links">
     <a href="/blog" class="nav-hide">Blog</a>
     <a href="/predictions" class="nav-hide">Predictions</a>
+    <a href="/protocols.html" class="nav-hide">Protocols</a>
     <a href="/alerts" class="nav-hide">Alerts</a>
     <a href="/enterprise" class="nav-hide">Enterprise</a>
     <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="nav-cta">Pro — €79/mo</a>
@@ -455,9 +456,9 @@
 <section class="hero">
   <canvas id="hero-canvas"></canvas>
   <div class="hero-disk"></div>
-  <div class="badge"><span class="badge-dot"></span>Live · 10 exchanges tracked</div>
+  <div class="badge"><span class="badge-dot"></span>Live · 67 companies tracked</div>
   <h1>Read the market<br><em>before</em> it moves.</h1>
-  <p class="hero-sub">Job postings are public disclosures. A compliance surge at Binance precedes a regulatory filing. A wave of product hires precedes a launch. <strong>Signalmap reads the signal 60–120 days before the announcement</strong> — and puts it in your inbox every Friday.</p>
+  <p class="hero-sub">Job postings are public disclosures. A compliance surge at Fireblocks precedes a charter filing. A DeFi protocol hiring BD signals institutional expansion. <strong>Signalmap reads the signal 60–120 days before the announcement</strong> — across 67 crypto companies — and puts it in your inbox every Friday.</p>
 
   <form class="email-form" id="subscribe-form">
     <input type="email" placeholder="your@email.com" required id="email-input">
@@ -482,7 +483,7 @@
 <!-- STATS -->
 <div class="pad">
   <div class="stats" id="stats-bar">
-    <div class="stat"><div class="stat-n" id="s-exchanges">10</div><div class="stat-l">Exchanges tracked</div></div>
+    <div class="stat"><div class="stat-n" id="s-exchanges">67</div><div class="stat-l">Companies tracked</div></div>
     <div class="stat"><div class="stat-n" id="s-jobs">—</div><div class="stat-l">Active job listings</div></div>
     <div class="stat"><div class="stat-n" id="s-posts">500+</div><div class="stat-l">Intelligence posts</div></div>
     <div class="stat"><div class="stat-n" id="s-preds">—</div><div class="stat-l">Predictions made</div></div>
@@ -494,7 +495,7 @@
 <div class="live-signals">
   <div class="section-head" style="margin-bottom:36px">
     <div class="section-label">Live signal data</div>
-    <h2 id="signals-week-head">Top exchanges this week</h2>
+    <h2 id="signals-week-head">Top signals this week</h2>
   </div>
   <div class="live-signals-grid" id="live-signals-grid">
     <div class="signal-card" style="opacity:0.4;pointer-events:none"><div class="signal-ex-row"><div class="signal-icon" style="background:var(--light)"></div><div><div class="signal-ex-name" style="background:var(--light);height:14px;width:80px;border-radius:4px"></div></div></div></div>
@@ -502,8 +503,53 @@
     <div class="signal-card" style="opacity:0.4;pointer-events:none"><div class="signal-ex-row"><div class="signal-icon" style="background:var(--light)"></div><div><div class="signal-ex-name" style="background:var(--light);height:14px;width:80px;border-radius:4px"></div></div></div></div>
   </div>
   <p style="text-align:center;margin-top:28px;font-size:14px;color:var(--mid)">
-    <a href="/intelligence" style="color:var(--green);font-weight:600;text-decoration:none">View all 10 exchanges with full department breakdown →</a>
+    <a href="/intelligence" style="color:var(--green);font-weight:600;text-decoration:none">View all 67 companies with full signal breakdown →</a>
   </p>
+</div>
+
+<!-- COVERAGE CATEGORIES -->
+<div class="section" style="margin-bottom:64px">
+  <div class="section-head" style="margin-bottom:32px">
+    <div class="section-label">Coverage</div>
+    <h2>Every corner of crypto. One signal map.</h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;max-width:880px;margin:0 auto">
+    <a href="/intelligence" style="text-decoration:none">
+      <div style="background:#fff;border:1px solid var(--light);border-radius:12px;padding:20px 24px;transition:box-shadow 0.15s" onmouseover="this.style.boxShadow='0 4px 16px rgba(5,150,105,0.12)'" onmouseout="this.style.boxShadow=''">
+        <div style="font-size:22px;margin-bottom:10px">🏛️</div>
+        <div style="font-weight:700;font-size:15px;margin-bottom:4px">Exchanges</div>
+        <div style="font-size:13px;color:var(--mid)">Coinbase, Binance, Kraken, OKX + 8 more</div>
+      </div>
+    </a>
+    <a href="/protocols.html" style="text-decoration:none">
+      <div style="background:#fff;border:1px solid var(--light);border-radius:12px;padding:20px 24px;transition:box-shadow 0.15s" onmouseover="this.style.boxShadow='0 4px 16px rgba(5,150,105,0.12)'" onmouseout="this.style.boxShadow=''">
+        <div style="font-size:22px;margin-bottom:10px">⚡</div>
+        <div style="font-weight:700;font-size:15px;margin-bottom:4px">DeFi Protocols</div>
+        <div style="font-size:13px;color:var(--mid)">Uniswap, Morpho, Maple, Uniswap + more</div>
+      </div>
+    </a>
+    <a href="/protocols.html" style="text-decoration:none">
+      <div style="background:#fff;border:1px solid var(--light);border-radius:12px;padding:20px 24px;transition:box-shadow 0.15s" onmouseover="this.style.boxShadow='0 4px 16px rgba(5,150,105,0.12)'" onmouseout="this.style.boxShadow=''">
+        <div style="font-size:22px;margin-bottom:10px">🏗️</div>
+        <div style="font-weight:700;font-size:15px;margin-bottom:4px">Infrastructure</div>
+        <div style="font-size:13px;color:var(--mid)">Fireblocks, Anchorage, Paxos, BitGo + more</div>
+      </div>
+    </a>
+    <a href="/protocols.html" style="text-decoration:none">
+      <div style="background:#fff;border:1px solid var(--light);border-radius:12px;padding:20px 24px;transition:box-shadow 0.15s" onmouseover="this.style.boxShadow='0 4px 16px rgba(5,150,105,0.12)'" onmouseout="this.style.boxShadow=''">
+        <div style="font-size:22px;margin-bottom:10px">🌐</div>
+        <div style="font-weight:700;font-size:15px;margin-bottom:4px">L1 / L2 Networks</div>
+        <div style="font-size:13px;color:var(--mid)">Ripple, Polygon, Arbitrum, OP Labs + more</div>
+      </div>
+    </a>
+    <a href="/protocols.html" style="text-decoration:none">
+      <div style="background:#fff;border:1px solid var(--light);border-radius:12px;padding:20px 24px;transition:box-shadow 0.15s" onmouseover="this.style.boxShadow='0 4px 16px rgba(5,150,105,0.12)'" onmouseout="this.style.boxShadow=''">
+        <div style="font-size:22px;margin-bottom:10px">₿</div>
+        <div style="font-weight:700;font-size:15px;margin-bottom:4px">Bitcoin</div>
+        <div style="font-size:13px;color:var(--mid)">Strike, River, Spiral, Block + more</div>
+      </div>
+    </a>
+  </div>
 </div>
 
 <!-- HOW IT WORKS -->
@@ -516,7 +562,7 @@
     <div class="step">
       <div class="step-num">01</div>
       <h3>We scrape</h3>
-      <p>Every week we collect every active job listing from 10 major exchanges — Coinbase, Binance, Kraken, OKX, and more.</p>
+      <p>Every hour we collect active job listings from 67 crypto companies — exchanges like Coinbase and Binance, DeFi protocols like Uniswap, infrastructure like Fireblocks and Anchorage, and L1/L2 networks.</p>
     </div>
     <div class="step">
       <div class="step-num">02</div>
@@ -672,7 +718,7 @@
       </div>
     </div>
   </div>
-  <p class="pred-footer"><a href="/predictions">View all 64 predictions and outcomes →</a></p>
+  <p class="pred-footer"><a href="/predictions">View all 78 predictions and outcomes →</a></p>
 </div>
 
 <!-- PRICING -->
@@ -851,7 +897,7 @@
 <!-- BOTTOM CTA -->
 <div class="bottom-cta">
   <h2>Start reading the signal.</h2>
-  <p>Free weekly brief every Friday. Upgrade to Pro for the full signal stack — dashboard, 64 predictions, department breakdowns. <strong style="color:#fff">83% accuracy.</strong></p>
+  <p>Free weekly brief every Friday. Upgrade to Pro for the full signal stack — 67 companies, 78 predictions, department breakdowns. <strong style="color:#fff">83% accuracy.</strong></p>
   <div class="bottom-cta-btns">
     <a href="/pricing" class="btn-primary">See Pro plans →</a>
     <button class="btn-ghost" onclick="window.scrollTo({top:0,behavior:'smooth'})">Get free brief →</button>
@@ -891,7 +937,7 @@
 </footer>
 
 <div class="sticky-cta" id="sticky-cta">
-  <span class="sticky-cta-text"><strong>64 active predictions</strong> · 83% accuracy · Save €249 with annual</span>
+  <span class="sticky-cta-text"><strong>78 active predictions</strong> · 83% accuracy · Save €249 with annual</span>
   <a href="/pricing" class="sticky-cta-btn">See Pro plans →</a>
   <button class="sticky-cta-dismiss" onclick="dismissSticky()" aria-label="Dismiss">✕</button>
 </div>
@@ -908,16 +954,80 @@ async function db(table, params = '') {
 }
 
 const EXCHANGE_META = {
-  coinbase:  { name: 'Coinbase',   color: '#0052FF', initials: 'CB' },
-  binance:   { name: 'Binance',    color: '#F3BA2F', initials: 'BN' },
-  kraken:    { name: 'Kraken',     color: '#5741D9', initials: 'KR' },
-  okx:       { name: 'OKX',        color: '#333',    initials: 'OX' },
-  gemini:    { name: 'Gemini',     color: '#0091FF', initials: 'GM' },
-  cryptocom: { name: 'Crypto.com', color: '#1249A0', initials: 'CC' },
-  robinhood: { name: 'Robinhood',  color: '#00C805', initials: 'RH' },
-  bitmex:    { name: 'BitMEX',     color: '#FF4C00', initials: 'BX' },
-  bitpanda:  { name: 'Bitpanda',   color: '#E5415A', initials: 'BP' },
-  bitvavo:   { name: 'Bitvavo',    color: '#1C53F0', initials: 'BV' },
+  // Exchanges
+  coinbase:     { name: 'Coinbase',        color: '#0052FF', initials: 'CB' },
+  binance:      { name: 'Binance',         color: '#F3BA2F', initials: 'BN' },
+  kraken:       { name: 'Kraken',          color: '#5741D9', initials: 'KR' },
+  okx:          { name: 'OKX',             color: '#333',    initials: 'OX' },
+  gemini:       { name: 'Gemini',          color: '#0091FF', initials: 'GM' },
+  cryptocom:    { name: 'Crypto.com',      color: '#1249A0', initials: 'CC' },
+  robinhood:    { name: 'Robinhood',       color: '#00C805', initials: 'RH' },
+  bitmex:       { name: 'BitMEX',          color: '#FF4C00', initials: 'BX' },
+  bitpanda:     { name: 'Bitpanda',        color: '#E5415A', initials: 'BP' },
+  bitvavo:      { name: 'Bitvavo',         color: '#1C53F0', initials: 'BV' },
+  bybit:        { name: 'Bybit',           color: '#F7A600', initials: 'BY' },
+  gate:         { name: 'Gate.io',         color: '#2354E6', initials: 'GT' },
+  // DeFi protocols
+  uniswap:      { name: 'Uniswap Labs',    color: '#FF007A', initials: 'UNI' },
+  morpho:       { name: 'Morpho',          color: '#2470FF', initials: 'MPH' },
+  maple:        { name: 'Maple Finance',   color: '#1A1A2E', initials: 'MPL' },
+  opensea:      { name: 'OpenSea',         color: '#2081E2', initials: 'OS'  },
+  magiceden:    { name: 'Magic Eden',      color: '#E42575', initials: 'ME'  },
+  phantom:      { name: 'Phantom',         color: '#AB9FF2', initials: 'PH'  },
+  // Infrastructure
+  fireblocks:   { name: 'Fireblocks',      color: '#5A2EBA', initials: 'FB'  },
+  anchorage:    { name: 'Anchorage',       color: '#1B4EEA', initials: 'ANC' },
+  paxos:        { name: 'Paxos',           color: '#00C89C', initials: 'PAX' },
+  bitgo:        { name: 'BitGo',           color: '#F7941D', initials: 'BGO' },
+  ledger:       { name: 'Ledger',          color: '#000',    initials: 'LDG' },
+  blockdaemon:  { name: 'Blockdaemon',     color: '#6200EE', initials: 'BD'  },
+  nethermind:   { name: 'Nethermind',      color: '#00B4D8', initials: 'NTH' },
+  certik:       { name: 'CertiK',          color: '#1E88E5', initials: 'CTK' },
+  elliptic:     { name: 'Elliptic',        color: '#7B2D8B', initials: 'ELP' },
+  quicknode:    { name: 'QuickNode',       color: '#4E44CE', initials: 'QN'  },
+  alchemy:      { name: 'Alchemy',         color: '#363FF9', initials: 'ALH' },
+  // L1/L2 networks
+  ripple:       { name: 'Ripple',          color: '#346AA9', initials: 'XRP' },
+  consensys:    { name: 'Consensys',       color: '#E17726', initials: 'CNS' },
+  arbitrum:     { name: 'Arbitrum',        color: '#2D374B', initials: 'ARB' },
+  oplabs:       { name: 'OP Labs',         color: '#FF0420', initials: 'OP'  },
+  polygon:      { name: 'Polygon Labs',    color: '#8247E5', initials: 'POL' },
+  mystenlabs:   { name: 'Mysten Labs',     color: '#6FBCF0', initials: 'SUI' },
+  aptoslabs:    { name: 'Aptos Labs',      color: '#00CDAB', initials: 'APT' },
+  celestia:     { name: 'Celestia',        color: '#7B2FBE', initials: 'TIA' },
+  // VC / Research
+  paradigm:     { name: 'Paradigm',        color: '#000',    initials: 'PRG' },
+  a16z:         { name: 'a16z Crypto',     color: '#000',    initials: 'A16' },
+  // Bitcoin infrastructure
+  strike:       { name: 'Strike',          color: '#7B2FBE', initials: 'STR' },
+  river:        { name: 'River',           color: '#F7931A', initials: 'RVR' },
+  spiral:       { name: 'Spiral',          color: '#000',    initials: 'SPI' },
+  block:        { name: 'Block',           color: '#000',    initials: 'BLK' },
+  // Other
+  nansen:       { name: 'Nansen',          color: '#FF6B6B', initials: 'NAN' },
+  coingecko:    { name: 'CoinGecko',       color: '#8CC63F', initials: 'CGK' },
+  coinmarketcap:{ name: 'CoinMarketCap',   color: '#16C784', initials: 'CMC' },
+  gauntlet:     { name: 'Gauntlet',        color: '#1A1A2E', initials: 'GAU' },
+  figment:      { name: 'Figment',         color: '#0F4C81', initials: 'FIG' },
+  injective:    { name: 'Injective',       color: '#00BFFF', initials: 'INJ' },
+  jito:         { name: 'Jito',            color: '#00FFA3', initials: 'JTO' },
+  helius:       { name: 'Helius',          color: '#9945FF', initials: 'HLS' },
+  securitize:   { name: 'Securitize',      color: '#0057FF', initials: 'SEC' },
+  moonpay:      { name: 'MoonPay',         color: '#7D00FF', initials: 'MNP' },
+  taxbit:       { name: 'TaxBit',          color: '#00A4EF', initials: 'TXB' },
+  cointracker:  { name: 'CoinTracker',     color: '#4F46E5', initials: 'CTR' },
+  shakepay:     { name: 'Shakepay',        color: '#FFCA28', initials: 'SHP' },
+  luno:         { name: 'Luno',            color: '#0099FF', initials: 'LNO' },
+  bitso:        { name: 'Bitso',           color: '#00C2CB', initials: 'BSO' },
+  nubank:       { name: 'Nubank',          color: '#8A05BE', initials: 'NU'  },
+  cobo:         { name: 'Cobo',            color: '#1E88E5', initials: 'CBo' },
+  sfox:         { name: 'sFOX',            color: '#FF6B35', initials: 'SFX' },
+  blockstream:  { name: 'Blockstream',     color: '#000',    initials: 'BS'  },
+  jump:         { name: 'Jump Crypto',     color: '#FF4500', initials: 'JMP' },
+  superstate:   { name: 'Superstate',      color: '#4F46E5', initials: 'SST' },
+  zora:         { name: 'Zora',            color: '#000',    initials: 'ZOR' },
+  dapper:       { name: 'Dapper Labs',     color: '#00EF8B', initials: 'DPR' },
+  immutable:    { name: 'Immutable',       color: '#19B0EC', initials: 'IMX' },
 };
 
 // Static fallback data — shown immediately while live data loads, replaced if DB returns results
@@ -1035,7 +1145,7 @@ document.getElementById('subscribe-form').addEventListener('submit', async (e) =
       if (_refCode) {
         msg.innerHTML = '✓ You\'re on the list! Your referrer has been notified. &nbsp;<a href="/archive" style="color:var(--green);font-weight:700;text-decoration:none">Browse past issues →</a>';
       } else {
-        msg.innerHTML = '✓ You\'re on the list. Brief arrives Fridays. &nbsp;<a href="/archive" style="color:var(--green);font-weight:700;text-decoration:none">Browse past issues →</a> &nbsp;·&nbsp; <a href="/predictions" style="color:var(--green);font-weight:700;text-decoration:none">See 64 active predictions →</a>';
+        msg.innerHTML = '✓ You\'re on the list. Brief arrives Fridays. &nbsp;<a href="/archive" style="color:var(--green);font-weight:700;text-decoration:none">Browse past issues →</a> &nbsp;·&nbsp; <a href="/predictions" style="color:var(--green);font-weight:700;text-decoration:none">See 78 active predictions →</a>';
       }
     } else {
       msg.style.color = '#DC2626'; msg.textContent = 'Something went wrong — try again.';
