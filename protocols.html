@@ -121,6 +121,8 @@
     .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
     .footer-links a { color: var(--mid); text-decoration: none; }
     .footer-links a:hover { color: var(--ink); }
+    a.protocol-card { text-decoration: none; color: inherit; display: block; transition: border-color 0.15s, box-shadow 0.15s; }
+    a.protocol-card:hover { border-color: var(--green); box-shadow: 0 2px 12px rgba(5,150,105,0.1); }
   </style>
 </head>
 <body>
@@ -158,17 +160,17 @@
     <p class="section-sub">Decentralised finance — lending, DEX, oracle, and governance hiring signals.</p>
     <div class="protocol-grid">
 
-      <div class="protocol-card">
+      <a href="/uniswap-hiring.html" class="protocol-card" data-id="uniswap">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#FF007A">UNI</div>
           <div class="protocol-name">Uniswap Labs</div>
         </div>
         <div class="protocol-focus">DEX infrastructure, L2 expansion</div>
         <div class="protocol-stats">
-          <span class="score-badge score-mid">72</span>
-          <span class="jobs-count">23 active roles</span>
+          <span class="score-badge score-mid" data-score>72</span>
+          <span class="jobs-count" data-jobs>23 active roles</span>
         </div>
-      </div>
+      </a>
 
       <div class="protocol-card">
         <div class="protocol-header">
@@ -242,41 +244,41 @@
         </div>
       </div>
 
-      <div class="protocol-card">
+      <a href="/polygon-hiring.html" class="protocol-card" data-id="polygon">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#8247E5">POL</div>
           <div class="protocol-name">Polygon</div>
         </div>
         <div class="protocol-focus">AggLayer, CDK expansion</div>
         <div class="protocol-stats">
-          <span class="score-badge score-mid">71</span>
-          <span class="jobs-count">28 active roles</span>
+          <span class="score-badge score-mid" data-score>71</span>
+          <span class="jobs-count" data-jobs>28 active roles</span>
         </div>
-      </div>
+      </a>
 
-      <div class="protocol-card">
+      <a href="/arbitrum-hiring.html" class="protocol-card" data-id="arbitrum">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#2D374B">ARB</div>
           <div class="protocol-name">Arbitrum</div>
         </div>
         <div class="protocol-focus">Gaming/DeFi ecosystem growth</div>
         <div class="protocol-stats">
-          <span class="score-badge score-mid">76</span>
-          <span class="jobs-count">22 active roles</span>
+          <span class="score-badge score-mid" data-score>76</span>
+          <span class="jobs-count" data-jobs>22 active roles</span>
         </div>
-      </div>
+      </a>
 
-      <div class="protocol-card">
+      <a href="/oplabs-hiring.html" class="protocol-card" data-id="oplabs">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#FF0420">OP</div>
           <div class="protocol-name">Optimism</div>
         </div>
         <div class="protocol-focus">Superchain, OP Stack</div>
         <div class="protocol-stats">
-          <span class="score-badge score-mid">69</span>
-          <span class="jobs-count">17 active roles</span>
+          <span class="score-badge score-mid" data-score>69</span>
+          <span class="jobs-count" data-jobs>17 active roles</span>
         </div>
-      </div>
+      </a>
 
       <div class="protocol-card">
         <div class="protocol-header">
@@ -314,41 +316,41 @@
         </div>
       </div>
 
-      <div class="protocol-card">
+      <a href="/ripple-hiring.html" class="protocol-card" data-id="ripple">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#346AA9">XRP</div>
           <div class="protocol-name">Ripple</div>
         </div>
         <div class="protocol-focus">Post-SEC recovery, RLUSD push</div>
         <div class="protocol-stats">
-          <span class="score-badge score-mid">77</span>
-          <span class="jobs-count">38 active roles</span>
+          <span class="score-badge score-mid" data-score>77</span>
+          <span class="jobs-count" data-jobs>38 active roles</span>
         </div>
-      </div>
+      </a>
 
-      <div class="protocol-card">
+      <a href="/consensys-hiring.html" class="protocol-card" data-id="consensys">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#E17726">ETH</div>
           <div class="protocol-name">Consensys</div>
         </div>
         <div class="protocol-focus">MetaMask, Linea L2</div>
         <div class="protocol-stats">
-          <span class="score-badge score-mid">66</span>
-          <span class="jobs-count">29 active roles</span>
+          <span class="score-badge score-mid" data-score>66</span>
+          <span class="jobs-count" data-jobs>29 active roles</span>
         </div>
-      </div>
+      </a>
 
-      <div class="protocol-card">
+      <a href="/fireblocks-hiring.html" class="protocol-card" data-id="fireblocks">
         <div class="protocol-header">
           <div class="protocol-avatar" style="background:#5A2EBA">FB</div>
           <div class="protocol-name">Fireblocks</div>
         </div>
         <div class="protocol-focus">Institutional custody growth</div>
         <div class="protocol-stats">
-          <span class="score-badge score-mid">73</span>
-          <span class="jobs-count">35 active roles</span>
+          <span class="score-badge score-mid" data-score>73</span>
+          <span class="jobs-count" data-jobs>35 active roles</span>
         </div>
-      </div>
+      </a>
 
       <div class="protocol-card">
         <div class="protocol-header">
@@ -419,6 +421,40 @@
 <script>
 const SUPABASE_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
+
+// Load live signal data for tracked companies
+async function loadLiveSignals() {
+  const cards = document.querySelectorAll('[data-id]');
+  const ids = [...new Set([...cards].map(c => c.dataset.id))];
+  if (!ids.length) return;
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/signals?exchange_id=in.(${ids.join(',')})&order=week_start.desc`,
+      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
+    );
+    if (!res.ok) return;
+    const rows = await res.json();
+    // Keep only latest row per exchange
+    const latest = {};
+    for (const r of rows) {
+      if (!latest[r.exchange_id]) latest[r.exchange_id] = r;
+    }
+    cards.forEach(card => {
+      const s = latest[card.dataset.id];
+      if (!s) return;
+      const scoreBadge = card.querySelector('[data-score]');
+      const jobsEl = card.querySelector('[data-jobs]');
+      if (scoreBadge && s.score != null) {
+        scoreBadge.textContent = s.score;
+        scoreBadge.className = 'score-badge ' + (s.score >= 70 ? 'score-high' : s.score >= 50 ? 'score-mid' : 'score-low');
+      }
+      if (jobsEl && s.total_active != null) {
+        jobsEl.textContent = `${s.total_active} active roles`;
+      }
+    });
+  } catch(e) { /* use static fallback */ }
+}
+loadLiveSignals();
 
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
