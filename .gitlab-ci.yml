@@ -2,8 +2,7 @@ deploy:
   image: node:20-slim
   stage: deploy
   script:
-    - echo "Account ID length=${#CLOUDFLARE_ACCOUNT_ID}"
-    - npm install -g wrangler
-    - wrangler pages deploy . --project-name=signalmap --branch=main
+    - npm install -g netlify-cli
+    - netlify deploy --dir=. --prod --auth=$NETLIFY_AUTH_TOKEN --site=$NETLIFY_SITE_ID
   only:
     - main
