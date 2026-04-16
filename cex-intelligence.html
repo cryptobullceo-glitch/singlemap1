@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CEX Intelligence Dashboard — Signalmap</title>
-  <meta name="description" content="Live hiring signal dashboard for major crypto exchanges. Track compliance, engineering, and product hiring in real-time.">
+  <title>Crypto Hiring Intelligence Dashboard — Signalmap</title>
+  <meta name="description" content="Live hiring signal dashboard for 67 crypto companies — exchanges, DeFi, infrastructure, L1/L2. Track compliance, engineering, and product hiring in real-time.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://signalmap.live/intelligence">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -136,7 +136,7 @@
     <span class="updated"><span class="live-dot"></span>Live data</span>
     <a href="/blog" class="nav-link">Blog</a>
     <a href="/predictions" class="nav-link">Predictions</a>
-    <a href="/compare" class="nav-link">Compare</a>
+    <a href="/protocols.html" class="nav-link">Protocols</a>
     <a href="/how-it-works" class="nav-link">Methodology</a>
     <a href="/pricing" class="nav-cta">Pro — €79/mo</a>
   </div>
@@ -153,15 +153,15 @@
 <!-- OVERVIEW -->
 <div class="panel active" id="tab-overview">
   <div class="summary-row">
-    <div class="summary-card"><div class="sum-val" id="ov-exchanges">10</div><div class="sum-lbl">Exchanges tracked</div></div>
+    <div class="summary-card"><div class="sum-val" id="ov-exchanges">67</div><div class="sum-lbl">Companies tracked</div></div>
     <div class="summary-card"><div class="sum-val" id="ov-jobs">—</div><div class="sum-lbl">Active listings</div></div>
     <div class="summary-card"><div class="sum-val" id="ov-compliance">—</div><div class="sum-lbl">Compliance roles</div></div>
     <div class="summary-card"><div class="sum-val" id="ov-preds">—</div><div class="sum-lbl">Active predictions</div></div>
   </div>
 
-  <div class="section-head">Exchange signal scores</div>
+  <div class="section-head">Company signal scores</div>
   <div class="exchange-grid" id="exchange-grid">
-    <div class="loading">Loading exchange data…</div>
+    <div class="loading">Loading signal data…</div>
   </div>
 </div>
 
@@ -174,7 +174,7 @@
       </svg>
     </div>
     <div class="gate-title">Full Intel is Pro only</div>
-    <div class="gate-sub">Department-level breakdowns, week-over-week hiring velocity, and analyst commentary for all 10 exchanges. Updated every Friday.</div>
+    <div class="gate-sub">Department-level breakdowns, week-over-week hiring velocity, and analyst commentary for all 67 companies. Updated hourly.</div>
     <div class="gate-price">Launch pricing — €79/mo · or €699/yr (save 26%)</div>
     <a href="https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800" class="gate-btn">Unlock Pro — €79/mo →</a>
     <a href="/" class="gate-link">← Back to landing page</a>
@@ -195,7 +195,7 @@
     <div class="summary-card"><div class="sum-val" id="reg-top">—</div><div class="sum-lbl">Top compliance exchange</div></div>
     <div class="summary-card"><div class="sum-val" id="reg-ratio">—</div><div class="sum-lbl">Avg compliance ratio</div></div>
   </div>
-  <div class="section-head">Compliance hiring by exchange</div>
+  <div class="section-head">Compliance hiring by company</div>
   <div id="reg-grid" class="exchange-grid"><div class="loading">Loading…</div></div>
   <div style="margin-top:32px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px;text-align:center">
     <p style="color:var(--muted);margin-bottom:16px;font-size:14px">Full regulatory signal analysis — jurisdiction breakdowns, MiCA tracking, and compliance velocity — is available in Pro.</p>
@@ -218,14 +218,39 @@
 const SUPABASE_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
 
-// Dedicated hiring intelligence pages (tier 1 + 2)
+// All hiring pages — 67 companies
 const HIRING_PAGES = {
-  coinbase: '/coinbase-hiring', binance: '/binance-hiring', okx: '/okx-hiring',
-  kraken: '/kraken-hiring',     bybit: '/bybit-hiring',    cryptocom: '/cryptocom-hiring',
-  gemini: '/gemini-hiring',     robinhood: '/robinhood-hiring', bitpanda: '/bitpanda-hiring',
-  bitvavo: '/bitvavo-hiring',   kucoin: '/kucoin-hiring',  gate: '/gate-hiring',
-  bitget: '/bitget-hiring',     bitstamp: '/bitstamp-hiring', htx: '/htx-hiring',
-  mexc: '/mexc-hiring',         deribit: '/deribit-hiring', bitflyer: '/bitflyer-hiring',
+  // CEX
+  coinbase: '/coinbase-hiring', binance: '/binance-hiring', kraken: '/kraken-hiring',
+  okx: '/okx-hiring', gemini: '/gemini-hiring', cryptocom: '/cryptocom-hiring',
+  robinhood: '/robinhood-hiring', bitmex: '/bitmex-hiring', bitpanda: '/bitpanda-hiring',
+  bitvavo: '/bitvavo-hiring', bybit: '/bybit-hiring', gate: '/gate-hiring',
+  // DeFi
+  uniswap: '/uniswap-hiring', morpho: '/morpho-hiring', maple: '/maple-hiring',
+  opensea: '/opensea-hiring', magiceden: '/magiceden-hiring', phantom: '/phantom-hiring',
+  // Custody/Infra
+  fireblocks: '/fireblocks-hiring', anchorage: '/anchorage-hiring', paxos: '/paxos-hiring',
+  bitgo: '/bitgo-hiring', ledger: '/ledger-hiring', blockdaemon: '/blockdaemon-hiring',
+  nethermind: '/nethermind-hiring', certik: '/certik-hiring', elliptic: '/elliptic-hiring',
+  quicknode: '/quicknode-hiring', alchemy: '/alchemy-hiring',
+  // L1/L2
+  ripple: '/ripple-hiring', consensys: '/consensys-hiring', arbitrum: '/arbitrum-hiring',
+  oplabs: '/oplabs-hiring', polygon: '/polygon-hiring', mystenlabs: '/mystenlabs-hiring',
+  aptoslabs: '/aptoslabs-hiring',
+  // Bitcoin
+  strike: '/strike-hiring', river: '/river-hiring', spiral: '/spiral-hiring', block: '/block-hiring',
+  // VC/Research
+  paradigm: '/paradigm-hiring', a16z: '/a16z-hiring',
+  // Data/Fintech
+  nansen: '/nansen-hiring', securitize: '/securitize-hiring', moonpay: '/moonpay-hiring', nubank: '/nubank-hiring',
+  // Other
+  bitso: '/bitso-hiring', blockstream: '/blockstream-hiring', celestia: '/celestia-hiring',
+  cobo: '/cobo-hiring', coingecko: '/coingecko-hiring', coinmarketcap: '/coinmarketcap-hiring',
+  cointracker: '/cointracker-hiring', dapper: '/dapper-hiring', figment: '/figment-hiring',
+  gauntlet: '/gauntlet-hiring', helius: '/helius-hiring', immutable: '/immutable-hiring',
+  injective: '/injective-hiring', jito: '/jito-hiring', jump: '/jump-hiring',
+  luno: '/luno-hiring', sfox: '/sfox-hiring', shakepay: '/shakepay-hiring',
+  superstate: '/superstate-hiring', taxbit: '/taxbit-hiring', zora: '/zora-hiring',
 };
 const IS_ADMIN = new URLSearchParams(location.search).get('admin') === 'signalmap2026';
 
@@ -237,16 +262,81 @@ async function db(table, params = '') {
 }
 
 const META = {
-  coinbase:  { name: 'Coinbase',   color: '#0052FF', initials: 'CB' },
-  binance:   { name: 'Binance',    color: '#D4A017', initials: 'BN' },
-  kraken:    { name: 'Kraken',     color: '#5741D9', initials: 'KR' },
-  okx:       { name: 'OKX',        color: '#555',    initials: 'OX' },
-  gemini:    { name: 'Gemini',     color: '#0091FF', initials: 'GM' },
-  cryptocom: { name: 'Crypto.com', color: '#1249A0', initials: 'CC' },
-  robinhood: { name: 'Robinhood',  color: '#00C805', initials: 'RH' },
-  bitmex:    { name: 'BitMEX',     color: '#FF4C00', initials: 'BX' },
-  bitpanda:  { name: 'Bitpanda',   color: '#E5415A', initials: 'BP' },
-  bitvavo:   { name: 'Bitvavo',    color: '#1C53F0', initials: 'BV' },
+  // CEX
+  coinbase:     { name: 'Coinbase',        color: '#0052FF', initials: 'CB'  },
+  binance:      { name: 'Binance',         color: '#F3BA2F', initials: 'BN'  },
+  kraken:       { name: 'Kraken',          color: '#5741D9', initials: 'KR'  },
+  okx:          { name: 'OKX',             color: '#555',    initials: 'OX'  },
+  gemini:       { name: 'Gemini',          color: '#0091FF', initials: 'GM'  },
+  cryptocom:    { name: 'Crypto.com',      color: '#1249A0', initials: 'CC'  },
+  robinhood:    { name: 'Robinhood',       color: '#00C805', initials: 'RH'  },
+  bitmex:       { name: 'BitMEX',          color: '#FF4C00', initials: 'BX'  },
+  bitpanda:     { name: 'Bitpanda',        color: '#E5415A', initials: 'BP'  },
+  bitvavo:      { name: 'Bitvavo',         color: '#1C53F0', initials: 'BV'  },
+  bybit:        { name: 'Bybit',           color: '#F7A600', initials: 'BY'  },
+  gate:         { name: 'Gate.io',         color: '#2354E6', initials: 'GT'  },
+  // DeFi
+  uniswap:      { name: 'Uniswap Labs',    color: '#FF007A', initials: 'UNI' },
+  morpho:       { name: 'Morpho',          color: '#2470FF', initials: 'MPH' },
+  maple:        { name: 'Maple Finance',   color: '#1A1A2E', initials: 'MPL' },
+  opensea:      { name: 'OpenSea',         color: '#2081E2', initials: 'OS'  },
+  magiceden:    { name: 'Magic Eden',      color: '#E42575', initials: 'ME'  },
+  phantom:      { name: 'Phantom',         color: '#AB9FF2', initials: 'PH'  },
+  // Custody/Infra
+  fireblocks:   { name: 'Fireblocks',      color: '#5A2EBA', initials: 'FB'  },
+  anchorage:    { name: 'Anchorage',       color: '#1B4EEA', initials: 'ANC' },
+  paxos:        { name: 'Paxos',           color: '#00C89C', initials: 'PAX' },
+  bitgo:        { name: 'BitGo',           color: '#F7941D', initials: 'BGO' },
+  ledger:       { name: 'Ledger',          color: '#000',    initials: 'LDG' },
+  blockdaemon:  { name: 'Blockdaemon',     color: '#6200EE', initials: 'BD'  },
+  nethermind:   { name: 'Nethermind',      color: '#00B4D8', initials: 'NTH' },
+  certik:       { name: 'CertiK',          color: '#1E88E5', initials: 'CTK' },
+  elliptic:     { name: 'Elliptic',        color: '#7B2D8B', initials: 'ELP' },
+  quicknode:    { name: 'QuickNode',       color: '#4E44CE', initials: 'QN'  },
+  alchemy:      { name: 'Alchemy',         color: '#363FF9', initials: 'ALH' },
+  // L1/L2
+  ripple:       { name: 'Ripple',          color: '#346AA9', initials: 'XRP' },
+  consensys:    { name: 'Consensys',       color: '#E17726', initials: 'CNS' },
+  arbitrum:     { name: 'Arbitrum',        color: '#2D374B', initials: 'ARB' },
+  oplabs:       { name: 'OP Labs',         color: '#FF0420', initials: 'OP'  },
+  polygon:      { name: 'Polygon Labs',    color: '#8247E5', initials: 'POL' },
+  mystenlabs:   { name: 'Mysten Labs',     color: '#6FBCF0', initials: 'SUI' },
+  aptoslabs:    { name: 'Aptos Labs',      color: '#00CDAB', initials: 'APT' },
+  // Bitcoin
+  strike:       { name: 'Strike',          color: '#7B2FBE', initials: 'STR' },
+  river:        { name: 'River',           color: '#F7931A', initials: 'RVR' },
+  spiral:       { name: 'Spiral',          color: '#555',    initials: 'SPI' },
+  block:        { name: 'Block',           color: '#555',    initials: 'BLK' },
+  // VC/Research
+  paradigm:     { name: 'Paradigm',        color: '#555',    initials: 'PRG' },
+  a16z:         { name: 'a16z Crypto',     color: '#555',    initials: 'A16' },
+  // Data/Fintech
+  nansen:       { name: 'Nansen',          color: '#FF6B6B', initials: 'NAN' },
+  securitize:   { name: 'Securitize',      color: '#0057FF', initials: 'SEC' },
+  moonpay:      { name: 'MoonPay',         color: '#7D00FF', initials: 'MNP' },
+  nubank:       { name: 'Nubank',          color: '#8A05BE', initials: 'NU'  },
+  // Other
+  bitso:        { name: 'Bitso',           color: '#00C2CB', initials: 'BSO' },
+  blockstream:  { name: 'Blockstream',     color: '#555',    initials: 'BS'  },
+  celestia:     { name: 'Celestia',        color: '#7B2FBE', initials: 'TIA' },
+  cobo:         { name: 'Cobo',            color: '#1E88E5', initials: 'CBO' },
+  coingecko:    { name: 'CoinGecko',       color: '#8CC63F', initials: 'CGK' },
+  coinmarketcap:{ name: 'CoinMarketCap',   color: '#16C784', initials: 'CMC' },
+  cointracker:  { name: 'CoinTracker',     color: '#4F46E5', initials: 'CTR' },
+  dapper:       { name: 'Dapper Labs',     color: '#00EF8B', initials: 'DPR' },
+  figment:      { name: 'Figment',         color: '#0F4C81', initials: 'FIG' },
+  gauntlet:     { name: 'Gauntlet',        color: '#1A1A2E', initials: 'GAU' },
+  helius:       { name: 'Helius',          color: '#9945FF', initials: 'HLS' },
+  immutable:    { name: 'Immutable',       color: '#19B0EC', initials: 'IMX' },
+  injective:    { name: 'Injective',       color: '#00BFFF', initials: 'INJ' },
+  jito:         { name: 'Jito',            color: '#00FFA3', initials: 'JTO' },
+  jump:         { name: 'Jump Crypto',     color: '#FF4500', initials: 'JMP' },
+  luno:         { name: 'Luno',            color: '#0099FF', initials: 'LNO' },
+  sfox:         { name: 'sFOX',            color: '#FF6B35', initials: 'SFX' },
+  shakepay:     { name: 'Shakepay',        color: '#FFCA28', initials: 'SHP' },
+  superstate:   { name: 'Superstate',      color: '#4F46E5', initials: 'SST' },
+  taxbit:       { name: 'TaxBit',          color: '#00A4EF', initials: 'TXB' },
+  zora:         { name: 'Zora',            color: '#555',    initials: 'ZOR' },
 };
 
 function confColor(c) { return c >= 75 ? '#4ade80' : c >= 55 ? '#facc15' : '#7d8590'; }
