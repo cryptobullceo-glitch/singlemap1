@@ -2,10 +2,8 @@ deploy:
   image: node:20-slim
   stage: deploy
   script:
+    - echo "Account ID length=${#CLOUDFLARE_ACCOUNT_ID}"
     - npm install -g wrangler
     - wrangler pages deploy . --project-name=signalmap --branch=main
-  variables:
-    CLOUDFLARE_API_TOKEN: $CLOUDFLARE_API_TOKEN
-    CLOUDFLARE_ACCOUNT_ID: $CLOUDFLARE_ACCOUNT_ID
   only:
     - main
