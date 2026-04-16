@@ -303,8 +303,19 @@ async function loadPage() {
 
   // Update meta
   document.title = `${name} Hiring Intelligence 2026 | Signalmap`;
-  document.querySelector('meta[name="description"]').content =
-    `${name} hiring intelligence: real-time signal analysis from live job board data. Track compliance, engineering, and leadership hiring.`;
+  const metaDesc = `${name} hiring intelligence: track active job listings, signal score, compliance vs engineering mix, and analyst predictions. Updated hourly from live job board data.`;
+  document.querySelector('meta[name="description"]').content = metaDesc;
+  // OG / Twitter
+  let ogTitle = document.querySelector('meta[property="og:title"]');
+  if (!ogTitle) { ogTitle = document.createElement('meta'); ogTitle.setAttribute('property','og:title'); document.head.appendChild(ogTitle); }
+  ogTitle.content = `${name} Hiring Intelligence 2026 | Signalmap`;
+  let ogDesc = document.querySelector('meta[property="og:description"]');
+  if (!ogDesc) { ogDesc = document.createElement('meta'); ogDesc.setAttribute('property','og:description'); document.head.appendChild(ogDesc); }
+  ogDesc.content = metaDesc;
+  // Canonical
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
+  canonical.href = `https://signalmap.live/${exchangeId}-hiring`;
 
   // Render avatar & heading
   const avatar = document.getElementById('avatar');
@@ -314,7 +325,7 @@ async function loadPage() {
 
   document.getElementById('page-title').textContent = `${name} Hiring Intelligence`;
   document.getElementById('page-sub').textContent =
-    `Real-time hiring signal analysis for ${name}. Updated weekly from live job board data.`;
+    `Real-time hiring signal analysis for ${name}. Updated hourly from live job board data.`;
   document.getElementById('predictions-title').textContent = `Active Predictions for ${name}`;
   document.getElementById('cta-title').textContent = `Get the weekly ${name} signal brief`;
   document.getElementById('alert-heading').textContent = `Get notified the moment ${name} posts a new role`;
