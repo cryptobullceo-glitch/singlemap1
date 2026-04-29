@@ -284,11 +284,15 @@
       const status = getStatus(p);
       const exch = (p.exchange_id || p.exchange || '').toLowerCase();
       const conf = Math.round((p.confidence || 0.7) * 100);
-      const dl = p.horizon ? daysLeft(p.horizon) : null;
+      // horizon is an integer number of days from issued_at — compute the actual deadline date
+      const deadlineDate = (p.horizon && p.issued_at)
+        ? new Date(new Date(p.issued_at).getTime() + p.horizon * 86400000)
+        : null;
+      const dl = deadlineDate ? Math.ceil((deadlineDate - new Date()) / 86400000) : null;
       const deadlineText = p.resolved_at
         ? `<div class="pred-deadline resolved">Resolved ${fmtDate(p.resolved_at)}</div>`
-        : dl !== null
-          ? `<div class="pred-deadline ${dl <= 14 ? 'soon' : ''}">Horizon: ${fmtDate(p.horizon)}${dl <= 14 ? ` (${dl}d)` : ''}</div>`
+        : deadlineDate
+          ? `<div class="pred-deadline ${dl <= 14 ? 'soon' : ''}">Deadline: ${fmtDate(deadlineDate)}${dl > 0 && dl <= 14 ? ` (${dl}d left)` : dl <= 0 ? ' (passed)' : ''}</div>`
           : '';
 
       const exchLabel = (p.exchange_id || p.exchange || 'Market');

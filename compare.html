@@ -131,36 +131,22 @@
   <main>
     <div class="hero">
       <div class="hero-badge">⚡ Live Comparison</div>
-      <h1>Compare crypto exchange<br><em>hiring signals</em></h1>
-      <p>Pick two exchanges and compare Signal Scores, open roles, hiring velocity, and department focus — all from live data.</p>
+      <h1>Compare crypto company<br><em>hiring signals</em></h1>
+      <p>Pick any two of 67 tracked companies and compare Signal Scores, open roles, and department focus — pulled live from our hiring database.</p>
     </div>
 
     <div class="picker-row">
       <div class="exchange-picker">
-        <div class="picker-label">Exchange A</div>
+        <div class="picker-label">Company A</div>
         <select id="picker-a" onchange="updateComparison()">
-          <option value="Coinbase">Coinbase</option>
-          <option value="Binance">Binance</option>
-          <option value="OKX">OKX</option>
-          <option value="Kraken">Kraken</option>
-          <option value="Gemini">Gemini</option>
-          <option value="Bitpanda">Bitpanda</option>
-          <option value="BitMEX">BitMEX</option>
-          <option value="Bitvavo">Bitvavo</option>
+          <option>Loading…</option>
         </select>
       </div>
       <div class="vs-badge">VS</div>
       <div class="exchange-picker">
-        <div class="picker-label">Exchange B</div>
+        <div class="picker-label">Company B</div>
         <select id="picker-b" onchange="updateComparison()">
-          <option value="Coinbase">Coinbase</option>
-          <option value="Binance" selected>Binance</option>
-          <option value="OKX">OKX</option>
-          <option value="Kraken">Kraken</option>
-          <option value="Gemini">Gemini</option>
-          <option value="Bitpanda">Bitpanda</option>
-          <option value="BitMEX">BitMEX</option>
-          <option value="Bitvavo">Bitvavo</option>
+          <option>Loading…</option>
         </select>
       </div>
     </div>
@@ -190,7 +176,7 @@
         <div class="row-val" id="roles-b">—</div>
       </div>
       <div class="compare-row">
-        <div class="row-label">MoM trend</div>
+        <div class="row-label">Compliance ratio</div>
         <div class="row-val" id="trend-a">—</div>
         <div class="row-val" id="trend-b">—</div>
       </div>
@@ -231,16 +217,95 @@
   </footer>
 
   <script>
-    const EXCHANGES = {
-      'Coinbase':  { jobs: 220, score: 78, trend: '+12%', dept: 'Compliance & Legal', outlook: 'Regulatory milestone likely Q2', status: 'Active expansion' },
-      'Binance':   { jobs: 360, score: 91, trend: '+28%', dept: 'Engineering', outlook: 'Platform build — product launch imminent', status: 'High momentum' },
-      'OKX':       { jobs: 446, score: 95, trend: '+34%', dept: 'Product', outlook: 'Major product launch expected Q2 2026', status: 'Highest signal in market' },
-      'Kraken':    { jobs: 133, score: 72, trend: '+8%',  dept: 'Finance & Legal', outlook: 'IPO preparation signals strong', status: 'Steady growth' },
-      'Gemini':    { jobs: 8,   score: 22, trend: '-61%', dept: 'Operations', outlook: 'Hiring freeze — strategic pause', status: 'Bearish signal' },
-      'Bitpanda':  { jobs: 68,  score: 64, trend: '+19%', dept: 'B2B & Institutional', outlook: 'B2B pivot progressing', status: 'Moderate expansion' },
-      'BitMEX':    { jobs: 29,  score: 41, trend: '-15%', dept: 'Risk Management', outlook: 'Contraction phase', status: 'Declining signal' },
-      'Bitvavo':   { jobs: 10,  score: 31, trend: '+5%',  dept: 'Engineering', outlook: 'Stable, low growth', status: 'Neutral' },
+    const SUPABASE_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
+
+    const NAMES = {
+      coinbase:'Coinbase', binance:'Binance', kraken:'Kraken', okx:'OKX', gemini:'Gemini',
+      cryptocom:'Crypto.com', robinhood:'Robinhood', bitmex:'BitMEX', bitpanda:'Bitpanda',
+      bitvavo:'Bitvavo', bybit:'Bybit', gate:'Gate.io', uniswap:'Uniswap', morpho:'Morpho',
+      maple:'Maple', opensea:'OpenSea', magiceden:'Magic Eden', phantom:'Phantom',
+      fireblocks:'Fireblocks', anchorage:'Anchorage', paxos:'Paxos', bitgo:'BitGo',
+      ledger:'Ledger', blockdaemon:'Blockdaemon', nethermind:'Nethermind', certik:'CertiK',
+      elliptic:'Elliptic', quicknode:'QuickNode', alchemy:'Alchemy', ripple:'Ripple',
+      consensys:'Consensys', arbitrum:'Arbitrum', oplabs:'OP Labs', polygon:'Polygon',
+      mystenlabs:'Mysten Labs', aptoslabs:'Aptos Labs', strike:'Strike', river:'River',
+      spiral:'Spiral', block:'Block', paradigm:'Paradigm', a16z:'a16z', nansen:'Nansen',
+      securitize:'Securitize', moonpay:'MoonPay', nubank:'Nubank', bitso:'Bitso',
+      blockstream:'Blockstream', celestia:'Celestia', cobo:'Cobo', coingecko:'CoinGecko',
+      coinmarketcap:'CoinMarketCap', cointracker:'CoinTracker', dapper:'Dapper Labs',
+      figment:'Figment', gauntlet:'Gauntlet', helius:'Helius', immutable:'Immutable',
+      injective:'Injective', jito:'Jito', jump:'Jump Crypto', luno:'Luno', sfox:'sFOX',
+      shakepay:'Shakepay', superstate:'Superstate', taxbit:'TaxBit', zora:'Zora',
     };
+
+    let EXCHANGES = {};
+
+    function topDeptName(c, e, p, o) {
+      const arr = [['Compliance', c], ['Engineering', e], ['Product', p], ['Other', o]];
+      arr.sort((a,b) => b[1] - a[1]);
+      return arr[0][0];
+    }
+
+    function statusLabel(score) {
+      if (score >= 80) return 'High momentum';
+      if (score >= 60) return 'Steady growth';
+      if (score >= 40) return 'Neutral';
+      if (score >= 20) return 'Slowing';
+      return 'Bearish signal';
+    }
+
+    function outlookText(name, score, total, comp, eng, prod) {
+      if (score >= 80) return `${name} shows highest-tier hiring momentum across multiple departments.`;
+      if (comp > eng && comp > prod) return `${name}'s compliance hiring suggests regulatory or licensing milestones ahead.`;
+      if (eng > comp && eng > prod) return `${name}'s engineering-heavy mix points to platform or product build.`;
+      if (prod > comp && prod > eng) return `${name}'s product-heavy mix suggests imminent product launches.`;
+      if (score < 30) return `${name} is in a consolidation or contraction phase.`;
+      return `${name} maintains steady, balanced hiring across functions.`;
+    }
+
+    async function loadCompanies() {
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/signals?select=exchange_id,total_active,compliance_count,engineering_count,product_count,score&order=score.desc`, {
+          headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}` }
+        });
+        const rows = await res.json();
+        const seen = new Set();
+        rows.filter(r => { if (seen.has(r.exchange_id)) return false; seen.add(r.exchange_id); return true; }).forEach(r => {
+          const name = NAMES[r.exchange_id] || r.exchange_id;
+          const c = r.compliance_count || 0, e = r.engineering_count || 0, p = r.product_count || 0;
+          const total = r.total_active || 0;
+          const o = Math.max(0, total - c - e - p);
+          EXCHANGES[name] = {
+            jobs: total, score: r.score || 0,
+            dept: topDeptName(c,e,p,o),
+            comp: c, eng: e, prod: p,
+            status: statusLabel(r.score || 0),
+            outlook: outlookText(name, r.score || 0, total, c, e, p)
+          };
+        });
+        // Populate dropdowns sorted by name
+        const names = Object.keys(EXCHANGES).sort();
+        const aSel = document.getElementById('picker-a');
+        const bSel = document.getElementById('picker-b');
+        aSel.innerHTML = names.map(n => `<option value="${n}">${n}</option>`).join('');
+        bSel.innerHTML = names.map(n => `<option value="${n}">${n}</option>`).join('');
+        // Default selection: highest score vs second-highest
+        const sortedByScore = names.slice().sort((x,y) => EXCHANGES[y].score - EXCHANGES[x].score);
+        aSel.value = sortedByScore[0] || names[0];
+        bSel.value = sortedByScore[1] || names[1] || names[0];
+        // Apply URL params if present
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('a') && EXCHANGES[params.get('a')]) aSel.value = params.get('a');
+        if (params.get('b') && EXCHANGES[params.get('b')]) bSel.value = params.get('b');
+        updateComparison();
+      } catch(e) {
+        console.error(e);
+        document.getElementById('verdict').style.display = 'flex';
+        document.getElementById('verdict-title').textContent = 'Failed to load comparison data';
+        document.getElementById('verdict-body').textContent = 'Please refresh the page.';
+      }
+    }
 
     function scoreColor(s) {
       if (s >= 80) return 'green';
@@ -308,11 +373,13 @@
       document.getElementById('roles-b').textContent = db.jobs.toLocaleString();
       document.getElementById('roles-b').className = `row-val ${db.jobs >= da.jobs ? 'best' : 'neutral'}`;
 
-      // Trend
-      document.getElementById('trend-a').textContent = da.trend;
-      document.getElementById('trend-a').className = `row-val ${trendColor(da.trend)}`;
-      document.getElementById('trend-b').textContent = db.trend;
-      document.getElementById('trend-b').className = `row-val ${trendColor(db.trend)}`;
+      // Trend (compliance ratio comparison)
+      const aRatio = da.jobs > 0 ? ((da.comp/da.jobs)*100).toFixed(1) + '%' : '—';
+      const bRatio = db.jobs > 0 ? ((db.comp/db.jobs)*100).toFixed(1) + '%' : '—';
+      document.getElementById('trend-a').textContent = aRatio;
+      document.getElementById('trend-a').className = `row-val ${da.comp >= db.comp ? 'best' : 'neutral'}`;
+      document.getElementById('trend-b').textContent = bRatio;
+      document.getElementById('trend-b').className = `row-val ${db.comp >= da.comp ? 'best' : 'neutral'}`;
 
       // Dept
       document.getElementById('dept-a').textContent = da.dept;
@@ -346,15 +413,8 @@
       document.getElementById('related-posts').style.display = 'block';
     }
 
-    // Load from URL params if present
-    const params = new URLSearchParams(window.location.search);
-    const initA = params.get('a');
-    const initB = params.get('b');
-    if (initA && EXCHANGES[initA]) document.getElementById('picker-a').value = initA;
-    if (initB && EXCHANGES[initB]) document.getElementById('picker-b').value = initB;
-
-    // Initial render
-    updateComparison();
+    // Load companies from Supabase
+    loadCompanies();
   </script>
 </body>
 </html>
