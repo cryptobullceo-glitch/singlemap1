@@ -326,7 +326,7 @@
         : `${needed} more referral${needed > 1 ? 's' : ''} until your next free Pro month.`;
 
       // Set up share URLs
-      const msg = encodeURIComponent(`I've been tracking crypto exchange hiring signals with Signalmap — it's a great way to stay ahead of market moves. Check it out:`);
+      const msg = encodeURIComponent(`I've been tracking crypto hiring signals with Signalmap — they cover 67 companies (exchanges, DeFi, infrastructure) and predict moves 60-120 days early. Check it out:`);
       const url = encodeURIComponent(currentRefUrl);
       document.getElementById('twitter-share').href = `https://x.com/intent/tweet?text=${msg}%20${url}`;
       document.getElementById('linkedin-share').href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
@@ -349,7 +349,7 @@
     function shareEmail() {
       if (!currentRefUrl) return;
       const subject = encodeURIComponent('Check out Signalmap — crypto hiring intelligence');
-      const body = encodeURIComponent(`Hey,\n\nI've been using Signalmap to track hiring signals from Coinbase, Binance, and other major crypto exchanges — it gives you a real edge in understanding where the market is heading.\n\nThought you might find it useful: ${currentRefUrl}\n\nCheers`);
+      const body = encodeURIComponent(`Hey,\n\nI've been using Signalmap to track hiring signals across 67 crypto companies — exchanges (Coinbase, Binance), DeFi (Uniswap, Morpho), infrastructure (Fireblocks, Anchorage), and L1/L2 networks. It gives you a real edge in understanding where the market is heading.\n\nThought you might find it useful: ${currentRefUrl}\n\nCheers`);
       window.open(`mailto:?subject=${subject}&body=${body}`);
     }
 
