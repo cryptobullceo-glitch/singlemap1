@@ -182,20 +182,12 @@
       <div class="acc-box"><div class="big red skeleton" style="width:60px;height:40px;margin:0 auto 4px"></div><div class="lbl">Missed</div></div>
     </div>
 
-    <div class="filters">
+    <div class="filters" id="filters-wrap">
       <span>Filter:</span>
       <button class="filter-pill active" data-filter="all" onclick="setFilter('all', this)">All</button>
       <button class="filter-pill" data-filter="active" onclick="setFilter('active', this)">Active</button>
       <button class="filter-pill" data-filter="hit" onclick="setFilter('hit', this)">Hit ✓</button>
       <button class="filter-pill" data-filter="miss" onclick="setFilter('miss', this)">Missed</button>
-      <button class="filter-pill" data-filter="coinbase" onclick="setFilter('coinbase', this)">Coinbase</button>
-      <button class="filter-pill" data-filter="binance" onclick="setFilter('binance', this)">Binance</button>
-      <button class="filter-pill" data-filter="kraken" onclick="setFilter('kraken', this)">Kraken</button>
-      <button class="filter-pill" data-filter="fireblocks" onclick="setFilter('fireblocks', this)">Fireblocks</button>
-      <button class="filter-pill" data-filter="ripple" onclick="setFilter('ripple', this)">Ripple</button>
-      <button class="filter-pill" data-filter="anchorage" onclick="setFilter('anchorage', this)">Anchorage</button>
-      <button class="filter-pill" data-filter="uniswap" onclick="setFilter('uniswap', this)">Uniswap</button>
-      <button class="filter-pill" data-filter="strike" onclick="setFilter('strike', this)">Strike</button>
     </div>
 
     <div class="predictions-grid" id="predictions-grid">
@@ -239,6 +231,38 @@
 
     const statusLabel = { active: 'Active', hit: 'Hit ✓', miss: 'Missed', pending: 'Active' };
     const statusClass = { active: 'active', hit: 'hit', miss: 'miss', pending: 'active' };
+
+    const COMPANY_NAMES = {
+      coinbase:'Coinbase', binance:'Binance', kraken:'Kraken', okx:'OKX', gemini:'Gemini',
+      cryptocom:'Crypto.com', robinhood:'Robinhood', bitmex:'BitMEX', bitpanda:'Bitpanda',
+      bitvavo:'Bitvavo', bybit:'Bybit', gate:'Gate.io', uniswap:'Uniswap', morpho:'Morpho',
+      maple:'Maple', opensea:'OpenSea', magiceden:'Magic Eden', phantom:'Phantom',
+      fireblocks:'Fireblocks', anchorage:'Anchorage', paxos:'Paxos', bitgo:'BitGo',
+      ledger:'Ledger', blockdaemon:'Blockdaemon', nethermind:'Nethermind', certik:'CertiK',
+      elliptic:'Elliptic', quicknode:'QuickNode', alchemy:'Alchemy', ripple:'Ripple',
+      consensys:'Consensys', arbitrum:'Arbitrum', oplabs:'OP Labs', polygon:'Polygon',
+      mystenlabs:'Mysten Labs', aptoslabs:'Aptos Labs', strike:'Strike', river:'River',
+      spiral:'Spiral', block:'Block', paradigm:'Paradigm', a16z:'a16z', nansen:'Nansen',
+      securitize:'Securitize', moonpay:'MoonPay', nubank:'Nubank', bitso:'Bitso',
+      blockstream:'Blockstream', celestia:'Celestia', cobo:'Cobo', coingecko:'CoinGecko',
+      coinmarketcap:'CoinMarketCap', cointracker:'CoinTracker', dapper:'Dapper Labs',
+      figment:'Figment', gauntlet:'Gauntlet', helius:'Helius', immutable:'Immutable',
+      injective:'Injective', jito:'Jito', jump:'Jump Crypto', luno:'Luno', sfox:'sFOX',
+      shakepay:'Shakepay', superstate:'Superstate', taxbit:'TaxBit', zora:'Zora',
+    };
+
+    function buildCompanyFilters() {
+      const companies = [...new Set(allPredictions.map(p => (p.exchange_id||'').toLowerCase()).filter(Boolean))].sort();
+      const wrap = document.getElementById('filters-wrap');
+      companies.forEach(id => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-pill';
+        btn.dataset.filter = id;
+        btn.textContent = COMPANY_NAMES[id] || id;
+        btn.onclick = () => setFilter(id, btn);
+        wrap.appendChild(btn);
+      });
+    }
 
     function daysLeft(deadline) {
       const d = new Date(deadline);
@@ -357,6 +381,7 @@
         if (!res.ok) throw new Error('fetch failed');
         allPredictions = await res.json();
         updateAccuracy();
+        buildCompanyFilters();
         renderGrid();
       } catch (e) {
         document.getElementById('predictions-grid').innerHTML =
