@@ -366,7 +366,7 @@ async function loadOverview() {
       totalJobs += total; totalComp += comp;
       const maxBar = Math.max(1, total);
       return `
-        <div class="ex-card" onclick="location.href='${HIRING_PAGES[s.exchange_id] || '/exchange.html?id='+s.exchange_id}'">
+        <div class="ex-card" onclick="location.href='${HIRING_PAGES[s.exchange_id] || ('/' + s.exchange_id + '-hiring')}'">
           <div class="ex-header">
             <div class="ex-icon" style="background:${m.color}">${m.initials}</div>
             <div class="ex-name">${m.name}</div>
@@ -380,7 +380,7 @@ async function loadOverview() {
           </div>
           <div class="ex-footer">
             <span class="ex-total"><strong>${total}</strong> active roles</span>
-            <a class="ex-link" href="${HIRING_PAGES[s.exchange_id] || '/exchange.html?id='+s.exchange_id}">Deep dive →</a>
+            <a class="ex-link" href="${HIRING_PAGES[s.exchange_id] || ('/' + s.exchange_id + '-hiring')}">Deep dive →</a>
           </div>
         </div>`;
     });

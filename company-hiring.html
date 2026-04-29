@@ -418,7 +418,7 @@ async function loadPage() {
     } else {
       predContainer.innerHTML = preds.map(p => {
         const statusClass = p.status === 'correct' ? 'pred-correct' : p.status === 'incorrect' ? 'pred-incorrect' : p.status === 'resolved' ? 'pred-resolved' : 'pred-active';
-        const horizon = p.horizon ? `· ${p.horizon}` : '';
+        const horizon = p.horizon ? `· ${p.horizon}-day horizon` : '';
         const conf = p.confidence ? `${p.confidence}% confidence` : '';
         return `
           <div class="prediction-card">

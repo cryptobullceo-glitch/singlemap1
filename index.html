@@ -1057,13 +1057,13 @@ const STATIC_SIGNALS = [
   { exchange_id: 'bitvavo',   score: 57, total_active: 76,  compliance_count: 12 },
 ];
 const STATIC_JOBS  = 1417;
-const STATIC_PREDS = 64;
+const STATIC_PREDS = 102;
 const STATIC_HIT   = '83%';
 
 function renderTicker(signals) {
   const items = signals.map(s => {
     const m = EXCHANGE_META[s.exchange_id] || { name: s.exchange_id, color: '#059669', initials: s.exchange_id.slice(0,2).toUpperCase() };
-    return `<div class="ticker-item" onclick="location.href='/exchange.html?id=${s.exchange_id}'">
+    return `<div class="ticker-item" onclick="location.href='/' + s.exchange_id + '-hiring'">
       <div class="ticker-icon" style="background:${m.color};color:#fff">${m.initials}</div>
       <span class="ticker-name">${m.name}</span>
       <span class="ticker-score">Score: <strong>${s.score ?? '—'}</strong> · ${s.total_active ?? 0} active roles · ${s.compliance_count ?? 0} compliance</span>
