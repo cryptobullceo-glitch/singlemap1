@@ -161,44 +161,39 @@
   status = 200
 
 [[redirects]]
-  from = "/kucoin-hiring"
-  to = "/kucoin-hiring.html"
-  status = 200
-
-[[redirects]]
   from = "/gate-hiring"
   to = "/gate-hiring.html"
   status = 200
 
+# ── Dead exchange redirects (302) — redirect old URLs to homepage ──
+[[redirects]]
+  from = "/kucoin-hiring"
+  to = "/"
+  status = 301
 [[redirects]]
   from = "/bitget-hiring"
-  to = "/bitget-hiring.html"
-  status = 200
-
+  to = "/"
+  status = 301
 [[redirects]]
   from = "/bitstamp-hiring"
-  to = "/bitstamp-hiring.html"
-  status = 200
-
+  to = "/"
+  status = 301
 [[redirects]]
   from = "/htx-hiring"
-  to = "/htx-hiring.html"
-  status = 200
-
+  to = "/"
+  status = 301
 [[redirects]]
   from = "/mexc-hiring"
-  to = "/mexc-hiring.html"
-  status = 200
-
+  to = "/"
+  status = 301
 [[redirects]]
   from = "/deribit-hiring"
-  to = "/deribit-hiring.html"
-  status = 200
-
+  to = "/"
+  status = 301
 [[redirects]]
   from = "/bitflyer-hiring"
-  to = "/bitflyer-hiring.html"
-  status = 200
+  to = "/"
+  status = 301
 
 # ── Hub pages ──
 [[redirects]]
