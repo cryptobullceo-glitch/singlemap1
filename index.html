@@ -1083,7 +1083,10 @@ async function loadTicker() {
   try {
     const signals = await db('signals', '?select=exchange_id,total_active,compliance_count,score&order=score.desc');
     if (!signals || !signals.length) return; // keep fallback
-    renderTicker(signals);
+    // Deduplicate by exchange_id (keep highest score row per company)
+    const seen = new Set();
+    const unique = signals.filter(s => { if (seen.has(s.exchange_id)) return false; seen.add(s.exchange_id); return true; });
+    renderTicker(unique);
   } catch(e) { console.warn('ticker', e); }
 }
 
