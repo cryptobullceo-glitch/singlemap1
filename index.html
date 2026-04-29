@@ -486,7 +486,7 @@
     <div class="stat"><div class="stat-n" id="s-exchanges">67</div><div class="stat-l">Companies tracked</div></div>
     <div class="stat"><div class="stat-n" id="s-jobs">—</div><div class="stat-l">Active job listings</div></div>
     <div class="stat"><div class="stat-n" id="s-posts">500+</div><div class="stat-l">Intelligence posts</div></div>
-    <div class="stat"><div class="stat-n" id="s-preds">—</div><div class="stat-l">Predictions made</div></div>
+    <div class="stat"><div class="stat-n" id="s-preds">—</div><div class="stat-l">Active predictions</div></div>
     <div class="stat"><div class="stat-n" id="s-hit">—</div><div class="stat-l">Hit rate (resolved)</div></div>
   </div>
 </div>
@@ -1100,10 +1100,10 @@ async function loadStats() {
       }),
     ]);
     if (jobs?.length)  document.getElementById('s-jobs').textContent = jobs.length.toLocaleString();
-    const total    = preds?.length ?? 0;
+    const active   = preds?.filter(p => p.status === 'active').length ?? 0;
     const correct  = preds?.filter(p => p.status === 'correct' || p.status === 'announced').length ?? 0;
     const resolved = preds?.filter(p => p.status !== 'active').length ?? 0;
-    if (total)    document.getElementById('s-preds').textContent = total;
+    if (active)   document.getElementById('s-preds').textContent = active;
     if (resolved) document.getElementById('s-hit').textContent  = Math.round(correct/resolved*100) + '%';
     // Blog post count
     const range = postsR.headers?.get('content-range');
