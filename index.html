@@ -810,15 +810,15 @@
   <div class="faq">
     <div class="faq-item">
       <div class="faq-q">Why hiring data? <span class="faq-arrow">▾</span></div>
-      <div class="faq-a"><p>Job postings are public, legally required disclosures that move well before press releases. A compliance surge at an exchange precedes a regulatory filing. A wave of product hires precedes a launch. We read the signal before the announcement.</p></div>
+      <div class="faq-a"><p>Job postings are public, legally required disclosures that move well before press releases. A compliance surge at a crypto company precedes a regulatory filing. A wave of product hires precedes a launch. Heavy zkVM engineering hires at an L2 precedes a chain upgrade. We read the signal before the announcement.</p></div>
     </div>
     <div class="faq-item">
       <div class="faq-q">How accurate are your predictions? <span class="faq-arrow">▾</span></div>
       <div class="faq-a"><p>Every prediction is logged publicly with a deadline and outcome — view the scorecard to see our current hit rate. We don't move deadlines and we don't delete wrong calls.</p></div>
     </div>
     <div class="faq-item">
-      <div class="faq-q">Which exchanges do you cover? <span class="faq-arrow">▾</span></div>
-      <div class="faq-a"><p>Currently: Coinbase, Binance, Kraken, OKX, Gemini, Crypto.com, Robinhood, BitMEX, Bitpanda, and Bitvavo. We add exchanges when we can verify a reliable job data source.</p></div>
+      <div class="faq-q">Which companies do you cover? <span class="faq-arrow">▾</span></div>
+      <div class="faq-a"><p>67 crypto companies in total. <strong>Exchanges (12):</strong> Coinbase, Binance, Kraken, OKX, Gemini, Crypto.com, Robinhood, BitMEX, Bitpanda, Bitvavo, Bybit, Gate.io. <strong>DeFi (6):</strong> Uniswap, Morpho, Maple, OpenSea, Magic Eden, Phantom. <strong>Custody &amp; Infrastructure (11):</strong> Fireblocks, Anchorage, Paxos, BitGo, Ledger, Blockdaemon, Nethermind, CertiK, Elliptic, QuickNode, Alchemy. <strong>L1/L2 (7):</strong> Ripple, Consensys, Arbitrum, OP Labs, Polygon, Mysten Labs, Aptos Labs. <strong>Bitcoin (4):</strong> Strike, River, Spiral, Block. Plus VC firms (Paradigm, a16z), data firms (Nansen, MoonPay, CoinGecko), and 21 other tracked companies. We add new companies when we can verify a reliable job data source.</p></div>
     </div>
     <div class="faq-item">
       <div class="faq-q">How often is data updated? <span class="faq-arrow">▾</span></div>
@@ -1236,9 +1236,9 @@ async function loadHomepageSignals() {
 }
 
 const STATIC_PREDICTIONS = [
-  { exchange_id: 'okx',      title: 'OKX will announce at least 2 new products within 90 days',                      rationale: 'Significant product and engineering hiring surge detected across multiple departments this week.', confidence: 80, horizon: '< 90 days', issued_at: '2026-03-15' },
-  { exchange_id: 'coinbase', title: 'Coinbase will announce EU regulatory expansion within 60 days',                  rationale: 'Compliance and legal hiring in EU jurisdictions has accelerated significantly in recent weeks.',   confidence: 75, horizon: '< 60 days', issued_at: '2026-03-15' },
-  { exchange_id: 'gemini',   title: 'Gemini will announce layoffs, acquisition, or strategic pivot within 90 days',   rationale: 'Unusual hiring freeze combined with senior strategy and M&A role postings signals a major change.', confidence: 65, horizon: '< 90 days', issued_at: '2026-03-15' },
+  { exchange_id: 'okx',       title: 'OKX will announce a major product launch within 90 days',                       rationale: 'Significant product and engineering hiring surge detected across multiple departments this week.',     confidence: 80, horizon: '< 90 days', issued_at: '2026-03-15' },
+  { exchange_id: 'arbitrum',  title: 'Arbitrum will announce a zkEVM migration path within Q3 2026',                  rationale: 'Heavy zkVM and Rust engineering hires combined with developer relations expansion across L2 ecosystem.', confidence: 78, horizon: '< 120 days', issued_at: '2026-03-15' },
+  { exchange_id: 'fireblocks',title: 'Fireblocks will close a major institutional partnership within 60 days',         rationale: 'Compliance and enterprise BD hiring accelerated 40% — typical 60-90 day lead time on partnership news.', confidence: 75, horizon: '< 60 days', issued_at: '2026-03-15' },
 ];
 
 function renderPredCard(p) {
