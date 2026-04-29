@@ -247,6 +247,244 @@
   to = "/binance-vs-coinbase.html"
   status = 200
 
+# ── DeFi Protocol hiring pages ──
+[[redirects]]
+  from = "/uniswap-hiring"
+  to = "/uniswap-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/morpho-hiring"
+  to = "/morpho-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/maple-hiring"
+  to = "/maple-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/opensea-hiring"
+  to = "/opensea-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/magiceden-hiring"
+  to = "/magiceden-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/phantom-hiring"
+  to = "/phantom-hiring.html"
+  status = 200
+
+# ── Custody & Infrastructure hiring pages ──
+[[redirects]]
+  from = "/fireblocks-hiring"
+  to = "/fireblocks-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/anchorage-hiring"
+  to = "/anchorage-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/paxos-hiring"
+  to = "/paxos-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/bitgo-hiring"
+  to = "/bitgo-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/ledger-hiring"
+  to = "/ledger-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/blockdaemon-hiring"
+  to = "/blockdaemon-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/nethermind-hiring"
+  to = "/nethermind-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/certik-hiring"
+  to = "/certik-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/elliptic-hiring"
+  to = "/elliptic-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/quicknode-hiring"
+  to = "/quicknode-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/alchemy-hiring"
+  to = "/alchemy-hiring.html"
+  status = 200
+
+# ── L1/L2 Networks hiring pages ──
+[[redirects]]
+  from = "/ripple-hiring"
+  to = "/ripple-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/consensys-hiring"
+  to = "/consensys-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/arbitrum-hiring"
+  to = "/arbitrum-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/oplabs-hiring"
+  to = "/oplabs-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/polygon-hiring"
+  to = "/polygon-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/mystenlabs-hiring"
+  to = "/mystenlabs-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/aptoslabs-hiring"
+  to = "/aptoslabs-hiring.html"
+  status = 200
+
+# ── Bitcoin Infrastructure hiring pages ──
+[[redirects]]
+  from = "/strike-hiring"
+  to = "/strike-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/river-hiring"
+  to = "/river-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/spiral-hiring"
+  to = "/spiral-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/block-hiring"
+  to = "/block-hiring.html"
+  status = 200
+
+# ── VC & Research hiring pages ──
+[[redirects]]
+  from = "/paradigm-hiring"
+  to = "/paradigm-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/a16z-hiring"
+  to = "/a16z-hiring.html"
+  status = 200
+
+# ── Data & Fintech hiring pages ──
+[[redirects]]
+  from = "/nansen-hiring"
+  to = "/nansen-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/securitize-hiring"
+  to = "/securitize-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/moonpay-hiring"
+  to = "/moonpay-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/nubank-hiring"
+  to = "/nubank-hiring.html"
+  status = 200
+
+# ── Other tracked companies ──
+[[redirects]]
+  from = "/bitmex-hiring"
+  to = "/bitmex-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/bitso-hiring"
+  to = "/bitso-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/blockstream-hiring"
+  to = "/blockstream-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/celestia-hiring"
+  to = "/celestia-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/cobo-hiring"
+  to = "/cobo-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/coingecko-hiring"
+  to = "/coingecko-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/coinmarketcap-hiring"
+  to = "/coinmarketcap-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/cointracker-hiring"
+  to = "/cointracker-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/dapper-hiring"
+  to = "/dapper-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/figment-hiring"
+  to = "/figment-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/gauntlet-hiring"
+  to = "/gauntlet-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/helius-hiring"
+  to = "/helius-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/immutable-hiring"
+  to = "/immutable-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/injective-hiring"
+  to = "/injective-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/jito-hiring"
+  to = "/jito-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/jump-hiring"
+  to = "/jump-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/luno-hiring"
+  to = "/luno-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/sfox-hiring"
+  to = "/sfox-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/shakepay-hiring"
+  to = "/shakepay-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/superstate-hiring"
+  to = "/superstate-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/taxbit-hiring"
+  to = "/taxbit-hiring.html"
+  status = 200
+[[redirects]]
+  from = "/zora-hiring"
+  to = "/zora-hiring.html"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/404.html"
