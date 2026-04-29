@@ -1241,6 +1241,8 @@ const STATIC_PREDICTIONS = [
 function renderPredCard(p) {
   const m = EXCHANGE_META[p.exchange_id] || { name: p.exchange_id, color: '#059669', initials: p.exchange_id.slice(0,2).toUpperCase() };
   const issued = p.issued_at ? new Date(p.issued_at).toLocaleDateString('en-US', {month:'short', day:'numeric'}) : '';
+  // horizon may be a number (days) from DB or a string like '< 90 days' from static seed
+  const horizonLabel = typeof p.horizon === 'number' ? `${p.horizon}-day horizon` : p.horizon;
   return `<div class="pred-card">
     <div class="pred-ex">
       <div class="pred-ex-badge" style="background:${m.color}">${m.initials}</div>
@@ -1253,7 +1255,7 @@ function renderPredCard(p) {
       <span class="pred-conf-pct">${p.confidence}%</span>
     </div>
     <div class="pred-meta">
-      ${p.horizon ? `<span class="pred-tag pred-tag-horizon">${p.horizon}</span>` : ''}
+      ${horizonLabel ? `<span class="pred-tag pred-tag-horizon">${horizonLabel}</span>` : ''}
       <span class="pred-tag pred-tag-active">Active</span>
       ${issued ? `<span class="pred-tag" style="background:#F4F4F5;color:var(--mid)">Issued ${issued}</span>` : ''}
     </div>

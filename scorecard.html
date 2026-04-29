@@ -511,6 +511,9 @@ function renderPrediction(p) {
   const deadlineMs = issuedMs + horizonDays * 24 * 60 * 60 * 1000;
   const deadlineStr = new Date(deadlineMs).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
   const daysLeft = Math.floor((deadlineMs - Date.now()) / (1000 * 60 * 60 * 24));
+  // Confidence stored as 0-1 (legacy) or 0-100 (new) — normalize to integer percent
+  const rawConf = p.confidence || 70;
+  const confPct = Math.round(rawConf > 1 ? rawConf : rawConf * 100);
 
   const statusMap = {
     active:    { label: 'Active',    cls: 'active'    },
@@ -546,7 +549,7 @@ function renderPrediction(p) {
         ${deadlineHtml}
       </div>
       <div class="pred-confidence">
-        <div class="conf-number" style="color:${confidenceColor(p.confidence)}">${p.confidence}%</div>
+        <div class="conf-number" style="color:${confidenceColor(confPct)}">${confPct}%</div>
         <div class="conf-label">confidence</div>
       </div>
     </div>

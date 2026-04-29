@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Changelog — Signalmap</title>
-  <meta name="description" content="What's new in Signalmap — product updates, new exchanges tracked, new features, and intelligence improvements.">
+  <meta name="description" content="What's new in Signalmap — product updates, new companies tracked, new features, and intelligence improvements.">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="canonical" href="https://signalmap.live/changelog">
   <meta property="og:title" content="Signalmap Changelog">
-  <meta property="og:description" content="What's new — product updates, new exchanges, new features.">
+  <meta property="og:description" content="What's new — product updates, new companies, new features.">
   <meta property="og:url" content="https://signalmap.live/changelog">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,10 +85,35 @@
     <div class="hero">
       <div class="hero-badge">📋 Changelog</div>
       <h1>What's new in Signalmap</h1>
-      <p>Product updates, new exchanges, new features, and intelligence improvements — logged here as they ship.</p>
+      <p>Product updates, new companies, new features, and intelligence improvements — logged here as they ship.</p>
     </div>
 
     <div class="timeline">
+
+      <div class="entry">
+        <div class="entry-date">
+          <div class="entry-date-text">Apr 29, 2026</div>
+          <div class="entry-version">v3.0</div>
+        </div>
+        <div class="entry-dot major"></div>
+        <div class="entry-body">
+          <span class="tag tag-new">New</span><span class="tag tag-improved">Improved</span><span class="tag tag-fix">Fix</span>
+          <h2>Major expansion: 67 companies tracked, hourly scraper, full UI overhaul</h2>
+          <ul>
+            <li><strong>Coverage expanded from 12 exchanges to 67 companies</strong> — DeFi protocols (Uniswap, Morpho, OpenSea), infrastructure (Fireblocks, Anchorage, Ledger), L1/L2 networks (Ripple, Polygon, Arbitrum, OP Labs), Bitcoin (Strike, River, Block), VC firms (Paradigm, a16z), data/fintech (Nansen, MoonPay)</li>
+            <li><strong>Hourly scraping</strong> — switched from weekly to hourly data refresh via GitHub Actions</li>
+            <li><strong>67 dedicated hiring pages</strong> — one per tracked company, dynamic meta descriptions and OG tags</li>
+            <li><strong>102 active predictions</strong> — up from 78, expanded across all company categories</li>
+            <li><strong>Compare tool now live</strong> — pulls real Signal Score data from Supabase instead of hardcoded values, supports any 2 of 67 companies</li>
+            <li><strong>Predictions tracker</strong> — fixed Supabase query, dynamic company filter pills generated from data</li>
+            <li><strong>Dashboard</strong> — fallback now loads all available companies (was capped at 10), regulatory tab redesigned, number formatting fixed</li>
+            <li><strong>Site-wide consistency</strong> — Protocols nav added everywhere, "exchange" copy updated to "company" where appropriate, comparison pages CSS bug fixed</li>
+            <li><strong>3 new blog posts</strong> — L2 wars (Arbitrum/OP/Polygon), security infrastructure (CertiK/Elliptic/Nethermind), NFT recovery (OpenSea/Magic Eden/Dapper)</li>
+            <li><strong>Sitemap rebuilt</strong> — removed dead exchange URLs (KuCoin, HTX, Bitget, MEXC, etc.), added all 67 hiring pages with correct priorities</li>
+            <li><strong>Auto-deploy pipeline</strong> — GitLab CI/CD now deploys to Netlify on every push to main</li>
+          </ul>
+        </div>
+      </div>
 
       <div class="entry">
         <div class="entry-date">

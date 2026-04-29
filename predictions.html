@@ -283,7 +283,9 @@
     function renderCard(p) {
       const status = getStatus(p);
       const exch = (p.exchange_id || p.exchange || '').toLowerCase();
-      const conf = Math.round((p.confidence || 0.7) * 100);
+      // Confidence may be stored as 0-1 (legacy) or 0-100 (new) — normalize to 0-100
+      const rawConf = p.confidence || 70;
+      const conf = Math.round(rawConf > 1 ? rawConf : rawConf * 100);
       // horizon is an integer number of days from issued_at — compute the actual deadline date
       const deadlineDate = (p.horizon && p.issued_at)
         ? new Date(new Date(p.issued_at).getTime() + p.horizon * 86400000)
