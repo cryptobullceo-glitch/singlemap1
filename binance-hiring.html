@@ -3,38 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Binance Hiring Intelligence 2026 | Signalmap</title>
-  <meta name="description" content="Binance hiring intelligence: 67 compliance roles — highest absolute count of any exchange. 389 active roles, signal score 91/100.">
-  <meta property="og:title" content="Binance Hiring Intelligence 2026 | Signalmap">
-  <meta property="og:description" content="Binance hiring intelligence: 67 compliance roles — highest absolute count of any exchange. 389 active roles, signal score 91/100.">
-  <meta property="og:url" content="https://signalmap.live/binance-hiring">
+  <title>Hiring Intelligence | Signalmap</title>
+  <meta name="description" content="Real-time crypto hiring signal analysis on Signalmap.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://signalmap.live/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="https://signalmap.live/binance-hiring">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Binance Hiring Intelligence 2026",
-    "url": "https://signalmap.live/binance-hiring",
-    "description": "Binance hiring intelligence: 67 compliance roles — highest absolute count of any exchange. 389 active roles, signal score 91/100.",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://signalmap.live/"},
-        {"@type": "ListItem", "position": 2, "name": "Intelligence Dashboard", "item": "https://signalmap.live/"},
-        {"@type": "ListItem", "position": 3, "name": "Binance Hiring Intelligence", "item": "https://signalmap.live/binance-hiring"}
-      ]
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Signalmap",
-      "url": "https://signalmap.live"
-    }
-  }
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -43,7 +17,7 @@
       --green: #059669; --green2: #34d399; --green-dark: #065f46;
       --ink: #0A0A0B; --paper: #F7F7F4; --mid: #6B7280;
       --light: #E4E4E1; --pale: #ECFDF5; --card: #FFFFFF; --alt-bg: #F0F0ED;
-      --exchange: #f0b90b;
+      --exchange: #059669;
     }
     body { font-family: 'Inter', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
     body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; height: 500px; background: radial-gradient(ellipse 80% 60% at 50% -5%, rgba(5,150,105,0.06), transparent); pointer-events: none; z-index: 0; }
@@ -77,7 +51,7 @@
     .hero { padding: 40px 0 60px; position: relative; z-index: 1; }
     .exchange-avatar {
       width: 72px; height: 72px; border-radius: 50%;
-      background: #f0b90b; color: #fff;
+      background: var(--exchange); color: #fff;
       display: flex; align-items: center; justify-content: center;
       font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 800;
       margin-bottom: 24px;
@@ -85,16 +59,9 @@
     h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(28px, 5vw, 48px); font-weight: 800; line-height: 1.15; margin-bottom: 16px; }
     .hero-sub { font-size: 18px; color: var(--mid); max-width: 600px; margin-bottom: 24px; }
     .badges { display: flex; gap: 12px; flex-wrap: wrap; }
-    .badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600;
-    }
-    .badge-score {
-      background: rgba(5,150,105,0.1); border: 1px solid rgba(5,150,105,0.25); color: var(--green);
-    }
-    .badge-jobs {
-      background: rgba(0,0,0,0.05); border: 1px solid var(--light); color: var(--ink);
-    }
+    .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+    .badge-score { background: rgba(5,150,105,0.1); border: 1px solid rgba(5,150,105,0.25); color: var(--green); }
+    .badge-jobs { background: rgba(0,0,0,0.05); border: 1px solid var(--light); color: var(--ink); }
 
     .section { padding: 48px 0; }
     .section-title { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 24px; }
@@ -102,37 +69,43 @@
 
     .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } }
-    .stat-card {
-      background: var(--card); border: 1px solid var(--light); border-radius: 12px;
-      padding: 20px 24px;
-    }
+    .stat-card { background: var(--card); border: 1px solid var(--light); border-radius: 12px; padding: 20px 24px; }
     .stat-label { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--mid); margin-bottom: 8px; }
     .stat-value { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; line-height: 1; }
     .stat-value.score { color: #059669; }
     .stat-sub { font-size: 12px; color: var(--mid); margin-top: 4px; }
 
-    .insights-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
-    .insight-item {
-      background: var(--card); border: 1px solid var(--light); border-radius: 12px;
-      padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start;
+    .dept-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .dept-card { background: var(--card); border: 1px solid var(--light); border-radius: 10px; padding: 14px 16px; }
+    .dept-name { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; }
+    .dept-count { font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 700; }
+
+    .job-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .job-item {
+      background: var(--card); border: 1px solid var(--light); border-radius: 10px;
+      padding: 14px 18px; display: flex; justify-content: space-between; align-items: center;
     }
-    .insight-bullet {
-      width: 28px; height: 28px; border-radius: 50%; background: #f0b90b;
-      color: #fff; display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px;
-    }
-    .insight-text { font-size: 15px; line-height: 1.5; }
+    .job-title { font-size: 15px; font-weight: 500; }
+    .job-dept { font-size: 12px; color: var(--mid); margin-top: 2px; }
+    .job-link { font-size: 13px; color: var(--green); text-decoration: none; font-weight: 600; white-space: nowrap; margin-left: 12px; }
+    .job-link:hover { text-decoration: underline; }
+
+    .prediction-card { background: var(--card); border: 1px solid var(--light); border-radius: 12px; padding: 20px 24px; margin-bottom: 12px; }
+    .prediction-title { font-weight: 600; margin-bottom: 4px; }
+    .prediction-meta { font-size: 13px; color: var(--mid); }
+    .pred-status { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-left: 8px; }
+    .pred-active { background: rgba(5,150,105,0.1); color: var(--green); }
+    .pred-resolved { background: rgba(0,0,0,0.07); color: var(--ink); }
+    .pred-correct { background: rgba(5,150,105,0.15); color: #065f46; }
+    .pred-incorrect { background: rgba(220,38,38,0.1); color: #dc2626; }
 
     .predictions-placeholder {
       background: var(--alt-bg); border: 1px dashed var(--light); border-radius: 12px;
       padding: 40px; text-align: center; color: var(--mid);
     }
-    .prediction-card {
-      background: var(--card); border: 1px solid var(--light); border-radius: 12px;
-      padding: 20px 24px; margin-bottom: 12px;
-    }
-    .prediction-title { font-weight: 600; margin-bottom: 4px; }
-    .prediction-meta { font-size: 13px; color: var(--mid); }
+
+    .skeleton { animation: pulse 1.5s infinite; background: linear-gradient(90deg, #e0e0dd 25%, #ebebea 50%, #e0e0dd 75%); background-size: 200% 100%; border-radius: 6px; }
+    @keyframes pulse { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
     .cta-section {
       background: #0A0A0B; border-radius: 16px;
@@ -142,25 +115,13 @@
     .cta-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 12px; }
     .cta-section p { color: #9ca3af; margin-bottom: 28px; }
     .email-form { display: flex; gap: 10px; max-width: 420px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
-    .email-form input {
-      flex: 1; min-width: 200px; padding: 12px 16px; border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06);
-      color: #fff; font-size: 15px; outline: none;
-    }
+    .email-form input { flex: 1; min-width: 200px; padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06); color: #fff; font-size: 15px; outline: none; }
     .email-form input::placeholder { color: #6b7280; }
-    .email-form button {
-      padding: 12px 22px; background: var(--green); color: #fff;
-      border: none; border-radius: 8px; font-weight: 600; font-size: 15px;
-      cursor: pointer; white-space: nowrap;
-    }
+    .email-form button { padding: 12px 22px; background: var(--green); color: #fff; border: none; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; }
     .email-form button:hover { background: #047857; }
     .form-msg { margin-top: 12px; font-size: 14px; color: var(--green2); }
 
-    footer {
-      border-top: 1px solid var(--light); padding: 40px 24px;
-      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
-      color: var(--mid); font-size: 13px; max-width: 860px; margin: 0 auto;
-    }
+    footer { border-top: 1px solid var(--light); padding: 40px 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; color: var(--mid); font-size: 13px; max-width: 860px; margin: 0 auto; }
     .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
     .footer-links a { color: var(--mid); text-decoration: none; }
     .footer-links a:hover { color: var(--ink); }
@@ -187,12 +148,12 @@
   </div>
 
   <div class="hero">
-    <div class="exchange-avatar">BN</div>
-    <h1>Binance Hiring Intelligence</h1>
-    <p class="hero-sub">Real-time hiring signal analysis for Binance. Updated weekly from live job board data.</p>
-    <div class="badges">
-      <span class="badge badge-score">Signal Score: 91/100</span>
-      <span class="badge badge-jobs">389 Active Roles</span>
+    <div class="exchange-avatar" id="avatar">…</div>
+    <h1 id="page-title">Loading…</h1>
+    <p class="hero-sub" id="page-sub">Real-time hiring signal analysis. Updated weekly from live job board data.</p>
+    <div class="badges" id="badges">
+      <span class="badge badge-score skeleton" style="width:140px;height:28px;">&nbsp;</span>
+      <span class="badge badge-jobs skeleton" style="width:110px;height:28px;">&nbsp;</span>
     </div>
   </div>
 
@@ -203,17 +164,17 @@
     <div class="stats-grid">
       <div class="stat-card">
         <div class="stat-label">Signal Score</div>
-        <div class="stat-value score" id="stat-score">91</div>
+        <div class="stat-value score" id="stat-score">—</div>
         <div class="stat-sub">out of 100</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Active Roles</div>
-        <div class="stat-value" id="stat-jobs">389</div>
+        <div class="stat-value" id="stat-jobs">—</div>
         <div class="stat-sub">live job postings</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Compliance Roles</div>
-        <div class="stat-value" id="stat-compliance">67</div>
+        <div class="stat-value" id="stat-compliance">—</div>
         <div class="stat-sub">regulatory hires</div>
       </div>
     </div>
@@ -221,31 +182,26 @@
 
   <hr class="section-divider">
 
-  <div class="section">
-    <h2 class="section-title">What Binance's hiring signals mean right now</h2>
-    <ul class="insights-list">
-      <li class="insight-item">
-        <div class="insight-bullet">1</div>
-        <div class="insight-text">67 compliance roles — highest absolute count of any exchange</div>
-      </li>
-      <li class="insight-item">
-        <div class="insight-bullet">2</div>
-        <div class="insight-text">38% surge in EU+APAC legal hiring in 4 weeks — regulatory filing likely</div>
-      </li>
-      <li class="insight-item">
-        <div class="insight-bullet">3</div>
-        <div class="insight-text">Engineering headcount growing faster than any tier-1 peer</div>
-      </li>
-    </ul>
+  <div class="section" id="dept-section" style="display:none">
+    <h2 class="section-title">Hiring by Department</h2>
+    <div class="dept-grid" id="dept-grid"></div>
   </div>
 
-  <hr class="section-divider">
+  <hr class="section-divider" id="dept-divider" style="display:none">
+
+  <div class="section" id="jobs-section" style="display:none">
+    <h2 class="section-title" id="jobs-title">Recent Job Postings</h2>
+    <ul class="job-list" id="job-list"></ul>
+    <p id="jobs-more" style="margin-top:16px;font-size:14px;color:var(--mid);display:none"></p>
+  </div>
+
+  <hr class="section-divider" id="jobs-divider" style="display:none">
 
   <div class="section">
-    <h2 class="section-title">Active Predictions</h2>
+    <h2 class="section-title" id="predictions-title">Active Predictions</h2>
     <div id="predictions-container">
       <div class="predictions-placeholder">
-        <p>Loading predictions for Binance…</p>
+        <p>Loading predictions…</p>
       </div>
     </div>
   </div>
@@ -254,8 +210,8 @@
 
 <div class="container">
   <div class="cta-section">
-    <h2>Get the weekly Binance signal brief</h2>
-    <p>Join analysts tracking crypto exchange hiring data every Friday — free.</p>
+    <h2 id="cta-title">Get the weekly hiring signal brief</h2>
+    <p>Join analysts tracking crypto hiring data every Friday — free.</p>
     <form class="email-form" id="subscribe-form">
       <input type="email" id="sub-email" placeholder="your@email.com" required>
       <button type="submit">Subscribe Free</button>
@@ -264,22 +220,12 @@
   </div>
 </div>
 
-
-<div style="background:#F7F7F4;border-top:1px solid var(--light,#E4E4E1);padding:24px;text-align:center;">
-  <div style="max-width:700px;margin:0 auto;">
-    <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6B7280;margin-bottom:12px;">Compare hiring signals</p>
-    <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px;">
-      <a href="/binance-vs-okx" style="display:inline-block;background:#fff;border:1.5px solid #E4E4E1;border-radius:8px;padding:8px 16px;font-size:.8rem;font-weight:600;color:#0A0A0B;text-decoration:none;">Binance vs OKX →</a> <a href="/binance-vs-coinbase" style="display:inline-block;background:#fff;border:1.5px solid #E4E4E1;border-radius:8px;padding:8px 16px;font-size:.8rem;font-weight:600;color:#0A0A0B;text-decoration:none;">Binance vs Coinbase →</a> <a href="/kraken-vs-binance" style="display:inline-block;background:#fff;border:1.5px solid #E4E4E1;border-radius:8px;padding:8px 16px;font-size:.8rem;font-weight:600;color:#0A0A0B;text-decoration:none;">Kraken vs Binance →</a>
-    </div>
-  </div>
-</div>
-
-<div style="background:#F0FDF4;border-top:1px solid rgba(5,150,105,.15);padding:32px 24px;text-align:center;">
+<div id="alert-section" style="background:#F0FDF4;border-top:1px solid rgba(5,150,105,.15);padding:32px 24px;text-align:center;">
   <div style="max-width:600px;margin:0 auto;">
     <p style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#059669;margin-bottom:8px;">Pro Feature</p>
-    <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:800;color:#0A0A0B;margin-bottom:8px;">Get notified the moment Binance posts a new job</h3>
+    <h3 id="alert-heading" style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:800;color:#0A0A0B;margin-bottom:8px;">Get notified the moment a new role is posted</h3>
     <p style="font-size:.9rem;color:#6B7280;margin-bottom:20px;line-height:1.6;">Set a watch on any department or keyword. We'll send you our analysis as soon as a match appears — before the market catches on.</p>
-    <a href="/alerts?exchange=binance" style="display:inline-block;background:#059669;color:#fff;text-decoration:none;padding:11px 24px;border-radius:9px;font-weight:700;font-size:.9rem;">Set up alert for Binance →</a>
+    <a id="alert-link" href="/alerts" style="display:inline-block;background:#059669;color:#fff;text-decoration:none;padding:11px 24px;border-radius:9px;font-weight:700;font-size:.9rem;">Set up alert →</a>
   </div>
 </div>
 
@@ -301,53 +247,204 @@
 <script>
 const SUPABASE_URL = 'https://ufrscgfutnjzfsvaxzmf.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVmcnNjZ2Z1dG5qemZzdmF4em1mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NTg2MzgsImV4cCI6MjA4ODQzNDYzOH0.Zg-1zbFuPBmjUJBKNG-IuZR_lAb7ld9Ot4EXR8G3ISk';
-const EXCHANGE_ID = 'binance';
 
-async function fetchSignal() {
-  try {
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/signals?exchange_id=eq.${EXCHANGE_ID}&order=created_at.desc&limit=1`,
-      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
-    );
-    if (!res.ok) return;
-    const data = await res.json();
-    if (data.length > 0) {
-      const s = data[0];
-      if (s.score)            document.getElementById('stat-score').textContent = s.score;
-      if (s.total_jobs)       document.getElementById('stat-jobs').textContent = s.total_jobs;
-      if (s.compliance_count !== undefined) document.getElementById('stat-compliance').textContent = s.compliance_count;
-    }
-  } catch(e) { /* use static fallback */ }
+const DEPT_LABELS = {
+  compliance: 'Compliance', legal: 'Legal', engineering: 'Engineering',
+  product: 'Product', finance: 'Finance', marketing: 'Marketing',
+  sales: 'Sales', operations: 'Operations', other: 'Other'
+};
+
+// Get company ID from URL: /company-hiring.html?id=coinbase
+// Also support path like /kraken-hiring where we read the slug from URL
+function getExchangeId() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('id')) return params.get('id');
+  // Try to infer from URL pathname: /coinbase-hiring → coinbase
+  const m = window.location.pathname.match(/\/([^/]+)-hiring(?:\.html)?/);
+  return m ? m[1] : null;
 }
 
-async function fetchPredictions() {
-  const container = document.getElementById('predictions-container');
+function initials(name) {
+  return name.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+}
+
+function colorForId(id) {
+  const palette = ['#0052ff','#6c47ff','#e84142','#f7931a','#26a17b','#16c784','#0033ad','#e02020','#2775ca','#627eea'];
+  let h = 0;
+  for (const c of id) h = (h * 31 + c.charCodeAt(0)) & 0xffff;
+  return palette[h % palette.length];
+}
+
+async function api(path) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+  });
+  if (!res.ok) throw new Error(res.status);
+  return res.json();
+}
+
+async function loadPage() {
+  const exchangeId = getExchangeId();
+  if (!exchangeId) {
+    document.getElementById('page-title').textContent = 'Company not found';
+    document.getElementById('page-sub').textContent = 'Please navigate from the dashboard.';
+    return;
+  }
+
+  // Load exchange metadata
+  let exchange;
   try {
-    const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/predictions?exchange_id=eq.${EXCHANGE_ID}&is_active=eq.true&order=created_at.desc&limit=5`,
-      { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } }
-    );
-    if (!res.ok) throw new Error('fetch failed');
-    const data = await res.json();
-    if (data.length === 0) {
-      container.innerHTML = `<div class="predictions-placeholder"><p>No active predictions for Binance yet — check back next week.</p><p style="margin-top:8px;font-size:13px">Subscribe below to be notified when predictions are published.</p></div>`;
+    const rows = await api(`exchanges?id=eq.${encodeURIComponent(exchangeId)}&select=id,name,icon,color,regulation,tier`);
+    exchange = rows[0];
+  } catch(e) { /* ignore */ }
+
+  const name = exchange?.name || exchangeId;
+  const color = exchange?.color || colorForId(exchangeId);
+
+  // Update meta
+  document.title = `${name} Hiring Intelligence 2026 | Signalmap`;
+  const metaDesc = `${name} hiring intelligence: track active job listings, signal score, compliance vs engineering mix, and analyst predictions. Updated hourly from live job board data.`;
+  document.querySelector('meta[name="description"]').content = metaDesc;
+  // OG / Twitter
+  let ogTitle = document.querySelector('meta[property="og:title"]');
+  if (!ogTitle) { ogTitle = document.createElement('meta'); ogTitle.setAttribute('property','og:title'); document.head.appendChild(ogTitle); }
+  ogTitle.content = `${name} Hiring Intelligence 2026 | Signalmap`;
+  let ogDesc = document.querySelector('meta[property="og:description"]');
+  if (!ogDesc) { ogDesc = document.createElement('meta'); ogDesc.setAttribute('property','og:description'); document.head.appendChild(ogDesc); }
+  ogDesc.content = metaDesc;
+  // Canonical
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) { canonical = document.createElement('link'); canonical.rel = 'canonical'; document.head.appendChild(canonical); }
+  canonical.href = `https://signalmap.live/${exchangeId}-hiring`;
+
+  // Render avatar & heading
+  const avatar = document.getElementById('avatar');
+  avatar.textContent = initials(name);
+  avatar.style.background = color;
+  document.documentElement.style.setProperty('--exchange', color);
+
+  document.getElementById('page-title').textContent = `${name} Hiring Intelligence`;
+  document.getElementById('page-sub').textContent =
+    `Real-time hiring signal analysis for ${name}. Updated hourly from live job board data.`;
+  document.getElementById('predictions-title').textContent = `Active Predictions for ${name}`;
+  document.getElementById('cta-title').textContent = `Get the weekly ${name} signal brief`;
+  document.getElementById('alert-heading').textContent = `Get notified the moment ${name} posts a new role`;
+  document.getElementById('alert-link').href = `/alerts?exchange=${exchangeId}`;
+
+  // Load latest signal
+  try {
+    const signals = await api(`signals?exchange_id=eq.${exchangeId}&order=week_start.desc&limit=1`);
+    if (signals.length > 0) {
+      const s = signals[0];
+      document.getElementById('stat-score').textContent = s.score ?? '—';
+      document.getElementById('stat-jobs').textContent = s.total_active ?? '—';
+      document.getElementById('stat-compliance').textContent = s.compliance_count ?? '—';
+
+      // Build badges
+      const badgesEl = document.getElementById('badges');
+      badgesEl.innerHTML = '';
+      if (s.score != null) {
+        badgesEl.innerHTML += `<span class="badge badge-score">Signal Score: ${s.score}/100</span>`;
+      }
+      if (s.total_active != null) {
+        badgesEl.innerHTML += `<span class="badge badge-jobs">${s.total_active} Active Roles</span>`;
+      }
+      const weekDelta = s.week_delta;
+      if (weekDelta != null && weekDelta !== 0) {
+        const dir = weekDelta > 0 ? '+' : '';
+        badgesEl.innerHTML += `<span class="badge badge-jobs">${dir}${weekDelta} WoW</span>`;
+      }
+
+      // Department breakdown
+      const depts = [
+        { key: 'engineering', val: s.engineering_count },
+        { key: 'compliance', val: s.compliance_count },
+        { key: 'finance', val: s.finance_count },
+        { key: 'product', val: s.product_count },
+        { key: 'legal', val: s.legal_count },
+      ].filter(d => d.val > 0);
+
+      if (depts.length > 0) {
+        const grid = document.getElementById('dept-grid');
+        grid.innerHTML = depts.map(d => `
+          <div class="dept-card">
+            <div class="dept-name">${DEPT_LABELS[d.key] || d.key}</div>
+            <div class="dept-count">${d.val}</div>
+          </div>
+        `).join('');
+        document.getElementById('dept-section').style.display = '';
+        document.getElementById('dept-divider').style.display = '';
+      }
     } else {
-      container.innerHTML = data.map(p => `
-        <div class="prediction-card">
-          <div class="prediction-title">${p.title || p.prediction}</div>
-          <div class="prediction-meta">Confidence: ${p.confidence_score || p.confidence || '—'}% · ${p.status || 'Active'}</div>
-        </div>
-      `).join('');
+      // No signal data yet — clear skeleton badges
+      document.getElementById('badges').innerHTML = `<span class="badge badge-jobs">Data collection in progress</span>`;
     }
   } catch(e) {
-    container.innerHTML = `<div class="predictions-placeholder"><p>No active predictions for Binance yet — check back next week.</p></div>`;
+    document.getElementById('badges').innerHTML = `<span class="badge badge-jobs">Data unavailable</span>`;
+  }
+
+  // Load recent job listings
+  try {
+    const jobs = await api(`job_listings?exchange_id=eq.${exchangeId}&order=scraped_at.desc&limit=20&select=title,department,url,scraped_at`);
+    if (jobs.length > 0) {
+      const list = document.getElementById('job-list');
+      list.innerHTML = jobs.slice(0, 10).map(j => `
+        <li class="job-item">
+          <div>
+            <div class="job-title">${escHtml(j.title)}</div>
+            <div class="job-dept">${j.department || 'Other'}</div>
+          </div>
+          ${j.url ? `<a class="job-link" href="${escHtml(j.url)}" target="_blank" rel="noopener">Apply →</a>` : ''}
+        </li>
+      `).join('');
+      const sec = document.getElementById('jobs-section');
+      sec.style.display = '';
+      document.getElementById('jobs-divider').style.display = '';
+      document.getElementById('jobs-title').textContent = `Recent ${name} Job Postings`;
+      if (jobs.length > 10) {
+        const more = document.getElementById('jobs-more');
+        more.textContent = `Showing 10 of ${jobs.length} recent listings.`;
+        more.style.display = '';
+      }
+    }
+  } catch(e) { /* no listings yet */ }
+
+  // Load predictions
+  const predContainer = document.getElementById('predictions-container');
+  try {
+    const preds = await api(`predictions?exchange_id=eq.${exchangeId}&order=issued_at.desc&limit=6`);
+    if (preds.length === 0) {
+      predContainer.innerHTML = `<div class="predictions-placeholder"><p>No predictions yet for ${name}.</p><p style="margin-top:8px;font-size:13px">Subscribe below to be notified when predictions are published.</p></div>`;
+    } else {
+      predContainer.innerHTML = preds.map(p => {
+        const statusClass = p.status === 'correct' ? 'pred-correct' : p.status === 'incorrect' ? 'pred-incorrect' : p.status === 'resolved' ? 'pred-resolved' : 'pred-active';
+        const horizon = p.horizon ? `· ${p.horizon}-day horizon` : '';
+        const confPct = p.confidence ? Math.round(p.confidence > 1 ? p.confidence : p.confidence * 100) : null;
+        const conf = confPct ? `${confPct}% confidence` : '';
+        return `
+          <div class="prediction-card">
+            <div class="prediction-title">${escHtml(p.title)}<span class="pred-status ${statusClass}">${p.status || 'active'}</span></div>
+            <div class="prediction-meta">${conf}${conf && horizon ? ' ' : ''}${horizon}</div>
+            ${p.rationale ? `<p style="font-size:14px;color:var(--mid);margin-top:8px;">${escHtml(p.rationale)}</p>` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+  } catch(e) {
+    predContainer.innerHTML = `<div class="predictions-placeholder"><p>No predictions yet for ${name}.</p></div>`;
   }
 }
 
+function escHtml(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// Subscribe form
 document.getElementById('subscribe-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   const email = document.getElementById('sub-email').value;
   const msg = document.getElementById('form-msg');
+  const exchangeId = getExchangeId() || 'company-hiring';
   try {
     const res = await fetch(`${SUPABASE_URL}/rest/v1/subscribers`, {
       method: 'POST',
@@ -357,11 +454,11 @@ document.getElementById('subscribe-form').addEventListener('submit', async (e) =
         'Content-Type': 'application/json',
         'Prefer': 'return=minimal'
       },
-      body: JSON.stringify({ email, source: 'binance-hiring' })
+      body: JSON.stringify({ email, source: exchangeId + '-hiring' })
     });
     msg.style.display = 'block';
     msg.textContent = res.ok || res.status === 409
-      ? '✓ You're subscribed — first brief arrives Friday.'
+      ? '✓ You\'re subscribed — first brief arrives Friday.'
       : 'Something went wrong. Try again?';
     if (res.ok) e.target.reset();
   } catch(err) {
@@ -370,8 +467,7 @@ document.getElementById('subscribe-form').addEventListener('submit', async (e) =
   }
 });
 
-fetchSignal();
-fetchPredictions();
+loadPage();
 </script>
 </body>
 </html>
