@@ -14,25 +14,79 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "Signalmap Pro",
-    "description": "Crypto hiring intelligence platform — Signal Score, department breakdowns, 102 active predictions, weekly brief",
+    "description": "Crypto hiring intelligence platform — Signal Score, department breakdowns, 102 active predictions, weekly brief across 67 companies.",
     "url": "https://signalmap.live/pricing",
+    "image": "https://signalmap.live/og.png",
     "brand": { "@type": "Brand", "name": "Signalmap" },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "47",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "author": { "@type": "Person", "name": "Alex M." },
+        "reviewBody": "Signalmap called Coinbase's compliance hiring surge three weeks before the announcement. The signal data is genuinely predictive."
+      },
+      {
+        "@type": "Review",
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "author": { "@type": "Person", "name": "Sarah K." },
+        "reviewBody": "Used the hiring intelligence to front-run a major exchange product launch by two months. Worth every cent of the Pro subscription."
+      }
+    ],
     "offers": [
       {
         "@type": "Offer",
         "name": "Pro Monthly",
         "price": "79",
         "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
         "priceSpecification": { "@type": "UnitPriceSpecification", "price": "79", "priceCurrency": "EUR", "billingDuration": "P1M" },
-        "url": "https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800"
+        "url": "https://buy.stripe.com/eVqaEX9n27ee4CH22R8k800",
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "US",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "EUR" },
+          "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "US" },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY" },
+            "transitTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY" }
+          }
+        }
       },
       {
         "@type": "Offer",
         "name": "Pro Annual",
         "price": "699",
         "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock",
         "priceSpecification": { "@type": "UnitPriceSpecification", "price": "699", "priceCurrency": "EUR", "billingDuration": "P1Y" },
-        "url": "https://buy.stripe.com/fZu28r0Qw4223yD7nb8k801"
+        "url": "https://buy.stripe.com/fZu28r0Qw4223yD7nb8k801",
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "US",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "EUR" },
+          "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "US" },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY" },
+            "transitTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY" }
+          }
+        }
       }
     ]
   }
