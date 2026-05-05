@@ -282,12 +282,15 @@ async function loadExchange(id, prefix) {
 }
 
 const ALL_PAIRS = [
-  {slug:'coinbase-vs-kraken',   label:'Coinbase vs Kraken'},
-  {slug:'binance-vs-okx',       label:'Binance vs OKX'},
-  {slug:'coinbase-vs-gemini',   label:'Coinbase vs Gemini'},
-  {slug:'bybit-vs-okx',         label:'Bybit vs OKX'},
-  {slug:'kraken-vs-binance',    label:'Kraken vs Binance'},
-  {slug:'binance-vs-coinbase',  label:'Binance vs Coinbase'},
+  {slug:'coinbase-vs-kraken',label:'Coinbase vs Kraken'},
+  {slug:'coinbase-vs-gemini',label:'Coinbase vs Gemini'},
+  {slug:'coinbase-vs-okx',label:'Coinbase vs OKX'},
+  {slug:'binance-vs-okx',label:'Binance vs OKX'},
+  {slug:'binance-vs-coinbase',label:'Binance vs Coinbase'},
+  {slug:'bybit-vs-okx',label:'Bybit vs OKX'},
+  {slug:'bybit-vs-binance',label:'Bybit vs Binance'},
+  {slug:'kraken-vs-binance',label:'Kraken vs Binance'},
+  {slug:'kraken-vs-coinbase',label:'Kraken vs Coinbase'}
 ];
 const current = 'binance-vs-okx';
 const related = ALL_PAIRS.filter(p => p.slug !== current).slice(0,4);
