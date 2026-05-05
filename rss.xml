@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Signalmap — Crypto Hiring Intelligence</title>
+    <link>https://signalmap.live</link>
+    <description>Weekly hiring signal analysis across 67 crypto companies — exchanges, DeFi protocols, infrastructure, and L1/L2 networks. Predictions, Signal Scores, and intelligence briefs.</description>
+    <language>en-us</language>
+    <copyright>2026 Signalmap</copyright>
+    <managingEditor>hello@signalmap.live (Signalmap)</managingEditor>
+    <lastBuildDate>Mon, 05 May 2026 08:00:00 +0000</lastBuildDate>
+    <atom:link href="https://signalmap.live/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://signalmap.live/og.png</url>
+      <title>Signalmap</title>
+      <link>https://signalmap.live</link>
+    </image>
+
+    <item>
+      <title>Crypto Custody Jobs 2026: Fireblocks, Anchorage, BitGo Hiring Analysis</title>
+      <link>https://signalmap.live/blog/crypto-custody-jobs-2026</link>
+      <description>Signalmap tracks hiring at the top crypto custody firms. Engineering, compliance, and enterprise sales roles at Fireblocks, Anchorage Digital, and BitGo reveal the institutional custody buildout in 2026.</description>
+      <pubDate>Mon, 05 May 2026 08:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/crypto-custody-jobs-2026</guid>
+    </item>
+
+    <item>
+      <title>Web3 Developer Jobs 2026: Where to Look and What the Hiring Data Shows</title>
+      <link>https://signalmap.live/blog/web3-developer-jobs-2026</link>
+      <description>Signalmap tracks 67 crypto companies hiring Web3 developers in 2026. See which companies are hiring engineers, what skills are most in-demand, and which hiring signals predict product launches.</description>
+      <pubDate>Mon, 05 May 2026 07:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/web3-developer-jobs-2026</guid>
+    </item>
+
+    <item>
+      <title>Coinbase Base L2: Hiring Signals Reveal Infrastructure Buildout (2026)</title>
+      <link>https://signalmap.live/blog/coinbase-base-hiring-2026</link>
+      <description>Signalmap tracks Coinbase hiring signals with focus on Base L2. Protocol engineering and BD roles reveal what Coinbase is building next on Base — weeks before announcements.</description>
+      <pubDate>Mon, 05 May 2026 06:30:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/coinbase-base-hiring-2026</guid>
+    </item>
+
+    <item>
+      <title>Ripple Hiring Analysis 2026: Post-SEC Clarity Expansion Signals</title>
+      <link>https://signalmap.live/blog/ripple-hiring-analysis-2026</link>
+      <description>After the SEC lawsuit resolution, Ripple's hiring data shows a dramatic expansion across licensing, product, and engineering. Signalmap breaks down the signals and what they predict.</description>
+      <pubDate>Mon, 05 May 2026 06:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/ripple-hiring-analysis-2026</guid>
+    </item>
+
+    <item>
+      <title>Solana Ecosystem Hiring 2026: Jito, Helius, and Phantom Lead the Build</title>
+      <link>https://signalmap.live/blog/solana-ecosystem-hiring-2026</link>
+      <description>Signalmap tracks hiring at Jito, Helius, and Phantom — three of the fastest-growing Solana ecosystem companies. What their job postings reveal about Solana's 2026 trajectory.</description>
+      <pubDate>Mon, 05 May 2026 05:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/solana-ecosystem-hiring-2026</guid>
+    </item>
+
+    <item>
+      <title>Polygon vs Arbitrum Hiring 2026: Which L2 Is Building Harder?</title>
+      <link>https://signalmap.live/blog/polygon-vs-arbitrum-hiring-2026</link>
+      <description>Signalmap compares hiring signals at Polygon Labs and Arbitrum — engineering headcount, product velocity, and what the department mix reveals about each L2 network's 2026 strategy.</description>
+      <pubDate>Mon, 05 May 2026 04:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/polygon-vs-arbitrum-hiring-2026</guid>
+    </item>
+
+    <item>
+      <title>Crypto Compliance Hiring Is Surging in 2026: Signals Across 67 Companies</title>
+      <link>https://signalmap.live/blog/crypto-compliance-hiring-surge-2026</link>
+      <description>Signalmap's compliance hiring tracker shows a broad-based surge across exchanges, custody firms, and DeFi protocols. Which companies are building the biggest compliance moats — and what it predicts.</description>
+      <pubDate>Mon, 05 May 2026 03:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/crypto-compliance-hiring-surge-2026</guid>
+    </item>
+
+    <item>
+      <title>Fireblocks vs Anchorage Hiring 2026: The Institutional Custody Battle</title>
+      <link>https://signalmap.live/blog/fireblocks-vs-anchorage-hiring-2026</link>
+      <description>Signalmap compares hiring signals at Fireblocks and Anchorage Digital — engineering vs compliance mix, growth trajectory, and who is better positioned for the institutional ETF custody wave.</description>
+      <pubDate>Mon, 05 May 2026 02:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/fireblocks-vs-anchorage-hiring-2026</guid>
+    </item>
+
+    <item>
+      <title>Nansen vs CoinGecko Hiring 2026: Crypto Data Intelligence Battle</title>
+      <link>https://signalmap.live/blog/nansen-vs-coingecko-data-hiring-2026</link>
+      <description>A hiring signal comparison of Nansen and CoinGecko — two of crypto's leading data platforms. Engineering vs product mix, AI pivot signals, and what the data reveals about each company's 2026 strategy.</description>
+      <pubDate>Mon, 05 May 2026 01:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/nansen-vs-coingecko-data-hiring-2026</guid>
+    </item>
+
+    <item>
+      <title>MoonPay and Nubank: The On-Ramp and Neobank Hiring Signal You Are Not Watching</title>
+      <link>https://signalmap.live/blog/moonpay-nubank-crypto-fiat-hiring-2026</link>
+      <description>MoonPay and Nubank are both showing significant hiring signals in 2026. As crypto on-ramp and neobank hiring surges, the patterns reveal the next wave of mass-market crypto adoption infrastructure.</description>
+      <pubDate>Sun, 04 May 2026 21:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/moonpay-nubank-crypto-fiat-hiring-2026</guid>
+    </item>
+
+    <item>
+      <title>RWA Tokenization Hiring Surge: Securitize, Superstate, and Alchemy Signal New Wave</title>
+      <link>https://signalmap.live/blog/rwa-tokenization-hiring-surge-2026</link>
+      <description>Real-world asset tokenization is driving a compliance and engineering hiring surge at Securitize, Superstate, and Alchemy. What the signals predict.</description>
+      <pubDate>Sun, 04 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/rwa-tokenization-hiring-surge-2026</guid>
+    </item>
+
+    <item>
+      <title>Solana Infrastructure Hiring Boom: Helius, Jito, and QuickNode Signal Q3 Expansion</title>
+      <link>https://signalmap.live/blog/solana-infrastructure-hiring-boom-2026</link>
+      <description>Three Solana infrastructure companies are hiring aggressively in May 2026. Here is what the signals predict about the ecosystem's next move.</description>
+      <pubDate>Sun, 04 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/solana-infrastructure-hiring-boom-2026</guid>
+    </item>
+
+    <item>
+      <title>OP Labs vs. Arbitrum: The L2 Hiring Race Signals Developer Ecosystem Push</title>
+      <link>https://signalmap.live/blog/op-labs-vs-arbitrum-l2-hiring-race-2026</link>
+      <description>Both OP Labs and Arbitrum Foundation are hiring aggressively in 2026. Here is what the signals say about who is winning the L2 ecosystem battle.</description>
+      <pubDate>Sun, 04 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/op-labs-vs-arbitrum-l2-hiring-race-2026</guid>
+    </item>
+
+    <item>
+      <title>Regional Crypto Exchange Hiring: Bitso, Luno, and Shakepay Reveal Global Expansion Plans</title>
+      <link>https://signalmap.live/blog/regional-crypto-exchange-hiring-bitso-luno-2026</link>
+      <description>Bitso, Luno, and Shakepay are all showing elevated hiring signals in 2026. Regional exchange hiring data is one of the most underrated signals for predicting geographic expansion.</description>
+      <pubDate>Sat, 03 May 2026 21:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/regional-crypto-exchange-hiring-bitso-luno-2026</guid>
+    </item>
+
+    <item>
+      <title>CoinGecko, CoinMarketCap, Nansen, and TaxBit: The Crypto Data Layer Is Hiring Fast</title>
+      <link>https://signalmap.live/blog/crypto-data-analytics-hiring-2026</link>
+      <description>The crypto data and analytics sector is quietly one of the strongest hiring signals of 2026. CoinGecko, CoinMarketCap, Nansen, and TaxBit are all expanding — and the role profiles reveal where crypto infrastructure is heading.</description>
+      <pubDate>Fri, 02 May 2026 21:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/crypto-data-analytics-hiring-2026</guid>
+    </item>
+
+    <item>
+      <title>Polygon, Mysten Labs, and Aptos: The L1 Hiring Signal That Predicts Ecosystem Bets in 2026</title>
+      <link>https://signalmap.live/blog/polygon-sui-aptos-l1-hiring-2026</link>
+      <description>Polygon, Mysten Labs (Sui), and Aptos Labs are all hiring aggressively in 2026 — but in very different directions. Hiring data reveals where each chain is placing its next big bet.</description>
+      <pubDate>Thu, 01 May 2026 21:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/polygon-sui-aptos-l1-hiring-2026</guid>
+    </item>
+
+    <item>
+      <title>NFT Platform Hiring Recovery: OpenSea, Magic Eden, and Dapper Labs Are Back</title>
+      <link>https://signalmap.live/blog/nft-platform-hiring-recovery-2026</link>
+      <description>After two years of contraction, NFT marketplace hiring is accelerating. OpenSea, Magic Eden, and Dapper Labs together have 78 open roles — up 82% since Q3 2025.</description>
+      <pubDate>Thu, 16 Apr 2026 11:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/nft-platform-hiring-recovery-2026</guid>
+    </item>
+
+    <item>
+      <title>CertiK, Elliptic, and Nethermind: The Crypto Safety Layer Is Hiring Fast</title>
+      <link>https://signalmap.live/blog/crypto-security-hiring-surge-2026</link>
+      <description>The audit and compliance infrastructure under crypto is scaling. CertiK, Elliptic, and Nethermind together have 112 open roles — here is what they are building.</description>
+      <pubDate>Thu, 16 Apr 2026 10:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/crypto-security-hiring-surge-2026</guid>
+    </item>
+
+    <item>
+      <title>Binance vs OKX 2026: Which Exchange Is Building More?</title>
+      <link>https://signalmap.live/blog/binance-vs-okx-2026-signal-analysis</link>
+      <description>A head-to-head hiring signal comparison of Binance and OKX for 2026. Signal Scores, department breakdown, and what the data predicts for each exchange.</description>
+      <pubDate>Wed, 09 Apr 2026 12:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/binance-vs-okx-2026-signal-analysis</guid>
+    </item>
+
+    <item>
+      <title>Coinbase vs Kraken 2026: Hiring Comparison and Signals</title>
+      <link>https://signalmap.live/blog/coinbase-vs-kraken-hiring-comparison-2026</link>
+      <description>Signalmap compares Coinbase and Kraken hiring signals for 2026. Signal Scores, compliance vs engineering mix, and analyst predictions for both US exchanges.</description>
+      <pubDate>Wed, 09 Apr 2026 10:00:00 +0000</pubDate>
+      <guid>https://signalmap.live/blog/coinbase-vs-kraken-hiring-comparison-2026</guid>
+    </item>
+
+  </channel>
+</rss>
