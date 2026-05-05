@@ -242,6 +242,21 @@
   to = "/binance-vs-coinbase.html"
   status = 200
 
+[[redirects]]
+  from = "/coinbase-vs-okx"
+  to = "/coinbase-vs-okx.html"
+  status = 200
+
+[[redirects]]
+  from = "/bybit-vs-binance"
+  to = "/bybit-vs-binance.html"
+  status = 200
+
+[[redirects]]
+  from = "/kraken-vs-coinbase"
+  to = "/kraken-vs-coinbase.html"
+  status = 200
+
 # ── DeFi Protocol hiring pages ──
 [[redirects]]
   from = "/uniswap-hiring"

@@ -28,6 +28,9 @@
   <url><loc>https://signalmap.live/coinbase-vs-gemini</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://signalmap.live/coinbase-vs-kraken</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://signalmap.live/kraken-vs-binance</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/coinbase-vs-okx</loc><lastmod>2026-05-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/bybit-vs-binance</loc><lastmod>2026-05-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/kraken-vs-coinbase</loc><lastmod>2026-05-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
   <!-- Exchange hiring pages (12) -->
   <url><loc>https://signalmap.live/coinbase-hiring</loc><changefreq>daily</changefreq><priority>0.85</priority></url>
