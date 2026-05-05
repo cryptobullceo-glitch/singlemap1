@@ -261,6 +261,16 @@
   to = "/kraken-vs-coinbase.html"
   status = 200
 
+[[redirects]]
+  from = "/polygon-vs-arbitrum"
+  to = "/polygon-vs-arbitrum.html"
+  status = 200
+
+[[redirects]]
+  from = "/coinbase-vs-robinhood"
+  to = "/coinbase-vs-robinhood.html"
+  status = 200
+
 # ── DeFi Protocol hiring pages ──
 [[redirects]]
   from = "/uniswap-hiring"

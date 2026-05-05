@@ -31,6 +31,8 @@
   <url><loc>https://signalmap.live/coinbase-vs-okx</loc><lastmod>2026-05-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://signalmap.live/bybit-vs-binance</loc><lastmod>2026-05-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://signalmap.live/kraken-vs-coinbase</loc><lastmod>2026-05-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/polygon-vs-arbitrum</loc><lastmod>2026-05-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/coinbase-vs-robinhood</loc><lastmod>2026-05-05</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
   <!-- Exchange hiring pages (12) -->
   <url><loc>https://signalmap.live/coinbase-hiring</loc><changefreq>daily</changefreq><priority>0.85</priority></url>
@@ -114,5 +116,22 @@
   <url><loc>https://signalmap.live/superstate-hiring</loc><changefreq>daily</changefreq><priority>0.65</priority></url>
   <url><loc>https://signalmap.live/taxbit-hiring</loc><changefreq>daily</changefreq><priority>0.65</priority></url>
   <url><loc>https://signalmap.live/zora-hiring</loc><changefreq>daily</changefreq><priority>0.7</priority></url>
+
+  <!-- High-value blog posts -->
+  <url><loc>https://signalmap.live/blog/polygon-vs-arbitrum-hiring-2026</loc><lastmod>2026-05-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/blog/fireblocks-vs-anchorage-hiring-2026</loc><lastmod>2026-05-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/blog/solana-ecosystem-hiring-2026</loc><lastmod>2026-05-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/blog/crypto-compliance-hiring-surge-2026</loc><lastmod>2026-05-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/blog/nansen-vs-coingecko-data-hiring-2026</loc><lastmod>2026-05-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/blog/binance-vs-okx-2026-signal-analysis</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/blog/coinbase-vs-kraken-hiring-comparison-2026</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/blog/gemini-hiring-freeze-analysis-2026</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://signalmap.live/blog/bitpanda-b2b-hiring-signals-2026</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://signalmap.live/blog/robinhood-crypto-expansion-hiring-2026</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://signalmap.live/blog/crypto-exchange-engineering-jobs-march-2026</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://signalmap.live/blog/polygon-sui-aptos-l1-hiring-2026</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/blog/crypto-data-analytics-hiring-2026</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://signalmap.live/blog/regional-crypto-exchange-hiring-bitso-luno-2026</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://signalmap.live/blog/moonpay-nubank-crypto-fiat-hiring-2026</loc><lastmod>2026-05-04</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
 
 </urlset>
