@@ -24,7 +24,7 @@
   "@type": "FAQPage",
   "mainEntity": [
     {"@type":"Question","name":"What is crypto hiring intelligence?","acceptedAnswer":{"@type":"Answer","text":"Crypto hiring intelligence tracks job postings at 67 crypto companies — exchanges, DeFi protocols, infrastructure firms, and L1/L2 networks — to identify patterns that predict regulatory moves, product launches, and market expansion 60-120 days before public announcements."}},
-    {"@type":"Question","name":"How accurate are Signalmap's predictions?","acceptedAnswer":{"@type":"Answer","text":"Signalmap has an 83% accuracy rate on resolved predictions. We currently track 141 active predictions across 67 companies, each with a confidence score and full methodology."}},
+    {"@type":"Question","name":"How accurate are Signalmap's predictions?","acceptedAnswer":{"@type":"Answer","text":"Signalmap has an 83% accuracy rate on resolved predictions. We currently track 264 active predictions across 67 companies, each with a confidence score and full methodology."}},
     {"@type":"Question","name":"How does hiring data predict crypto exchange moves?","acceptedAnswer":{"@type":"Answer","text":"Compliance hiring surges typically precede regulatory filings by 8-12 weeks. Engineering spikes in specific tech stacks precede product launches. IR and finance hiring is a pre-IPO signal. These patterns repeat consistently across exchanges."}},
     {"@type":"Question","name":"What companies does Signalmap track?","acceptedAnswer":{"@type":"Answer","text":"Signalmap tracks 67 crypto companies: exchanges (Coinbase, Binance, Kraken, OKX), DeFi protocols (Uniswap, Morpho, Maple), infrastructure (Fireblocks, Anchorage, Paxos), L1/L2 networks (Ripple, Polygon, Arbitrum, OP Labs), and Bitcoin infrastructure (Strike, River, Spiral)."}},
     {"@type":"Question","name":"How much does Signalmap cost?","acceptedAnswer":{"@type":"Answer","text":"Signalmap has a free tier with a weekly brief every Friday. Pro is €79/month or €699/year and includes the full dashboard, all active predictions, department breakdowns, and regulatory radar. There is a 30-day money-back guarantee."}}
@@ -418,7 +418,7 @@
 <body>
 
 <div class="urgency-strip">
-  <strong>141 active predictions</strong> · 83% accuracy · Save €249 with annual billing.
+  <strong>264 active predictions</strong> · 83% accuracy · Save €249 with annual billing.
   <a href="https://buy.stripe.com/fZu28r0Qw4223yD7nb8k801">See Pro plans →</a>
 </div>
 
@@ -732,7 +732,7 @@
       </div>
     </div>
   </div>
-  <p class="pred-footer"><a href="/predictions">View all 141 predictions and outcomes →</a></p>
+  <p class="pred-footer"><a href="/predictions">View all 264 predictions and outcomes →</a></p>
 </div>
 
 <!-- PRICING -->
@@ -935,7 +935,7 @@
 <!-- BOTTOM CTA -->
 <div class="bottom-cta">
   <h2>Start reading the signal.</h2>
-  <p>Free weekly brief every Friday. Upgrade to Pro for the full signal stack — 67 companies, 141 predictions, department breakdowns. <strong style="color:#fff">83% accuracy.</strong></p>
+  <p>Free weekly brief every Friday. Upgrade to Pro for the full signal stack — 67 companies, 264 predictions, department breakdowns. <strong style="color:#fff">83% accuracy.</strong></p>
   <div class="bottom-cta-btns">
     <a href="/pricing" class="btn-primary">See Pro plans →</a>
     <button class="btn-ghost" onclick="window.scrollTo({top:0,behavior:'smooth'})">Get free brief →</button>
@@ -975,7 +975,7 @@
 </footer>
 
 <div class="sticky-cta" id="sticky-cta">
-  <span class="sticky-cta-text"><strong>141 active predictions</strong> · 83% accuracy · Save €249 with annual</span>
+  <span class="sticky-cta-text"><strong>264 active predictions</strong> · 83% accuracy · Save €249 with annual</span>
   <a href="/pricing" class="sticky-cta-btn">See Pro plans →</a>
   <button class="sticky-cta-dismiss" onclick="dismissSticky()" aria-label="Dismiss">✕</button>
 </div>
@@ -1082,7 +1082,7 @@ const STATIC_SIGNALS = [
   { exchange_id: 'bitvavo',   score: 57, total_active: 76,  compliance_count: 12 },
 ];
 const STATIC_JOBS  = 1417;
-const STATIC_PREDS = 141;
+const STATIC_PREDS = 264;
 const STATIC_HIT   = '83%';
 
 function renderTicker(signals) {
@@ -1186,7 +1186,7 @@ document.getElementById('subscribe-form').addEventListener('submit', async (e) =
       if (_refCode) {
         msg.innerHTML = '✓ You\'re on the list! Your referrer has been notified. &nbsp;<a href="/archive" style="color:var(--green);font-weight:700;text-decoration:none">Browse past issues →</a>';
       } else {
-        msg.innerHTML = '✓ You\'re on the list. Brief arrives Fridays. &nbsp;<a href="/archive" style="color:var(--green);font-weight:700;text-decoration:none">Browse past issues →</a> &nbsp;·&nbsp; <a href="/predictions" style="color:var(--green);font-weight:700;text-decoration:none">See 141 active predictions →</a>';
+        msg.innerHTML = '✓ You\'re on the list. Brief arrives Fridays. &nbsp;<a href="/archive" style="color:var(--green);font-weight:700;text-decoration:none">Browse past issues →</a> &nbsp;·&nbsp; <a href="/predictions" style="color:var(--green);font-weight:700;text-decoration:none">See 264 active predictions →</a>';
       }
     } else {
       msg.style.color = '#DC2626'; msg.textContent = 'Something went wrong — try again.';
