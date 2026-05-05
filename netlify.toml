@@ -8,6 +8,10 @@
   path     = "/blog/*"
   function = "blog-seo"
 
+[[edge_functions]]
+  path     = "/*-hiring"
+  function = "hiring-seo"
+
 [[redirects]]
   from = "/blog/:slug"
   to = "/post.html?slug=:slug"
