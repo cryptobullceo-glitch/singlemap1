@@ -222,6 +222,13 @@
   </div>
 </div>
 
+<div id="compare-links-section" style="display:none;background:var(--alt-bg);border-top:1px solid var(--light);padding:32px 24px;text-align:center;">
+  <div style="max-width:700px;margin:0 auto;">
+    <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:12px;">Head-to-head comparisons</p>
+    <div id="compare-links-grid" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;"></div>
+  </div>
+</div>
+
 <div id="alert-section" style="background:#F0FDF4;border-top:1px solid rgba(5,150,105,.15);padding:32px 24px;text-align:center;">
   <div style="max-width:600px;margin:0 auto;">
     <p style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#059669;margin-bottom:8px;">Pro Feature</p>
@@ -332,6 +339,26 @@ async function loadPage() {
   document.getElementById('cta-title').textContent = `Get the weekly ${name} signal brief`;
   document.getElementById('alert-heading').textContent = `Get notified the moment ${name} posts a new role`;
   document.getElementById('alert-link').href = `/alerts?exchange=${exchangeId}`;
+
+  // Inject comparison links for companies that have deep-dive pages
+  const COMPARISON_PAIRS = {
+    coinbase:  [['coinbase-vs-kraken','vs Kraken'],['coinbase-vs-gemini','vs Gemini'],['coinbase-vs-okx','vs OKX'],['coinbase-vs-robinhood','vs Robinhood']],
+    kraken:    [['coinbase-vs-kraken','vs Coinbase'],['kraken-vs-binance','vs Binance'],['kraken-vs-coinbase','vs Coinbase (IPO race)']],
+    binance:   [['binance-vs-okx','vs OKX'],['binance-vs-coinbase','vs Coinbase'],['kraken-vs-binance','vs Kraken']],
+    okx:       [['binance-vs-okx','vs Binance'],['coinbase-vs-okx','vs Coinbase'],['bybit-vs-okx','vs Bybit']],
+    gemini:    [['coinbase-vs-gemini','vs Coinbase']],
+    bybit:     [['bybit-vs-okx','vs OKX'],['bybit-vs-binance','vs Binance']],
+    robinhood: [['coinbase-vs-robinhood','vs Coinbase']],
+    polygon:   [['polygon-vs-arbitrum','vs Arbitrum']],
+    arbitrum:  [['polygon-vs-arbitrum','vs Polygon']],
+  };
+  const pairs = COMPARISON_PAIRS[exchangeId];
+  if (pairs && pairs.length) {
+    document.getElementById('compare-links-section').style.display = 'block';
+    document.getElementById('compare-links-grid').innerHTML = pairs.map(([slug, label]) =>
+      `<a href="/${slug}" style="display:inline-block;background:#fff;border:1px solid #E4E4E1;border-radius:8px;padding:8px 14px;text-decoration:none;color:#0A0A0B;font-size:.85rem;font-weight:600">${name} ${label} →</a>`
+    ).join('');
+  }
 
   // Load latest signal
   try {
